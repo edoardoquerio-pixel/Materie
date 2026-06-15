@@ -2,8 +2,10 @@
   "$schema": "https://opencode.ai/config.json",
   "model": "opencode/deepseek-v4-flash-free",
   "small_model": "opencode/deepseek-v4-flash-free",
-  "default_agent": "virtual-brain",
-  "instructions": ["agents/AGENTS.md", "agents/AGENTS_PROMPTS.md", "agents/AGENTS_TPGROUP.md"],
+  "default_agent": "sisyphus",
+  "instructions": ["agents/AGENTS.md", "agents/AGENTS_PROMPTS.md", "agents/AGENTS_TPGROUP.md", "agents/opencode/sisyphus.md"],
+
+  "plugin": [],
 
   "compaction": {
     "auto": true,
@@ -14,9 +16,9 @@
   },
 
   "agent": {
-    "virtual-brain": {
-      "description": "Virtual Brain orchestrator nativo: analizza, pianifica, coordina 23 subagent in parallelo, progetta architetture",
-      "model": "opencode/deepseek-v4-flash-free",
+    "sisyphus": {
+      "description": "Sisyphus - Ultraworker: orchestratore nativo che analizza richieste, scompone in sotto-task e crea prompt per subagenti specializzati",
+      "model": "opencode/big-pickle",
       "mode": "primary",
       "color": "#8b5cf6",
       "permission": {
@@ -156,32 +158,6 @@
       "hidden": true
     },
 
-    "tp-virtual-brain": {
-      "description": "Orchestratore TP Group: coordina 9 subagent specializzati per progetto infrastruttura IT TP Group (fusione Thema + Pro Studio)",
-      "model": "opencode/deepseek-v4-flash-free",
-      "mode": "primary",
-      "color": "#06b6d4",
-      "permission": {
-        "edit": "allow",
-        "bash": "allow",
-        "read": "allow",
-        "glob": "allow",
-        "grep": "allow",
-        "task": {
-          "tp-architect": "allow",
-          "tp-network-engineer": "allow",
-          "tp-security-compliance": "allow",
-          "tp-hpc-engineer": "allow",
-          "tp-pondus-dev": "allow",
-          "tp-cloud-strategist": "allow",
-          "tp-backup-dr": "allow",
-          "tp-offerta-docs": "allow",
-          "tp-project-manager": "allow"
-        },
-        "websearch": "allow",
-        "webfetch": "allow"
-      }
-    },
     "tp-architect": {
       "description": "Architetto infrastrutturale TP Group: progetta architettura IT convergente, integrazione datacenter, piano migrazione",
       "model": "opencode/deepseek-v4-flash-free",
@@ -231,7 +207,7 @@
 
   "command": {
     "analyze": {
-      "description": "Analisi approfondita di codice o architettura (delega a virtual-brain)",
+      "description": "Analisi approfondita di codice o architettura",
       "prompt": "Esegui un'analisi approfondita del contesto corrente. Identifica pattern, problemi, rischi e opportunità di miglioramento. Struttura in: riassunto, osservazioni dettagliate, raccomandazioni.",
       "template": "Esegui un'analisi approfondita del contesto corrente. Identifica pattern, problemi, rischi e opportunità di miglioramento. Struttura in: riassunto, osservazioni dettagliate, raccomandazioni."
     },
@@ -300,15 +276,6 @@
       "description": "Piano backup e DR TP Group via tp-backup-dr",
       "prompt": "Progetta la soluzione di backup e disaster recovery per TP Group. Includi: architettura 3-2-1, RPO/RTO, delocalizzazione, procedure restore, stima costi.",
       "template": "Progetta la soluzione di backup e disaster recovery per TP Group. Includi: architettura 3-2-1, RPO/RTO, delocalizzazione, procedure restore, stima costi."
-    },
-
-    "tokens": {
-      "description": "Mostra il consumo di token della sessione corrente",
-      "template": "Mostra all'utente il consumo token eseguendo: powershell -ExecutionPolicy Bypass -File \"tools/token-watch.ps1\" -Check. Leggi l'output e presentalo in modo chiaro. Consiglia /token-snapshot se \u00e8 vicino alla soglia."
-    },
-    "token-snapshot": {
-      "description": "Crea snapshot della sessione corrente e azzera il contatore token",
-      "template": "Esegui: powershell -ExecutionPolicy Bypass -File \"tools/token-watch.ps1\" -Auto -Threshold 130000. Comunica all'utente il risultato (file salvato, azione da compiere)."
     }
   }
 }
