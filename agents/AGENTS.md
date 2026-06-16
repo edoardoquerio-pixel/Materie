@@ -2,36 +2,63 @@
 
 Questo file descrive quale agente usare (suggerito) per ogni area/modulo della cartella `Materie` e come invocarlo per attività comuni.
 
+## Gerarchia di routing
+
+```
+SISYPHUS
+  ├── CONSULTANTI DIRETTI: oracle · metis · momus · librarian · explore
+  ├── coding-orchestrator → coding-coach-its · dotnet-api-tutor · dotnet-style-matcher
+  │                         database-sql-coach · exam-prep-its
+  ├── infra-orchestrator  → cloud-lab-tutor · linux-sysadmin-lab · network-security-trainer · iot-edge-lab
+  ├── tp-orchestrator     → 9 agenti TP Group
+  └── content-orchestrator → english-tech-mentor · project-work-mentor · data-analytics-coach
+```
+
 ## Routing dinamico basato sul prompt
 
-Devi analizzare la richiesta dell'utente e invocare automaticamente il subagent appropriato con `@nome-agente` in base al **contenuto della domanda**, non solo alla directory corrente.
+Analizza la richiesta e invoca l'orchestratore di dominio appropriato con `@nome-orchestratore`.
+L'orchestratore si occuperà di delegare al subagente specializzato corretto.
 
-Mappa contenuto -> agente:
+Mappa contenuto → orchestratore/agente:
 
-| Cosa chiede l'utente | Agente da invocare |
-|---|---|
-| C#, .NET, ASP.NET, API RESTful in .NET, Entity Framework, WPF, MAUI, LINQ | `@dotnet-api-tutor` |
-| Scrittura/refactoring C# con aderenza allo stile del progetto esistente | `@dotnet-style-matcher` |
-| Programmazione generale, algoritmi, strutture dati, Python, C, C++, JavaScript, TypeScript, fondamenti ICT, Git, esercizi didattici | `@coding-coach-its` |
-| SQL, NoSQL, modellazione dati, query, indici, normalizzazione, MongoDB, Redis | `@database-sql-coach` |
-| Project work, documentazione, processi, pianificazione, soft skills, stage/portfolio, CV, SharePoint, parità, sicurezza lavoro, virtualizzazione | `@project-work-mentor` |
-| Inglese tecnico, traduzioni, CV/LinkedIn in inglese, terminologia IT, colloqui in inglese | `@english-tech-mentor` |
-| Reti, sicurezza informatica, firewall, crittografia, troubleshooting di rete, OWASP | `@network-security-trainer` |
-| AWS, Azure, GCP, Docker, Kubernetes, deployment cloud, server Linux | `@cloud-lab-tutor` |
-| Analisi dati, visualizzazioni, dashboard, Python (pandas, matplotlib), Power BI, data science | `@data-analytics-coach` |
-| IoT, sensori, MQTT, telemetria, edge computing | `@iot-edge-lab` |
-| Linux server, shell scripting, servizi di rete, troubleshooting sistemistico, hardening | `@linux-sysadmin-lab` |
-| Piani di studio, simulazioni d'esame, quiz, ripasso rapido, preparazione verifiche | `@exam-prep-its` |
-| Esplorazione veloce del codice, ricerca file, lettura rapida, "trova", "dov'è", strutture del progetto | `@explore` |
-| AI, prompt engineering, intelligenza artificiale, LLM | `@coding-coach-its` |
+| Cosa chiede l'utente | Instrada a | Che fa |
+|---|---|---|
+| Programmazione generale, C/C++, Python, JS/TS, algoritmi, Git, AI, fondamenti ICT | `@coding-orchestrator` | Scompone e delega al tutor specializzato |
+| C#, .NET, ASP.NET, API REST in .NET, EF, WPF, MAUI, LINQ | `@coding-orchestrator` | Instrada a dotnet-api-tutor o dotnet-style-matcher |
+| SQL, NoSQL, modellazione dati, query, indici, MongoDB, Redis | `@coding-orchestrator` | Instrada a database-sql-coach |
+| Piani di studio, quiz, simulazioni esame, ripasso | `@coding-orchestrator` | Instrada a exam-prep-its |
+| AWS, Azure, GCP, Docker, Kubernetes, deployment cloud | `@infra-orchestrator` | Instrada a cloud-lab-tutor |
+| Linux server, shell scripting, hardening, troubleshooting sistemistico | `@infra-orchestrator` | Instrada a linux-sysadmin-lab |
+| Reti, firewall, crittografia, OWASP, troubleshooting di rete | `@infra-orchestrator` | Instrada a network-security-trainer |
+| IoT, sensori, MQTT, telemetria, edge computing | `@infra-orchestrator` | Instrada a iot-edge-lab |
+| Architettura TP Group, fusione Thema+Pro Studio | `@tp-orchestrator` | Scompone nei 9 agenti TP Group |
+| Rete/VPN TP Group, Fortigate | `@tp-orchestrator` | Instrada a tp-network-engineer |
+| Sicurezza ISO 27001, DR, crittografia (progetto TP) | `@tp-orchestrator` | Instrada a tp-security-compliance |
+| Cluster HPC, Infiniband, nodi calcolo | `@tp-orchestrator` | Instrada a tp-hpc-engineer |
+| App Pondus, C#/MS SQL/IIS | `@tp-orchestrator` | Instrada a tp-pondus-dev |
+| Strategia cloud ibrida, GCP, Workspace (progetto TP) | `@tp-orchestrator` | Instrada a tp-cloud-strategist |
+| Backup e DR (progetto TP) | `@tp-orchestrator` | Instrada a tp-backup-dr |
+| Offerta tecnico/economica (progetto TP) | `@tp-orchestrator` | Instrada a tp-offerta-docs |
+| Project management TP Group, Gantt, budget | `@tp-orchestrator` | Instrada a tp-project-manager |
+| Inglese tecnico, traduzioni, CV/LinkedIn EN, terminologia IT | `@content-orchestrator` | Instrada a english-tech-mentor |
+| Project work, documentazione, stage, CV, processi, SharePoint | `@content-orchestrator` | Instrada a project-work-mentor |
+| Analisi dati, visualizzazioni, dashboard, pandas, Power BI | `@content-orchestrator` | Instrada a data-analytics-coach |
+| Esplorazione veloce del codice, "trova", "dov'è", struttura progetto | `@explore` | Ricerca diretta (modello leggero) |
+| Consulenza architetturale, debugging complesso, tradeoff | `@oracle` | Consulenza read-only |
+| Analisi ambiguità, pre-pianificazione | `@metis` | Analisi pre-implementazione |
+| Review piani, qualità, completezza | `@momus` | Plan critic |
 
 ## Regole di routing
 
-1. **Se la richiesta è ambigua o generica**, usa `@coding-coach-its` (copre la maggior parte dei casi base).
-2. **Se chiede esplorazione rapida** (trovare file, cercare definizioni, riassumere), usa `@explore` perché è più veloce (modello leggero).
-3. **Se il contesto è misto** (es. "query SQL in C#"), dai priorità all'argomento principale e, se necessario, cita entrambi.
-4. **Non aggiungere commenti "ho invocato X"** nella risposta se non strettamente necessario.
-5. **Quando invochi un subagent, passa tutto il contesto** necessario: directory, file rilevanti, obiettivo.
+1. **Default: passa dall'orchestratore.** Non chiamare mai direttamente un agente foglia se esiste un orchestratore per quel dominio.
+2. **Eccezioni: chiamata diretta consentita solo per:**
+   - `@explore` — ricerca rapida, è un modello leggero, bypassare l'orchestratore è più veloce
+   - `@oracle` / `@metis` / `@momus` / `@librarian` — sono consultivi, non hanno orchestratore
+   - Urgenza o richiesta esplicita dell'utente (es. "chiama direttamente tp-pondus-dev")
+3. **Contesto misto** (es. "query SQL in C#"): instrada all'orchestratore del dominio principale.
+4. **Richiesta ambigua o generica**: usa `@coding-orchestrator` (copre la maggior parte dei casi base).
+5. **Non aggiungere commenti "ho invocato X"** nella risposta.
+6. **Quando invochi un subagent (orchestratore o diretto), passa sempre contesto completo**: directory, file rilevanti, obiettivo, vincoli.
 
 ## Mappatura directory -> contesto (informativa)
 
