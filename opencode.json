@@ -59,7 +59,12 @@
           "tp-cloud-strategist": "allow",
           "tp-backup-dr": "allow",
           "tp-offerta-docs": "allow",
-          "tp-project-manager": "allow"
+          "tp-project-manager": "allow",
+          "coding-orchestrator": "allow",
+          "infra-orchestrator": "allow",
+          "tp-orchestrator": "allow",
+          "content-orchestrator": "allow",
+          "mneme": "allow"
         },
         "websearch": "allow",
         "webfetch": "allow"
@@ -202,6 +207,72 @@
       "description": "Project manager TP Group: WBS, Gantt, budget, risk register, RASCI, milestone",
       "model": "opencode/mimo-v2.5-free",
       "hidden": true
+    },
+    "coding-orchestrator": {
+      "description": "Orchestratore didattico: scompone richieste di programmazione, database, .NET ed esami, delegando ai tutor specializzati",
+      "model": "opencode/deepseek-v4-flash-free",
+      "hidden": true,
+      "permission": {
+        "task": {
+          "coding-coach-its": "allow",
+          "dotnet-api-tutor": "allow",
+          "dotnet-style-matcher": "allow",
+          "database-sql-coach": "allow",
+          "exam-prep-its": "allow"
+        }
+      }
+    },
+    "infra-orchestrator": {
+      "description": "Orchestratore infrastruttura: cloud, Linux, reti, IoT — smista ai lab specializzati",
+      "model": "opencode/nemotron-3-ultra-free",
+      "hidden": true,
+      "permission": {
+        "task": {
+          "cloud-lab-tutor": "allow",
+          "linux-sysadmin-lab": "allow",
+          "network-security-trainer": "allow",
+          "iot-edge-lab": "allow"
+        }
+      }
+    },
+    "tp-orchestrator": {
+      "description": "Orchestratore TP Group: coordina architettura, rete, sicurezza, HPC, Pondus, cloud, backup, offerta e PM",
+      "model": "opencode/deepseek-v4-flash-free",
+      "hidden": true,
+      "permission": {
+        "task": {
+          "tp-architect": "allow",
+          "tp-network-engineer": "allow",
+          "tp-security-compliance": "allow",
+          "tp-hpc-engineer": "allow",
+          "tp-pondus-dev": "allow",
+          "tp-cloud-strategist": "allow",
+          "tp-backup-dr": "allow",
+          "tp-offerta-docs": "allow",
+          "tp-project-manager": "allow"
+        }
+      }
+    },
+    "content-orchestrator": {
+      "description": "Orchestratore contenuti: inglese, project work, data analytics — indirizza ai mentor di competenza",
+      "model": "opencode/north-mini-code-free",
+      "hidden": true,
+      "permission": {
+        "task": {
+          "english-tech-mentor": "allow",
+          "project-work-mentor": "allow",
+          "data-analytics-coach": "allow"
+        }
+      }
+    },
+    "mneme": {
+      "description": "Memoria persistente automatica: analizza la sessione corrente, screma informazioni utili (decisioni architetturali, pattern, errori, preferenze utente) e le salva in Supermemory",
+      "model": "opencode/north-mini-code-free",
+      "hidden": true,
+      "permission": {
+        "read": "allow",
+        "bash": "allow"
+      }
     }
   },
 

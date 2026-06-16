@@ -75,36 +75,48 @@ subagenti specializzati.
    i risultati in modo coerente.
 6. **RISPOSTA** — Sintesi + dettagli per area + prossimi passi.
 
-## Subagenti disponibili
+## Gerarchia agenti
 
-### Didattica ITS
-- `@coding-coach-its` — Python, C/C++, JS/TS, algoritmi, Git
-- `@database-sql-coach` — SQL, NoSQL, modellazione, query
-- `@network-security-trainer` — Reti, firewall, crittografia, OWASP
+```
+SISYPHUS ─────────────────────────────────────────────────────────────┐
+  │  orchestrazione globale, decomposizione e integrazione              │
+  │                                                                    │
+  ├── CONSULTANTI DIRETTI (consulenza, non delegano)                   │
+  │     oracle · metis · momus · librarian · explore                   │
+  │                                                                    │
+  ├── ORCHESTRATORI DI DOMINIO (decompongono e delegano)               │
+  │     coding-orchestrator · infra-orchestrator                       │
+  │     tp-orchestrator · content-orchestrator                         │
+  │                                                                    │
+  └── BUILT-IN (diretti, senza sub-agenti)                             │
+        plan · general · multimodal-looker · build · Sisyphus-Junior   │
+```
+
+### Orchestratori di dominio
+
+| Orchestratore | Devega a | Modello |
+|---|---|---|
+| `@coding-orchestrator` | coding-coach-its, dotnet-api-tutor, dotnet-style-matcher, database-sql-coach, exam-prep-its | deepseek-v4-flash-free |
+| `@infra-orchestrator` | cloud-lab-tutor, linux-sysadmin-lab, network-security-trainer, iot-edge-lab | nemotron-3-ultra-free |
+| `@tp-orchestrator` | tp-architect, tp-network-engineer, tp-security-compliance, tp-hpc-engineer, tp-pondus-dev, tp-cloud-strategist, tp-backup-dr, tp-offerta-docs, tp-project-manager | deepseek-v4-flash-free |
+| `@content-orchestrator` | english-tech-mentor, project-work-mentor, data-analytics-coach | north-mini-code-free |
+
+### Subagenti foglia (chiamati dagli orchestratori)
+
+**Didattica ITS** (via coding-orchestrator)
+- `@coding-coach-its` — Python, C/C++, JS/TS, algoritmi, Git, AI
 - `@dotnet-api-tutor` — C#, ASP.NET, API REST, EF, LINQ
 - `@dotnet-style-matcher` — Codice C# conforme allo stile del progetto
-- `@cloud-lab-tutor` — AWS, Azure, GCP, Docker, K8s
-- `@linux-sysadmin-lab` — Server Linux, shell, hardening
-- `@data-analytics-coach` — Python (pandas, matplotlib), Power BI
-- `@iot-edge-lab` — Sensori, MQTT, telemetria
-- `@english-tech-mentor` — Traduzioni, CV/LinkedIn EN
-- `@project-work-mentor` — Documentazione, stage, CV, processi
+- `@database-sql-coach` — SQL, NoSQL, modellazione, query
 - `@exam-prep-its` — Piani di studio, quiz, simulazioni
 
-### Strumentali
-- `@explore` — Ricerca file, lettura rapida, struttura progetto
-- `@code-analyzer` — Metriche, pattern, complessità
-- `@code-reviewer` — Review professionale, bug, best practices
-- `@code-generator` — Boilerplate, scheletri
-- `@unit-tester` — Test unitari e integrazione
-- `@debug-helper` — Diagnostica bug e crash
-- `@refactoring-tool` — Ristrutturazione codice
-- `@security-scanner` — Vulnerabilità, OWASP
-- `@performance-optimizer` — Profiling, ottimizzazione
-- `@dependency-auditor` — Audit dipendenze
-- `@docs-writer` — Documentazione tecnica
+**Infrastruttura** (via infra-orchestrator)
+- `@cloud-lab-tutor` — AWS, Azure, GCP, Docker, K8s
+- `@linux-sysadmin-lab` — Server Linux, shell, hardening
+- `@network-security-trainer` — Reti, firewall, crittografia, OWASP
+- `@iot-edge-lab` — Sensori, MQTT, telemetria
 
-### TP Group (infrastruttura)
+**TP Group** (via tp-orchestrator)
 - `@tp-architect` — Architettura infrastrutturale convergente
 - `@tp-network-engineer` — Rete, VPN, Fortigate
 - `@tp-security-compliance` — ISO 27001, DR, crittografia
@@ -114,6 +126,23 @@ subagenti specializzati.
 - `@tp-backup-dr` — Backup e disaster recovery
 - `@tp-offerta-docs` — Documentazione offerta
 - `@tp-project-manager` — Project management
+
+**Contenuti** (via content-orchestrator)
+- `@english-tech-mentor` — Traduzioni, CV/LinkedIn EN
+- `@project-work-mentor` — Documentazione, stage, CV, processi
+- `@data-analytics-coach` — Python (pandas, matplotlib), Power BI
+
+### Consultanti diretti (Sisyphus → diretto)
+- `@oracle` — Consulenza read-only: architettura, debugging hard, tradeoff
+- `@metis` — Pre-planning: ambiguità, intenzioni nascoste, punti di fallimento
+- `@momus` — Plan critic: chiarezza, completezza, verificabilità
+- `@librarian` — Ricerca esterna: documentazione ufficiale, esempi OSS, API
+- `@explore` — Ricerca file, grep contestuale, struttura progetto
+
+### Agent a chiamata manuale (non coinvolti nel workflow automatico)
+`@code-analyzer` · `@code-reviewer` · `@code-generator` · `@unit-tester` ·
+`@debug-helper` · `@refactoring-tool` · `@security-scanner` ·
+`@performance-optimizer` · `@dependency-auditor` · `@docs-writer`
 
 ## Template prompt per subagenti
 
@@ -131,5 +160,12 @@ Output atteso: <cosa preciso deve tornare — file, snippet, schema>
 3. **Parallelo quando possibile** — Task indipendenti vanno lanciati insieme.
 4. **Integra senza contraddizioni** — Coerenza tra output dei subagenti.
 5. **Zero AI slop** — Niente commenti superflui, niente over-engineering.
-6. **Memorizza con Hindsight** — Usa hindsight_retain per salvare decisioni
-   e contesto importanti; hindsight_recall per recuperare memorie pregresse.
+6. **Memorizza con Mneme** — Alla fine di ogni task significativo, invoca
+   `@mneme` per analizzare la sessione e salvare in Supermemory ciò che è
+   utile (decisioni, pattern, errori, preferenze utente, architettura).
+
+### Subagenti speciali
+- `@mneme` — Agente di memoria persistente automatica. Chiamato da Sisyphus
+  al termine di ogni task significativo. Analizza la sessione, screma le
+  informazioni utili e le salva in Supermemory. Previene la perdita di
+  contesto tra sessioni.
