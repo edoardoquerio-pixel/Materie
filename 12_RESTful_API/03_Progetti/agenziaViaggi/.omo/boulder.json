@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "active_work_id": "completamento-agenzia-viaggi-4ad2b530",
+  "works": {
+    "completamento-agenzia-viaggi-4ad2b530": {
+      "work_id": "completamento-agenzia-viaggi-4ad2b530",
+      "active_plan": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\12_RESTful_API\\03_Progetti\\agenziaViaggi\\.omo\\plans\\completamento-agenzia-viaggi.md",
+      "plan_name": "completamento-agenzia-viaggi",
+      "status": "active",
+      "started_at": "2026-06-17T13:26:52.696Z",
+      "updated_at": "2026-06-17T13:26:52.696Z",
+      "session_ids": [
+        "opencode:ses_12a5f5b27ffelAxDb0aAcAEEqQ"
+      ],
+      "session_origins": {
+        "opencode:ses_12a5f5b27ffelAxDb0aAcAEEqQ": "direct"
+      },
+      "agent": "atlas",
+      "task_sessions": {}
+    }
+  },
+  "active_plan": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\12_RESTful_API\\03_Progetti\\agenziaViaggi\\.omo\\plans\\completamento-agenzia-viaggi.md",
+  "started_at": "2026-06-17T13:26:52.696Z",
+  "status": "active",
+  "updated_at": "2026-06-17T13:26:52.696Z",
+  "session_ids": [
+    "opencode:ses_12a5f5b27ffelAxDb0aAcAEEqQ"
+  ],
+  "session_origins": {
+    "opencode:ses_12a5f5b27ffelAxDb0aAcAEEqQ": "direct"
+  },
+  "plan_name": "completamento-agenzia-viaggi",
+  "task_sessions": {},
+  "agent": "atlas"
+}
