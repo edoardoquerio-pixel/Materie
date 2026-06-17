@@ -1,0 +1,1 @@
+POST /api/v2/prenotazioni -> 201 (Prenotazione creata con data auto-generata)

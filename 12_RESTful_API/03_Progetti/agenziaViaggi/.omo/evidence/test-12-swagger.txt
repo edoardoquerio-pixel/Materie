@@ -1,0 +1,1 @@
+Swagger UI accessibile -> 200
