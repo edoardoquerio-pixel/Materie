@@ -1,0 +1,365 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode/deepseek-v4-flash-free",
+  "small_model": "opencode/deepseek-v4-flash-free",
+  "default_agent": "sisyphus",
+  "instructions": ["agents/AGENTS.md", "agents/AGENTS_PROMPTS.md", "agents/AGENTS_TPGROUP.md", "agents/opencode/sisyphus.md"],
+
+  "plugin": [],
+
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "tail_turns": 3,
+    "preserve_recent_tokens": 12000,
+    "reserved": 30000
+  },
+
+  "agent": {
+    "sisyphus": {
+      "description": "Sisyphus - Ultraworker: orchestratore nativo che analizza richieste, scompone in sotto-task e crea prompt per subagenti specializzati",
+      "model": "opencode/big-pickle",
+      "mode": "primary",
+      "color": "#8b5cf6",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "task": {
+          "cloud-lab-tutor": "allow",
+          "code-analyzer": "allow",
+          "code-generator": "allow",
+          "code-reviewer": "allow",
+          "coding-coach-its": "allow",
+          "data-analytics-coach": "allow",
+          "database-sql-coach": "allow",
+          "debug-helper": "allow",
+          "dependency-auditor": "allow",
+          "docs-writer": "allow",
+          "dotnet-api-tutor": "allow",
+          "dotnet-style-matcher": "allow",
+          "english-tech-mentor": "allow",
+          "exam-prep-its": "allow",
+          "explore": "allow",
+          "iot-edge-lab": "allow",
+          "linux-sysadmin-lab": "allow",
+          "network-security-trainer": "allow",
+          "performance-optimizer": "allow",
+          "project-work-mentor": "allow",
+          "refactoring-tool": "allow",
+          "security-scanner": "allow",
+          "unit-tester": "allow",
+          "tp-architect": "allow",
+          "tp-network-engineer": "allow",
+          "tp-security-compliance": "allow",
+          "tp-hpc-engineer": "allow",
+          "tp-pondus-dev": "allow",
+          "tp-cloud-strategist": "allow",
+          "tp-backup-dr": "allow",
+          "tp-offerta-docs": "allow",
+          "tp-project-manager": "allow",
+          "coding-orchestrator": "allow",
+          "infra-orchestrator": "allow",
+          "tp-orchestrator": "allow",
+          "content-orchestrator": "allow",
+          "mneme": "allow"
+        },
+        "websearch": "allow",
+        "webfetch": "allow"
+      }
+    },
+    "cloud-lab-tutor": {
+      "model": "opencode/nemotron-3-ultra-free",
+      "hidden": true
+    },
+    "code-analyzer": {
+      "model": "opencode/deepseek-v4-flash-free",
+      "hidden": true
+    },
+    "code-generator": {
+      "model": "opencode/north-mini-code-free",
+      "hidden": true
+    },
+    "code-reviewer": {
+      "model": "opencode/deepseek-v4-flash-free",
+      "hidden": true
+    },
+    "coding-coach-its": {
+      "model": "opencode/deepseek-v4-flash-free",
+      "hidden": true
+    },
+    "data-analytics-coach": {
+      "model": "opencode/nemotron-3-ultra-free",
+      "hidden": true
+    },
+    "database-sql-coach": {
+      "model": "opencode/deepseek-v4-flash-free",
+      "hidden": true
+    },
+    "debug-helper": {
+      "model": "opencode/deepseek-v4-flash-free",
+      "hidden": true
+    },
+    "dependency-auditor": {
+      "model": "opencode/north-mini-code-free",
+      "hidden": true
+    },
+    "docs-writer": {
+      "model": "opencode/mimo-v2.5-free",
+      "hidden": true
+    },
+    "dotnet-api-tutor": {
+      "model": "opencode/big-pickle",
+      "hidden": true
+    },
+    "dotnet-style-matcher": {
+      "model": "opencode/north-mini-code-free",
+      "hidden": true
+    },
+    "english-tech-mentor": {
+      "model": "opencode/mimo-v2.5-free",
+      "hidden": true
+    },
+    "exam-prep-its": {
+      "model": "opencode/deepseek-v4-flash-free",
+      "hidden": true
+    },
+    "explore": {
+      "model": "opencode/north-mini-code-free",
+      "hidden": true
+    },
+    "iot-edge-lab": {
+      "model": "opencode/nemotron-3-ultra-free",
+      "hidden": true
+    },
+    "linux-sysadmin-lab": {
+      "model": "opencode/nemotron-3-ultra-free",
+      "hidden": true
+    },
+    "network-security-trainer": {
+      "model": "opencode/nemotron-3-ultra-free",
+      "hidden": true
+    },
+    "performance-optimizer": {
+      "model": "opencode/deepseek-v4-flash-free",
+      "hidden": true
+    },
+    "project-work-mentor": {
+      "model": "opencode/mimo-v2.5-free",
+      "hidden": true
+    },
+    "refactoring-tool": {
+      "model": "opencode/deepseek-v4-flash-free",
+      "hidden": true
+    },
+    "security-scanner": {
+      "model": "opencode/nemotron-3-ultra-free",
+      "hidden": true
+    },
+    "unit-tester": {
+      "model": "opencode/north-mini-code-free",
+      "hidden": true
+    },
+
+    "tp-architect": {
+      "description": "Architetto infrastrutturale TP Group: progetta architettura IT convergente, integrazione datacenter, piano migrazione",
+      "model": "opencode/deepseek-v4-flash-free",
+      "hidden": true
+    },
+    "tp-network-engineer": {
+      "description": "Ingegnere rete TP Group: progetta VPN LAN to LAN, Client to LAN, Hybrid cloud, ridondanza connettività, Fortigate",
+      "model": "opencode/nemotron-3-ultra-free",
+      "hidden": true
+    },
+    "tp-security-compliance": {
+      "description": "Security compliance TP Group: ISO 27001, crittografia, disaster recovery, business continuity, accessi VPN",
+      "model": "opencode/nemotron-3-ultra-free",
+      "hidden": true
+    },
+    "tp-hpc-engineer": {
+      "description": "Ingegnere HPC TP Group: cluster calcolo, Infiniband, Linux, nodi HPC per simulazioni strutturali",
+      "model": "opencode/deepseek-v4-flash-free",
+      "hidden": true
+    },
+    "tp-pondus-dev": {
+      "description": "Sviluppatore Pondus TP Group: app C#/.NET, MS SQL, IIS, potenziamento e distribuzione",
+      "model": "opencode/north-mini-code-free",
+      "hidden": true
+    },
+    "tp-cloud-strategist": {
+      "description": "Cloud strategist TP Group: strategia cloud ibrida, GCP, Google Workspace, migrazione servizi",
+      "model": "opencode/nemotron-3-ultra-free",
+      "hidden": true
+    },
+    "tp-backup-dr": {
+      "description": "Backup & DR TP Group: NAS QNAP, SAN NetApp, delocalizzazione, RPO/RTO, 3-2-1 rule",
+      "model": "opencode/nemotron-3-ultra-free",
+      "hidden": true
+    },
+    "tp-offerta-docs": {
+      "description": "Documentazione offerta TP Group: redazione offerta tecnico/economica, Gantt, RASCI",
+      "model": "opencode/mimo-v2.5-free",
+      "hidden": true
+    },
+    "tp-project-manager": {
+      "description": "Project manager TP Group: WBS, Gantt, budget, risk register, RASCI, milestone",
+      "model": "opencode/mimo-v2.5-free",
+      "hidden": true
+    },
+    "coding-orchestrator": {
+      "description": "Orchestratore didattico: scompone richieste di programmazione, database, .NET ed esami, delegando ai tutor specializzati",
+      "model": "opencode/deepseek-v4-flash-free",
+      "hidden": true,
+      "permission": {
+        "task": {
+          "coding-coach-its": "allow",
+          "dotnet-api-tutor": "allow",
+          "dotnet-style-matcher": "allow",
+          "database-sql-coach": "allow",
+          "exam-prep-its": "allow"
+        }
+      }
+    },
+    "infra-orchestrator": {
+      "description": "Orchestratore infrastruttura: cloud, Linux, reti, IoT — smista ai lab specializzati",
+      "model": "opencode/nemotron-3-ultra-free",
+      "hidden": true,
+      "permission": {
+        "task": {
+          "cloud-lab-tutor": "allow",
+          "linux-sysadmin-lab": "allow",
+          "network-security-trainer": "allow",
+          "iot-edge-lab": "allow"
+        }
+      }
+    },
+    "tp-orchestrator": {
+      "description": "Orchestratore TP Group: coordina architettura, rete, sicurezza, HPC, Pondus, cloud, backup, offerta e PM",
+      "model": "opencode/deepseek-v4-flash-free",
+      "hidden": true,
+      "permission": {
+        "task": {
+          "tp-architect": "allow",
+          "tp-network-engineer": "allow",
+          "tp-security-compliance": "allow",
+          "tp-hpc-engineer": "allow",
+          "tp-pondus-dev": "allow",
+          "tp-cloud-strategist": "allow",
+          "tp-backup-dr": "allow",
+          "tp-offerta-docs": "allow",
+          "tp-project-manager": "allow"
+        }
+      }
+    },
+    "content-orchestrator": {
+      "description": "Orchestratore contenuti: inglese, project work, data analytics — indirizza ai mentor di competenza",
+      "model": "opencode/north-mini-code-free",
+      "hidden": true,
+      "permission": {
+        "task": {
+          "english-tech-mentor": "allow",
+          "project-work-mentor": "allow",
+          "data-analytics-coach": "allow"
+        }
+      }
+    },
+    "mneme": {
+      "description": "Memoria persistente automatica: Sisyphus salva in tempo reale via supermemory diretto; mneme fa da rete di sicurezza in background in parallelo alla conversazione, analizza la sessione, cattura ciò che è sfuggito, estrae pattern e consolida in Supermemory tutto (decisioni, errori con soluzioni, pattern, preferenze, lezioni apprese) per miglioramento continuo",
+      "model": "opencode/north-mini-code-free",
+      "hidden": true,
+      "permission": {
+        "read": "allow",
+        "bash": "allow",
+        "grep": "allow",
+        "glob": "allow"
+      }
+    }
+  },
+
+  "command": {
+    "analyze": {
+      "description": "Analisi approfondita di codice o architettura",
+      "prompt": "Esegui un'analisi approfondita del contesto corrente. Identifica pattern, problemi, rischi e opportunità di miglioramento. Struttura in: riassunto, osservazioni dettagliate, raccomandazioni.",
+      "template": "Esegui un'analisi approfondita del contesto corrente. Identifica pattern, problemi, rischi e opportunità di miglioramento. Struttura in: riassunto, osservazioni dettagliate, raccomandazioni."
+    },
+    "plan": {
+      "description": "Genera un piano esecutivo multi-step per un task complesso",
+      "prompt": "Analizza la richiesta e produci un piano d'esecuzione dettagliato. Includi: obiettivi, task con dipendenze, tempistiche stimate, rischi, criteri di successo. Prima di iniziare, verifica la completezza delle informazioni.",
+      "template": "Analizza la richiesta e produci un piano d'esecuzione dettagliato. Includi: obiettivi, task con dipendenze, tempistiche stimate, rischi, criteri di successo. Prima di iniziare, verifica la completezza delle informazioni."
+    },
+    "review": {
+      "description": "Code review completa con checklist qualità",
+      "prompt": "Esegui una code review professionale. Verifica: correttezza, performance, sicurezza, manutenibilità, stile, test, documentazione. Usa una checklist strutturata. Segnala blocker, warning e suggerimenti.",
+      "template": "Esegui una code review professionale. Verifica: correttezza, performance, sicurezza, manutenibilità, stile, test, documentazione. Usa una checklist strutturata. Segnala blocker, warning e suggerimenti."
+    },
+    "brainstorm": {
+      "description": "Esplorazione creativa di soluzioni alternative",
+      "prompt": "Conduci una sessione di brainstorming strutturata. Elenca almeno 3 approcci diversi al problema. Per ognuno: vantaggi, svantaggi, complessità stimata. Concludi con una raccomandazione motivata.",
+      "template": "Conduci una sessione di brainstorming strutturata. Elenca almeno 3 approcci diversi al problema. Per ognuno: vantaggi, svantaggi, complessità stimata. Concludi con una raccomandazione motivata."
+    },
+    "refactor": {
+      "description": "Propone refactoring con piano di migrazione",
+      "prompt": "Analizza il codice e proponi un piano di refactoring. Includi: motivazioni, design target, piano di migrazione incrementale, rischi di regressione, stima effort. Dai priorità ai cambiamenti.",
+      "template": "Analizza il codice e proponi un piano di refactoring. Includi: motivazioni, design target, piano di migrazione incrementale, rischi di regressione, stima effort. Dai priorità ai cambiamenti."
+    },
+
+    "tp:assess": {
+      "description": "Avvia assessment infrastrutturale TP Group via tp-architect",
+      "prompt": "Esegui un assessment dell'infrastruttura IT di TP Group basato sul documento di progetto. Analizza lo stato attuale (Thema on-prem + Pro Studio cloud) e identifica gap, rischi e priorità di integrazione.",
+      "template": "Esegui un assessment dell'infrastruttura IT di TP Group basato sul documento di progetto. Analizza lo stato attuale (Thema on-prem + Pro Studio cloud) e identifica gap, rischi e priorità di integrazione."
+    },
+    "tp:plan": {
+      "description": "Genera piano esecutivo TP Group via tp-project-manager",
+      "prompt": "Genera un piano esecutivo completo per il progetto TP Group. Includi: WBS, Gantt timeline, budget, rischi, milestone e matrice RASCI.",
+      "template": "Genera un piano esecutivo completo per il progetto TP Group. Includi: WBS, Gantt timeline, budget, rischi, milestone e matrice RASCI."
+    },
+    "tp:offer": {
+      "description": "Prepara bozza offerta tecnico/economica TP Group via tp-offerta-docs",
+      "prompt": "Prepara la bozza del documento di offerta tecnico/economica per il progetto TP Group seguendo i requisiti del capitolato. Includi: presentazione team, descrizione HW, attività, quotazione economica.",
+      "template": "Prepara la bozza del documento di offerta tecnico/economica per il progetto TP Group seguendo i requisiti del capitolato. Includi: presentazione team, descrizione HW, attività, quotazione economica."
+    },
+    "tp:security": {
+      "description": "Piano sicurezza ISO 27001 TP Group via tp-security-compliance",
+      "prompt": "Genera il piano di adeguamento ISO 27001 per TP Group. Includi: gap analysis, policy sicurezza, procedure DR, matrice crittografia, checklist audit.",
+      "template": "Genera il piano di adeguamento ISO 27001 per TP Group. Includi: gap analysis, policy sicurezza, procedure DR, matrice crittografia, checklist audit."
+    },
+    "tp:hpc": {
+      "description": "Specifica cluster HPC TP Group via tp-hpc-engineer",
+      "prompt": "Genera la specifica tecnica completa per il cluster HPC di TP Group (nodi esistenti + 8 nuovi). Includi: configurazione Infiniband, specifiche nodi, budget, piano espansione.",
+      "template": "Genera la specifica tecnica completa per il cluster HPC di TP Group (nodi esistenti + 8 nuovi). Includi: configurazione Infiniband, specifiche nodi, budget, piano espansione."
+    },
+    "tp:pondus": {
+      "description": "Piano potenziamento Pondus TP Group via tp-pondus-dev",
+      "prompt": "Genera il piano di potenziamento per l'applicazione Pondus (C#/MS SQL/IIS). Includi: architettura, schema DB, API, piano deployment, specifiche HW.",
+      "template": "Genera il piano di potenziamento per l'applicazione Pondus (C#/MS SQL/IIS). Includi: architettura, schema DB, API, piano deployment, specifiche HW."
+    },
+    "tp:network": {
+      "description": "Progetta rete TP Group via tp-network-engineer",
+      "prompt": "Progetta l'infrastruttura di rete convergente per TP Group. Includi: topologia, subnetting, VPN (LAN to LAN, Client to LAN, Hybrid cloud), ridondanza, configurazione Fortigate.",
+      "template": "Progetta l'infrastruttura di rete convergente per TP Group. Includi: topologia, subnetting, VPN (LAN to LAN, Client to LAN, Hybrid cloud), ridondanza, configurazione Fortigate."
+    },
+    "tp:cloud": {
+      "description": "Strategia cloud TP Group via tp-cloud-strategist",
+      "prompt": "Definisci la strategia cloud ibrida per TP Group. Includi: integrazione GCP/Workspace, hybrid cloud, piano migrazione, stima costi.",
+      "template": "Definisci la strategia cloud ibrida per TP Group. Includi: integrazione GCP/Workspace, hybrid cloud, piano migrazione, stima costi."
+    },
+    "tp:backup": {
+      "description": "Piano backup e DR TP Group via tp-backup-dr",
+      "prompt": "Progetta la soluzione di backup e disaster recovery per TP Group. Includi: architettura 3-2-1, RPO/RTO, delocalizzazione, procedure restore, stima costi.",
+      "template": "Progetta la soluzione di backup e disaster recovery per TP Group. Includi: architettura 3-2-1, RPO/RTO, delocalizzazione, procedure restore, stima costi."
+    },
+
+    "switch-go": {
+      "description": "Switcha TUTTI gli agenti da Zen (free) a Go (paid) — esegue tools/switch-opencode-provider.ps1 -To Go",
+      "template": "Esegui lo script tools/switch-opencode-provider.ps1 con parametro -To Go per commutare TUTTI i modelli degli agenti da Zen free (opencode/*-free) a Go paid (opencode-go/*). Mostra il riepilogo delle sostituzioni effettuate e il nome del file di backup creato.",
+      "agent": "sisyphus"
+    },
+    "switch-zen": {
+      "description": "Switcha TUTTI gli agenti da Go (paid) a Zen (free) — esegue tools/switch-opencode-provider.ps1 -To Zen",
+      "template": "Esegui lo script tools/switch-opencode-provider.ps1 con parametro -To Zen per ripristinare TUTTI i modelli degli agenti da Go paid (opencode-go/*) a Zen free (opencode/*-free). Mostra il riepilogo delle sostituzioni effettuate e il nome del file di backup creato.",
+      "agent": "sisyphus"
+    }
+  }
+}

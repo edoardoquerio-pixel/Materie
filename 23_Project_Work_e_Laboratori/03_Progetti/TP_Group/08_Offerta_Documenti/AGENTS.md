@@ -50,4 +50,4 @@ Struttura obbligatoria dell'offerta:
 - Formato: Markdown (con tabelle)
 - Tutti i costi devono essere espressi IVA esclusa
 - Il documento deve essere autoconsistente (leggibile senza dover consultare altri file)
-- Rispettare il vincolo di budget: 250k€ (on premise/hosting) o 220k€ (cloud/noleggio)
+- Rispettare il vincolo di budget: €520k (budget totale progetto)

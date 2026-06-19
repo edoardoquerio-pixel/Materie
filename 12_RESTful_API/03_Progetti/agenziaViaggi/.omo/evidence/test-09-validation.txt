@@ -1,1 +1,0 @@
-Validazione body vuoto -> 400

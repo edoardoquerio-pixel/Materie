@@ -1,6 +1,6 @@
 # (CSP_25-27-05) Data Analytics e Visualization
 
-*Sincronizzato il 16/06/2026 14:38*
+*Sincronizzato il 18/06/2026 11:49*
 
 ## Sezioni
 

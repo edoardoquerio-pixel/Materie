@@ -10,6 +10,8 @@
 | **Sede** | Edificio storico, centro Torino (di proprietà) |
 | **Personale** | 30 persone (dipendenti + collaboratori) |
 | **Postazioni** | Fino a 40 (scrivania + LAN + monitor esterno, laptop personale) |
+| **Referente cliente** | Solution Architect |
+| **Priorità** | Produttività, business continuity |
 
 ---
 
@@ -82,6 +84,7 @@
 5. **Nessuna ridondanza connettività** — single point of failure
 6. **Hardware Pondus datato** — HDD 1,2 TB (no SSD), singola CPU
 7. **Eterogeneità piattaforme** — mix di VM Linux, Windows, HW fisico
+8. **Capienza uffici insufficiente** — Solo 40 postazioni per 50 dipendenti, obbliga a smart working strutturale per almeno 10 persone/giorno.
 
 ---
 
@@ -104,3 +107,4 @@
 3. Implementare backup off-site (cloud o sito secondario)
 4. Pianificare upgrade connettività con 2° ISP
 5. Valutare migrazione Pondus su HW più performante (SSD, CPU moderna)
+6. Predisporre infrastruttura VPN per smart working strutturale (10-15 connessioni contemporanee)

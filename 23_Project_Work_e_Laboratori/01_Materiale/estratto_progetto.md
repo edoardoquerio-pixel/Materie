@@ -136,8 +136,7 @@ Con la fusione delle due aziende **non si intende rinnovare il contratto di loca
 
 | Soluzione | Costo |
 | --- | --- |
-| **On Premise/Hosting** (acquisto proprietà nodi di calcolo) | 250k € + IVA |
-| **On Cloud** (noleggio) | 220k € + IVA |
+| **Budget totale progetto** | 520k € + IVA |
 
 ---
 

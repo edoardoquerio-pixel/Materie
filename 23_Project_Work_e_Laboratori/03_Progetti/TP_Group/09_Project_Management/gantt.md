@@ -1,61 +1,63 @@
 # Gantt di Progetto — TP Group
 
-## Cronoprogramma (12 giu → 22 lug 2026)
+## Cronoprogramma (12 mesi: lug 2026 → giu-lug 2027)
 
 ```mermaid
 gantt
-    title Gantt TP Group — Integrazione IT (Compressed)
+    title Gantt TP Group — Integrazione IT (12 mesi)
     dateFormat  YYYY-MM-DD
-    axisFormat  %d %b
+    axisFormat  %b %Y
 
-    section Assessment
-    Censimento asset                :a1, 2026-06-12, 4d
-    Gap analysis                    :a2, after a1, 3d
+    section Assessment & Planning
+    Assessment & Gap analysis            :a1, 2026-07-01, 30d
+    Definizione architettura TO-BE       :a2, after a1, 20d
 
-    section Rete VPN
-    Progettazione rete              :r1, after a2, 4d
-    Acquisto HW rete                :r2, after r1, 2d
-    Installazione e cablaggio       :r3, after r2, 5d
-    Configurazione e test           :r4, after r3, 3d
+    section Rete & VPN
+    Progettazione rete                   :r1, after a1, 20d
+    Acquisto HW rete                     :r2, after r1, 15d
+    Installazione e cablaggio           :r3, after r2, 20d
+    Configurazione Fortigate + VPN       :r4, after r3, 15d
+    Test smart working (10+ utenti VPN)  :r5, after r4, 10d
 
     section Sicurezza ISO 27001
-    Gap analysis ISO                :s1, after a2, 4d
-    Politiche sicurezza             :s2, after s1, 3d
-    Implementazione misure          :s3, after s2, 6d
-    Audit interno                   :s4, after s3, 3d
+    Gap analysis ISO                     :s1, after a1, 20d
+    Politiche e procedure                :s2, after s1, 20d
+    Implementazione cifratura e MFA      :s3, after s2, 30d
+    Audit interno                        :s4, after s3, 15d
 
     section Cluster HPC
-    Dimensionamento                 :h1, after a2, 3d
-    Acquisto HW HPC                 :h2, after h1, 6d
-    Installazione hosting           :h3, after h2, 5d
-    Configurazione e test           :h4, after h3, 7d
+    Dimensionamento e ordine HW          :h1, after a1, 30d
+    Installazione hosting co-location    :h2, after h1, 30d
+    Configurazione Infiniband + Slurm    :h3, after h2, 30d
+    Benchmark e validazione              :h4, after h3, 15d
 
     section Pondus
-    Preparazione VM                 :p1, after s2, 4d
-    Migrazione DB e app             :p2, after p1, 4d
-    Configurazione HA               :p3, after p2, 2d
-    Test e dismissione              :p4, after p3, 3d
+    Preparazione VM e licenze            :p1, after s2, 20d
+    Migrazione DB e app                  :p2, after p1, 20d
+    Configurazione HA e Go-Live Online   :p3, after p2, 15d
+    Dismissione server fisico            :p4, after p3, 10d
 
     section Cloud Migration
-    VPN GCP + GCDS                  :c1, after r4, 3d
-    Migrazione servizi              :c2, after c1, 6d
-    Integrazione finale             :c3, after c2, 3d
+    VPN GCP + GCDS                       :c1, after r4, 15d
+    Migrazione Workspace → MS365/Zimbra  :c2, after c1, 30d
+    Migrazione Drive → NextCloud         :c3, after c1, 20d
+    Migrazione CRM/TS → Odoo             :c4, after c1, 25d
+    Dismissione Google Workspace         :c5, after c2, 15d
 
-    section Backup DR
-    Acquisto NAS                    :b1, after r2, 2d
-    Configurazione backup           :b2, after b1 + s3, 5d
-    Procedure DR e test             :b3, after b2 + c2, 4d
+    section Backup & DR
+    Acquisto e config NAS                :b1, after h1, 15d
+    Configurazione backup 3-2-1          :b2, after b1 + s3, 20d
+    Test DR e procedure                  :b3, after b2 + c3, 15d
 
-    section Offerta
-    Raccolta contributi             :o1, after a2, 35d
-    Redazione offerta               :o2, after b3, 5d
-    Consegna                        :o3, after o2, 2d
-    milestone Consegna finale       :milestone, 2026-07-22, 0d
+    section Offerta & Documentazione
+    Raccolta contributi                  :o1, after a2, 200d
+    Redazione offerta finale             :o2, after b3, 15d
+    Consegna documentazione              :o3, after o2, 10d
 
     section Project Management
-    Pianificazione                  :m1, 2026-06-12, 3d
-    Coordinamento                   :m2, after m1, 38d
-    Chiusura                       :m3, after o3, 1d
+    Pianificazione                       :m1, 2026-07-01, 20d
+    Coordinamento e monitoraggio         :m2, after m1, 280d
+    Chiusura e handover                  :m3, after o3 + b3, 15d
 ```
 
 ## Tabella attività
@@ -92,4 +94,6 @@ gantt
 | 28 | Consegna | 21/07 | 22/07 | 2g | #27 |
 | 29 | Chiusura progetto | 22/07 | 22/07 | 1g | #28 |
 
-**Milestone:** Consegna finale — **22 luglio 2026**
+**Milestone:** Consegna finale — **Giugno-Luglio 2027** (9-12 mesi dall'avvio)
+
+> **NOTA:** Timeline aggiornata in base all'intervista cliente (durata 9-12 mesi, finestra manutenzione max 7gg, smart working strutturale).

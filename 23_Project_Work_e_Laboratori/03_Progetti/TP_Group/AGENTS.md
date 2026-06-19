@@ -13,7 +13,7 @@ Tutti i requisiti derivano da: `../../01_Materiale/estratto_progetto.md`. Leggil
 - Fusione di due aziende: Thema Consulting (30 persone, datacenter on premise saturo, cluster HPC 8 nodi, app Pondus) e Pro Studio (20 persone, full cloud GCP, sede da dismettere)
 - Tutti i dipendenti confluiranno nella sede Thema Consulting di Torino (max 40 postazioni)
 - Conformità richiesta: **ISO/IEC 27001** (business continuity, disaster recovery, sicurezza accessi)
-- Budget: 250k € + IVA (on premise/hosting) oppure 220k € + IVA (cloud/noleggio)
+- Budget: 520k € + IVA (budget totale progetto)
 - Costi risorse: sistemista € 500/giorno, PM € 650/giorno
 
 ## Agenti specializzati e dipendenze

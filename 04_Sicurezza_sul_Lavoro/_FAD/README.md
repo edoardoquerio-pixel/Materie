@@ -1,6 +1,6 @@
 # (CSP_25-27-26) Sicurezza sul lavoro
 
-*Sincronizzato il 16/06/2026 14:42*
+*Sincronizzato il 18/06/2026 11:53*
 
 ## Sezioni
 

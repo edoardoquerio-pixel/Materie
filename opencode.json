@@ -1,4 +1,4 @@
-{
+﻿{
   "$schema": "https://opencode.ai/config.json",
   "model": "opencode/deepseek-v4-flash-free",
   "small_model": "opencode/deepseek-v4-flash-free",
@@ -18,7 +18,7 @@
   "agent": {
     "sisyphus": {
       "description": "Sisyphus - Ultraworker: orchestratore nativo che analizza richieste, scompone in sotto-task e crea prompt per subagenti specializzati",
-      "model": "opencode/big-pickle",
+      "model": "opencode/deepseek-v4-flash-free",
       "mode": "primary",
       "color": "#8b5cf6",
       "permission": {
@@ -71,7 +71,7 @@
       }
     },
     "cloud-lab-tutor": {
-      "model": "opencode/nemotron-3-ultra-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "code-analyzer": {
@@ -79,7 +79,7 @@
       "hidden": true
     },
     "code-generator": {
-      "model": "opencode/north-mini-code-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "code-reviewer": {
@@ -91,7 +91,7 @@
       "hidden": true
     },
     "data-analytics-coach": {
-      "model": "opencode/nemotron-3-ultra-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "database-sql-coach": {
@@ -103,23 +103,23 @@
       "hidden": true
     },
     "dependency-auditor": {
-      "model": "opencode/north-mini-code-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "docs-writer": {
-      "model": "opencode/mimo-v2.5-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "dotnet-api-tutor": {
-      "model": "opencode/big-pickle",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "dotnet-style-matcher": {
-      "model": "opencode/north-mini-code-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "english-tech-mentor": {
-      "model": "opencode/mimo-v2.5-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "exam-prep-its": {
@@ -127,19 +127,19 @@
       "hidden": true
     },
     "explore": {
-      "model": "opencode/north-mini-code-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "iot-edge-lab": {
-      "model": "opencode/nemotron-3-ultra-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "linux-sysadmin-lab": {
-      "model": "opencode/nemotron-3-ultra-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "network-security-trainer": {
-      "model": "opencode/nemotron-3-ultra-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "performance-optimizer": {
@@ -147,7 +147,7 @@
       "hidden": true
     },
     "project-work-mentor": {
-      "model": "opencode/mimo-v2.5-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "refactoring-tool": {
@@ -155,11 +155,11 @@
       "hidden": true
     },
     "security-scanner": {
-      "model": "opencode/nemotron-3-ultra-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "unit-tester": {
-      "model": "opencode/north-mini-code-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
 
@@ -170,12 +170,12 @@
     },
     "tp-network-engineer": {
       "description": "Ingegnere rete TP Group: progetta VPN LAN to LAN, Client to LAN, Hybrid cloud, ridondanza connettività, Fortigate",
-      "model": "opencode/nemotron-3-ultra-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "tp-security-compliance": {
       "description": "Security compliance TP Group: ISO 27001, crittografia, disaster recovery, business continuity, accessi VPN",
-      "model": "opencode/nemotron-3-ultra-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "tp-hpc-engineer": {
@@ -185,27 +185,27 @@
     },
     "tp-pondus-dev": {
       "description": "Sviluppatore Pondus TP Group: app C#/.NET, MS SQL, IIS, potenziamento e distribuzione",
-      "model": "opencode/north-mini-code-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "tp-cloud-strategist": {
       "description": "Cloud strategist TP Group: strategia cloud ibrida, GCP, Google Workspace, migrazione servizi",
-      "model": "opencode/nemotron-3-ultra-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "tp-backup-dr": {
       "description": "Backup & DR TP Group: NAS QNAP, SAN NetApp, delocalizzazione, RPO/RTO, 3-2-1 rule",
-      "model": "opencode/nemotron-3-ultra-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "tp-offerta-docs": {
       "description": "Documentazione offerta TP Group: redazione offerta tecnico/economica, Gantt, RASCI",
-      "model": "opencode/mimo-v2.5-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "tp-project-manager": {
       "description": "Project manager TP Group: WBS, Gantt, budget, risk register, RASCI, milestone",
-      "model": "opencode/mimo-v2.5-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true
     },
     "coding-orchestrator": {
@@ -224,7 +224,7 @@
     },
     "infra-orchestrator": {
       "description": "Orchestratore infrastruttura: cloud, Linux, reti, IoT — smista ai lab specializzati",
-      "model": "opencode/nemotron-3-ultra-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true,
       "permission": {
         "task": {
@@ -255,7 +255,7 @@
     },
     "content-orchestrator": {
       "description": "Orchestratore contenuti: inglese, project work, data analytics — indirizza ai mentor di competenza",
-      "model": "opencode/north-mini-code-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true,
       "permission": {
         "task": {
@@ -267,7 +267,7 @@
     },
     "mneme": {
       "description": "Memoria persistente automatica: analizza la sessione corrente, screma informazioni utili (decisioni architetturali, pattern, errori, preferenze utente) e le salva in Supermemory",
-      "model": "opencode/north-mini-code-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "hidden": true,
       "permission": {
         "read": "allow",

@@ -1,1 +1,0 @@
-GET /api/v2/viaggi -> 200 []

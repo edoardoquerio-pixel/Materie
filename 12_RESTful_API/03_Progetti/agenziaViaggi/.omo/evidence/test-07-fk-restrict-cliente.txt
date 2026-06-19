@@ -1,1 +1,0 @@
-DELETE cliente con prenotazioni -> 400 RESTRICT

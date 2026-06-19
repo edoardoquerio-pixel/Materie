@@ -1,6 +1,6 @@
 # (CSP_25-27-27) Sistemi di virtualizzazione
 
-*Sincronizzato il 16/06/2026 14:38*
+*Sincronizzato il 18/06/2026 11:48*
 
 ## Sezioni
 

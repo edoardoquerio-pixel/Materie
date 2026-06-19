@@ -1,5 +1,7 @@
 # Piano Migrazione Pondus
 
+> **NOTA DA INTERVISTA:** Il cliente ha confermato la migrazione da self-hosted a online. Questo piano riflette tale decisione.
+
 ## Strategia
 
 Migrazione da HW fisico dedicato a VM su infrastruttura VMWare esistente, con separazione dei layer web e database e introduzione di alta affidabilità.
@@ -61,3 +63,9 @@ Migrazione da HW fisico dedicato a VM su infrastruttura VMWare esistente, con se
 | Durata totale | 4 settimane |
 | Sistemista (20 giorni × €500) | € 10.000 |
 | Downtime massimo previsto | 2 ore (Fase 2) |
+
+## Note operative dall'intervista cliente
+
+- La migrazione a online è esplicitamente richiesta dal cliente
+- Il servizio deve rimanere disponibile durante la migrazione (downtime max 2 ore)
+- Clienti attuali devono essere informati del cambio URL/Hosting

@@ -6,9 +6,9 @@
 | --- | --- |
 | Critico (9) | 0 |
 | Alto (6) | 4 |
-| Medio (3-4) | 10 |
-| Basso (1-2) | 4 |
-| **Totale** | **18** |
+| Medio (3-4) | 13 |
+| Basso (1-2) | 5 |
+| **Totale** | **22** |
 
 ## Dettaglio
 
@@ -32,3 +32,7 @@
 | R16 | Gestione | Ritardo per problemi logistici | Medio (2) | Alta (3) | **6 — Alto** | Gantt con buffer + checkpoint settimanali | PM | Aperto | Mese 6 |
 | R17 | Sicurezza | Non conformità ISO 27001 in audit | Alto (3) | Bassa (1) | 3 — Medio | Gap analysis + checklist + consultant esterno | Security Officer | Aperto | Mese 3 |
 | R18 | Rete | Firewall configurato in modo non sicuro | Alto (3) | Bassa (1) | 3 — Medio | Hardening checklist + pentest pre-go-live | Network Engineer | Aperto | Mese 2 |
+| R19 | Rete | VPN satura per smart working (10+ utenti) | Medio (2) | Media (2) | 4 — Medio | Dimensionamento banda 50 Mbps per SW + monitoraggio | Network Engineer | Aperto | — |
+| R20 | Gestione | Progetto sfora finestra 7gg fermo sede | Alto (3) | Bassa (1) | 3 — Medio | Pianificazione attenta, rollback entro 7gg | PM | Aperto | — |
+| R21 | Pondus | Migrazione a online causa latenza clienti | Medio (2) | Media (2) | 4 — Medio | CDN + test di carico pre-migrazione | App Architect | Aperto | — |
+| R22 | Gestione | Durata 9-12 mesi percepita come eccessiva | Medio (2) | Bassa (1) | 2 — Basso | Comunicazione trasparente con milestone trimestrali | PM | Monitor | — |

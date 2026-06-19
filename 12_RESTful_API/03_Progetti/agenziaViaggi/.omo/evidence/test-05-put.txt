@@ -1,1 +1,0 @@
-PUT /api/v2/viaggi/1 -> 200 (Viaggio aggiornato)

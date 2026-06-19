@@ -1,6 +1,6 @@
 # (CSP_25-27-15) Learning by project - Tech
 
-*Sincronizzato il 16/06/2026 14:52*
+*Sincronizzato il 18/06/2026 11:44*
 
 ## Sezioni
 

@@ -31,7 +31,7 @@ Architetto HPC responsabile del potenziamento del cluster di calcolo di Thema Co
 2. Risolvere il problema logistico: il datacenter è saturo → valutare hosting/co-location vs ampliamento vs cloud HPC (motivando la scelta rispetto ai vincoli: no VM, Infiniband)
 3. Progettare switch Infiniband e cablaggio, integrazione con i nodi esistenti
 4. Definire scheduler/stack software (es. Slurm, OS Linux, storage condiviso)
-5. Quotare la soluzione confrontando acquisto (budget 250k) vs noleggio (budget 220k)
+5. Quotare la soluzione entro il budget totale di progetto (€520k)
 
 ## Deliverable (in questa cartella)
 

@@ -13,8 +13,8 @@
 | --- | --- |
 | Progetto | Integrazione infrastruttura IT TP Group |
 | Cliente | TP Group — Thema Consulting srl + Pro Studio srl |
-| Budget | 250k € + IVA (on premise/hosting) / 220k € + IVA (cloud/noleggio) |
-| Durata progetto | 6 mesi (migrazione) + 36 mesi (supporto) |
+| Budget totale progetto | 520k € + IVA |
+| Durata progetto | 9-12 mesi (migrazione) + 36 mesi (supporto) |
 | Data emissione | Giugno 2026 |
 | Versione documento | 1.0 |
 
@@ -62,6 +62,9 @@ L'offerta si basa sulle seguenti assunzioni:
 4. **Collaborazione personale**: il personale TP Group collaborerà attivamente nelle fasi di test e validazione
 5. **Documentazione**: TP Group fornirà tutta la documentazione esistente (configurazioni, credenziali, contratti)
 6. **Imprevisti**: non sono inclusi costi per danni a hardware esistente o per sostituzione di componenti non preventivati
+7. **Smart working strutturale**: almeno 10 dipendenti al giorno lavoreranno da remoto tramite VPN WireGuard, senza necessità di VDI
+8. **Finestra manutenzione massima**: 7 giorni consecutivi di fermo sede, come da indicazione del cliente
+9. **Risorse interne extra budget**: i costi di sistemista (€500/gg) e PM (€650/gg) sono extra budget e coprono il personale IT interno per i 3 anni successivi al progetto
 
 ## 6. Descrizione fornitura hardware
 
@@ -133,6 +136,7 @@ L'offerta si basa sulle seguenti assunzioni:
 | Test Pondus (carico, failover, backup) | 3 giorni |
 | Test disaster recovery | 2 giorni |
 | Test ISO 27001 readiness | 2 giorni |
+| Test smart working e VPN | 2 giorni |
 
 ### 7.4 Esclusioni
 
@@ -162,8 +166,11 @@ L'offerta si basa sulle seguenti assunzioni:
 - **Supporto manutentivo:** 3 anni minimo (rinnovabile)
 - **Pagamento:** 30% acconto, 40% al collaudo intermedio, 30% al collaudo finale
 - **Penali:** 0,1% del valore ordine per ogni giorno di ritardo sui milestone (max 10%)
+- **Durata progetto:** 9-12 mesi (migrazione) + 36 mesi (supporto manutentivo minimo)
 
 ## 10. Quotazione economica
+
+> **NOTA:** I costi di sistemista (€500/gg) e PM (€650/gg) sono EXTRA BUDGET secondo indicazione del cliente. Coprono il personale IT interno per i 3 anni di supporto successivi al progetto. Il budget totale progetto è €520k.
 
 ### 10.1 Costi una tantum
 
@@ -178,6 +185,7 @@ L'offerta si basa sulle seguenti assunzioni:
 | **Pondus** | Licenze Windows Server + SQL Server | € 4.800 |
 | **Sistemista** | 80 giorni × € 500/giorno | € 40.000 |
 | **PM** | 30 giorni × € 650/giorno | € 19.500 |
+| **Nota** | Costi risorse (€500/gg + €650/gg) extra budget | Vedi nota cliente |
 | **Totale una tantum** | | **€ 264.050** |
 
 ### 10.2 Costi ricorrenti (mensili)
@@ -199,6 +207,8 @@ L'offerta si basa sulle seguenti assunzioni:
 | Costi una tantum | € 264.050 | € 264.050 |
 | Costi ricorrenti (36 mesi) | € 78.840 | — |
 | **Totale 3 anni** | **€ 342.890** | *Da quotare* |
-| Budget disponibile | € 250.000 + IVA | € 220.000 + IVA |
+| Budget totale progetto | € 520.000 + IVA | — |
+| Costo totale offerta | € 272.950 | — |
+| Margine disponibile | € 247.050 | — |
 
-**Nota:** Il costo totale supera il budget per la componente HPC (nodi acquistati + co-location). Si raccomanda di valutare la soluzione hosting/co-location per i nodi HPC (budget 250k€) oppure di optare per il noleggio cloud HPC (budget 220k€) come dettagliato nel confronto costi HPC.
+> **Nota importante:** I costi risorse (sistemista €500/gg e PM €650/gg) sono extra budget e vanno rendicontati separatamente dal budget totale progetto (€520k), come da indicazione del cliente. Durata complessiva progetto: 9-12 mesi. Con il nuovo budget di €520k, il progetto dispone di un margine significativo per eventuali imprevisti o potenziamenti aggiuntivi.

@@ -1,5 +1,7 @@
 # Piano dei Costi — TP Group
 
+> **NOTA:** Il budget totale progetto è stato incrementato a €520k. I costi di sistemista (€500/gg) e PM (€650/gg) sono EXTRA BUDGET secondo indicazione del cliente. Questi costi coprono il personale IT interno per i 3 anni di supporto successivi al progetto e NON vanno inclusi nel budget totale.
+
 ## Budget per area
 
 | Area | Budget assegnato | Spesa prevista | Differenza | Note |
@@ -10,8 +12,8 @@
 | Applicazione Pondus | € 20.000 | € 15.000 | +€ 5.000 | Sotto budget |
 | Cloud Migration | € 10.000 | € 5.500 | +€ 4.500 | Sotto budget |
 | Backup e DR | € 10.000 | € 7.200 | +€ 2.800 | Sotto budget |
-| Project Management | € 20.000 | € 19.500 | +€ 500 | In linea |
-| **Totale** | **€ 300.000** | **€ 272.950** | **+€ 27.050** | **Sotto budget** |
+| Project Management | € 20.000 | € 19.500 | +€ 500 | Costi PM e sistemista extra budget (vedi nota cliente) |
+| **Totale** | **€ 520.000** | **€ 272.950** | **+€ 247.050** | **Ampio margine** |
 
 ## Costi una tantum vs ricorrenti
 
@@ -46,3 +48,11 @@ pie title Distribuzione Budget per Area
     "Backup e DR" : 3
     "Project Management" : 7
 ```
+
+## Nota costi risorse (da intervista cliente)
+
+| Ruolo | Costo/giorno | Imputazione |
+| --- | --- | --- |
+| Sistemista senior | € 500 | Extra budget — IT interno (3 anni) |
+| Project Manager | € 650 | Extra budget — IT interno (3 anni) |
+| **Totale risorse 3 anni** | **Extra budget** | Da rendicontare separatamente dal budget totale |
