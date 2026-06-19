@@ -1,6 +1,6 @@
 # (CSP_25-27-22) Programmazione – .NET / Framework C#
 
-*Sincronizzato il 16/06/2026 14:55*
+*Sincronizzato il 18/06/2026 11:47*
 
 ## Sezioni
 

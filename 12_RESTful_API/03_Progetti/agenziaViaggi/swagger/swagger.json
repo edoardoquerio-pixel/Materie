@@ -1,0 +1,333 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API Agenzia Viaggi",
+    "description": "API per la gestione di pacchetti viaggio, clienti e prenotazioni",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v2",
+  "tags": [
+    {
+      "name": "Viaggi",
+      "description": "Operazioni relative ai pacchetti viaggio"
+    },
+    {
+      "name": "Clienti",
+      "description": "Operazioni relative ai clienti"
+    },
+    {
+      "name": "Prenotazioni",
+      "description": "Operazioni relative alle prenotazioni"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/viaggi": {
+      "get": {
+        "tags": ["Viaggi"],
+        "summary": "Recupera tutti i viaggi",
+        "responses": {
+          "200": {
+            "description": "Elenco dei viaggi recuperato con successo",
+            "schema": { "type": "array", "items": { "$ref": "#/definitions/Viaggio" } }
+          },
+          "500": { "description": "Errore interno del server" }
+        }
+      },
+      "post": {
+        "tags": ["Viaggi"],
+        "summary": "Aggiunge un nuovo viaggio",
+        "parameters": [{
+          "name": "body", "in": "body", "required": true,
+          "schema": { "$ref": "#/definitions/NuovoViaggio" }
+        }],
+        "responses": {
+          "201": { "description": "Viaggio creato con successo" },
+          "400": { "description": "Dati del viaggio non validi" },
+          "500": { "description": "Errore interno del server" }
+        }
+      }
+    },
+    "/viaggi/search": {
+      "get": {
+        "tags": ["Viaggi"],
+        "summary": "Ricerca viaggi",
+        "parameters": [
+          { "name": "destinazione", "in": "query", "type": "string", "description": "Filtro per destinazione (LIKE case-insensitive)" },
+          { "name": "trasporto", "in": "query", "type": "string", "description": "Filtro per tipo trasporto (aereo, treno, nave, bus, auto)" },
+          { "name": "data_partenza", "in": "query", "type": "string", "description": "Filtro per data partenza (YYYY-MM-DD)" },
+          { "name": "prezzo_min", "in": "query", "type": "number", "description": "Prezzo minimo" },
+          { "name": "prezzo_max", "in": "query", "type": "number", "description": "Prezzo massimo" }
+        ],
+        "responses": {
+          "200": { "description": "Risultati della ricerca", "schema": { "type": "array", "items": { "$ref": "#/definitions/Viaggio" } } },
+          "500": { "description": "Errore interno del server" }
+        }
+      }
+    },
+    "/viaggi/{id}": {
+      "get": {
+        "tags": ["Viaggi"],
+        "summary": "Recupera un viaggio per ID",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "type": "integer" }],
+        "responses": {
+          "200": { "description": "Viaggio trovato", "schema": { "$ref": "#/definitions/Viaggio" } },
+          "404": { "description": "Viaggio non trovato" },
+          "500": { "description": "Errore interno del server" }
+        }
+      },
+      "put": {
+        "tags": ["Viaggi"],
+        "summary": "Aggiorna un viaggio esistente",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "integer" },
+          { "name": "body", "in": "body", "required": true, "schema": { "$ref": "#/definitions/NuovoViaggio" } }
+        ],
+        "responses": {
+          "200": { "description": "Viaggio aggiornato con successo" },
+          "400": { "description": "Dati non validi" },
+          "404": { "description": "Viaggio non trovato" },
+          "500": { "description": "Errore interno del server" }
+        }
+      },
+      "delete": {
+        "tags": ["Viaggi"],
+        "summary": "Elimina un viaggio",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "type": "integer" }],
+        "responses": {
+          "200": { "description": "Viaggio eliminato con successo" },
+          "400": { "description": "Impossibile eliminare: il viaggio ha prenotazioni attive" },
+          "404": { "description": "Viaggio non trovato" },
+          "500": { "description": "Errore interno del server" }
+        }
+      }
+    },
+    "/clienti": {
+      "get": {
+        "tags": ["Clienti"],
+        "summary": "Recupera tutti i clienti",
+        "responses": {
+          "200": { "description": "Elenco dei clienti", "schema": { "type": "array", "items": { "$ref": "#/definitions/Cliente" } } },
+          "500": { "description": "Errore interno del server" }
+        }
+      },
+      "post": {
+        "tags": ["Clienti"],
+        "summary": "Aggiunge un nuovo cliente",
+        "parameters": [{ "name": "body", "in": "body", "required": true, "schema": { "$ref": "#/definitions/NuovoCliente" } }],
+        "responses": {
+          "201": { "description": "Cliente creato con successo" },
+          "400": { "description": "Dati cliente non validi" },
+          "409": { "description": "Email già registrata" },
+          "500": { "description": "Errore interno del server" }
+        }
+      }
+    },
+    "/clienti/search": {
+      "get": {
+        "tags": ["Clienti"],
+        "summary": "Ricerca clienti per nome e/o cognome",
+        "parameters": [
+          { "name": "nome", "in": "query", "type": "string", "description": "Filtro per nome (LIKE)" },
+          { "name": "cognome", "in": "query", "type": "string", "description": "Filtro per cognome (LIKE)" }
+        ],
+        "responses": {
+          "200": { "description": "Risultati della ricerca", "schema": { "type": "array", "items": { "$ref": "#/definitions/Cliente" } } },
+          "400": { "description": "Parametri mancanti" },
+          "500": { "description": "Errore interno del server" }
+        }
+      }
+    },
+    "/clienti/{id}": {
+      "get": {
+        "tags": ["Clienti"],
+        "summary": "Recupera un cliente per ID",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "type": "integer" }],
+        "responses": {
+          "200": { "description": "Cliente trovato", "schema": { "$ref": "#/definitions/Cliente" } },
+          "404": { "description": "Cliente non trovato" },
+          "500": { "description": "Errore interno del server" }
+        }
+      },
+      "put": {
+        "tags": ["Clienti"],
+        "summary": "Aggiorna un cliente esistente",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "integer" },
+          { "name": "body", "in": "body", "required": true, "schema": { "$ref": "#/definitions/NuovoCliente" } }
+        ],
+        "responses": {
+          "200": { "description": "Cliente aggiornato con successo" },
+          "400": { "description": "Dati non validi" },
+          "409": { "description": "Email già registrata" },
+          "404": { "description": "Cliente non trovato" },
+          "500": { "description": "Errore interno del server" }
+        }
+      },
+      "delete": {
+        "tags": ["Clienti"],
+        "summary": "Elimina un cliente",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "type": "integer" }],
+        "responses": {
+          "200": { "description": "Cliente eliminato con successo" },
+          "400": { "description": "Impossibile eliminare: il cliente ha prenotazioni attive" },
+          "404": { "description": "Cliente non trovato" },
+          "500": { "description": "Errore interno del server" }
+        }
+      }
+    },
+    "/prenotazioni": {
+      "get": {
+        "tags": ["Prenotazioni"],
+        "summary": "Recupera tutte le prenotazioni",
+        "responses": {
+          "200": { "description": "Elenco delle prenotazioni (con JOIN a viaggi e clienti)", "schema": { "type": "array", "items": { "$ref": "#/definitions/Prenotazione" } } },
+          "500": { "description": "Errore interno del server" }
+        }
+      },
+      "post": {
+        "tags": ["Prenotazioni"],
+        "summary": "Crea una nuova prenotazione (data_prenotazione auto-generata)",
+        "parameters": [{ "name": "body", "in": "body", "required": true, "schema": { "$ref": "#/definitions/NuovaPrenotazione" } }],
+        "responses": {
+          "201": { "description": "Prenotazione creata con successo" },
+          "400": { "description": "Dati non validi o viaggio/cliente non trovato" },
+          "500": { "description": "Errore interno del server" }
+        }
+      }
+    },
+    "/prenotazioni/search": {
+      "get": {
+        "tags": ["Prenotazioni"],
+        "summary": "Ricerca prenotazioni",
+        "parameters": [
+          { "name": "viaggio_id", "in": "query", "type": "integer", "description": "Filtro per ID viaggio" },
+          { "name": "cliente_id", "in": "query", "type": "integer", "description": "Filtro per ID cliente" },
+          { "name": "data_prenotazione", "in": "query", "type": "string", "description": "Filtro per data prenotazione (YYYY-MM-DD)" }
+        ],
+        "responses": {
+          "200": { "description": "Risultati della ricerca", "schema": { "type": "array", "items": { "$ref": "#/definitions/Prenotazione" } } },
+          "400": { "description": "Parametri mancanti" },
+          "500": { "description": "Errore interno del server" }
+        }
+      }
+    },
+    "/prenotazioni/{id}": {
+      "get": {
+        "tags": ["Prenotazioni"],
+        "summary": "Recupera una prenotazione per ID",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "type": "integer" }],
+        "responses": {
+          "200": { "description": "Prenotazione trovata", "schema": { "$ref": "#/definitions/Prenotazione" } },
+          "404": { "description": "Prenotazione non trovata" },
+          "500": { "description": "Errore interno del server" }
+        }
+      },
+      "put": {
+        "tags": ["Prenotazioni"],
+        "summary": "Aggiorna una prenotazione",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "integer" },
+          { "name": "body", "in": "body", "required": true, "schema": { "$ref": "#/definitions/NuovaPrenotazione" } }
+        ],
+        "responses": {
+          "200": { "description": "Prenotazione aggiornata con successo" },
+          "400": { "description": "Dati non validi" },
+          "404": { "description": "Prenotazione non trovata" },
+          "500": { "description": "Errore interno del server" }
+        }
+      },
+      "delete": {
+        "tags": ["Prenotazioni"],
+        "summary": "Elimina una prenotazione",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "type": "integer" }],
+        "responses": {
+          "200": { "description": "Prenotazione eliminata con successo" },
+          "404": { "description": "Prenotazione non trovata" },
+          "500": { "description": "Errore interno del server" }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Viaggio": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "integer", "example": 1 },
+        "destinazione": { "type": "string", "example": "Roma" },
+        "descrizione": { "type": "string", "example": "Tour completo della città eterna" },
+        "durata": { "type": "integer", "example": 7 },
+        "prezzo": { "type": "number", "example": 1200.50 },
+        "assicurazione": { "type": "integer", "example": 1 },
+        "data_partenza": { "type": "string", "example": "2026-07-15" },
+        "data_ritorno": { "type": "string", "example": "2026-07-22" },
+        "trasporto": { "type": "string", "example": "aereo" },
+        "posti_disponibili": { "type": "integer", "example": 30 },
+        "valutazione": { "type": "integer", "example": 4 }
+      }
+    },
+    "NuovoViaggio": {
+      "type": "object",
+      "required": ["destinazione", "durata", "prezzo", "trasporto"],
+      "properties": {
+        "destinazione": { "type": "string", "example": "Roma" },
+        "descrizione": { "type": "string", "example": "Tour completo" },
+        "durata": { "type": "integer", "example": 7 },
+        "prezzo": { "type": "number", "example": 1200.50 },
+        "assicurazione": { "type": "integer", "example": 1 },
+        "data_partenza": { "type": "string", "example": "2026-07-15" },
+        "data_ritorno": { "type": "string", "example": "2026-07-22" },
+        "trasporto": { "type": "string", "example": "aereo" },
+        "posti_disponibili": { "type": "integer", "example": 30 },
+        "valutazione": { "type": "integer", "example": 4 }
+      }
+    },
+    "Cliente": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "integer", "example": 1 },
+        "nome": { "type": "string", "example": "Mario" },
+        "cognome": { "type": "string", "example": "Rossi" },
+        "email": { "type": "string", "example": "mario.rossi@email.it" },
+        "telefono": { "type": "string", "example": "3401234567" }
+      }
+    },
+    "NuovoCliente": {
+      "type": "object",
+      "required": ["nome", "cognome", "email"],
+      "properties": {
+        "nome": { "type": "string", "example": "Mario" },
+        "cognome": { "type": "string", "example": "Rossi" },
+        "email": { "type": "string", "example": "mario.rossi@email.it" },
+        "telefono": { "type": "string", "example": "3401234567" }
+      }
+    },
+    "Prenotazione": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "integer", "example": 1 },
+        "viaggio_id": { "type": "integer", "example": 1 },
+        "cliente_id": { "type": "integer", "example": 1 },
+        "data_prenotazione": { "type": "string", "example": "2026-06-17" },
+        "partecipanti": { "type": "integer", "example": 2 },
+        "note": { "type": "string", "example": "Camera con vista mare" },
+        "viaggio_destinazione": { "type": "string", "example": "Roma" },
+        "cliente_nome": { "type": "string", "example": "Mario" },
+        "cliente_cognome": { "type": "string", "example": "Rossi" }
+      }
+    },
+    "NuovaPrenotazione": {
+      "type": "object",
+      "required": ["viaggio_id", "cliente_id"],
+      "properties": {
+        "viaggio_id": { "type": "integer", "example": 1 },
+        "cliente_id": { "type": "integer", "example": 1 },
+        "partecipanti": { "type": "integer", "example": 2 },
+        "note": { "type": "string", "example": "Camera con vista mare" }
+      }
+    }
+  }
+}

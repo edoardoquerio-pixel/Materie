@@ -12,25 +12,38 @@ Per ogni coppia di servizi equivalenti viene indicata la scelta TO-BE raccomanda
 
 | # | Servizio | Thema (AS-IS) | Pro Studio (AS-IS) | Raccomandazione TO-BE | Motivazione |
 | --- | --- | --- | --- | --- | --- |
-| D1 | **Posta / Calendario** | Zimbra (VM Linux) | Google Workspace | **Migrare** da Zimbra a Google Workspace | Google Workspace è SaaS, richiede zero manutenzione server, già adottato da Pro Studio; riduce VM Linux on-prem liberando risorse rack. Zimbra è autogestito e aggiunge complessità. |
-| D2 | **Office / Produttività** | MS365 + LibreOffice | Google Workspace | **Mantenere** entrambi con gradualità verso Google Workspace | MS365 è necessario per compatibilità con clienti automotive (formati .docx/.xlsx avanzati). Google Workspace copre le esigenze base. Si può convergere su Google Workspace con migrazione graduale, mantenendo MS365 in licenza ridotta. |
-| D3 | **Videoconferenza / IM** | MS Teams | Google Meet | **Migrare** da MS Teams a Google Meet | Coerenza con l'ecosistema Workspace (posto D1). Meet è incluso in Google Workspace senza costi aggiuntivi. Teams richiederebbe licenze MS365 separate. |
+| D1 | **Posta / Calendario** | Zimbra (VM Linux) | Google Workspace | **Migrare** da Google Workspace a Zimbra | Il cliente ha espresso preferenza per la suite Thema (MS365/Zimbra), NON Google Workspace. Zimbra rimane la piattaforma di posta unificata per TP Group. Google Workspace viene dismesso dopo migrazione dati. |
+| D2 | **Office / Produttività** | MS365 + LibreOffice | Google Workspace | **MS365 per tutti i 50 utenti** (dismettere Google Workspace) | Il cliente sceglie MS365 come suite office unica. Google Workspace viene dismesso. Il cliente ha dichiarato "NON HANNO PREFERENZE" — accetta la nostra proposta di standardizzare su MS365. |
+| D3 | **Videoconferenza / IM** | MS Teams | Google Meet | **Mantenere MS Teams** | Coerenza con l'ecosistema MS365 scelto dal cliente. Teams è già integrato con MS365 e utilizzato da Thema. |
 | D4 | **Autenticazione** | AD (Samba4, VM Linux) | Google Authenticator | **Mantenere** AD + integrare con Google Workspace (SSO federato) | AD è il repository centrale delle identità Thema e serve per accesso LAN, servizi on-prem (NextCloud, GiTea, Pondus, ecc.). Google Authenticator è solo 2FA personale, non directory. Si raccomanda di federare Google Workspace con AD per SSO, mantenendo AD come Identity Provider primario. |
-| D5 | **File Server** | NextCloud (VM Linux) | Google Drive | **Migrare** da NextCloud a Google Drive | Google Drive è SaaS, elimina una VM Linux on-prem. Drive offre condivisione esterna nativa per clienti. NextCloud richiede backup, aggiornamenti e manutenzione. |
-| D6 | **Sviluppo / Versioning** | GiTea (self hosted) | Bit Bucket (SaaS) | **Sostituire** entrambi con GitLab (self hosted o cloud) | GitLab unifica le funzionalità di versioning, CI/CD e project management in un unico prodotto. Bit Bucket ha costi SaaS ricorrenti, GiTea è meno diffuso e con ecosistema ridotto. GitLab offre sia edizione Community (self hosted,免费) sia cloud. Alternativa accettabile: mantenere GiTea e migrare i repo Bit Bucket su GiTea. |
+| D5 | **File Server** | NextCloud (VM Linux) | Google Drive | **Mantenere NextCloud** e migrare dati Google Drive → NextCloud | Il cliente mantiene l'ecosistema Thema (MS365 + NextCloud + GiTea). Google Drive viene dismesso con migrazione dati su NextCloud. |
+| D6 | **Sviluppo / Versioning** | GiTea (self hosted) | Bit Bucket (SaaS) | **Mantenere GiTea** e migrare repo Bit Bucket su GiTea | Allineato con la strategia di mantenere l'ecosistema Thema self-hosted. GiTea rimane il repository Git unico. Bit Bucket SaaS dismesso dopo migrazione. |
 | D7 | **Contabilità** | Profis (on-prem, Windows) | Odoo (SaaS) | **Mantenere** Profis | Profis è consolidato in Thema, integrato con i flussi contabili esistenti. Odoo copre anche CRM e timesheet (vedi D8, D9). Tenere Profis per la sola contabilità evita una migrazione dati contabili complessa. |
 | D8 | **CRM** | Sugar CRM (self hosted) | Odoo (SaaS) | **Sostituire** Sugar CRM con Odoo | Odoo ha funzionalità CRM moderne, è già in uso da Pro Studio, ed è SaaS (zero manutenzione). Sugar CRM su VM Linux è un ulteriore carico sul data center. |
 | D9 | **Timesheet** | Kimai (self hosted) | Odoo (SaaS) | **Sostituire** Kimai con Odoo | Odoo include già il modulo timesheet, integrandosi con contabilità e CRM. Kimai su VM Linux è ridondante e va rimosso. |
 | D10 | **Documentazione** | Media Wiki (on-prem) | Media Wiki (GCP) | **Migrare** entrambe in una singra istanza Media Wiki su GCP (o on-prem) | Stesso prodotto, due istanze separate. Unificarle elimina la duplicazione. Posizionare l'istanza convergente su GCP (cloud) per ridurre il carico on-prem e garantire accesso esterno. In alternativa, mantenerla on-prem con replica DR su cloud. |
+| D11 | **Posta (unificazione definitiva)** | Zimbra (Thema) + Google Workspace (PS) | Dismissione Google Workspace | **Unificare su Zimbra** | Decisione cliente: mantenere ecosistema Thema. Google Workspace dismesso dopo migrazione dati. |
 
 ### Riepilogo delle azioni per servizio
 
 | Azione | Servizi coinvolti |
 | --- | --- |
-| **Mantenere** | AD (D4), Profis (D7) |
-| **Migrare** | Zimbra → Google Workspace (D1), MS Teams → Google Meet (D3), NextCloud → Google Drive (D5), Media Wiki duale → singola (D10) |
-| **Sostituire** | GiTea + Bit Bucket → GitLab (D6), Sugar CRM → Odoo (D8), Kimai → Odoo (D9) |
-| **Mantenere entrambi** | MS365 + Google Workspace (D2) — convergenza graduale |
+| **Mantenere** | AD (D4), Profis (D7), GiTea (D6) |
+| **Migrare** | Google Workspace → Zimbra (D1), Google Meet → MS Teams (D3), Google Drive → NextCloud (D5), Google Workspace → MS365 (D2), Media Wiki duale → singola (D10) |
+| **Sostituire** | Sugar CRM → Odoo (D8), Kimai → Odoo (D9) |
+
+### 1-bis Note dall'intervista cliente
+
+In data 18/06/2026 è stata condotta un'intervista con il cliente che ha portato alle seguenti decisioni di convergenza, che sostituiscono le raccomandazioni originali della sezione 1:
+
+- **MS365**: il cliente ha scelto di mantenere MS365 per tutti i 50 utenti (dismettendo Google Workspace).
+- **Licenze**: il cliente ha dichiarato "NON HANNO PREFERENZE" — accetta la nostra proposta di standardizzazione.
+- **CRM/Timesheet**: il cliente conferma Odoo per CRM e Timesheet (migrazione da SugarCRM e Kimai).
+- **Pondus**: da self-hosted a online (migrazione verso piattaforma web).
+- **Tempi implementazione**: 9-12 mesi per la migrazione completa.
+- **Ciclo di vita**: 3 anni.
+- **Finestra manutenzione massima**: 7 giorni.
+- **Smart working**: almeno 10 dipendenti/giorno in remoto via VPN.
 
 ---
 

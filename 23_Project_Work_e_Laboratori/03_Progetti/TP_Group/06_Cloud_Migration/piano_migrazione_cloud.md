@@ -1,5 +1,15 @@
 # Piano di Migrazione Cloud TP Group
 
+## Premessa: aggiornamento da intervista cliente
+
+In base all'intervista con il cliente (18/06/2026), le decisioni di convergenza sono state riviste come segue:
+- **MS365** rimane la suite office per tutti i 50 utenti (Google Workspace dismesso)
+- **Zimbra** rimane la piattaforma posta unificata (Google Workspace migrato a Zimbra)
+- **MS Teams** rimane la piattaforma di videoconferenza
+- **NextCloud** mantiene il ruolo di file server (Google Drive migrato a NextCloud)
+- **GiTea** rimane il repository Git unico (Bit Bucket migrato a GiTea)
+- **Odoo** confermato per CRM + TimeSheet (migrazione da SugarCRM e Kimai)
+
 ## Fasi
 
 ### Fase 1 — Preparazione (Settimane 1-2)
@@ -7,6 +17,7 @@
 - [ ] Installare e configurare Google Cloud Directory Sync (GCDS)
 - [ ] Testare SSO SAML tra AD e Google Workspace
 - [ ] Verificare connettività tra tutti i servizi
+- [ ] Verificare piano di migrazione Google Workspace → MS365/Zimbra (posta, drive, identità)
 
 ### Fase 2 — Identità e autenticazione (Settimane 2-3)
 - [ ] Sincronizzare utenti AD → Google Workspace
@@ -21,7 +32,8 @@
 - [ ] Verificare contenuti e permessi
 
 ### Fase 4 — Migrazione file (Settimane 4-6)
-- [ ] Trasferire dati da Google Drive a NextCloud
+- [ ] Trasferire dati da Google Drive a NextCloud (confermato)
+- [ ] Effettuare backup completo Google Workspace prima della dismissione
 - [ ] Strumento: rclone su VPN IPsec
 - [ ] Comunicare agli utenti la nuova posizione dei file
 - [ ] Periodo di coesistenza (30 giorni) prima di disabilitare Drive
@@ -42,6 +54,7 @@
 
 ### Fase 7 — Finalizzazione (Settimane 6-8)
 - [ ] Disattivare Google authenticator
+- [ ] Dismissione Google Workspace dopo migrazione completa
 - [ ] Verificare che tutti i servizi siano accessibili dalla sede unificata
 - [ ] Test di disaster recovery su backup delocalizzato
 - [ ] Documentazione finale e handover
@@ -54,6 +67,7 @@
 | Perdita dati durante trasferimento Drive→NextCloud | Bassa | Alto | Backup completo pre-migrazione | Ripristinare da backup |
 | Downtime Media Wiki | Media | Basso | Wiki non critica, tolleranza ore | Puntare DNS a VM GCP originale |
 | Odoo non compatibile con dati Sugar CRM | Media | Medio | Mappatura campi preliminare | Mantenere Sugar CRM in sola lettura |
+| Migrazione Workspace → MS365 | Media | Medio | Coesistenza 30 giorni, formazione utenti | Tenere Workspace in sola lettura |
 
 ## Costi migrazione
 

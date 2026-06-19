@@ -1,6 +1,6 @@
 # (CSP_25-27-18) Microsoft Azure
 
-*Sincronizzato il 16/06/2026 14:54*
+*Sincronizzato il 18/06/2026 11:46*
 
 ## Sezioni
 
@@ -20,8 +20,9 @@
 - **12 Compute su Azure - Container, AKS e ottimizzazione (26/05/2025)**: 1 file
 - **13 Storage, Data & Integration - Storage e Sicurezza (03/06/2026)**: 1 file
 - **14 Storage, Data & Integration - Protezione dati e file service (09/06/2026)**: 1 file
+- **15 AI su Azure - Foundry, modelli e GitHub Copilot (16/06/2026)**: 1 file
 
-Totale: 14 file scaricati, 0 errori
+Totale: 15 file scaricati, 0 errori
 
 ---
 *Generato da moodle-sync.py*

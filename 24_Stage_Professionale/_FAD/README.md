@@ -1,6 +1,6 @@
 # (CSP_25-27-19) Orientamento al lavoro
 
-*Sincronizzato il 16/06/2026 14:54*
+*Sincronizzato il 18/06/2026 11:46*
 
 ## Sezioni
 

@@ -32,6 +32,14 @@
 
 **Accesso:** Solo alla VLAN uffici (10.10.10.0/24) e VLAN Pondus (10.10.50.0/24) per i clienti.
 
+### 2-bis Dimensionamento smart working
+
+Dal cliente intervista:
+- Fino a 10 dipendenti contemporanei in smart working ogni giorno
+- Connessione via VPN (WireGuard) da laptop aziendali
+- NO VDI richiesto (i dipendenti lavorano in locale sul laptop e caricano il lavoro via VPN)
+- Throughput aggiuntivo stimato: 50 Mbps per lo smart working (5 Mbps per utente)
+
 ## 3. VPN Hybrid Cloud (sede ↔ GCP)
 
 | Parametro | Valore |
@@ -53,6 +61,11 @@
 | Tipologia | Tunnel simultanei | Throughput stimato | Impatto su Fortigate |
 | --- | --- | --- | --- |
 | LAN to LAN | 1 | 500 Mbps | Basso |
-| Client to LAN | Fino a 25 contemporanei | 200 Mbps aggregati | Medio |
+| Client to LAN | Fino a 15 contemporanei (10 smart working + 5 occasionali) | 200 Mbps aggregati | Medio |
 | Hybrid Cloud | 1 | 1 Gbps | Basso |
-| **Totale** | **27** | **1,7 Gbps** | **Gestibile da FG-100F** |
+| **Totale** | **17** | **1,7 Gbps** | **Gestibile da FG-100F** |
+
+## 4. Note operative dal cliente
+
+- finestra manutenzione massima consentita: 7 giorni
+- priorità assoluta: produttività e business continuity

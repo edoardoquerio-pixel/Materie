@@ -85,12 +85,12 @@
 | Backup e DR | € 7.200 | € 210 |
 | Project Management | € 19.500 | € 0 |
 | **Totale** | **€ 272.950** | **€ 1.750** |
-| **Budget** | **€ 250.000** | **—** |
-| **Differenza** | **-€ 22.950** | **—** |
+| **Budget** | **€ 520.000** | **—** |
+| **Differenza** | **+€ 247.050** | **—** |
 
 ## Note
 
+- Con il nuovo budget di €520k, il progetto ha un margine di €247.050 oltre ai costi stimati
 - I costi HPC rappresentano la quota maggiore (70% del totale)
-- La differenza di € 22.950 può essere coperta optando per noleggio cloud HPC (budget 220k€ vs 250k€)
-- In alternativa: ridurre a 6 nodi HPC invece di 8, risparmiando circa € 36.000
+- Il margine disponibile consente di: potenziare ulteriormente l'infrastruttura, aggiungere nodi HPC, implementare la certificazione ISO 27001 completa, e coprire eventuali imprevisti
 - Costi ricorrenti: € 1.750/mese nel 1° anno, € 1.950/mese dal 2° anno (senza co-location HPC promozionale)

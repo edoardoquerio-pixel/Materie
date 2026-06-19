@@ -261,7 +261,7 @@ Utilizzare servizi HPC cloud (AWS ParallelCluster, Azure CycleCloud, GCP Batch, 
 | --- | --- |
 | **NO VM/container** | Il bando vieta espressamente VM e container per i compute node; il cloud HPC si basa essenzialmente su VM (anche bare-metal sono VM con virtualizzazione leggera). Non conforme al requisito. |
 | **Infiniband in cloud** | Pochi provider offrono Infiniband nativo (es. AWS con Elastic Fabric Adapter non è Infiniband; Azure con InfiniBand su HB-series è disponibile ma con costi elevatissimi). |
-| **Costi** | Il budget 220k€ per 3 anni (~ € 6.100/mese) può coprire solo una frazione della potenza di 8 nodi dedicati 24/7. A confronto, nodi Azure HBv4 (2× EPYC 64C, 512 GB RAM) costano ~ € 5–8/ora → 8 nodi = € 40–64/ora. Con utilizzo 24/7: € 28.800–46.000/mese, fuori budget. |
+| **Costi** | Con il budget HPC indicativo precedente (€220k) sarebbe stato possibile coprire solo una frazione della potenza di 8 nodi dedicati 24/7. A confronto, nodi Azure HBv4 (2× EPYC 64C, 512 GB RAM) costano ~ € 5–8/ora → 8 nodi = € 40–64/ora. Con utilizzo 24/7: € 28.800–46.000/mese, fuori budget. |
 | **Dati sensibili** | Simulazioni crash test per automotive/aerospace: i dati sono sensibili e riservati. Il cloud potrebbe sollevare problemi di data sovereignty e compliance ISO 27001 (certificazione del provider). |
 | **Lock-in** | Dipendenza da un singolo provider cloud. |
 
@@ -278,7 +278,7 @@ Utilizzare servizi HPC cloud (AWS ParallelCluster, Azure CycleCloud, GCP Batch, 
 
 | Scelta | Motivazione |
 | --- | --- |
-| **Hosting/Co-location** | Unica soluzione che rispetta tutti i vincoli: server fisici (no VM/container), rete Infiniband nativa, OS Linux, scratch NVMe 1,6 TB. Costo contenuto (~ € 47k in 3 anni). Consente di mantenere la proprietà dei server (budget 250k€). |
+| **Hosting/Co-location** | Unica soluzione che rispetta tutti i vincoli: server fisici (no VM/container), rete Infiniband nativa, OS Linux, scratch NVMe 1,6 TB. Costo contenuto (~ € 47k in 3 anni). Consente di mantenere la proprietà dei server. Il budget totale progetto di €520k consente ampiamente questa soluzione. |
 
 ---
 
@@ -362,7 +362,7 @@ Utilizzare servizi HPC cloud (AWS ParallelCluster, Azure CycleCloud, GCP Batch, 
 
 ---
 
-## Appendice C — Budget riepilogo
+## Appendice C — Costi cluster HPC
 
 | Voce | Costo |
 | --- | --- |
@@ -372,7 +372,8 @@ Utilizzare servizi HPC cloud (AWS ParallelCluster, Azure CycleCloud, GCP Batch, 
 | Installazione e configurazione (sistemista, 40gg × € 500) | € 20.000 |
 | **Totale** | **€ 287.490** |
 
-> Il costo totale (€ 287k) supera il budget di € 250k di circa € 37k. Possibili ottimizzazioni:
+> Con il precedente vincolo di budget (€250k on-prem/€220k cloud) il costo totale (€287k) sarebbe stato eccedente. Con il nuovo budget totale di €520k, questa soluzione rientra ampiamente nei limiti.
+> Possibili ottimizzazioni per ulteriore risparmio:
 > - Ridurre lo switch Infiniband a HDR100 (risparmio ~ € 15k)
 > - Scegliere CPU con core count inferiore (es. EPYC 9334, 32 core, risparmio ~ € 4k per nodo)
 > - Negoziare sconto sul volume con il fornitore HW

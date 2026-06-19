@@ -9,8 +9,8 @@
 ## Indice
 
 1. Premessa e vincoli di budget
-2. Scenario A — Acquisto on-premise/hosting (budget 250k€)
-3. Scenario B — Noleggio/cloud (budget 220k€)
+2. Scenario A — Acquisto on-premise/hosting
+3. Scenario B — Noleggio/cloud
 4. Confronto economico
 5. Confronto qualitativo
 6. Raccomandazione finale
@@ -21,8 +21,9 @@
 
 | Parametro | Valore |
 | --- | --- |
-| **Budget A — Acquisto on-premise/hosting** | 250.000 € + IVA |
-| **Budget B — Noleggio/cloud** | 220.000 € + IVA |
+| **Budget A — Acquisto on-premise/hosting** | Opzione valida (rientra nel budget €520k) |
+| **Budget B — Noleggio/cloud** | Opzione valida (rientra nel budget €520k) |
+| **Budget totale progetto** | **520.000 € + IVA** |
 | **Durata minima** | 3 anni (supporto manutentivo) |
 | **Costi indicati** | IVA esclusa |
 | **Risorse umane** | Sistemista: € 500/giorno, PM: € 650/giorno |
@@ -88,7 +89,7 @@
 | **Riduzione giorni sistemista** (20 gg invece di 30) | € 5.000 | |
 | **Totale risparmio potenziale** | **€ 83.850** | |
 
-**Costo totale con ottimizzazioni: ≈ € 219.620** ✅ **Entro budget € 250k**
+**Costo totale con ottimizzazioni: ≈ € 219.620** ✅ **Ampiamente entro il budget totale €520k**
 
 ---
 
@@ -184,7 +185,7 @@ Noleggio server (es. leasing da rivenditore) con installazione in co-location.
 | **B2 — Bare-metal cloud** | > € 600.000 — ❌ |
 | **B3 — Noleggio on-prem + hosting** | ~ € 232.000–245.000 — ❌ / ⚠️ |
 
-> **Nessuna opzione cloud/noleggio rientra nel budget di € 220k per 8 nodi con le specifiche richieste.**
+> **Nota:** Con il vecchio budget cloud (€220k) nessuna opzione rientrava. Con il nuovo budget totale di €520k, tutte le opzioni sono percorribili.
 
 ---
 
@@ -193,7 +194,7 @@ Noleggio server (es. leasing da rivenditore) con installazione in co-location.
 | Voce | Scenario A — Acquisto + hosting | Scenario B — Cloud/Noleggio |
 | --- | --- | --- |
 | **Costo 3 anni (ottimizzato)** | **€ 219.620** | € 232.000 (B3) — € 1.200.000 (B1) |
-| **Budget riferimento** | € 250.000 | € 220.000 |
+| **Budget riferimento** | € 520.000 (totale progetto) | € 520.000 (totale progetto) |
 | **Entro budget?** | ✅ Sì (con ottimizzazioni) | ❌ No (nessuna opzione) |
 | **Proprietà HW** | ✅ Sì, dopo 3 anni HW è di proprietà | ❌ No, a noleggio/cloud |
 | **Costo residuo HW dopo 3 anni** | Valore residuo stimato ~ 20% → € 40k | Nessuno |
@@ -235,12 +236,12 @@ Noleggio server (es. leasing da rivenditore) con installazione in co-location.
 **Motivazione:**
 
 1. **Rispetta tutti i vincoli del bando:** server fisici, Infiniband nativo 100/200 Gbps, Linux, scratch NVMe 1,6 TB, nessuna VM/container, nessuna GPU.
-2. **Rientra nel budget** (€ 250k) con le ottimizzazioni indicate (switch HDR100, CPU AMD EPYC 9334, riduzione giorni sistemista).
-3. **Il cloud/noleggio non è competitivo** per carichi HPC intensivi 24/7 con Infiniband: nessuna opzione cloud rientra nel budget di € 220k per 8 nodi con le specifiche richieste.
+2. **Rientra nel budget totale di €520k** con ampio margine.
+3. **Il cloud/noleggio** con il nuovo budget diventa un'opzione percorribile, sebbene l'acquisto + hosting rimanga la scelta consigliata per prestazioni e proprietà dell'HW.
 4. **Proprietà dell'HW:** dopo 3 anni i server sono di proprietà e possono continuare a operare con soli costi di hosting + manutenzione.
 5. **Co-location** risolve il problema logistico del datacenter saturo, includendo raffreddamento, UPS, sicurezza fisica e connettività ridondata.
 
-### Configurazione finale raccomandata (entro budget € 250k)
+### Configurazione finale raccomandata (entro budget € 520k)
 
 | Voce | Costo |
 | --- | --- |
@@ -259,16 +260,13 @@ Noleggio server (es. leasing da rivenditore) con installazione in co-location.
 | **Subtotale Opex 3 anni** | **€ 74.800** |
 | **TOTALE COMPLESSIVO** | **€ 219.620** ✅ |
 
-### Se il budget cloud (€ 220k) fosse destinato interamente all'acquisto
+### Budget unificato €520k
 
-Poiché il budget cloud è inferiore di € 30k rispetto a quello on-premise, si potrebbe comunque optare per l'acquisto + hosting utilizzando il budget on-premise (€ 250k). La differenza di € 30k è giustificata dal maggior costo del cloud per la componente Infiniband e dalla proprietà dell'HW al termine del periodo.
+Con il nuovo budget totale di €520k, non esiste più la distinzione tra budget on-premise e cloud. L'intero budget è a disposizione per la soluzione HPC scelta, con ampio margine per coprire sia l'acquisto + hosting sia eventuali servizi cloud aggiuntivi.
 
-### Alternativa solo se il budget cloud fosse l'unico disponibile
+### Scelta della soluzione HPC con budget €520k
 
-Se obbligati al solo budget cloud (€ 220k), l'unica opzione praticabile è il **noleggio + hosting** (Scenario B3) con 6–7 nodi invece di 8, oppure nodi con specifiche ridotte (es. 48 core, 384 GB RAM). Tuttavia, questa soluzione è sconsigliata perché:
-- Non si raggiunge la potenza di calcolo target
-- I nodi non diventano di proprietà
-- Il costo a lungo termine è superiore
+Con il budget totale di €520k, tutte le opzioni HPC sono percorribili. La raccomandazione resta l'acquisto + hosting co-location per le ragioni tecniche esposte, ma non ci sono più limitazioni di budget.
 
 ---
 

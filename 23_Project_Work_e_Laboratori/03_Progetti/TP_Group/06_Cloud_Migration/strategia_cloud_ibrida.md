@@ -1,5 +1,7 @@
 # Strategia Cloud Ibrida TP Group
 
+> **NOTA:** Le decisioni di convergenza sono state aggiornate in base all'intervista cliente del 18/06/2026. Il cliente ha scelto di mantenere l'ecosistema Thema (MS365, Zimbra, NextCloud, GiTea) e di adottare Odoo per CRM/TimeSheet.
+
 ## Visione architetturale
 
 TP Group adotta un modello **ibrido** dove l'infrastruttura on-premise (Thema) viene integrata con i servizi cloud esistenti (Pro Studio) tramite tunnel VPN IPsec dedicato.
@@ -40,9 +42,9 @@ graph TB
 
 | Servizio | Thema | Pro Studio | Decisione TO-BE | Motivazione |
 | --- | --- | --- | --- | --- |
-| **Posta / Calendario** | Zimbra | Google Workspace | Mantenere **Google Workspace** | Maggiori funzionalità, minore effort amministrativo, già pagato |
-| **Office** | MS365 / LibreOffice | Google Workspace | **Duale**: MS365 (ufficio) + Workspace (chi già lo usa) | Evita costi di migrazione forzata |
-| **Videoconferenza** | MS Teams | Google Meet | Mantenere **Google Meet** | Integrato con Workspace, minori costi licenza |
+| **Posta / Calendario** | Zimbra | Google Workspace | Migrare a **Zimbra** (unificata) | Cliente sceglie ecosistema Thema. Google Workspace dismesso. |
+| **Office** | MS365 / LibreOffice | Google Workspace | **MS365 per tutti 50 utenti** | Cliente sceglie MS365. Google Workspace dismesso. |
+| **Videoconferenza** | MS Teams | Google Meet | Mantenere **MS Teams** | Coerenza con MS365. |
 | **Autenticazione** | AD Samba4 | Google authenticator | **AD Samba4 + MFA** con bridge verso Workspace | AD è il punto di controllo centrale; MFA via FortiToken |
 | **File server** | NextCloud | Google Drive | Mantenere **NextCloud** (migrare dati Drive) | Dati sensibili on-premise, controllo GDPR |
 | **Sviluppo versioning** | GiTea | Bit Bucket | Unificare su **GiTea** | Self-hosted, nessun costo SaaS, controllo completo |
@@ -98,3 +100,12 @@ Sede Torino                    GCP
 - **Google Cloud Directory Sync (GCDS)**: sincronizza AD → Google Workspace
 - **SAML/SSO**: Google Workspace federato con AD per autenticazione
 - **MFA**: FortiToken (push) su VPN + accesso a risorse sensibili
+
+## Note dall'intervista cliente
+
+- **Referente:** Solution Architect
+- **Priorità:** Produttività, business continuity
+- **Smart working:** Minimo 10 dipendenti/giorno in remoto via VPN
+- **Finestra manutenzione:** Massimo 7 giorni
+- **Ciclo di vita:** 3 anni
+- **Budget risorse:** €500/gg sistemista e €650/gg PM sono EXTRA budget (per IT interno, coprono i 3 anni successivi)

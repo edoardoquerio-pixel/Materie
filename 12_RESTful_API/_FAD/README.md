@@ -1,6 +1,6 @@
 # (CSP_25-27-24) RESTful API
 
-*Sincronizzato il 16/06/2026 14:55*
+*Sincronizzato il 18/06/2026 11:47*
 
 ## Sezioni
 
@@ -16,8 +16,9 @@
 - **08 Lezione 5 - Ripasso, Swagger/OpenAPI**: 3 file
 - **09 Lezione 6 - Ripasso, esercizi pratici**: 1 file
 - **10 Lezione 7 - JWT, autenticazione e best practices**: 4 file
+- **11 Lezione 8 - Verifica di fine corso**: 1 file
 
-Totale: 15 file scaricati, 0 errori
+Totale: 16 file scaricati, 0 errori
 
 ---
 *Generato da moodle-sync.py*

@@ -160,12 +160,73 @@ Output atteso: <cosa preciso deve tornare — file, snippet, schema>
 3. **Parallelo quando possibile** — Task indipendenti vanno lanciati insieme.
 4. **Integra senza contraddizioni** — Coerenza tra output dei subagenti.
 5. **Zero AI slop** — Niente commenti superflui, niente over-engineering.
-6. **Memorizza con Mneme** — Alla fine di ogni task significativo, invoca
-   `@mneme` per analizzare la sessione e salvare in Supermemory ciò che è
-   utile (decisioni, pattern, errori, preferenze utente, architettura).
+6. **Memorizza in tempo reale** — Non aspettare la fine del task. Appena
+   emerge informazione utile (errore risolto, decisione presa, pattern
+   scoperto, preferenza espressa), salvala SUBITO in Supermemory con
+   `supermemory(mode="add", type="...", content="...")`. Alla fine di ogni
+   task significativo, invoca anche `@mneme` per un'analisi completa della
+   sessione a coprire ciò che ti è sfuggito.
+
+7. **Mneme in parallelo** — Durante sessioni complesse o lunghe, lancia
+   `@mneme` in background (`run_in_background=true`) NEI MOMENTI MORTO
+   (mentre aspetti risultati di explore/librarian/oracle). Mneme analizza
+   la sessione in parallelo senza rallentare il flusso principale. Alla
+   ricezione del `<system-reminder>`, raccogli l'output con
+   `background_output()`. Non lanciare mneme in background più di una
+   volta ogni 10 messaggi per evitare duplicati.
 
 ### Subagenti speciali
-- `@mneme` — Agente di memoria persistente automatica. Chiamato da Sisyphus
-  al termine di ogni task significativo. Analizza la sessione, screma le
-  informazioni utili e le salva in Supermemory. Previene la perdita di
-  contesto tra sessioni.
+- `@mneme` — Agente di memoria persistente automatica. Funge da **rete di
+  sicurezza** per la memorizzazione continua di Sisyphus. Può essere lanciato
+  in DUE modalità:
+  - **Background parallelo** (`run_in_background=true`): Sisyphus lo lancia
+    mentre aspetta risultati da altri agenti; mneme analizza la sessione in
+    autonomia e salva in Supermemory senza bloccare il flusso principale.
+  - **Sync a fine task**: analisi completa e consolidamento finale.
+  Mentre Sisyphus salva in tempo reale con `supermemory` diretto, mneme
+  cattura ciò che gli è sfuggito, estrae pattern aggiuntivi, collega
+  informazioni correlate e consolida tutto in Supermemory.
+  Crea un ciclo di miglioramento continuo: errori passati → soluzioni note
+  → meno errori futuri. Previene la perdita di contesto tra sessioni.
+
+## ⚡ Provider Failover: Zen → Go (token exhaustion)
+
+### Rilevamento automatico
+Quando un task/subagent fallisce con uno di questi errori, è probabile che il provider **OpenCode Zen** abbia esaurito i token giornalieri:
+- `402 Payment Required` / `402` — credito esaurito
+- `429 Too Many Requests` — rate limit superato
+- `insufficient_quota` — quota token esaurita
+- `token_limit_exceeded` o messaggi simili dal provider
+- Rate limiting con `retry-after`
+
+### Azione automatica
+Se rilevi uno di questi errori durante l'esecuzione di un task:
+
+1. **Segnala all'utente** che i token Zen potrebbero essere esauriti
+2. **Esegui immediatamente** lo script di switch:
+   ```powershell
+   .\tools\switch-opencode-provider.ps1 -To Go -Force
+   ```
+3. **Comunica all'utente** il risultato dello switch (quali modelli sono stati cambiati, nome del backup)
+4. Se l'utente approva, **riprova il task fallito** con i nuovi modelli Go
+
+### Comandi manuali
+L'utente può anche attivare lo switch manualmente dai comandi:
+- `/switch-go` — passa tutti gli agenti da Zen (free) a Go (paid)
+- `/switch-zen` — ripristina tutti gli agenti da Go a Zen (free)
+
+### Mapping modelli
+| Zen (free) | Go (paid) |
+|---|---|
+| `opencode/deepseek-v4-flash-free` | `opencode-go/deepseek-v4-flash` |
+| `opencode/nemotron-3-ultra-free` | `opencode-go/deepseek-v4-flash` |
+| `opencode/north-mini-code-free` | `opencode-go/mimo-v2.5` |
+| `opencode/mimo-v2.5-free` | `opencode-go/mimo-v2.5` |
+| `opencode/big-pickle` | invariato (non è un modello Zen) |
+
+### Rollback
+Per tornare a Zen: esegui `.\tools\switch-opencode-provider.ps1 -To Zen` oppure usa il comando `/switch-zen`.
+Lo script crea sempre un backup con timestamp prima di modificare. Per recuperare un backup specifico:
+```powershell
+Copy-Item opencode.json.<tag>.<timestamp> opencode.json
+```

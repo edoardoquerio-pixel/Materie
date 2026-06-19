@@ -1,5 +1,7 @@
 # Architettura Pondus — TO-BE
 
+> **NOTA DA INTERVISTA CLIENTE (18/06/2026):** Il cliente conferma la migrazione di Pondus da self-hosted a online (accessibile via Internet). Questa architettura TO-BE riflette tale decisione.
+
 ## Stato attuale
 
 | Componente | Valore |
@@ -87,3 +89,11 @@ graph TB
 | Certificato TLS wildcard | € 200/anno |
 | Sistemista migrazione (15 giorni × €500) | € 7.500 |
 | **Totale Pondus** | **€ 12.500** |
+
+## Decisioni cliente (intervista)
+
+| Aspetto | Decisione |
+| --- | --- |
+| Pondus hosting | Self-hosted → Online (confermato dal cliente) |
+| Autenticazione clienti | JWT con refresh token |
+| Esposizione | HTTPS pubblico su pondus.tpgroup.it |

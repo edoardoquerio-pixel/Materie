@@ -17,6 +17,18 @@
 | **Destino sede** | Mantenuta, capienza max 40 postazioni | **Da dismettere** (affitto non rinnovato) |
 | **Modello IT** | On-premise prevalente | Full cloud |
 
+### Dati cliente (da intervista)
+
+| Dato | Valore |
+| Nome referente | [Da intervista cliente] |
+| Ruolo | Solution Architect |
+| Ambito | Tecnico e Business |
+| Priorità dichiarate | Produttività operativa, business continuity |
+| Smart working previsto | Minimo 10 dipendenti al giorno in remoto (max 40 postazioni per 50 persone) |
+| VPN per lavoro remoto | Sì, i dipendenti lavorano da laptop con connessione VPN |
+| Finestra manutenzione max | 7 giorni |
+| Ciclo vita progetto | 3 anni |
+
 ---
 
 ## 2. Censimento asset hardware
@@ -122,6 +134,8 @@
 | **Nodi HPC attuali** | 8 fisici | Cluster esistente |
 | **Rack disponibili** | 2, saturi | Data center Thema |
 | **Domini utenza** | 2 (Thema + Pro Studio) | Da unificare |
+| **Dipendenti in sede (contemporanei)** | Max 40 (su 50 totali) | Dato cliente (da intervista) |
+| **Smart working giornaliero** | Min 10 persone in remoto | Dato cliente (da intervista) |
 
 ---
 
@@ -192,6 +206,7 @@ NAS QNAP 32 TB
 
 | # | Criticità | Impatto | Descrizione |
 | --- | --- | --- | --- |
+| C0 | **Smart working strutturale** | Medio | 10 dipendenti al giorno in remoto su 50 totali; necessaria VPN stabile per tutti. Confermato dal cliente che non richiede VDI. |
 | C1 | **Data center saturo** | Alto | 2 rack al completo, impossibile aggiungere HW senza rimuovere asset esistenti |
 | C2 | **UPS limitato (10')** | Alto | Autonomia insufficiente per shutdown ordinato in caso di blackout prolungato |
 | C3 | **Condizionamento al limite** | Alto | L'incremento del carico termico (es. +8 nodi HPC) rischia di superare la capacità di raffreddamento |

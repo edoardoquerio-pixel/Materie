@@ -13,8 +13,7 @@ Project manager responsabile della pianificazione, coordinamento e monitoraggio 
 
 | Voce | Valore |
 | --- | --- |
-| Budget HPC on premise / hosting | 250k € + IVA |
-| Budget HPC cloud / noleggio | 220k € + IVA |
+| Budget totale progetto | 520k € + IVA |
 | Costo sistemista | € 500/giorno |
 | Costo PM | € 650/giorno |
 | Durata supporto minima | 3 anni |
@@ -46,4 +45,4 @@ Project manager responsabile della pianificazione, coordinamento e monitoraggio 
 - Il Gantt deve rispettare le dipendenze tra agenti definite nel coordinator AGENTS.md
 - Durata progetto: da definire, con minimo 3 anni di supporto manutentivo
 - Ogni costo deve essere tracciato per area e tipologia (una tantum / ricorrente)
-- Il progetto deve rispettare il budget complessivo (250k€ o 220k€ + costi risorse)
+- Il progetto deve rispettare il budget complessivo (€520k + costi risorse extra budget)
