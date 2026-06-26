@@ -13,8 +13,6 @@ export const SELECT_BY_ID = "SELECT * FROM libri WHERE id = ?";
 
 export const SELECT_BY_TITOLO = "SELECT * FROM libri WHERE LOWER(titolo) LIKE '%' || LOWER(?) || '%'";
 
-export const SELECT_BY_AUTORE = "SELECT * FROM libri WHERE LOWER(autore) LIKE '%' || LOWER(?) || '%'";
-
 export const INSERT_LIBRO = "INSERT INTO libri (titolo, autore, editore, genere, numero_pagine) VALUES (?, ?, ?, ?, ?)";
 
 export const UPDATE_LIBRO = "UPDATE libri SET titolo = ?, autore = ?, editore = ?, genere = ?, numero_pagine = ? WHERE id = ?";

@@ -1,5 +1,0 @@
-Backup files created at 20260625-123434:
-  1. C:\Users\edoardo.querio\.config\opencode\oh-my-openagent.json.bak.20260625-123434
-  2. C:\Users\edoardo.querio\.local\state\opencode\model.json.bak.20260625-123434
-
-Operation: /setmodel handler execution

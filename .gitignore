@@ -1,0 +1,15 @@
+**/.vagrant
+**/*.log
+**/*.tar.gz
+**/.DS_Store
+**/*.bkp
+**/[Bb]in/
+**/[Oo]bj/
+**/node_modules/
+**/__pycache__/
+**/.env
+**/local.settings.json
+privato/
+19_Virtualizzazione/01_Materiale/ITS-Docker
+19_Virtualizzazione/01_Materiale/WSA-lab
+19_Virtualizzazione/01_Materiale/microservices
