@@ -1,0 +1,4 @@
+Undo eseguito il 2026-06-25 12:28:10:
+  Backup ripristinato del: 2026-06-25 12:27:41
+  oh-my-openagent.json ripristinato da: oh-my-openagent.json.bak.20260625-122741
+  model.json ripristinato da: model.json.bak.20260625-122741

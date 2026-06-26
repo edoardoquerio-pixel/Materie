@@ -1,0 +1,13 @@
+Model update at 20260625-123434:
+  - ModelName:        OpenCode Zen DeepSeek V4 Flash Free
+  - Parsed providerID: opencode
+  - Parsed modelID:    OpenCode Zen DeepSeek V4 Flash Free
+
+oh-my-openagent.json:
+  - Tutti i campi 'model' in agents.* e categories.* impostati a 'OpenCode Zen DeepSeek V4 Flash Free'
+  - Campi fallback_models preservati, solo 'model' al loro interno aggiornati
+
+model.json:
+  - Preposto { providerID: 'opencode', modelID: 'OpenCode Zen DeepSeek V4 Flash Free' } a 'recent'
+  - Deduplicato (rimossa vecchia entry per stesso providerID+modelID se presente)
+  - Recent array ora contiene 10 entries (max 10)

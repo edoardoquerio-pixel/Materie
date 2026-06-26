@@ -1,0 +1,28 @@
+Task 4 - Supermemory Connection Test
+Date: 2026-06-25
+
+========================================
+TEST 1: supermemory(mode: "profile")
+========================================
+Result: success
+Profile:
+  static: ["Edoardo Querio (ITS ICT) is the author/owner of this C# coding-style profile."]
+  dynamic: ["Edoardo Querio C# coding style: (full style description)"]
+Connection: OK
+
+========================================
+TEST 2: supermemory(mode: "search", query: "model:", type: "preference")
+========================================
+Result: success
+Query: "model:"
+Count: 5
+Results: 5 results found but NONE with "model:" prefix content
+         (all results are pre-existing coding-style memories)
+Status: No model preference recorded yet (expected — recording not yet implemented)
+
+========================================
+CONCLUSION
+========================================
+Supermemory connection: WORKING
+Model search returned 0 relevant entries: OK (no model recorded yet)
+Ready for T6 (recording on /setmodel)

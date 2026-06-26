@@ -1,0 +1,6 @@
+﻿TEST: Backup fallito (directory resa read-only)
+Comando: validate-model.ps1 -ModelName "test/model" -ConfigPath "C:\Users\EDOARD~1.QUE\AppData\Local\Temp\2\validate-evidence-20260625-121508\oh-my-openagent.json"
+Exit code: 5
+Output:
+ERRORE: impossibile creare backup. Operazione annullata.
+

@@ -8,21 +8,24 @@
 | R4 | **Incompatibilità applicazioni legacy con cloud** (Profis, Kimai, SugarCRM) | Tecnologico | Alta (4) | Alto (4) | **16** | Assessment preliminare compatibilità, alternativa Odoo SaaS già prevista | Mantenimento temporeaneo VM on-prem per app non migrabili | System Admin |
 | R5 | **Perdita dati durante migrazione** | Dati | Bassa (2) | Molto Alto (5) | **10** | Backup completo pre-migrazione, CDC per DB, verifica checksum | Restore da backup, comunicazione cliente | System Admin |
 | R6 | **Tempi consegna HW > 16 settimane**: lead time HPC e rete | Fornitura | Media (3) | Alto (4) | **12** | Ordine anticipato (1° mese), valutazione fornitori alternativi | Noleggio temporaneo o cloud burst in attesa | Procurement |
-| R7 | **Resistenza utenti al cambiamento** (Zimbra→Workspace, Profis→Odoo) | Organizzativo | Alta (4) | Medio (3) | **12** | Formazione anticipata, periodo coesistenza, ambasciatori interni | Supporto dedicato prime 2 settimane post-migrazione | PM |
+| R7 | **Resistenza utenti al cambiamento** (Zimbra→M365, Profis→Odoo) | Organizzativo | Alta (4) | Medio (3) | **12** | Formazione anticipata, periodo coesistenza, ambasciatori interni | Supporto dedicato prime 2 settimane post-migrazione | PM |
 | R8 | **MFA deployment bloccato da utenti** | Organizzativo | Media (3) | Medio (3) | **9** | Comunicazione obbligatorietà da direzione, roll-out graduale | Esclusioni temporanee con approvazione Security Officer | Security Officer |
 | R9 | **Vincoli edificio storico**: impossibilità modifiche strutturali | Infrastruttura | Alta (4) | Alto (4) | **16** | Co-location o cloud per espansione (già previsto in varianti) | Ridimensionamento progetto on-prem | PM |
 | R10 | **Budget insufficiente per variante scelta** | Economico | Bassa (2) | Alto (4) | **8** | Preventivazione accurata, varianti con fasce di costo alternative | Riduzione ambito (es. HPC posticipato) | PM |
 | R11 | **Attacco ransomware o breach durante transizione** | Sicurezza | Media (3) | Molto Alto (5) | **15** | Antimalware, backup isolati, MFA obbligatorio prima della migrazione | Isolamento immediato, restore da backup isolato, incident response | Security Officer |
-| R12 | **Vendor lock-in GCP** (varianti A/C) | Strategico | Bassa (2) | Alto (4) | **8** | Architettura containerizzata (Pondus su Cloud Run), DB SQL standard | Migrazione a provider alternativo con minimo refactoring | Architect |
+| R13 | **Vendor lock-in Azure** | Strategico | Media (3) | Alto (4) | **12** | Architettura containerizzata (Pondus su AKS), DB SQL standard, codice portabile | Migrazione a provider alternativo con minimo refactoring | Architect |
+| R14 | **Azure cost escalation HPC** (aumento prezzi Reserved/Spot su 3 anni) | Economico | Media (3) | Alto (4) | **12** | Reserved Instances 3 anni bloccano prezzo base; alert di spesa Azure; budget mensile con soglia | Attivazione nodi on-prem esistenti come fallback temporaneo | PM |
+| R15 | **Egress cost imprevisti HPC** (download risultati oltre stima) | Economico | Alta (4) | Medio (3) | **12** | Monitoraggio traffico, alert su soglia, compressione risultati prima del download | Limitazione banda egress, caching su front-end | System Admin |
+| R16 | **Compatibilità Windows container Pondus** (dipendenze legacy non supportate su nanoserver) | Tecnologico | Bassa (2) | Alto (4) | **8** | Test di compatibilità pre-migrazione con container nanoserver | Fallback su VM Windows IIS in Azure (costo maggiore ma compatibile) | Sviluppatore |
 
 ## Matrice dei rischi
 
 ```
 Impatto
   5 │ R3  R5                R11
-  4 │      R1 R2 R4 R9     R6 R10 R12
-  3 │      R7
-  2 │
+  4 │      R1 R2 R4 R9     R6 R13 R14
+  3 │      R7               R15
+  2 │      R10 R16
   1 │
     └────────────────────────── Probabilità
        1   2   3   4    5
@@ -39,3 +42,6 @@ Impatto
 3. **R4 — Incompatibilità legacy** (16): rischio migrazione
 4. **R9 — Vincoli edificio** (16): limitazione strutturale
 5. **R3 — Downtime > 7gg** (15): finestra migrazione critica
+
+> **Nota**: R12 "Vendor lock-in GCP" rimosso — non applicabile alla Variante D (Full Cloud Azure).
+> Sostituito da R13 "Vendor lock-in Azure". Aggiunti R14 (cost escalation HPC), R15 (egress cost HPC), R16 (compatibilità Windows Pondus).
