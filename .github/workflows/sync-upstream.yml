@@ -1,8 +1,6 @@
 name: Sync Fork With Upstream
 
-permissions:
-  contents: write
-  workflows: write
+permissions: write-all
 
 on:
   schedule:
