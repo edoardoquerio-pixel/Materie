@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "body-parser": "^2.2.2",
-    "cors": "^2.8.6",
     "express": "^5.2.1",
     "nodemon": "^3.1.14",
     "sqlite3": "^6.0.1",

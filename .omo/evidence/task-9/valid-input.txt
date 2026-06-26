@@ -1,6 +1,0 @@
-﻿TEST: Input valido
-Comando: validate-model.ps1 -ModelName "opencode-go/deepseek-v4-flash"
-Exit code: 0
-Output:
-
-

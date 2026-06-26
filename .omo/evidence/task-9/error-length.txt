@@ -1,6 +1,0 @@
-﻿TEST: Lunghezza massima superata (101 caratteri)
-Comando: validate-model.ps1 -ModelName ('a' * 101)
-Exit code: 3
-Output:
-ERRORE: nome modello troppo lungo (max 100 caratteri)
-
