@@ -35,4 +35,4 @@ jobs:
 
       - name: Push changes to fork
         run: |
-          git push origin main
+          git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/CryEdz/Materie.git main
