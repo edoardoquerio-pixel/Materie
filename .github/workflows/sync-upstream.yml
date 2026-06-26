@@ -1,6 +1,7 @@
 name: Sync Fork With Upstream
 
-permissions: write-all
+permissions:
+  contents: write
 
 on:
   schedule:
@@ -29,10 +30,36 @@ jobs:
           git remote add upstream https://github.com/edoardoquerio-pixel/Materie.git
           git fetch upstream
 
-      - name: Merge upstream changes
+      - name: Merge upstream changes (preserve fork config)
         run: |
-          git merge upstream/main --no-edit || true
+          # Save fork-specific files before merge
+          cp .gitmodules .gitmodules.forkbak 2>/dev/null || true
+          cp .github/workflows/sync-upstream.yml .sync-upstream.bak 2>/dev/null || true
+
+          # Merge from upstream (allow failure on conflicts)
+          git merge upstream/main --no-edit --no-commit 2>/dev/null || true
+
+          # Restore our .gitmodules (upstream doesn't have submodules)
+          if [ -f .gitmodules.forkbak ]; then
+            cp .gitmodules.forkbak .gitmodules
+            rm .gitmodules.forkbak
+          fi
+
+          # Remove upstream workflow files — we don't need them in the fork
+          for f in ci.yml release.yml security.yml sync-gitlab.yml; do
+            git rm --cached ".github/workflows/$f" 2>/dev/null || true
+            rm -f ".github/workflows/$f" 2>/dev/null || true
+          done
+
+          # Restore our sync workflow (in case upstream ever adds it)
+          if [ -f .sync-upstream.bak ]; then
+            cp .sync-upstream.bak .github/workflows/sync-upstream.yml
+            rm .sync-upstream.bak
+          fi
+
+          git add -A
+          git commit -m "sync: merge upstream changes" 2>/dev/null || echo "Nothing new to merge"
 
       - name: Push changes to fork
         run: |
-          git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/CryEdz/Materie.git main
+          git push origin main
