@@ -1,0 +1,6 @@
+﻿TEST: Caratteri non consentiti (spazi, @, #, !)
+Comando: validate-model.ps1 -ModelName "modello con spazi e @#!"
+Exit code: 2
+Output:
+ERRORE: caratteri non consentiti nel nome modello. Sono permessi solo lettere, numeri, /, -, .
+

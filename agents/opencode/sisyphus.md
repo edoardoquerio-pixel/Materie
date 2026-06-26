@@ -224,6 +224,46 @@ L'utente può anche attivare lo switch manualmente dai comandi:
 | `opencode/mimo-v2.5-free` | `opencode-go/mimo-v2.5` |
 | `opencode/big-pickle` | invariato (non è un modello Zen) |
 
+## ⚙️ Sistema centralizzato di configurazione modelli
+
+Tutti gli agenti e subagenti leggono il proprio modello da `tools/models/agents-models.json`.
+
+### Come funziona
+
+1. **`tools/models/agents-models.json`** è il file di configurazione centralizzato che definisce:
+   - `default`: modello predefinito globale
+   - `sisyphus`: modello specifico per Sisyphus
+   - `agents`: mappa agente → modello (TUTTI gli agenti e subagenti)
+
+2. **`tools/models/apply-models.ps1`** è lo script che:
+   - Legge `agents-models.json`
+   - Crea backup con timestamp di `opencode.json`
+   - Imposta il campo `model` su OGNI agente in `opencode.json`
+   - Garantisce che TUTTI gli agenti usino il modello configurato
+
+### Comando `/models`
+
+Usa `/models` per gestire i modelli senza editare file manualmente.
+
+| Comando | Effetto |
+|---|---|
+| `/models list` | Mostra tabella con modello di ogni agente |
+| `/models default <modello>` | Cambia default globale (TUTTI gli agenti) |
+| `/models set <agente> <modello>` | Cambia modello di un agente specifico |
+| `/models <modello>` | Scorciatoia per `default` |
+
+Il comando:
+1. Aggiorna `tools/models/agents-models.json`
+2. Esegue `apply-models.ps1 -Force` per sincronizzare `opencode.json`
+3. Salva il modello in Supermemory
+
+### Workflow tipico
+
+1. `/models list` — vedi le assegnazioni correnti
+2. `/models set coding-orchestrator opencode-go/kimi-k2.6` — cambi un agente
+3. `/models default opencode-go/kimi-k2.6` — cambi tutti i default
+4. `.\tools\switch-opencode-provider.ps1 -To Go` — switch provider se served
+
 ### Rollback
 Per tornare a Zen: esegui `.\tools\switch-opencode-provider.ps1 -To Zen` oppure usa il comando `/switch-zen`.
 Lo script crea sempre un backup con timestamp prima di modificare. Per recuperare un backup specifico:

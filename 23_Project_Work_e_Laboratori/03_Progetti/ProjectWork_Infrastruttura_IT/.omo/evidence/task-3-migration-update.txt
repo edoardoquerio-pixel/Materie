@@ -1,0 +1,14 @@
+Task 3 — Migration Plan: Profis→Odoo, M365 upgrade, GiTea costi
+File: D_Full_Cloud_Azure/06_Cloud_Migration/piano_migrazione_cloud.md
+
+Modifiche effettuate:
+1. Mappatura Servizi: Contabilità → "Odoo (unificato)" con costo €3.000
+2. Mappatura Servizi: Sviluppo/Versioning → "Azure DevOps" con costo ~€360/anno
+3. Nota M365: aggiunto dettaglio upgrade Business Basic→Premium (€13.200/anno, delta €5.760/anno)
+4. Nuova sezione "Migrazione Profis → Odoo": fasi (analisi 1s, migrazione 2s, verifica 1s) e costi (€3.000)
+5. Gantt mermaid: aggiunto "Verifica quadratura contabile", "Container Apps"→"AKS Windows"
+6. Costi migrazione: aggiunti €3.000 Odoo, ~€360/anno Azure DevOps. Totale → ~€23.660
+
+Verifica:
+- grep "profis\|Odoo.*migrazione": ✅ Sezione dedicata presente
+- grep "€13.200": ✅ Costo M365 Premium presente

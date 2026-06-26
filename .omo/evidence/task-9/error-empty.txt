@@ -1,0 +1,6 @@
+﻿TEST: Argomento vuoto (solo spazi)
+Comando: validate-model.ps1 -ModelName " "  (spazio vuoto)
+Exit code: 1
+Output:
+ERRORE: nessun modello specificato. Usa /setmodel <nome-modello>
+

@@ -1,0 +1,52 @@
+﻿=== TEST: Adaptation Matrix Loading ===
+
+Test 1: File matrix esiste?
+  [PASS] File trovato: C:\Users\edoardo.querio\OneDrive - ITS ICT Piemonte\Desktop\Materie\.omo\model-adaptation.json
+
+Test 2: Profili presenti?
+  Profili trovati: 3
+  - default
+  - opencode-go/deepseek-v4-flash
+  - opencode-go/gpt-4o
+
+Test 3: Profilo 'opencode-go/deepseek-v4-flash'?
+  [PASS] Profilo trovato
+     verbosity: normal
+     depth: normal
+     style: bilanciato
+     planLength: medium
+     toolPreference: balanced
+
+Test 4: Profilo 'default'?
+  [PASS] Profilo default trovato
+     verbosity: normal
+     depth: normal
+     style: bilanciato
+     planLength: medium
+     toolPreference: balanced
+
+Test 5: Dimensioni valide?
+  Dimensione: depth -- valori validi: [shallow, normal, deep]
+  Dimensione: planLength -- valori validi: [short, medium, long]
+  Dimensione: style -- valori validi: [conciso, bilanciato, dettagliato]
+  Dimensione: toolPreference -- valori validi: [balanced, creative, conservative]
+  Dimensione: verbosity -- valori validi: [terse, normal, verbose]
+  [PASS] Tutti i valori delle dimensioni sono validi
+
+Test 6: Ogni profilo ha tutte le 5 dimensioni?
+  [PASS] default: tutte le 5 dimensioni presenti
+  [PASS] opencode-go/deepseek-v4-flash: tutte le 5 dimensioni presenti
+  [PASS] opencode-go/gpt-4o: tutte le 5 dimensioni presenti
+
+Test 7: Fallback per modello sconosciuto?
+  [PASS] Modello 'opencode-go/unknown-model' non trovato (come previsto)
+     Fallback a profilo 'default': verbosita=normal, profondita=normal, stile=bilanciato
+
+=== RIEPILOGO ===
+File matrice          : [OK]
+deepseek-v4-flash     : [OK]
+default               : [OK]
+Dimensioni valide     : [OK]
+Profili completi      : [OK]
+
+VERDETTO: [PASS] TUTTI I TEST SUPERATI

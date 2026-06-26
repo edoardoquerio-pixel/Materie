@@ -1,0 +1,16 @@
+Task 6 — Nuovo Piano di Test Variante D
+File: D_Full_Cloud_Azure/piano_test.md (NEW)
+
+Documento creato con:
+- Premessa (scopo, ambito, criteri di successo)
+- 24 test case (4 per area × 6 aree): Rete/VPN, HPC, Pondus su AKS, Migrazione, Backup/DR, Sicurezza
+- Template Report di Test
+- Tabella riepilogativa
+
+Coverage aree:
+- TC-RETE-01 a TC-RETE-04: ✅ Rete e VPN
+- TC-HPC-01 a TC-HPC-04: ✅ Cluster HPC
+- TC-PONDUS-01 a TC-PONDUS-04: ✅ Pondus su AKS
+- TC-MIG-01 a TC-MIG-04: ✅ Migrazione
+- TC-DR-01 a TC-DR-04: ✅ Backup e DR
+- TC-SEC-01 a TC-SEC-04: ✅ Sicurezza

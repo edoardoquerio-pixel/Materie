@@ -1,0 +1,6 @@
+﻿TEST: File di configurazione non trovato
+Comando: validate-model.ps1 -ModelName "test/model" -ConfigPath "C:\path\che\non\esiste\oh-my-openagent.json"
+Exit code: 4
+Output:
+ERRORE: file di configurazione non trovato al path: C:\path\che\non\esiste\oh-my-openagent.json
+

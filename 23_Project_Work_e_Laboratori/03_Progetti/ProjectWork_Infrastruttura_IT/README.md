@@ -8,6 +8,10 @@ nata dalla fusione di **Thema Consulting** (on-premise) e **Pro Studio** (cloud-
 Il progetto sviluppa **3 varianti architetturali** complete e confrontabili per
 presentare al cliente TP Group la soluzione più adatta alle proprie esigenze.
 
+> **Nota:** La **Variante B (On-Premise)** è stata scartata in fase di valutazione.  
+> Al suo posto è stata introdotta la **Variante D (Full Cloud Azure)** a seguito di un confronto
+> approfondito tra provider cloud (GCP H4D vs Azure HBv4 vs AWS Hpc7a), con Azure risultato 1° classificato.
+
 ## Scenario
 
 - **Thema Consulting**: 30 dipendenti, sede Torino, datacenter on-premise saturo,
@@ -34,25 +38,33 @@ ProjectWork_Infrastruttura_IT/
 │   ├── 07_Backup_DR/
 │   ├── 08_Sicurezza_ISO27001/
 │   └── 09_Offerta/
-├── B_On_Premise/                # Variante B — tutto on-premise
+├── C_Ibrido/                    # Variante C — architettura ibrida on-prem + cloud
 │   └── ... stessa struttura ...
-└── C_Ibrido/                    # Variante C — architettura ibrida on-prem + cloud
-    └── ... stessa struttura ...
+└── D_Full_Cloud_Azure/          # Variante D — tutto su Microsoft Azure (✔ consigliata)
+    ├── 03_Rete_VPN/
+    ├── 04_Cluster_HPC/
+    ├── 05_Pondus_App/
+    ├── 06_Cloud_Migration/
+    ├── 07_Backup_DR/
+    ├── 08_Sicurezza_ISO27001/
+    └── 09_Offerta/
 ```
 
 ## Varianti Architetturali
 
-| Variante | Descrizione | Budget |
-|----------|-------------|--------|
-| **A — Full Cloud GCP** | Tutta l'infrastruttura su Google Cloud | ~525.000 € + IVA |
-| **B — On-Premise** | Infrastruttura on-premise con co-location | ~580.000 € + IVA |
-| **C — Ibrido** | On-premise (HPC esistente) + Cloud (servizi, DR) | 525-580.000 € + IVA |
+| Variante | Descrizione | Budget 3 anni |
+|----------|-------------|---------------|
+| **A — Full Cloud GCP** | Tutta l'infrastruttura su Google Cloud | ~€454.284 |
+| **C — Ibrido** | On-premise (HPC esistente) + Cloud (servizi, DR) | ~€535.216 |
+| **D — Full Cloud Azure** ⭐ | Tutta l'infrastruttura su Microsoft Azure (HBv4 InfiniBand) | **~€489.756** |
+
+> ⭐ **Variante D consigliata**: InfiniBand NDR 400 Gbps nativo, DR enterprise-grade (Failover Group automatico), SQL Business Critical, Redis Cache, M365 già presente (€0 migrazione posta). Budget residuo ~€211k.
 
 ## Come Navigare
 
 1. **Assessment**: Inizia da `Condivisi/01_Assessment/` per capire lo stato attuale
 2. **PM Docs**: `Condivisi/02_Project_Management/` per piano, tempi, costi e rischi
-3. **Varianti**: Scegli una variante (A, B, o C) e naviga i documenti tecnici per area
+3. **Varianti**: Scegli una variante (A, C, o D) e naviga i documenti tecnici per area
 4. **Offerta**: `09_Offerta/offerta_tecnico_economica.md` per il documento finale completo
 5. **Confronto**: `Condivisi/02_Project_Management/matrice_confronto.md` per confronto diretto
 
