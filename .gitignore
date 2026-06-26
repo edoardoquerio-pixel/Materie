@@ -1,3 +1,4 @@
+# === ITS Materie patterns ===
 **/.vagrant
 **/*.log
 **/*.tar.gz
@@ -13,3 +14,71 @@ privato/
 19_Virtualizzazione/01_Materiale/ITS-Docker
 19_Virtualizzazione/01_Materiale/WSA-lab
 19_Virtualizzazione/01_Materiale/microservices
+
+# === Zara Agent patterns ===
+# OS
+Thumbs.db
+
+# Environment
+.env.local
+.env.*.local
+
+# Runtime data
+zara_home/
+sessions/
+memory/journal.jsonl
+memory/skills-index.json
+
+# Dependencies
+.pnp
+.pnp.js
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+.vscode/
+
+# Logs
+npm-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Build
+dist/
+build/
+*.tsbuildinfo
+
+# Secrets
+**/secrets/
+**/credentials/
+*.pem
+*.key
+
+# Claude Code personal data
+.claude/history*
+.claude/sessions/
+.claude/cache/
+.claude/projects/
+
+# OpenCode local overrides
+opencode.local.md
+
+# Workspace memory (project-scoped, per-session)
+.opencode/workspace/
+
+# Task tracking (session-scoped)
+.tasks/
+
+# MCP local config (duplicate of opencode.json)
+.opencode/mcp/
+
+# Generated files
+knowledge/search-index.json
+.context/
+
+*.mp3
+*.dll

@@ -1,2 +1,0 @@
-FROM expressweb
-CMD [ "npm", "start" ]
