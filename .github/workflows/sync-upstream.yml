@@ -1,5 +1,9 @@
 name: Sync Fork With Upstream
 
+permissions:
+  contents: write
+  workflows: write
+
 on:
   schedule:
     - cron: "*/10 * * * *"
@@ -15,6 +19,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: main
+          submodules: 'false'
 
       - name: Configure git identity
         run: |
