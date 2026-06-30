@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\02_Esercizi\\DatabaseCRUD\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{22CC8A98-A84F-DA38-3083-B764EE8807E0}|DatabaseCRUD\\DatabaseCRUD.csproj|c:\\users\\edoardo.querio\\onedrive - its ict piemonte\\desktop\\materie\\11_programmazione_dotnet_csharp\\02_esercizi\\databasecrud\\databasecrud\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{22CC8A98-A84F-DA38-3083-B764EE8807E0}|DatabaseCRUD\\DatabaseCRUD.csproj|solutionrelative:databasecrud\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{22CC8A98-A84F-DA38-3083-B764EE8807E0}|DatabaseCRUD\\DatabaseCRUD.csproj|c:\\users\\edoardo.querio\\onedrive - its ict piemonte\\desktop\\materie\\11_programmazione_dotnet_csharp\\02_esercizi\\databasecrud\\databasecrud\\studentidal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{22CC8A98-A84F-DA38-3083-B764EE8807E0}|DatabaseCRUD\\DatabaseCRUD.csproj|solutionrelative:databasecrud\\studentidal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22CC8A98-A84F-DA38-3083-B764EE8807E0}|DatabaseCRUD\\DatabaseCRUD.csproj|c:\\users\\edoardo.querio\\onedrive - its ict piemonte\\desktop\\materie\\11_programmazione_dotnet_csharp\\02_esercizi\\databasecrud\\databasecrud\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22CC8A98-A84F-DA38-3083-B764EE8807E0}|DatabaseCRUD\\DatabaseCRUD.csproj|solutionrelative:databasecrud\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{22CC8A98-A84F-DA38-3083-B764EE8807E0}|DatabaseCRUD\\DatabaseCRUD.csproj|c:\\users\\edoardo.querio\\onedrive - its ict piemonte\\desktop\\materie\\11_programmazione_dotnet_csharp\\02_esercizi\\databasecrud\\databasecrud\\studente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,17 +22,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "StudentiDAL.cs",
               "DocumentMoniker": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\02_Esercizi\\DatabaseCRUD\\DatabaseCRUD\\StudentiDAL.cs",
               "RelativeDocumentMoniker": "DatabaseCRUD\\StudentiDAL.cs",
               "ToolTip": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\02_Esercizi\\DatabaseCRUD\\DatabaseCRUD\\StudentiDAL.cs",
               "RelativeToolTip": "DatabaseCRUD\\StudentiDAL.cs",
-              "ViewState": "AgIAAKUAAAAAAAAAAAAswNgAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAcwB8AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-26T15:43:52.377Z",
               "EditorCaption": ""
@@ -47,12 +47,11 @@
               "RelativeToolTip": "DatabaseCRUD\\Studente.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-26T15:41:46.58Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-26T15:41:46.58Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\02_Esercizi\\DatabaseCRUD\\DatabaseCRUD\\Program.cs",
               "RelativeDocumentMoniker": "DatabaseCRUD\\Program.cs",
@@ -60,8 +59,7 @@
               "RelativeToolTip": "DatabaseCRUD\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-26T15:39:33.639Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-26T15:39:33.639Z"
             }
           ]
         }
