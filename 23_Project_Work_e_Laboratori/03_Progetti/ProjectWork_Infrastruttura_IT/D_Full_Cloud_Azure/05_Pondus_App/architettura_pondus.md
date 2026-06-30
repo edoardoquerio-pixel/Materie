@@ -124,19 +124,19 @@ ENTRYPOINT ["dotnet", "Pondus.dll"]
 
 ## COSTI
 
-| Voce              | Servizio                                      | Costo mensile | Costo annuale |
-|---                |---                                            |---            |---            |---|
-| Windows nodepool  | 1 × Standard_D4s_v3 (Windows license inclusa) | ~€680 | ~€8.160 |
-| Redis Cache | Standard C1 (1 GB) | ~€75 | ~€900 |
-| Azure SQL MI (primario) | Business Critical 16 vCPU, 200 GB (Hybrid Benefit -55%) | ~€1.658 | ~€19.896 |
-| Azure SQL MI (failover secondario) | Business Critical 16 vCPU, replica WE→NE (Hybrid Benefit -55%) | ~€1.658 | ~€19.896 |
-| Application Gateway v2 | WAF_v2, TLS termination | ~€120 | ~€1.440 |
-| Azure CDN | 100 GB/mese | ~€8 | ~€96 |
-| Azure AD B2C | 50k utenti mensili | ~€30 | ~€360 |
-| Dominio + certificato | Dominio .com + TLS managed | ~€15 | ~€180 |
-| Azure Container Registry | Basic SKU | ~€6 | ~€72 |
-| Stripe commissioni | 2,9% + €0,30 per transazione | Variabile | Variabile |
-| **Totale annuo** | | | **~€51.000** |
+| Voce                                  | Servizio                                                              | Costo mensile | Costo annuale |
+|---                                    |---                                                                    |---            |---            |
+| Windows nodepool                      | 1 × Standard_D4s_v3 (Windows license inclusa)                         | ~€680         | ~€8.160       |
+| Redis Cache                           | Standard C1 (1 GB)                                                    | ~€75          | ~€900         |
+| Azure SQL MI (primario)               | Business Critical 16 vCPU, 200 GB (Hybrid Benefit -55%)               | ~€1.658       | ~€19.896      |
+| Azure SQL MI (failover secondario)    | Business Critical 16 vCPU, replica WE→NE (Hybrid Benefit -55%)        | ~€1.658       | ~€19.896      |
+| Application Gateway v2                | WAF_v2, TLS termination                                               | ~€120         | ~€1.440       |
+| Azure CDN                             | 100 GB/mese                                                           | ~€8           | ~€96          |
+| Azure AD B2C                          | 50k utenti mensili                                                    | ~€30          | ~€360         |
+| Dominio + certificato                 | Dominio .com + TLS managed                                            | ~€15          | ~€180         |
+| Azure Container Registry              | Basic SKU                                                             | ~€6           | ~€72          |
+| Stripe commissioni                    | 2,9% + €0,30 per transazione                                          | Variabile     | Variabile     |
+| **Totale annuo**                      |                                                                       |               | **~€51.000**  |
 
 > **Nota**: Il costo annivo di ~€51.000 riflette il passaggio a **Business Critical** con **Failover Group automatico** (West Europe ↔ North Europe), che garantisce RPO ~5 secondi e RTO ~1 minuto. La replica secondaria di failover raddoppia il costo SQL ma è necessaria per la continuità operativa richiesta da ISO 27001. **Azure Cache for Redis** (~€900/anno) riduce la latenza delle query frequenti e allevia il carico sul DB. Azure Hybrid Benefit (-55%) si applica a entrambe le istanze SQL (primaria e secondaria).
 
