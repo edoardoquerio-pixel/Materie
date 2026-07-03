@@ -1,0 +1,32 @@
+# 09 - Programmazione C/C++ — Indice Sessioni
+
+Sessioni:
+- [SVILUPPO SOSTENIBILE 25-27](01_SVILUPPO_SOSTENIBILE_25-27.md)
+- [Lezione 16](02_Lezione_16.md)
+- [Lezione 16](03_Lezione_16.md)
+- [18B esercizi malloc calloc realloc](04_18B_esercizi_malloc_calloc_realloc.md)
+- [18B guida didattica array dinamici](05_18B_guida_didattica_array_dinamici.md)
+- [Lezione 19](06_Lezione_19.md)
+- [Lezione 20](07_Lezione_20.md)
+- [Lezione 21](08_Lezione_21.md)
+- [Lezione 22](09_Lezione_22.md)
+- [Lezione 23](10_Lezione_23.md)
+- [Lezione 24](11_Lezione_24.md)
+- [Lezione 15](12_Lezione_15.md)
+- [Lezione 16](13_Lezione_16.md)
+- [Lezione 11](14_Lezione_11.md)
+- [Lezione 12](15_Lezione_12.md)
+- [Lezione 13](16_Lezione_13.md)
+- [Lezione 14](17_Lezione_14.md)
+- [Lezione 15](18_Lezione_15.md)
+- [Lezione 1](19_Lezione_1.md)
+- [Lezione 10](20_Lezione_10.md)
+- [Lezione 2](21_Lezione_2.md)
+- [Lezione 3](22_Lezione_3.md)
+- [Lezione 4](23_Lezione_4.md)
+- [Lezione 6](24_Lezione_6.md)
+- [Lezione 7](25_Lezione_7.md)
+- [Lezione 8](26_Lezione_8.md)
+- [Lezione 9](27_Lezione_9.md)
+
+Totale: 27 sessioni

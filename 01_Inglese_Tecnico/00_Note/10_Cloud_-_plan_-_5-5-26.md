@@ -1,0 +1,75 @@
+# Cloud - plan - 5-5-26
+
+**File:** `Cloud - plan - 5-5-26.pdf`
+**Tipo:** `.pdf`
+**Dimensione:** 133.3 KB
+**Ultima modifica:** 30/06/2026 14:59
+
+---
+
+ 
+ OUR  PLAN  FOR  TODAY   1.  IN  TRIPLETS,  WRITE  DOWN  5  TECHNICAL  QUESTIONS  RELATED  TO  YOUR  
+FIELD
+ 
+AND
+ 
+WHAT
+ 
+YOU
+ 
+HAVE
+ 
+BEEN
+ 
+STUDYING
+ 
+SO
+ 
+FAR.
+ 
+QUESTIONS
+ 
+MUST
+ 
+NOT
+ 
+BE
+ 
+EASY
+ 
+BUT
+ 
+MID-DIFFICULT
+.
+ 
+ONCE
+ 
+YOU
+ 
+HAVE
+ 
+DONE,
+ 
+ONE
+ 
+PER
+ 
+GROUP
+ 
+SEND
+ 
+THEM
+ 
+TO
+ 
+YOUR
+ 
+TEACHER
+ 
+BY
+ 
+EMAIL
+ (rossella.baroncelli@its-ictpiemonte.it)  INDICATING  IN  THE  “SUBJECT”  YOUR  NAMES  -  NO  ATTACHMENT  WRITE  IN  THE  TEXT  OF  THE  EMAIL.   2.  MEANWHILE  RECOVERIES.  3.  GRADED  SPEAKING  ACTIVITY  AT  THE  SAME  TIME  OF  VOCABULARY  
+EXERCISES.
+   
+
