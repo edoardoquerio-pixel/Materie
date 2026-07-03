@@ -1,0 +1,68 @@
+# ITS-ICT-Crowdfunding
+
+Fonte: `ITS-ICT-Crowdfunding.pdf`
+
+DOCENTE
+
+BARONCELLI 
+
+Unità Formativa
+
+Lingua Inglese
+
+Argomento
+
+Crowdfunding campaign
+
+AND NOW…
+SET UP YOUR CROWDFUNDING CAMPAIGN 
+IN THE ICT WORLD!
+
+REMEMBER TO CONSIDER and DETAIL THE 
+FOLLOWINGS:
+
+1) Your idea & goal
+2) Your audience 
+3) Potential press connections, networks & marketing
+4) Legal matters (Type of crowdfunding)
+5) Timeline
+6) Budget 
+7) Perks for your backers
+
+GUIDELINES:
+
+• You’ll be divided into groups
+
+• You’ll need:
+
+- A presentation (editable) detailing all points and leading you 
+
+during the showing of your project
+
+- To send your presentation to your teacher via email for 
+
+corrections (1 per group)
+
+- To upload your presentation on the platform (each group 
+
+member) 
+
+- To present your work to the class together with your group
+
+DO YOU BELIEVE IN YOUR IDEA? GIVE IT A TRY ON…
+
+https://www.gofundme.com/it-it
+
+https://www.kickstarter.com/
+
+https://www.indiegogo.com/
+
+https://www.eppela.com/
+
+https://www.opstart.it/it/home
+
+AND NOW…LET’S START!
+
+Your teacher’s email address:
+
+rossella.baroncelli@its-ictpiemonte.it

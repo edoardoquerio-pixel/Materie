@@ -1,0 +1,66 @@
+# Benvenuto in PowerPoint (1)
+
+## Panoramica
+UNITA’ FORMATIVA | Microsoft 365 e Sharepoint
+
+## Argomenti trattati
+Configurazione, Cloud, Git
+
+---
+## Appunti
+
+### Slide 1
+DOCENTE | NOVEMBRE Matteo
+UNITA’ FORMATIVA | Microsoft 365 e Sharepoint
+ARGOMENTO | Microsoft 365: Storia, Panoramica e Applicazioni base
+### Slide 2
+Benvenuto in PowerPoint
+5 suggerimenti per semplificarti il lavoro
+### Slide 3
+Comunica al meglio le tue idee con Designer
+PowerPoint Designer suggerisce design professionali per una presentazione, in base al contenuto delle diapositive.
+Questa caratteristica è disponibile solo con un abbonamento. Se hai un abbonamento a Office 365, la diapositiva successiva ti mostra come funziona in una nuova presentazione.
+### Slide 4
+Come usare PowerPoint Designer
+Per iniziare una nuova presentazione, seleziona File > Nuovo > Presentazione vuota.
+Aggiungi un'immagine nella prima diapositiva: passa a Inserisci > Immagini o Inserisci > Immagini online e scegli l'immagine.Suggerimento: Devi essere online quando aggiungi l'immagine.
+Quando PowerPoint chiede l'autorizzazione per suggerire idee per i progetti, seleziona Iniziamo.
+Scegli un progetto che ti piace nel riquadro attività Idee per progetti .
+### Slide 5
+Il morphing crea animazioni fluide e movimenti di oggetti in una presentazione. Vengono usate due diapositive simili per eseguire l'animazione, ma al pubblico sembrerà che l'azione avvenga su una diapositiva.
+Riproduci il video sulla destra per vedere un rapido esempio.
+Questa funzionalità è disponibile solo con un abbonamento. Se hai un abbonamento a Office 365, puoi provare a usarla seguendo la procedura nella prossima diapositiva.
+### Slide 6
+Configurazione del morphing
+Fai una prova con questi due semplici "pianeti":
+Duplica questa diapositiva: fai clic con il pulsante destro del mouse sull'anteprima della diapositiva e scegli Duplica diapositiva.
+Nella seconda di queste due diapositive identiche apporta qualche modifica alle forme a destra, ad esempio spostale o cambia le dimensioni o il colore, quindi passa a Transizioni > Morphing.
+Torna alla prima delle due dispositive e scegli il pulsante Presentazione, quindi seleziona Riproduci per visualizzare il morphing del cerchio.
+Suggerimento: in Opzioni effetto sono disponibili anche altre opzioni per la transizione Morphing.
+### Slide 7
+Collaborazione in tempo reale
+Quando condividi una presentazione con altri, potrai vedere chi collabora con te e quali modifiche apporta. Come funziona:
+Seleziona Condividi sopra la barra multifunzione oppure usa la scelta rapida da tastiera ALT-ZS per invitare altre persone a collaborare con te (a questo punto puoi salvare nel cloud).
+Quando altri utenti lavorano alla presentazione, un indicatore mostra chi si trova in ogni diapositiva...
+…e quale parte della diapositiva sta modificando.
+### Slide 8
+Con Aiutami diventi subito un esperto
+La casella Aiutami trova il comando appropriato quando ti serve, così puoi risparmiare tempo e concentrarti sul tuo lavoro.Prova:
+Seleziona l'immagine del robot a destra.
+Digita animazione nella casella Aiutami e quindi scegli Aggiungi animazione.
+Scegli un effetto di animazione, ad esempio Zoom, e guarda cosa succede.
+### Slide 9
+Esplora senza uscire dalle diapositive
+Ricerca intelligente inserisce i risultati direttamente in PowerPoint.Prova:
+Fai clic con il pulsante destro del mouse su ufficio nella frase seguente: office furniture (mobili per ufficio).
+Scegli Ricerca intelligente e nota che i risultati sono contestuali per questa frase, non per le app di Microsoft Office.
+Ora prova a usare di nuovo Ricerca intelligente facendo clic con il pulsante destro del mouse sulla parola Office nel passaggio 2.
+### Slide 10
+Altre domande su PowerPoint?
+Seleziona il pulsante Aiutami                   e digita cosa vuoi sapere.
+Visita il blog del team di PowerPoint
+Vai alla formazione gratuita su PowerPoint
+SELEZIONA LA FRECCIA IN MODALITÀ PRESENTAZIONE
+
+---
+*Fonte: 001_Benvenuto_in_PowerPoint_1_.md*

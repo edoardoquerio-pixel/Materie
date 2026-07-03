@@ -1,0 +1,236 @@
+[
+  {
+    "content_block": {
+      "content": "# 24_Stage_Professionale",
+      "block_property": "paragraph"
+    }
+  },
+  {
+    "content_block": {
+      "content": "📋 Panoramica",
+      "block_property": "heading_2"
+    }
+  },
+  {
+    "content_block": {
+      "content": "Stage professionale curriculare presso aziende del settore ICT. Periodo di formazione sul campo per applicare le competenze acquisite durante il corso ITS Cloud Specialist in un contesto lavorativo reale.",
+      "block_property": "paragraph"
+    }
+  },
+  {
+    "content_block": {
+      "content": "> ⚠️ **Nessun materiale didattico presente** in `01_Materiale/`. Questa nota è un placeholder da integrare.",
+      "block_property": "paragraph"
+    }
+  },
+  {
+    "content_block": {
+      "content": "📚 Indice degli argomenti (attesi dal regolamento ITS)",
+      "block_property": "heading_2"
+    }
+  },
+  {
+    "content_block": {
+      "content": "1. Organizzazione dello Stage",
+      "block_property": "heading_3"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Durata**: Tipicamente 3-6 mesi (800-1200 ore)",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Sede**: Aziende partner ITS ICT o ospitanti individuate dallo studente",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Tutor aziendale** e **tutor didattico**: Ruoli e responsabilità",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "2. Documentazione",
+      "block_property": "heading_3"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Convenzione**: Accordo ITS-azienda",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Progetto formativo**: Obiettivi, attività, competenze target",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Timesheet**: Registrazione presenze e attività",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Relazione finale**: Documentazione attività svolte",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "3. Diritti e Doveri",
+      "block_property": "heading_3"
+    }
+  },
+  {
+    "content_block": {
+      "content": "Copertura assicurativa (INAIL, RC)",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "Riservatezza e NDA",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "Orario di lavoro, permessi, assenze",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "Rimborsi spese (se previsti)",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "4. Valutazione",
+      "block_property": "heading_3"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Valutazione intermedia**: Feedback del tutor aziendale",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Valutazione finale**: Scheda di valutazione aziendale",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Presentazione**: Alla commissione d'esame",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "5. Obiettivi Formativi",
+      "block_property": "heading_3"
+    }
+  },
+  {
+    "content_block": {
+      "content": "Applicazione pratica di competenze cloud (AWS/Azure/GCP)",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "DevOps, CI/CD, containerizzazione, orchestrazione",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "Programmazione e automazione",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "Lavoro in team, metodologie agili",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "Conoscenza dei processi aziendali",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "⚡ Punti Chiave",
+      "block_property": "heading_2"
+    }
+  },
+  {
+    "content_block": {
+      "content": "Lo stage è **obbligatorio** per il conseguimento del diploma ITS",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "La **ricerca azienda** va iniziata con largo anticipo (vedi 00_Amministrazione_Corso)",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "Mantenere contatto costante con **tutor didattico** durante tutto il periodo",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "Compilare **timesheet** regolarmente (non a fine stage)",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "La **relazione finale** è parte integrante dell'esame",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "📎 Risorse Collegate",
+      "block_property": "heading_2"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**02_Esercizi/**: —",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**03_Progetti/**: —",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Materie collegate**: `00_Amministrazione_Corso`, `02_Orientamento_e_Soft_Skills`, `23_Project_Work_e_Laboratori`",
+      "block_property": "bulleted_list_item"
+    }
+  }
+]

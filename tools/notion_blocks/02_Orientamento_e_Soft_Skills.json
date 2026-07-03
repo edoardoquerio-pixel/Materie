@@ -1,0 +1,206 @@
+[
+  {
+    "content_block": {
+      "content": "# 02_Orientamento_e_Soft_Skills",
+      "block_property": "paragraph"
+    }
+  },
+  {
+    "content_block": {
+      "content": "📋 Panoramica",
+      "block_property": "heading_2"
+    }
+  },
+  {
+    "content_block": {
+      "content": "Sviluppo delle competenze trasversali e orientamento professionale. Copre comunicazione efficace, time management, gestione crisi, colloquio di lavoro, curriculum vitae, lettera di presentazione, startup d'impresa, sviluppo sostenibile, alto apprendistato e verbalizzazione riunioni.",
+      "block_property": "paragraph"
+    }
+  },
+  {
+    "content_block": {
+      "content": "📚 Indice degli argomenti",
+      "block_property": "heading_2"
+    }
+  },
+  {
+    "content_block": {
+      "content": "1. Comunicazione e Relazione",
+      "block_property": "heading_3"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Comunicazione Efficace**: Ascolto attivo, comunicazione verbale/non verbale, assertività",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Soft S — COMUNICAZIONE EFFICACE**: Slide dedicate con esercizi pratici",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Verbale delle riunioni**: Tecniche di verbalizzazione e documentazione",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "2. Gestione Personale",
+      "block_property": "heading_3"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Time Management**: Priorità, matrice Eisenhower, pianificazione, tecniche anti-procrastinazione",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Gestione Crisi**: Problem solving sotto pressione, resilienza, gestione stress",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Soft S — TIME MANAGEMENT e CRISI**: Materiale specifico su questi due temi",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "3. Inserimento Lavorativo",
+      "block_property": "heading_3"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Colloquio di Lavoro**: Preparazione, domande frequenti, body language, follow-up",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Curriculum Vitae**: Struttura europea, formato, personalizzazione per ruolo IT",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Lettera di Presentazione**: Contenuto, tono, personalizzazione",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Soft S — COLLOQUIO**: Slide dedicate alla preparazione",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "4. Imprenditorialità e Innovazione",
+      "block_property": "heading_3"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Start Up**: Lean startup, business model canvas, value proposition",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Soft S — START UP**: Modelli di business e validazione idea",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Learning by Project (LbyP)**: Metodologia project-based learning applicata",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "5. Contesto Normativo",
+      "block_property": "heading_3"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Sviluppo Sostenibile 2025–27**: Agenda 2030, ESG, impatto ambientale ICT",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Alto Apprendistato 2025–27**: Contratto, diritti, doveri, iter formativo",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "⚡ Punti Chiave",
+      "block_property": "heading_2"
+    }
+  },
+  {
+    "content_block": {
+      "content": "Il **curriculum** deve essere personalizzato per ogni candidatura (non generico)",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "La **matrice Eisenhower** è lo strumento chiave per il time management",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "Nel **colloquio**, preparare esempi concreti (metodo STAR) per esperienze passate",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "Il **business model canvas** è lo standard per presentare idee startup",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Sostenibilità**: L'ICT ha un impatto ambientale significativo (datacenter, e-waste)",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "📎 Risorse Collegate",
+      "block_property": "heading_2"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**02_Esercizi/**: —",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**03_Progetti/**: —",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Materie collegate**: `00_Amministrazione_Corso`, `24_Stage_Professionale`, `23_Project_Work_e_Laboratori`",
+      "block_property": "bulleted_list_item"
+    }
+  }
+]

@@ -1,0 +1,61 @@
+[
+  {
+    "content_block": {
+      "content": "# [07] Version Control Git",
+      "block_property": "paragraph"
+    }
+  },
+  {
+    "content_block": {
+      "content": "\u00f0\u0178\u201c\u2039 Panoramica",
+      "block_property": "heading_2"
+    }
+  },
+  {
+    "content_block": {
+      "content": "Materia dedicata al controllo di versione distribuito con Git. Copre l'intero flusso di lavoro: repository locale, branching, repository remoti (GitHub/GitLab) e client grafici. Approccio progressivo dai fondamenti agli strumenti GUI.",
+      "block_property": "paragraph"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Tecnologie**: Git (CLI), GitHub, GitLab, Git GUI (Sourcetree, GitKraken, VS Code)",
+      "block_property": "paragraph"
+    }
+  },
+  {
+    "content_block": {
+      "block_property": "divider"
+    }
+  },
+  {
+    "content_block": {
+      "content": "\u00f0\u0178\u201c\u0161 Indice degli argomenti",
+      "block_property": "heading_2"
+    }
+  },
+  {
+    "content_block": {
+      "content": "1. Fondamenti di Version Control",
+      "block_property": "heading_3"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**Cos'\u00c3\u00a8 il version control**: tracciamento delle modifiche ai file nel tempo",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**VCS Centralizzato** (SVN, CVS): server singolo, single point of failure",
+      "block_property": "bulleted_list_item"
+    }
+  },
+  {
+    "content_block": {
+      "content": "**VCS Distribuito** (Git, Mercurial): ogni clone \u00c3\u00a8 un backup completo",
+      "block_property": "bulleted_list_item"
+    }
+  }
+]

@@ -10,6 +10,7 @@
 **/__pycache__/
 **/.env
 **/local.settings.json
+**/.terraform/
 privato/
 19_Virtualizzazione/01_Materiale/ITS-Docker
 19_Virtualizzazione/01_Materiale/WSA-lab
@@ -82,3 +83,8 @@ knowledge/search-index.json
 
 *.mp3
 *.dll
+*.ps1
+*.vsidx
+.vs/
+*_extracted/
+zara_knowledge_temp/
