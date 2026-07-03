@@ -1,0 +1,24 @@
+# Soluzione esercizio AES
+
+## Panoramica
+# Genera un IV esadecimale corretto
+
+## Argomenti trattati
+Generale
+
+---
+## Appunti
+
+# Genera un IV esadecimale corretto
+openssl rand -hex 16 > iv.txt
+# Genera una chiave binaria
+openssl rand 32 > key.bin
+# Converti la chiave binaria in esadecimale
+KEY_HEX=$(xxd -p key.bin | tr -d '\n')
+# Leggi l'IV da file e rimuovi eventuali ritorni a capo
+IV_HEX=$(cat iv.txt | tr -d '\n')
+# Cifra il messaggio con AES-256-CBC
+openssl enc -aes-256-cbc -K "$KEY_HEX" -iv "$IV_HEX" -in messaggio.txt -out messaggio.enc
+
+---
+*Fonte: 999_Soluzione_esercizio_AES.md*

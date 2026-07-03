@@ -83,6 +83,28 @@ function Read-EnvFile {
     return $envVars
 }
 
+# === HELPERS ===
+
+function ConvertTo-Hashtable {
+    param([object]$InputObject)
+    # PowerShell 5.1: ConvertFrom-Json restituisce PSCustomObject, non hashtable.
+    # Questa funzione converte ricorsivamente in hashtable per permettere
+    # assegnazioni dinamiche (es. $cache["nuovaChiave"] = "valore").
+    if ($InputObject -is [System.Management.Automation.PSCustomObject]) {
+        $ht = @{}
+        $InputObject.PSObject.Properties | ForEach-Object {
+            $ht[$_.Name] = ConvertTo-Hashtable -InputObject $_.Value
+        }
+        return $ht
+    }
+    elseif ($InputObject -is [System.Collections.IList]) {
+        $list = @()
+        foreach ($item in $InputObject) { $list += ConvertTo-Hashtable -InputObject $item }
+        return $list
+    }
+    return $InputObject
+}
+
 # === HTTP CLIENT ===
 
 function New-HttpClient {
@@ -174,7 +196,8 @@ function Get-CourseModules {
         
         $modules = @()
         
-        # Estrai la sezione toc-searchables
+        # === PASSO 1: Estrai lista moduli dalla TOC (Snap theme) ===
+        # La TOC contiene TUTTI i moduli con data-id, icona (che rivela il tipo), e nome
         $tocMatch = [regex]::Match($html, 'id="toc-searchables"[^>]*>(.*?)</ul>', [System.Text.RegularExpressions.RegexOptions]::Singleline)
         if (-not $tocMatch.Success) {
             Write-Host "    TOC searchables non trovato!" -ForegroundColor Yellow
@@ -183,52 +206,145 @@ function Get-CourseModules {
         
         $tocHtml = $tocMatch.Groups[1].Value
         
-        # Pattern per ogni modulo: data-id, icona, nome
-        $modulePattern = '<li[^>]*data-id="(\d+)"[^>]*>.*?<img[^>]*src="[^"]*/(\w+)[^"]*"[^>]*>.*?<span[^>]*class="sr-only"[^>]*>.*?</span>\s*([^<]+?)\s*</a>'
-        $moduleMatches = [regex]::Matches($tocHtml, $modulePattern, [System.Text.RegularExpressions.RegexOptions]::Singleline)
+        # Pattern 1: moduli standard con icona snap/{type}/...
+        # <li role=option data-id="52847">
+        #   <a href="#section-N&amp;module-N" tabindex="0">
+        #     <img src=".../snap/folder/..." alt="" />
+        #     <span class="sr-only">Cartella</span>
+        #     NomeModulo
+        #   </a>
+        # </li>
+        $pattern1 = '<li[^>]*data-id="(\d+)"[^>]*>.*?<img[^>]*src="[^"]*snap/([a-z]+)(?:/|\?)[^"]*"[^>]*>.*?<span[^>]*class="sr-only"[^>]*>.*?</span>\s*([^<]*?)\s*</a>'
+        $matches1 = [regex]::Matches($tocHtml, $pattern1, [System.Text.RegularExpressions.RegexOptions]::Singleline)
         
-        foreach ($m in $moduleMatches) {
-            $modId = $m.Groups[1].Value
-            $iconName = $m.Groups[2].Value.ToLower()
+        # Pattern 2: risorse core con icona snap/core/.../f/{filetype}
+        # <img src=".../snap/core/.../f/archive" ... />
+        $pattern2 = '<li[^>]*data-id="(\d+)"[^>]*>.*?<img[^>]*src="[^"]*snap/core/[^"]*/f/(\w+)[^"]*"[^>]*>.*?<span[^>]*class="sr-only"[^>]*>.*?</span>\s*([^<]*?)\s*</a>'
+        $matches2 = [regex]::Matches($tocHtml, $pattern2, [System.Text.RegularExpressions.RegexOptions]::Singleline)
+        
+        # Pattern 3: Google Meet (icona snap/googlemeet/...)
+        $pattern3 = '<li[^>]*data-id="(\d+)"[^>]*>.*?<img[^>]*src="[^"]*snap/googlemeet[^"]*"[^>]*>.*?<span[^>]*class="sr-only"[^>]*>.*?</span>\s*([^<]*?)\s*</a>'
+        $matches3 = [regex]::Matches($tocHtml, $pattern3, [System.Text.RegularExpressions.RegexOptions]::Singleline)
+        
+        # === PASSO 2: Mappa tipo modulo -> DlType + URL handler ===
+        $seenIds = @{}  # evita duplicati
+        
+        # Pattern 3 prima (Google Meet)
+        foreach ($m in $matches3) {
+            $id = $m.Groups[1].Value
+            $name = $m.Groups[2].Value.Trim()
+            if (-not $seenIds.ContainsKey($id)) {
+                $seenIds[$id] = $true
+                $modules += @{
+                    Id      = [int]$id
+                    Name    = if ($name) { $name } else { "Meet $id" }
+                    Type    = "googlemeet"
+                    DlType  = "meet"
+                    Url     = "https://fad.its-ictpiemonte.it/mod/url/view.php?id=$id"
+                    Handler = "url"
+                }
+            }
+        }
+        
+        # Pattern 2 (core resources: archive, spreadsheet, pdf, etc.)
+        foreach ($m in $matches2) {
+            $id = $m.Groups[1].Value
+            $filetype = $m.Groups[2].Value.ToLower()
+            $name = $m.Groups[3].Value.Trim()
+            if (-not $seenIds.ContainsKey($id)) {
+                $seenIds[$id] = $true
+                $modules += @{
+                    Id      = [int]$id
+                    Name    = if ($name) { $name } else { "File $id" }
+                    Type    = "file_$filetype"
+                    DlType  = "resource"
+                    Url     = "https://fad.its-ictpiemonte.it/mod/resource/view.php?id=$id"
+                    Handler = "resource"
+                }
+            }
+        }
+        
+        # Pattern 1 (standard mod types: url, folder, quiz, assign, resource, page, etc.)
+        foreach ($m in $matches1) {
+            $id = $m.Groups[1].Value
+            $modType = $m.Groups[2].Value.ToLower()
             $name = $m.Groups[3].Value.Trim()
             
-            $type = "resource"
-            if ($iconName -eq 'googlemeet' -or $iconName -eq 'meet') { $type = "meet" }
-            elseif ($iconName -match 'powerpoint|ppt') { $type = "ppt" }
-            elseif ($iconName -eq 'pdf') { $type = "pdf" }
-            elseif ($iconName -eq 'url' -or $iconName -eq 'link') { $type = "url" }
+            if ($seenIds.ContainsKey($id)) { continue }
+            $seenIds[$id] = $true
             
-            # Evita duplicati
-            $exists = $false
-            foreach ($mod in $modules) { if ($mod.Id -eq [int]$modId) { $exists = $true; break } }
-            if (-not $exists) {
-                $modules += @{ Id = [int]$modId; Name = $name; Type = $type }
+            # Determina DlType e URL handler dal tipo Moodle
+            $dlType = "other"
+            $handler = $modType
+            
+            switch ($modType) {
+                "folder"   { $dlType = "folder" }
+                "url"      { $dlType = "url" }
+                "page"     { $dlType = "page" }
+                "resource" { $dlType = "resource" }
+                "file"     { $dlType = "resource" }
+                "googlemeet" { $dlType = "meet" }
+                "assign"   { $dlType = "other" }  # compiti interattivi
+                "quiz"     { $dlType = "other" }  # quiz interattivi
+                "forum"    { $dlType = "other" }  # forum
+                "feedback" { $dlType = "other" }  # feedback
+                "choice"   { $dlType = "other" }  # sondaggi
+                "data"     { $dlType = "other" }  # database
+                "glossary" { $dlType = "other" }  # glossario
+                "workshop" { $dlType = "other" }  # workshop
+                "scorm"    { $dlType = "resource" } # SCORM package
+                "h5pactivity" { $dlType = "other" } # H5P interattivo
+                "core"     { $dlType = "resource"; $handler = "resource" } # Snap core resources -> mod/resource
+                default    { $dlType = "resource" } # default: prova come resource
+            }
+            
+            # Se il nome contiene Google Meet, salta
+            if ($name -match 'Google Meet|meet\.google|^\(\w+-\d+.*\)\s*(Fad|Meet)') {
+                $dlType = "meet"
+            }
+            
+            $modules += @{
+                Id      = [int]$id
+                Name    = if ($name) { $name } else { "Modulo $id" }
+                Type    = $modType
+                DlType  = $dlType
+                Url     = "https://fad.its-ictpiemonte.it/mod/$handler/view.php?id=$id"
+                Handler = $handler
             }
         }
         
-        # Fallback: se il pattern non ha funzionato, prova a estrarre riga per riga
-        if ($modules.Count -eq 0) {
-            $lines = $tocHtml -split "`n"
-            $inLi = $false
-            $currentId = $null
-            $currentName = ""
-            
-            foreach ($line in $lines) {
-                if ($line -match 'data-id="(\d+)"') {
-                    $currentId = $matches[1]
-                    $currentName = ""
+        # === PASSO 3: Fallback riga per riga per moduli non catturati ===
+        # Cerca ID nella TOC non ancora processati
+        $allIds = [regex]::Matches($tocHtml, 'data-id="(\d+)"')
+        foreach ($m in $allIds) {
+            $id = $m.Groups[1].Value
+            if (-not $seenIds.ContainsKey($id)) {
+                $seenIds[$id] = $true
+                $modules += @{
+                    Id      = [int]$id
+                    Name    = "Modulo $id"
+                    Type    = "unknown"
+                    DlType  = "resource"
+                    Url     = "https://fad.its-ictpiemonte.it/mod/resource/view.php?id=$id"
+                    Handler = "resource"
                 }
-                elseif ($currentId -and $line -match '>\s*(.+?)\s*</a>') {
-                    $currentName = $matches[1].Trim()
-                    if ($currentName -and $currentName.Length -gt 1 -and $currentName -notmatch '^\s*$') {
-                        $modules += @{ Id = [int]$currentId; Name = $currentName; Type = "resource" }
-                    }
-                    $currentId = $null
-                }
+                Write-Host "    [FALLBACK] Modulo $id tipo sconosciuto, tentativo resource" -ForegroundColor DarkYellow
             }
         }
+        
+        # Ordina per ID
+        $modules = $modules | Sort-Object Id
         
         Write-Host "    Trovati $($modules.Count) moduli" -ForegroundColor Yellow
+        
+        $typeCounts = @{}
+        foreach ($m in $modules) {
+            $tc = if ($typeCounts.ContainsKey($m.DlType)) { $typeCounts[$m.DlType] + 1 } else { 1 }
+            $typeCounts[$m.DlType] = $tc
+        }
+        $typeSummary = (($typeCounts.Keys | ForEach-Object { "$_=$($typeCounts[$_])" }) -join ', ')
+        Write-Host "    Tipi: $typeSummary" -ForegroundColor DarkGray
+        
         return $modules
     }
     catch {
@@ -278,6 +394,93 @@ function Get-CleanFileName {
     return $name
 }
 
+function Write-CacheEntry {
+    param([string]$Key, [string]$Value)
+    $script:ModuleCache[$Key] = $Value
+    $script:CacheDirty = $true
+}
+
+function Read-CacheEntry {
+    param([string]$Key)
+    if ($script:ModuleCache.ContainsKey($Key)) { return $script:ModuleCache[$Key] }
+    return $null
+}
+
+function Save-UrlShortcut {
+    param([string]$Url, [string]$FilePath)
+    $shortcut = "[InternetShortcut]`r`nURL=$Url`r`n"
+    Set-Content -LiteralPath $FilePath -Value $shortcut -Encoding ascii
+}
+
+function Download-FolderModule {
+    param($HttpClient, $FolderUrl, [string]$DestDir, [string]$BaseName)
+    
+    try {
+        $response = $HttpClient.Client.GetAsync($FolderUrl).Result
+        $finalUrl = $response.RequestMessage.RequestUri.ToString()
+        
+        # Controllo reale: la URL finale contiene /login/ (sessione scaduta)
+        if ($finalUrl -match '/login/') {
+            Write-Warning "      Sessione scaduta (folder)"
+            return $false
+        }
+        
+        $html = $response.Content.ReadAsStringAsync().Result
+        
+        # Estrai SOLO i file del corso dalla cartella (salta temi/icone)
+        # Pattern: pluginfile.php/NNN/mod_folder/content/0/NomeFile
+        $fileLinks = @()
+        $fileMatches = [regex]::Matches($html, 'href="([^"]*pluginfile\.php/\d+/mod_folder/content/\d+/[^"]+)"', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
+        
+        foreach ($m in $fileMatches) {
+            $fileUrl = $m.Groups[1].Value
+            
+            # Gestisci URL protocollo-relativi (//...)
+            if ($fileUrl -match '^//') { $fileUrl = "https:$fileUrl" }
+            elseif ($fileUrl -notmatch '^https?://') { $fileUrl = "https://fad.its-ictpiemonte.it$fileUrl" }
+            
+            $cleanUrl = $fileUrl -replace '\?.*$', ''
+            $fileName = [System.IO.Path]::GetFileName($cleanUrl)
+            
+            if ($fileName) {
+                $fileLinks += @{ Url = $fileUrl; Name = $fileName }
+            }
+        }
+        
+        if ($fileLinks.Count -eq 0) {
+            Write-Host "      -> Nessun file trovato nella cartella" -ForegroundColor Yellow
+            return $false
+        }
+        
+        $ok = 0
+        $fi = 0
+        foreach ($fl in $fileLinks) {
+            $fi++
+            $fileName = "$($BaseName)_$($fi.ToString('00'))_$($fl.Name)"
+            $cleanName = $fileName -replace '[<>:"/\\|?*]', '_'
+            $filePath = Join-Path -Path $DestDir -ChildPath $cleanName
+            
+            try {
+                $fileResp = $HttpClient.Client.GetAsync($fl.Url).Result
+                $fileBytes = $fileResp.Content.ReadAsByteArrayAsync().Result
+                [System.IO.File]::WriteAllBytes($filePath, $fileBytes)
+                Write-Host "        -> $cleanName ($($fileBytes.Length) bytes)" -ForegroundColor DarkGreen
+                $ok++
+            }
+            catch {
+                Write-Warning "        Errore file $($fl.Name): $_"
+            }
+        }
+        
+        Write-Host "      -> Cartella: $ok file scaricati" -ForegroundColor Green
+        return $ok -gt 0
+    }
+    catch {
+        Write-Warning "      Errore folder: $_"
+        return $false
+    }
+}
+
 function Download-Module {
     param($HttpClient, $Module, [string]$DestDir, [int]$Index)
     
@@ -286,94 +489,188 @@ function Download-Module {
     $displayName = "$prefix$name"
     if ($displayName.Length -gt 70) { $displayName = $displayName.Substring(0, 70) + "..." }
     
-    Write-Host "    [$($Module.Id)] $displayName" -ForegroundColor Gray
+    Write-Host "    [$($Module.Id)] ($($Module.Type)) $displayName" -ForegroundColor Gray
     
-    # Salta Google Meet
-    if ($Module.Type -eq "meet" -or $name -match 'Google Meet|meet\.google|^\(\w+-\d+.*\)\s*(Fad|Meet)') {
-        Write-Host "      -> Saltato (evento Google Meet)" -ForegroundColor DarkGray
-        return $false
-    }
+    $modIdStr = "$($Module.Id)"
     
-    try {
-        $response = $HttpClient.Client.GetAsync("https://fad.its-ictpiemonte.it/mod/resource/view.php?id=$($Module.Id)").Result
-        $statusCode = [int]$response.StatusCode
-        $finalUrl = $response.RequestMessage.RequestUri.ToString()
-        
-        if ($statusCode -ge 400) { Write-Warning "      Errore HTTP $statusCode"; return $false }
-        if ($finalUrl -match '/login/') { Write-Warning "      Sessione scaduta"; return $false }
-        
-        # Se redirect diretto al file
-        if ($finalUrl -match 'pluginfile\.php') {
-            $ct = if ($response.Content.Headers.ContentType) { $response.Content.Headers.ContentType.MediaType } else { "" }
-            $bytes = $response.Content.ReadAsByteArrayAsync().Result
-            $ext = Get-FileExtension -ContentType $ct -Url $finalUrl
-            $filePath = Join-Path -Path $DestDir -ChildPath "$name$ext"
-            [System.IO.File]::WriteAllBytes($filePath, $bytes)
-            Write-Host "      -> $name$ext ($($bytes.Length) bytes)" -ForegroundColor Green
-            return $true
+    # === GESTIONE PER TIPO ===
+    switch ($Module.DlType) {
+        "meet" {
+            Write-Host "      -> Saltato (evento Google Meet)" -ForegroundColor DarkGray
+            return $false
         }
         
-        # Se pagina HTML, cerca il link al file
-        if ($finalUrl -match 'mod/resource/view') {
-            $html = $response.Content.ReadAsStringAsync().Result
-            
-            $dlMatch = [regex]::Match($html, 'href="([^"]*pluginfile\.php[^"]*)"')
-            if (-not $dlMatch.Success) {
-                $dlMatch = [regex]::Match($html, '"action":\s*"([^"]*pluginfile\.php[^"]*)"')
+        "other" {
+            Write-Host "      -> Saltato (tipo $($Module.Type), non scaricabile)" -ForegroundColor DarkGray
+            return $false
+        }
+        
+        "folder" {
+            # Controlla cache
+            $cached = Read-CacheEntry -Key $modIdStr
+            if ($cached) {
+                Write-Host "      -> Già presente (cache)" -ForegroundColor DarkGray
+                return $true
             }
             
-            if ($dlMatch.Success) {
-                $downloadUrl = $dlMatch.Groups[1].Value
-                if ($downloadUrl -notmatch '^https?://') { $downloadUrl = "https://fad.its-ictpiemonte.it$downloadUrl" }
+            $url = $Module.Url
+            if (-not $url) { $url = "https://fad.its-ictpiemonte.it/mod/folder/view.php?id=$modIdStr" }
+            
+            $result = Download-FolderModule -HttpClient $HttpClient -FolderUrl $url -DestDir $DestDir -BaseName "$prefix$name"
+            if ($result) { Write-CacheEntry -Key $modIdStr -Value "$prefix$name (folder)" }
+            return $result
+        }
+        
+        "url" {
+            $url = $Module.Url
+            if (-not $url) { $url = "https://fad.its-ictpiemonte.it/mod/url/view.php?id=$modIdStr" }
+            
+            try {
+                $resp = $HttpClient.Client.GetAsync($url).Result
+                $finalUrl = $resp.RequestMessage.RequestUri.ToString()
                 
-                $fileResp = $HttpClient.Client.GetAsync($downloadUrl).Result
-                $fileFinalUrl = $fileResp.RequestMessage.RequestUri.ToString()
-                
-                $ct = if ($fileResp.Content.Headers.ContentType) { $fileResp.Content.Headers.ContentType.MediaType } else { "" }
-                
-                # Controllo login redirect
-                if ($ct -match 'text/html') {
-                    $bodyText = $fileResp.Content.ReadAsStringAsync().Result
-                    if ($bodyText -match 'login|Login') {
-                        Write-Warning "      Redirect a login"
-                        return $false
+                if ($finalUrl -match '/login/') { Write-Warning "      Sessione scaduta"; return $false }
+                if ($finalUrl -eq $url -or $finalUrl -match 'mod/url/view') {
+                    # Pagina intermedia URL: cerca il redirect
+                    $html = $resp.Content.ReadAsStringAsync().Result
+                    $redirMatch = [regex]::Match($html, 'url=([^"&\s]+)')
+                    if ($redirMatch.Success) {
+                        $finalUrl = [System.Uri]::UnescapeDataString($redirMatch.Groups[1].Value)
                     }
                 }
                 
-                $bytes = $fileResp.Content.ReadAsByteArrayAsync().Result
-                $ext = Get-FileExtension -ContentType $ct -Url $fileFinalUrl
-                $filePath = Join-Path -Path $DestDir -ChildPath "$name$ext"
-                [System.IO.File]::WriteAllBytes($filePath, $bytes)
-                Write-Host "      -> $name$ext ($($bytes.Length) bytes)" -ForegroundColor Green
+                $urlFile = Join-Path -Path $DestDir -ChildPath "$name.url"
+                Save-UrlShortcut -Url $finalUrl -FilePath $urlFile
+                Write-Host "      -> $name.url -> $finalUrl" -ForegroundColor Cyan
+                Write-CacheEntry -Key $modIdStr -Value "$name.url"
                 return $true
-            } else {
-                $htmlPath = Join-Path -Path $DestDir -ChildPath "$name.html"
-                $html | Out-File -FilePath $htmlPath -Encoding utf8
-                Write-Host "      -> HTML salvato (no file link)" -ForegroundColor Yellow
+            }
+            catch {
+                Write-Warning "      Errore URL: $_"
                 return $false
             }
         }
         
-        # Altri tipi
-        $ct = if ($response.Content.Headers.ContentType) { $response.Content.Headers.ContentType.MediaType } else { "" }
-        if ($ct -match 'text/html') {
-            $html = $response.Content.ReadAsStringAsync().Result
-            $htmlPath = Join-Path -Path $DestDir -ChildPath "$name.html"
-            $html | Out-File -FilePath $htmlPath -Encoding utf8
-            Write-Host "      -> HTML salvato" -ForegroundColor Yellow
-            return $false
+        "page" {
+            $url = $Module.Url
+            if (-not $url) { $url = "https://fad.its-ictpiemonte.it/mod/page/view.php?id=$modIdStr" }
+            
+            try {
+                $resp = $HttpClient.Client.GetAsync($url).Result
+                $html = $resp.Content.ReadAsStringAsync().Result
+                if ($html -match '/login/') { Write-Warning "      Sessione scaduta"; return $false }
+                
+                $htmlPath = Join-Path -Path $DestDir -ChildPath "$name.html"
+                $html | Out-File -FilePath $htmlPath -Encoding utf8
+                Write-Host "      -> $name.html (pagina Moodle)" -ForegroundColor Yellow
+                Write-CacheEntry -Key $modIdStr -Value "$name.html"
+                return $true
+            }
+            catch {
+                Write-Warning "      Errore page: $_"
+                return $false
+            }
         }
         
-        $bytes = $response.Content.ReadAsByteArrayAsync().Result
-        $ext = Get-FileExtension -ContentType $ct -Url $finalUrl
-        $filePath = Join-Path -Path $DestDir -ChildPath "$name$ext"
-        [System.IO.File]::WriteAllBytes($filePath, $bytes)
-        Write-Host "      -> $name$ext ($($bytes.Length) bytes)" -ForegroundColor Green
-        return $true
-    }
-    catch {
-        Write-Warning "      Errore modulo $($Module.Id): $_"
-        return $false
+        default {
+            # === RESOURCE: download file ===
+            # Controlla cache
+            $cached = Read-CacheEntry -Key $modIdStr
+            if ($cached) {
+                $cachedFull = if ([System.IO.Path]::IsPathRooted($cached)) { $cached } else { Join-Path -Path $DestDir -ChildPath $cached }
+                if (Test-Path -LiteralPath $cachedFull -PathType Leaf) {
+                    Write-Host "      -> Già presente (cache)" -ForegroundColor DarkGray
+                    return $true
+                }
+            }
+            
+            try {
+                $url = $Module.Url
+                if (-not $url) { $url = "https://fad.its-ictpiemonte.it/mod/resource/view.php?id=$modIdStr" }
+                
+                $response = $HttpClient.Client.GetAsync($url).Result
+                $statusCode = [int]$response.StatusCode
+                $finalUrl = $response.RequestMessage.RequestUri.ToString()
+                
+                if ($statusCode -ge 400) { Write-Warning "      Errore HTTP $statusCode"; return $false }
+                if ($finalUrl -match '/login/') { Write-Warning "      Sessione scaduta"; return $false }
+                
+                # Se redirect diretto al file (pluginfile)
+                if ($finalUrl -match 'pluginfile\.php') {
+                    $ct = if ($response.Content.Headers.ContentType) { $response.Content.Headers.ContentType.MediaType } else { "" }
+                    $bytes = $response.Content.ReadAsByteArrayAsync().Result
+                    $ext = Get-FileExtension -ContentType $ct -Url $finalUrl
+                    $filePath = Join-Path -Path $DestDir -ChildPath "$name$ext"
+                    [System.IO.File]::WriteAllBytes($filePath, $bytes)
+                    Write-Host "      -> $name$ext ($($bytes.Length) bytes)" -ForegroundColor Green
+                    Write-CacheEntry -Key $modIdStr -Value "$name$ext"
+                    return $true
+                }
+                
+                # Se pagina HTML resource, cerca link pluginfile
+                if ($finalUrl -match 'mod/resource/view') {
+                    $html = $response.Content.ReadAsStringAsync().Result
+                    
+                    $dlMatch = [regex]::Match($html, 'href="([^"]*pluginfile\.php[^"]*)"')
+                    if (-not $dlMatch.Success) {
+                        $dlMatch = [regex]::Match($html, '"action":\s*"([^"]*pluginfile\.php[^"]*)"')
+                    }
+                    
+                    if ($dlMatch.Success) {
+                        $downloadUrl = $dlMatch.Groups[1].Value
+                        if ($downloadUrl -notmatch '^https?://') { $downloadUrl = "https://fad.its-ictpiemonte.it$downloadUrl" }
+                        
+                        $fileResp = $HttpClient.Client.GetAsync($downloadUrl).Result
+                        $fileFinalUrl = $fileResp.RequestMessage.RequestUri.ToString()
+                        
+                        $ct = if ($fileResp.Content.Headers.ContentType) { $fileResp.Content.Headers.ContentType.MediaType } else { "" }
+                        
+                        if ($ct -match 'text/html') {
+                            $bodyText = $fileResp.Content.ReadAsStringAsync().Result
+                            if ($bodyText -match 'login|Login') {
+                                Write-Warning "      Redirect a login"
+                                return $false
+                            }
+                        }
+                        
+                        $bytes = $fileResp.Content.ReadAsByteArrayAsync().Result
+                        $ext = Get-FileExtension -ContentType $ct -Url $fileFinalUrl
+                        $filePath = Join-Path -Path $DestDir -ChildPath "$name$ext"
+                        [System.IO.File]::WriteAllBytes($filePath, $bytes)
+                        Write-Host "      -> $name$ext ($($bytes.Length) bytes)" -ForegroundColor Green
+                        Write-CacheEntry -Key $modIdStr -Value "$name$ext"
+                        return $true
+                    } else {
+                        $htmlPath = Join-Path -Path $DestDir -ChildPath "$name.html"
+                        $html | Out-File -FilePath $htmlPath -Encoding utf8
+                        Write-Host "      -> HTML salvato (no file link)" -ForegroundColor Yellow
+                        return $false
+                    }
+                }
+                
+                # Altri casi: salva come binary
+                $ct = if ($response.Content.Headers.ContentType) { $response.Content.Headers.ContentType.MediaType } else { "" }
+                if ($ct -match 'text/html') {
+                    $html = $response.Content.ReadAsStringAsync().Result
+                    $htmlPath = Join-Path -Path $DestDir -ChildPath "$name.html"
+                    $html | Out-File -FilePath $htmlPath -Encoding utf8
+                    Write-Host "      -> HTML salvato" -ForegroundColor Yellow
+                    return $false
+                }
+                
+                $bytes = $response.Content.ReadAsByteArrayAsync().Result
+                $ext = Get-FileExtension -ContentType $ct -Url $finalUrl
+                $filePath = Join-Path -Path $DestDir -ChildPath "$name$ext"
+                [System.IO.File]::WriteAllBytes($filePath, $bytes)
+                Write-Host "      -> $name$ext ($($bytes.Length) bytes)" -ForegroundColor Green
+                Write-CacheEntry -Key $modIdStr -Value "$name$ext"
+                return $true
+            }
+            catch {
+                Write-Warning "      Errore modulo $($Module.Id): $_"
+                return $false
+            }
+        }
     }
 }
 
@@ -410,7 +707,7 @@ function Download-Course {
     foreach ($module in $modules) {
         $index++
         
-        if ($module.Type -eq "meet" -or $module.Name -match 'Fad \d+|meet\.google|Google Meet') {
+        if ($module.DlType -eq "meet" -or $module.Name -match 'Fad \d+|meet\.google|Google Meet') {
             $skipped++
             continue
         }
@@ -477,6 +774,21 @@ $config = Read-Config -Path $ConfigPath
 $creds = Read-EnvFile -Path $EnvFile
 $username = $creds['FAD_USERNAME']
 $password = $creds['FAD_PASSWORD']
+
+# Cache: evita richieste HTTP per moduli già scaricati
+$CacheFile = Join-Path -Path $scriptDir -ChildPath "module_cache.json"
+if (Test-Path -LiteralPath $CacheFile) {
+    try {
+        $raw = Get-Content -LiteralPath $CacheFile -Raw -ErrorAction Stop | ConvertFrom-Json -ErrorAction Stop
+        $ModuleCache = ConvertTo-Hashtable -InputObject $raw
+    } catch {
+        Write-Host "  Cache danneggiata, ricreo..." -ForegroundColor DarkYellow
+        $ModuleCache = @{}
+    }
+} else {
+    $ModuleCache = @{}
+}
+$CacheDirty = $false
 
 if (-not $username -or -not $password) {
     Write-Error "Credenziali mancanti in $EnvFile"
@@ -570,6 +882,11 @@ foreach ($course in $targetCourses) {
         Write-Error "Errore durante download corso $($course.Name): $_"
         $fail++
     }
+}
+
+# Salva cache per la prossima esecuzione
+if ($CacheDirty) {
+    $ModuleCache | ConvertTo-Json | Out-File -FilePath $CacheFile -Encoding utf8
 }
 
 Write-Host "`n============================================" -ForegroundColor Magenta

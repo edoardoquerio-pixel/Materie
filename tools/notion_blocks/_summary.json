@@ -1,0 +1,127 @@
+[
+  {
+    "name": "00_Amministrazione_Corso",
+    "blocks": 30,
+    "chunks": 1
+  },
+  {
+    "name": "01_Inglese_Tecnico",
+    "blocks": 38,
+    "chunks": 1
+  },
+  {
+    "name": "02_Orientamento_e_Soft_Skills",
+    "blocks": 34,
+    "chunks": 1
+  },
+  {
+    "name": "03_Parita_e_Non_Discriminazione",
+    "blocks": 29,
+    "chunks": 1
+  },
+  {
+    "name": "04_Sicurezza_sul_Lavoro",
+    "blocks": 36,
+    "chunks": 1
+  },
+  {
+    "name": "05_Fondamenti_ICT",
+    "blocks": 31,
+    "chunks": 1
+  },
+  {
+    "name": "06_Reti_e_Sicurezza_Informatica",
+    "blocks": 152,
+    "chunks": 2
+  },
+  {
+    "name": "07_Version_Control_Git",
+    "blocks": 71,
+    "chunks": 1
+  },
+  {
+    "name": "08_Basi_di_Dati_SQL_NoSQL",
+    "blocks": 55,
+    "chunks": 1
+  },
+  {
+    "name": "09_Programmazione_C_CPP",
+    "blocks": 87,
+    "chunks": 1
+  },
+  {
+    "name": "10_Programmazione_Python",
+    "blocks": 36,
+    "chunks": 1
+  },
+  {
+    "name": "11_Programmazione_DotNet_CSharp",
+    "blocks": 66,
+    "chunks": 1
+  },
+  {
+    "name": "12_RESTful_API",
+    "blocks": 79,
+    "chunks": 1
+  },
+  {
+    "name": "13_Cloud_AWS",
+    "blocks": 41,
+    "chunks": 1
+  },
+  {
+    "name": "14_Cloud_Azure",
+    "blocks": 69,
+    "chunks": 1
+  },
+  {
+    "name": "15_Cloud_GCP",
+    "blocks": 47,
+    "chunks": 1
+  },
+  {
+    "name": "16_Linux_Server_e_Amministrazione",
+    "blocks": 72,
+    "chunks": 1
+  },
+  {
+    "name": "17_Container_Docker_Kubernetes",
+    "blocks": 86,
+    "chunks": 1
+  },
+  {
+    "name": "18_Microsoft_365_SharePoint",
+    "blocks": 33,
+    "chunks": 1
+  },
+  {
+    "name": "19_Virtualizzazione",
+    "blocks": 63,
+    "chunks": 1
+  },
+  {
+    "name": "20_Data_Analytics_Visualization",
+    "blocks": 44,
+    "chunks": 1
+  },
+  {
+    "name": "21_Internet_of_Things",
+    "blocks": 39,
+    "chunks": 1
+  },
+  {
+    "name": "22_AI_e_Prompt_Engineering",
+    "blocks": 39,
+    "chunks": 1
+  },
+  {
+    "name": "23_Project_Work_e_Laboratori",
+    "blocks": 52,
+    "chunks": 1
+  },
+  {
+    "name": "24_Stage_Professionale",
+    "blocks": 39,
+    "chunks": 1
+  }
+]
