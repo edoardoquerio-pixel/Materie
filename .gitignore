@@ -89,3 +89,5 @@ knowledge/search-index.json
 .vs/
 *_extracted/
 zara_knowledge_temp/
+# Large files (exceed GitHub 100MB limit)
+11_Programmazione_DotNet_CSharp/05_Backup/AdventureWorks2022.bak
