@@ -93,27 +93,27 @@ Sede Torino                          Azure West Europe
 
 | Voce | Costo/ora nodo | Costo/giorno* | Costo/anno** |
 |---|---|---|---|
-| HB176-96rs v4 (8 nodi SPOT, 8 ore/giorno, 200 gg/anno) | € 1,34/h | € 10,72 | € 2.144 |
-| CycleCloud head node (Standard_D2s_v3, on-demand 24/7) | — | — | € 360 |
+| HB176-96rs v4 (SPOT, 8h/giorno, 200 gg/anno) — **1 nodo** | € 1,51/h | € 12,09 | € 2.418 |
+| ×8 nodi (totale cluster burst) | — | € 96,70 | **€ 19.341** |
+| CycleCloud head node (Standard_D2s_v3, on-demand 24/7) | — | — | € 918 |
 | Azure Managed Lustre (4 TB) | — | € 2,67 | € 960 |
 | CycleCloud (licenza gratuita) | — | — | € 0 |
 | ExpressRoute (opzionale, per alta latenza) | — | € 9,86 | € 3.600 |
-| **Totale HPC Azure/anno (senza ER)** | | | **~€ 3.464** |
-| **Totale HPC Azure/anno (con ER)** | | | **~€ 7.064** |
+| **Totale HPC Azure/anno (senza ER)** | | | **~€ 21.219** |
+| **Totale HPC Azure/anno (con ER)** | | | **~€ 24.819** |
 
-*\*8 ore/giorno × 8 nodi*
 *\*\*200 giorni lavorativi/anno*
 
-Nota**: Il costo è significativamente inferiore alla variante full cloud (~€44k/anno) perché i nodi Azure sono usati SOLO per overflow, non come calcolo primario. Prezzi SPOT con checkpointing obbligatorio. Il CycleCloud head node (D2s_v3) è sempre acceso (24/7, ~€30/mese).
+> **Prezzi verificati con Azure Retail Prices API (West Europe, Linux, SPOT):** $1,729728/h per HB176-96rs v4. €2.418/anno × 8 nodi = €19.341/anno. Il head node D2s_v3 (24/7) costa €918/anno in PAYG; alternativa B2s a €367/anno. Prezzi SPOT con checkpointing obbligatorio.
 
 ### Confronto costi
 
 | Scenario | On-prem 8 nodi (esistenti) | + Azure 8 nodi (burst) | Delta |
 |---|---|---|---|
 | Costo capitale (8 nuovi nodi fisici evitati) | — | ~€ 192.000 (evitato) | **€ -192.000** |
-| Costo operativo annuo | ~€ 18.000 | + € 3.464 (Azure burst + head node) | **€ +3.464** |
+| Costo operativo annuo | ~€ 18.000 | + € 21.219 (Azure burst + head node) | **€ +21.219** |
 
-La scelta CycleCloud consente di evitare l'acquisto di 8 nuovi nodi HPC fisici (~€ 192.000), utilizzando invece risorse Azure SPOT a consumo con un costo operativo di ~€ 3.464/anno (incluso head node D2s_v3). Il checkpointing è necessario per gestire la possibile revoca delle istanze SPOT.
+La scelta CycleCloud consente di evitare l'acquisto di 8 nuovi nodi HPC fisici (~€ 192.000), utilizzando invece risorse Azure SPOT a consumo con un costo operativo di ~€ 21.219/anno (incluso head node D2s_v3). Rispetto all'acquisto on-prem, il risparmio capitale è di €192.000. Il checkpointing è necessario per gestire la possibile revoca delle istanze SPOT.
 
 ## Configurazione di rete Azure
 
