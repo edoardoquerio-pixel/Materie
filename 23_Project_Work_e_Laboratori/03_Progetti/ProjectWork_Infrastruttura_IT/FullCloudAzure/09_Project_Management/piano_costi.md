@@ -6,9 +6,9 @@
 |---|---|
 | Budget totale progetto | € 520.000 |
 | Investimento iniziale (una tantum) | € 78.200 |
-| Servizi cloud anno 1 | € 55.418 |
-| **Totale anno 1** | **€ 133.618** |
-| **Margine residuo** | **~€ 386.382** |
+| Servizi cloud anno 1 | € 46.498 |
+| **Totale anno 1** | **€ 124.698** |
+| **Margine residuo** | **~€ 395.302** |
 
 ## Costi per area
 
@@ -30,9 +30,11 @@
 | **Cluster HPC** | | |
 | Rinnovo licenze cluster on-prem (3 anni) | € 10.000 | — |
 | Potenziamento InfiniBand | € 6.000 | — |
-| Azure CycleCloud HB176-48rs (200 gg) | — | € 12.384 |
+| Azure CycleCloud HB176-96rs v4 (200 gg SPOT) | — | € 2.144 |
+| Azure CycleCloud head node D2s_v3 (24/7) | — | € 360 |
 | Azure Managed Lustre 4 TB | — | € 960 |
-| *Subtotale* | *€ 16.000* | *€ 13.344* |
+| *Subtotale (senza ER)* | *€ 16.000* | *€ 3.464* |
+| *Subtotale (con ER)* | *€ 16.000* | *€ 7.064* |
 | **Pondus su Azure** | | |
 | Analisi compatibilità codice | € 2.000 | — |
 | Adattamento codice (se necessario) | € 10.000 (media) | — |
@@ -77,8 +79,8 @@
 
 | Categoria | Una tantum | Ricorrente/anno |
 |---|---|---|
-| Infrastruttura e servizi (A) | € 86.000 | € 59.978 |
+| Infrastruttura e servizi (A) | € 86.000 | € 40.914 |
 | Risorse interne (B) — extra budget | € 0 | € 38.550 |
-| **Totale A + B anno 1** | **€ 86.000** | **€ 98.528** |
+| **Totale A + B anno 1** | **€ 86.000** | **€ 79.464** |
 | Budget disponibile | € 520.000 | |
-| **Margine residuo** | | **~€ 335.472** |
+| **Margine residuo** | | **~€ 354.536** |

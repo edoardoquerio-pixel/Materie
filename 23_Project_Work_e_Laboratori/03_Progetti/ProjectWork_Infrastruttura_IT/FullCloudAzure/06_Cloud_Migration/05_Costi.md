@@ -35,8 +35,11 @@
 | R5b | *VM B2s (1 anno savings plan)* | *€ 23,26* | *Risparmio -24%* |
 | R6 | Dynamics 365 Sales Professional (20 utenti × €56,30) | € 1.126,00 | Microsoft IE listino, annual commitment |
 | R7 | Dynamics 365 BC Essentials (10 utenti × €69,30) | € 693,00 | Microsoft IE listino, annual commitment |
-| | **Totale PAYG** | **€ 3.293,35** | |
-| | *Totale con reserved/savings* | *€ 3.171,85* | |
+| R8 | HPC Azure burst — CycleCloud head node (D2s_v3) | € 30,00 | Azure Retail Prices, PAYG |
+| R9 | HPC Azure burst — Azure Managed Lustre (4 TB) | € 80,00 | Azure Retail Prices, PAYG |
+| R10 | HPC Azure burst — HB176-96rs v4 SPOT (8h × 200gg) | ~€ 179,00 | Azure Retail Prices SPOT West EU |
+| | **Totale PAYG** | **€ 3.702,35** | |
+| | *Totale con reserved/savings* | *€ 3.580,85* | |
 
 ---
 
@@ -51,7 +54,10 @@
 | R5 | VM B2s Media Wiki | € 367 | € 279 |
 | R6 | Dynamics 365 Sales Pro | € 13.512 | € 13.512 |
 | R7 | Dynamics 365 BC Essentials | € 8.316 | € 8.316 |
-| | **Totale anno** | **€ 39.524** | **€ 38.061** |
+| R8 | HPC CycleCloud head node D2s_v3 | € 360 | € 360 |
+| R9 | HPC Azure Managed Lustre 4 TB | € 960 | € 960 |
+| R10 | HPC HB176-96rs v4 SPOT | ~€ 2.144 | ~€ 2.144 |
+| | **Totale anno** | **€ 44.988** | **€ 43.525** |
 
 ---
 
@@ -63,9 +69,9 @@
 | Spesa già prevista (piano_costi.md) | € 272.950 |
 | **Margine disponibile** | **€ 247.050** |
 | Costo una tantum migrazione | € 12.000 |
-| Costo ricorrente primo anno (PAYG) | € 39.524 |
-| **Costo totale primo anno** | **~€ 51.524** |
-| **Margine residuo** | **~€ 195.526** |
+| Costo ricorrente primo anno (PAYG) | € 44.988 |
+| **Costo totale primo anno** | **~€ 56.988** |
+| **Margine residuo** | **~€ 190.062** |
 
 ### Distribuzione budget migrazione
 
@@ -80,11 +86,11 @@ Budget 520K€
 │   ├── Backup/DR: 7.200€
 │   └── Project Management: 19.500€
 │
-├── Migrazione Microsoft: 51.524€ (9,9%)
+├── Migrazione Microsoft + HPC Azure: 56.988€ (11,0%)
 │   ├── Una tantum: 12.000€
-│   └── Ricorrente anno 1: 39.524€
+│   └── Ricorrente anno 1: 44.988€
 │
-└── Margine residuo: 195.526€ (37,6%)
+└── Margine residuo: 190.062€ (36,6%)
 ```
 
 ---
@@ -117,9 +123,9 @@ Budget 520K€
 
 | Anno | Una tantum | Ricorrenti | Totale anno |
 | --- | --- | --- | --- |
-| Anno 1 | € 12.000 | € 39.524 | € 51.524 |
-| Anno 2 | € 0 | € 39.524 | € 39.524 |
-| Anno 3 | € 0 | € 39.524 | € 39.524 |
-| **Cumulato 3 anni** | **€ 12.000** | **€ 118.572** | **€ 130.572** |
+| Anno 1 | € 12.000 | € 44.988 | € 56.988 |
+| Anno 2 | € 0 | € 44.988 | € 44.988 |
+| Anno 3 | € 0 | € 44.988 | € 44.988 |
+| **Cumulato 3 anni** | **€ 12.000** | **€ 134.964** | **€ 146.964** |
 | Risparmio servizi dismessi (3 anni) | | | ~€ 23.400 |
-| **Costo netto 3 anni** | | | **~€ 107.172** |
+| **Costo netto 3 anni** | | | **~€ 123.564** |

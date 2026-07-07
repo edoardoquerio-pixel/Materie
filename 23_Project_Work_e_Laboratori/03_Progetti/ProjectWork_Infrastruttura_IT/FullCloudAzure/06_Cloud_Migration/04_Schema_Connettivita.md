@@ -16,12 +16,18 @@ Sede Torino (Thema)                    Azure West Europe
 └──────────┬───────────────┘          └──────────┬───────────────────┘
            │                                     │
            ▼                                     ▼
-    AD Samba4 (identità)               Subnet: 10.30.1.0/24
-    ↓                                    └→ VM B2s (Media Wiki)
-    Entra Connect Sync                   Subnet: 10.30.2.0/24
-    ↓                                    └→ App Service VNet int.
-    Entra ID (cloud)                     Subnet: 10.30.254.0/24
-                                         └→ VPN Gateway
+    ┌──────────────┐                     Subnet: 10.30.1.0/24
+    │ AD Samba4  ◄─┼────IPsec────          └→ VM B2s (Media Wiki)
+    │ (identità)  │                     Subnet: 10.30.2.0/24
+    └──────┬───────┘                      └→ App Service VNet int.
+           │ ▼                            Subnet: 10.30.99.0/24
+    Entra Connect Sync                     └→ VM D2s_v3 (CycleCloud)
+           ↓                            Subnet: 10.30.100.0/24
+    Entra ID (cloud)                       └→ HB176-96rs v4 (burst SPOT)
+                                          Subnet: 10.30.101.0/24
+                                            └→ Azure Managed Lustre
+                                          Subnet: 10.30.254.0/24
+                                            └→ VPN Gateway
 
 Utenti remoti                          M365 Cloud
 ┌──────────────┐                      ┌───────────────────┐
@@ -68,6 +74,19 @@ Utenti remoti                          M365 Cloud
 | Traffico cloud (M365, Dynamics, DevOps) | Diretto a Internet (non VPN) |
 | Traffico on-prem (HPC, backup) | Via VPN WireGuard |
 
+### Azure HPC — subnet e connettività
+
+Il cluster HPC adotta un'architettura **dual-network**:
+
+- **Ethernet (management):** traffico SSH, API CycleCloud, mount Lustre, backup — attraversa FortiGate (on-prem) e NSG (Azure) con policy controllate.
+- **InfiniBand (compute):** traffico MPI/RDMA tra nodi HBv4 — rete trusted isolata, **nessun firewall** (necessario per latenza &lt; 2 μs). Le due fabbriche InfiniBand (on-prem e Azure) non sono interconnesse: i job MPI non attraversano mai la VPN.
+
+| Subnet Azure | CIDR | Risorse |
+| --- | --- | --- |
+| `snet-cyclecloud-westeu` | 10.30.99.0/24 | VM D2s_v3 (CycleCloud head node) |
+| `snet-hpc-westeu` | 10.30.100.0/24 | HB176-96rs v4 (burst SPOT, 8 nodi max) |
+| `snet-lustre-westeu` | 10.30.101.0/24 | Azure Managed Lustre (4 TB, via NFS/Internal) |
+
 ---
 
 ## Flussi di identità
@@ -102,8 +121,13 @@ Utenti remoti                          M365 Cloud
 | Subnet Media Wiki | `snet-mediawiki-westeu` — 10.30.1.0/24 |
 | Subnet App Service | `snet-appsvc-westeu` — 10.30.2.0/24 |
 | Subnet VPN Gateway | `snet-gateway-westeu` — 10.30.254.0/24 |
+| Subnet CycleCloud | `snet-cyclecloud-westeu` — 10.30.99.0/24 |
+| Subnet HPC burst | `snet-hpc-westeu` — 10.30.100.0/24 |
+| Subnet Lustre | `snet-lustre-westeu` — 10.30.101.0/24 |
 | VPN Gateway | `vpngw-tpgroup-westeu` |
 | VM Media Wiki | `vm-tpgroup-mediawiki-westeu` |
+| VM CycleCloud Head Node | `vm-tpgroup-cyclecloud-westeu` |
+| Azure Managed Lustre | `lustre-tpgroup-westeu` |
 | App Service Plan | `asp-tpgroup-westeu` |
 | App Service | `app-tpgroup-pondus-westeu` |
 | Azure SQL Server | `sql-tpgroup-pondus-westeu` |
@@ -117,5 +141,7 @@ Utenti remoti                          M365 Cloud
 |---|---|
 | pondus.tpgroup.it | `app-tpgroup-pondus-westeu.azurewebsites.net` (CNAME) |
 | wiki.tpgroup.it | IP pubblico VM Media Wiki (A) o CNAME |
+| cyclecloud.tpgroup.it | IP privato `vm-tpgroup-cyclecloud-westeu` (DNS interno) |
+| lustre.tpgroup.it | IP privato `lustre-tpgroup-westeu` (DNS interno) |
 | tpgroup.it MX | exchange.protection.outlook.com |
 | autodiscover.tpgroup.it | autodiscover.outlook.com (CNAME) |

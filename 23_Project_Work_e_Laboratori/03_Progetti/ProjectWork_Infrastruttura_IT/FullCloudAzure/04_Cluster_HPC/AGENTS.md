@@ -18,7 +18,8 @@ Progettazione del cluster HPC ibrido (on-prem + Azure) per simulazioni struttura
 ## Decisioni chiave Full Cloud Azure
 
 - **Rimangono on-prem**: 8 nodi esistenti (HW proprietario, InfiniBand)
-- **Nuovi nodi**: **Azure CycleCloud** con VM **HB176-48rs** (16 nodi burst)
-- **Connettività**: VPN IPsec Sede→Azure per cyclecloud
+- **Nuovi nodi**: **Azure CycleCloud** con VM **HB176-96rs v4** (8 nodi burst SPOT)
+- **Connettività**: VPN IPsec Sede→Azure per cyclecloud; ExpressRoute opzionale
 - **Storage**: Azure Managed Lustre per filesystem condiviso
-- **Costi**: Nodi Azure solo a consumo (deallocazione quando non usati)
+- **Costi**: Solo SPOT con checkpointing obbligatorio (deallocazione quando non usati)
+- **Requisiti**: 8 GB/core rispettato (768 GB / 96 vCPU)

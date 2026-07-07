@@ -18,7 +18,8 @@
 | F0.5 | Assegnazione licenze M365 a tutti i 50 utenti | Sistemista | 1 giorno |
 | F0.6 | Configurazione MFA tramite Conditional Access | Sistemista | 1 giorno |
 | F0.7 | Creazione resource group Azure: `rg-tpgroup-migration-westeu` | Sistemista | 0,5 giorni |
-| F0.8 | Provisioning VNet, subnet, VPN Gateway | Sistemista | 2 giorni |
+| F0.8 | Provisioning VNet + subnet migrazione (mediawiki, appsvc, gateway) | Sistemista | 1 giorno |
+| F0.9 | Provisioning subnet HPC (cyclecloud, hpc, lustre) | Sistemista | 0,5 giorni |
 
 **Dipendenze:** AD Samba4 accessibile e funzionante, credenziali amministrative tenant Microsoft.
 
@@ -109,6 +110,25 @@
 
 ---
 
+## Fase 5b — HPC Azure burst (Settimane 5-6)
+
+**Obiettivo:** Abilitare il burst HPC su Azure tramite CycleCloud, con head node dedicato e filesystem Lustre condiviso.
+
+| # | Attività | Responsabile | Durata |
+| --- | --- | --- | --- |
+| F5b.1 | Deploy VM CycleCloud head node (D2s_v3, Linux) su `snet-cyclecloud-westeu` | Sistemista | 1 giorno |
+| F5b.2 | Configurazione CycleCloud: cluster template per HB176-96rs v4 + Slurm | Sistemista | 2 giorni |
+| F5b.3 | Provisioning Azure Managed Lustre (4 TB, 500 MB/s) su `snet-lustre-westeu` | Sistemista | 1 giorno |
+| F5b.4 | Configurazione mount Lustre su nodi on-prem e template CycleCloud | Sistemista | 1 giorno |
+| F5b.5 | Configurazione forwarder PBS → Slurm sul front-end on-prem | Sistemista | 1 giorno |
+| F5b.6 | Test burst: provisioning 2 nodi HBv4 SPOT, esecuzione job di prova | Sistemista | 1 giorno |
+
+**Rollback:** Mantenere cluster HPC on-prem come unica coda di esecuzione. Disabilitare forwarder PBS → Slurm per escludere Azure.
+
+**Nota:** I job MPI non attraversano la VPN (latenza ~5 ms incompatibile). La schedulazione separa job on-prem (InfiniBand on-prem) da job Azure (InfiniBand Azure). I dati sono condivisi via Lustre.
+
+---
+
 ## Fase 6 — Test e accettazione (Settimane 8-9)
 
 **Obiettivo:** Verificare che tutti i servizi funzionino secondo i criteri di successo.
@@ -122,6 +142,9 @@
 | Dynamics: creazione fattura BC | &lt; 5 secondi | Test funzionale |
 | Azure DevOps: clone + push | &lt; 30 secondi | Test repo mirror |
 | Media Wiki: lettura/scrittura | &lt; 3 secondi | Test navigazione |
+| HPC: provisioning nodo Azure via CycleCloud | &lt; 10 minuti | Test burst 1 nodo HBv4 |
+| HPC: mount Lustre e I/O | &lt; 5 ms latenza | Test dd/fio su filesystem condiviso |
+| HPC: esecuzione job MPI su Azure | Completato senza errori | Test job di prova su 2 nodi |
 | Migrazione dati posta | 100%, checksum | Verifica a campione |
 | Migrazione dati file | 100%, checksum | Verifica a campione |
 
@@ -156,6 +179,7 @@ F2: File                          ██████████
 F3: Dynamics                                 ████████████████████
 F4: DevOps                                      ██████████
 F5: Media Wiki                                     ██████
+F5b: HPC burst                                    ██████████
 F6: Test                                                      ████████
 F7: Dismissione                                                       ████
 ```

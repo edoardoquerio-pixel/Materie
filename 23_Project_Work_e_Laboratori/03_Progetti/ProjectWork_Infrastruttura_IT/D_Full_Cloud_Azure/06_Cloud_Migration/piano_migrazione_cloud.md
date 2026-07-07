@@ -21,7 +21,7 @@
 | **CRM** | SugarCRM (VM Linux) | Odoo (SaaS) | **Odoo** (unificato) | Media |
 | **Time Sheet** | Kimai (VM Linux) | Odoo (SaaS) | **Odoo** (unificato) | Bassa |
 | **Documentazione** | MediaWiki (VM Linux) | MediaWiki (VM GCP) | **SharePoint** o **Azure App Service** | Bassa |
-| **HPC** | 8 nodi on-prem (InfiniBand, Linux) | N/A | **Azure HBv4** (5+ nodi, InfiniBand NDR 400 Gbps) | Alta |
+| **HPC** | 8 nodi on-prem (InfiniBand, Linux) | N/A | **Hybrid: 8 on-prem + Azure HBv4 burst** (CycleCloud, 8 nodi SPOT, Lustre condiviso) | Alta |
 | **Pondus** | C# IIS + MS SQL on-prem | N/A | **Azure Container Apps + Azure SQL** | Alta |
 | **Backup** | NAS QNAP 32 TB | GCP Cloud Storage | **Azure Backup + Blob Storage GRS** | Alta |
 
@@ -38,7 +38,7 @@
 Fasi:
 1. **Migranti early** (Settimane 1-4): servizi cloud-native, dati non critici, test con utenti pilota
 2. **Migranti core** (Settimane 5-8): servizi collaborativi (M365), identità (Entra ID), file server (SharePoint)
-3. **Migranti critici** (Settimane 9-10): HPC (Azure HBv4), Pondus (Container Apps + Azure SQL), backup (Azure Backup)
+3. **Migranti critici** (Settimane 9-10): HPC burst (CycleCloud + HBv4 SPOT + Lustre), Pondus (Container Apps + Azure SQL), backup (Azure Backup)
 4. **Cut-over finale** (Settimana 11): shutdown 7 giorni, disconnessione finale on-premise
 5. **Post-migrazione** (Settimana 12+): stabilizzazione, verifica, dismissione HW on-premise
 
@@ -62,7 +62,7 @@ gantt
         Migrazione Git (GiTea→Azure DevOps)      :t1, 3d
         Migrazione Wiki (MediaWiki→SharePoint)   :t2, 3d
     section Cut-over
-        Migrazione HPC (on-prem→Azure HBv4)      :h1, 5d
+        Setup HPC burst (CycleCloud+HBv4+Lustre)  :h1, 5d
         Migrazione Pondus (IIS→AKS Windows)      :p1, after h1, 5d
         Cut-over finale                          :co, after p1, 3d
 ```

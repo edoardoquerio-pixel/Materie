@@ -21,7 +21,7 @@
 | 3 | **Sicurezza** | Piano di disaster recovery cloud | Azure Site Recovery, RPO/RTO | Thema + Pro Studio |
 | 4 | **Cloud** | Integrazione AD Samba4 → Entra ID | Entra Connect Sync, MFA, SSO | Pro Studio |
 | 5 | **Cloud** | Migrazione servizi Pro Studio (GCP→Azure) | MediaWiki, identità, dismissione GCP | Pro Studio |
-| 6 | **HPC** | Specifica cluster HPC ibrido (on-prem + Azure) | CycleCloud, HB176-48rs, InfiniBand | Thema |
+| 6 | **HPC** | Specifica cluster HPC ibrido (on-prem + Azure) | CycleCloud, HB176-96rs v4, InfiniBand NDR | Thema |
 | 7 | **Pondus** | Migrazione Pondus ad Azure App Service | C# legacy, Azure SQL, deployment | Thema |
 | 8 | **Backup** | Soluzione backup cloud-native | Azure Backup, Site Recovery, retention | Thema + Pro Studio |
 | 9 | **Logistica** | Piano trasloco dipendenti Pro Studio | Postazioni LAN, banchi, tempistiche | Pro Studio → Thema |

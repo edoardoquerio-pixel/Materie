@@ -54,6 +54,6 @@ Tutti i requisiti derivano da: `../../01_Materiale/estratto_progetto.md`. Leggil
 | Versioning / CI/CD | **Azure DevOps** (Repos + Pipelines) |
 | App clienti (Pondus) | **Azure App Service P1v3 + Azure SQL S2** |
 | Documentazione | **Media Wiki su VM Azure B2s** (unica eccezione IaaS) |
-| Cluster HPC | **On-prem + Azure CycleCloud** (HB176-48rs) |
+| Cluster HPC | **On-prem + Azure CycleCloud** (HB176-96rs v4, burst SPOT) |
 | Backup | **Azure Backup + Azure Site Recovery** |
 | Regione Azure | **West Europe** |

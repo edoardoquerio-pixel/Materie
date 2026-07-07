@@ -14,6 +14,7 @@ Redazione dell'offerta tecnico-economica della variante Full Cloud Azure per TP 
 |---|---|---|
 | 01 | `offerta_tecnico_economica.md` | Offerta completa strutturata |
 | 02 | `quotazione_economica.md` | Riepilogo costi e budget |
+| 03 | `termini_e_condizioni.md` | Termini e condizioni contrattuali |
 
 ## Premessa
 

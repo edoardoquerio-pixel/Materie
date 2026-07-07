@@ -57,7 +57,7 @@ La presente offerta descrive la variante **Full Cloud Azure** per il progetto di
 | Componente | Specifica |
 |---|---|
 | On-prem | 8 nodi esistenti (mantenuti) |
-| Azure burst | CycleCloud + HB176-48rs (16 nodi, on-demand) |
+| Azure burst | CycleCloud + HB176-96rs v4 (8 nodi SPOT) |
 | Filesystem | Azure Managed Lustre (4 TB) |
 
 ### 3.5 Backup e DR
@@ -106,8 +106,8 @@ La presente offerta descrive la variante **Full Cloud Azure** per il progetto di
 | VM B2s Media Wiki | € 30,60 | € 367 |
 | Azure VPN Gateway | € 97,50 | € 1.170 |
 | Backup + DR (Azure) | € 115 | € 1.380 |
-| HPC CycleCloud + Lustre (200 gg/anno) | ~€ 1.112 | € 13.344 |
-| **Totale ricorrente/anno** | **~€ 3.518** | **~€ 55.418** |
+| HPC CycleCloud + Lustre + head node (200 gg/anno, SPOT) | ~€ 289 | € 3.464 |
+| **Totale ricorrente/anno** | **~€ 2.695** | **~€ 45.538** |
 
 ### 4.3 Budget complessivo
 
@@ -115,22 +115,22 @@ La presente offerta descrive la variante **Full Cloud Azure** per il progetto di
 |---|---|
 | Budget totale progetto | € 520.000 |
 | **Investimento iniziale (una tantum)** | **€ 78.200** |
-| **Servizi cloud anno 1** | **€ 55.418** |
-| **Totale anno 1** | **€ 133.618** |
+| **Servizi cloud anno 1** | **€ 45.538** |
+| **Totale anno 1** | **€ 123.738** |
 | Costi risorse (extra budget) | — |
-| **Margine residuo** | **~€ 386.382** |
+| **Margine residuo** | **~€ 396.262** |
 | Costi risorse (sistemista 55gg + PM 17gg) — extra budget | € 38.550 |
 
 ### 4.4 Costi su 3 anni (ciclo vita progetto)
 
 | Anno | Una tantum | Ricorrenti | Totale |
 |---|---|---|---|
-| Anno 1 | € 78.200 | € 55.418 | € 133.618 |
-| Anno 2 | € 0 | € 55.418 | € 55.418 |
-| Anno 3 | € 0 | € 55.418 | € 55.418 |
-| **Cumulato 3 anni** | **€ 78.200** | **€ 166.254** | **€ 244.454** |
+| Anno 1 | € 78.200 | € 45.538 | € 123.738 |
+| Anno 2 | € 0 | € 45.538 | € 45.538 |
+| Anno 3 | € 0 | € 45.538 | € 45.538 |
+| **Cumulato 3 anni** | **€ 78.200** | **€ 136.614** | **€ 214.814** |
 | Risparmio dismissione servizi legacy (3 anni) | | | ~€ 60.000 |
-| **Costo netto 3 anni** | | | **~€ 184.454** |
+| **Costo netto 3 anni** | | | **~€ 154.814** |
 
 ### 4.5 Costi evitati
 

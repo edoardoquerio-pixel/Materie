@@ -29,7 +29,7 @@
 
 | Servizio | Motivazione |
 |---|---|
-| **Cluster HPC** (8 nodi on-prem + 8 nuovi) | Percorso separato già definito (CycleCloud + HB176-48rs), mantiene on-prem + Azure HPC |
+| **Cluster HPC** (8 nodi on-prem) | Percorso separato: mantiene on-prem + Azure CycleCloud (HB176-96rs v4 burst) per overflow |
 | **Infrastruttura rete on-prem** (Fortigate, switch, cablaggio) | Gestita dal piano Rete/VPN (area 02) |
 | **Potenziamento UPS e condizionamento** | Gestito dal piano sicurezza sede (area 03) |
 | **Laptop e postazioni utente** | Di proprietà TP Group, fuori fornitura |

@@ -15,6 +15,7 @@
 | **F3** | Dynamics 365 | 4-8 | 5 settimane | Sales + BC attivi, dati CRM/ERP/timesheet migrati |
 | **F4** | Azure DevOps | 5-6 | 2 settimane | Repos migrati, pipelines funzionanti |
 | **F5** | Media Wiki | 5 | 1 settimana | Media Wiki su VM Azure attivo, DNS puntato |
+| **F5b** | HPC Azure burst | 5-6 | 2 settimane | CycleCloud head node attivo, Lustre condiviso, provisioning burst funzionante |
 | **F6** | Test | 8-9 | 2 settimane | Test di accettazione superati |
 | **F7** | Dismissione | 10 | 1 settimana | Piattaforme legacy spente, report finale |
 
@@ -31,6 +32,7 @@ F2 File           │   │   │███│███│   │   │   │   �
 F3 Dynamics       │   │   │   │███│███│███│███│███│   │   │
 F4 Azure DevOps   │   │   │   │   │███│███│   │   │   │   │
 F5 Media Wiki     │   │   │   │   │███│   │   │   │   │   │
+F5b HPC burst     │   │   │   │   │███│███│   │   │   │   │
 F6 Test           │   │   │   │   │   │   │   │███│███│   │
 F7 Dismissione    │   │   │   │   │   │   │   │   │   │███│
                   └───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘
@@ -48,6 +50,7 @@ F7 Dismissione    │   │   │   │   │   │   │   │   │   │█�
 | M3 — Dynamics attivo | Fine settimana 8 | Sales + BC attivi, dati migrati, test pilota superati |
 | M4 — DevOps attivo | Fine settimana 6 | Repos migrati, pipeline CI/CD funzionanti |
 | M5 — Documentazione migrata | Fine settimana 5 | Media Wiki su VM Azure, DNS puntato |
+| M5b — HPC burst operativo | Fine settimana 6 | CycleCloud head node attivo, Lustre condiviso montato, provisioning 2 nodi HBv4 testato |
 | M6 — Test superati | Fine settimana 9 | Tutti i test di accettazione con esito positivo |
 | M7 — Dismissione completata | Fine settimana 10 | Piattaforme legacy spente, report finale consegnato |
 

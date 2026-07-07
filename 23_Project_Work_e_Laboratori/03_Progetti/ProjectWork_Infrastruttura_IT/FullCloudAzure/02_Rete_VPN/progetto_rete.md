@@ -41,7 +41,7 @@
 | VLAN | ID | Scopo |
 |---|---|---|
 | LAN-dipendenti | 10 | 40 postazioni fisse |
-| HPC-cluster | 20 | 8+8 nodi calcolo + front-end |
+| HPC-cluster | 20 | 8 nodi on-prem + front-end |
 | Server-infra | 30 | AD Samba4, stampanti |
 | WiFi-dipendenti | 40 | Accesso wireless dipendenti |
 | WiFi-ospiti | 50 | Rete ospiti (isolata) |

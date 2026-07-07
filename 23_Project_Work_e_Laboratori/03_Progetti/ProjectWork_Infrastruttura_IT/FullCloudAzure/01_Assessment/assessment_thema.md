@@ -35,7 +35,7 @@ Thema Consulting srl, fondata negli anni '90, opera nella progettazione struttur
 | Elemento | Valore |
 |---|---|
 | Nodi correnti | 8 nodi fisici on-prem con InfiniBand |
-| Nuovi nodi | 8 nodi Azure CycleCloud (HB176-48rs) |
+| Nuovi nodi | 8 nodi Azure CycleCloud (HB176-96rs v4, burst SPOT) |
 | Connettività | VPN Sede → Azure per cluster ibrido |
 
 ## 5. Stima Costi Annui Thema (on-prem)
