@@ -121,14 +121,14 @@ Entra ID Connect sincronizza Samba4 AD con Microsoft Entra ID:
 
 ## Costi migrazione
 
-| Voce | Costo stimato | Note |
+| Voce                                                  | Costo stimato                 | Note |
 |---|---|---|---|
-| Azure Data Box | ~€300 | Trasferimento dati massivi (se >5 TB) |
-| Azure DMS | Gratuito | Database Migration Service per SQL |
-| Azure Migrate | Gratuito | Assessment e migrazione VM |
-| Migrazione Profis→Odoo | ~€3.000 | 6 gg sistemista (€500/gg) |
-| Azure DevOps Basic (5 utenti × ~€6/mese × 12 mesi) | ~€360/anno | Sostituzione GiTea |
-| Giorni/uomo sistemista | 40gg × €500 = €20.000 | Incluso in extra manodopera |
-| **Totale migrazione** | **~€23.660** | |
+| Azure Data Box                                        | ~€300                         | Trasferimento dati massivi (se >5 TB) |
+| Azure DMS                                             | Gratuito                      | Database Migration Service per SQL |
+| Azure Migrate                                         | Gratuito                      | Assessment e migrazione VM            |
+| Migrazione Profis→Odoo                                | ~€3.000                       | 6 gg sistemista (€500/gg) |
+| Azure DevOps Basic (5 utenti × ~€6/mese × 12 mesi)    | ~€360/anno                    | Sostituzione GiTea |
+| Giorni/uomo sistemista                                | 40gg × €500 = €20.000         | Incluso in extra manodopera |
+| **Totale migrazione**                                 | **~€23.660**                  |                                         |
 
 *I costi di migrazione sono inclusi nella voce "Extra manodopera" del budget complessivo.*
