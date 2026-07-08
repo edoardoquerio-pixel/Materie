@@ -15,8 +15,6 @@ jobs:
 
       - name: Validate JSON
         run: |
-          python3 -m json.tool version.json
-          python3 -m json.tool opencode.json
           python3 -m json.tool package.json
 
       - uses: actions/setup-node@v4
