@@ -57,39 +57,5 @@ jobs:
             done
           fi
 
-  test:
-    runs-on: ${{ matrix.os }}
-    needs: lint
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        node: [22, 24]
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node }}
-
-      - name: Unit tests
-        run: |
-          files=$(find tests -name '*.test.mjs' -type f 2>/dev/null)
-          if [ -z "$files" ]; then
-            echo "No test files found"
-          else
-            echo "$files" | tr '\n' ' ' | xargs node --experimental-sqlite --test --test-concurrency=1
-          fi
-
-      - name: Structure tests (bats)
-        run: |
-          bats_files=$(find tests -name '*.bats' -type f 2>/dev/null)
-          if [ -z "$bats_files" ]; then
-            echo "No bats test files found"
-            exit 0
-          fi
-          if ! command -v bats &>/dev/null; then
-            git clone --depth 1 https://github.com/bats-core/bats-core.git /tmp/bats
-            sudo /tmp/bats/install.sh /usr/local
-          fi
-          echo "$bats_files" | tr '\n' ' ' | xargs bats
+  # test job rimosso: i test in tests/ appartengono a Zara Agent (overlay separato)
+  # e importano moduli non presenti in questo repository.
