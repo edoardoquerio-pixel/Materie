@@ -347,15 +347,35 @@ Al termine del progetto, il Fornitore consegna:
 
 ### 15.2 Formazione
 
-Il Fornitore eroga sessioni di formazione secondo il seguente programma minimo:
+Il Fornitore eroga sessioni di formazione secondo il seguente programma minimo, suddiviso in due fasi:
+
+#### Fase 1 — Formazione utenti base (inclusa)
 
 | Tipologia | Durata | Destinatari |
 |---|---|---|
-| Formazione M365 base | 4 ore | Tutti i 50 utenti |
-| Formazione Dynamics Sales | 4 ore | 20 utenti CRM |
-| Formazione Dynamics BC | 8 ore | 10 utenti ERP |
-| Formazione Teams | 2 ore | Tutti i 50 utenti |
-| Formazione amministratori | 8 ore | Sistemisti |
+| M365 base (posta, calendario, Office Online) | 4 ore | Tutti i 50 utenti |
+| Dynamics 365 Sales | 4 ore | 20 utenti CRM |
+| Dynamics 365 BC (ERP) | 8 ore | 10 utenti ERP |
+| Teams (comunicazione, riunioni, canali) | 2 ore | Tutti i 50 utenti |
+| Amministrazione M365 + SharePoint | 4 ore | Sistemisti |
+
+#### Fase 2 — Formazione nuova infrastruttura (dipendenti TP_Group)
+
+| Modulo | Durata | Destinatari |
+|--------|:------:|-------------|
+| SharePoint/OneDrive: sincronia, condivisione, collaborazione | 2 ore | 50 utenti standard |
+| Rete aziendale: FortiGate HA, VLAN, VPN WireGuard | 4 ore | IT staff (5-6) |
+| Azure administration: portale, costi, monitoraggio | 4 ore | IT staff |
+| Azure DevOps: repos, pipelines, CI/CD | 4 ore | Dev team (5-8) |
+| HPC ibrido: CycleCloud, job submission, Lustre | 4 ore | HPC team (3-4) |
+| Backup e DR: Azure Backup, Site Recovery, restore | 4 ore | IT staff |
+| Procedure sicurezza: ISO 27001, incident response, access review | 4 ore | IT staff + referenti |
+
+Il costo della Fase 2 è quantificato in **€ 4.000 (quattromila/00)** ed è corrisposto contestualmente al completamento della formazione, tipicamente entro la milestone M6.
+
+La documentazione utente e le guide operative sono incluse nel progetto (€ 2.000).
+
+| **Totale formazione** | **27 ore** | **€ 9.000** |
 
 ---
 

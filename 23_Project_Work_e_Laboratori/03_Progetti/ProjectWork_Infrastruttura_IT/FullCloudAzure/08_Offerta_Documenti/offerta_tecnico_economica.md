@@ -106,8 +106,8 @@ La presente offerta descrive la variante **Full Cloud Azure** per il progetto di
 | VM B2s Media Wiki | € 30,60 | € 367 |
 | Azure VPN Gateway | € 97,50 | € 1.170 |
 | Backup + DR (Azure) | € 115 | € 1.380 |
-| HPC CycleCloud + Lustre + head node (200 gg/anno, SPOT) | ~€ 289 | € 3.464 |
-| **Totale ricorrente/anno** | **~€ 2.695** | **~€ 45.538** |
+| HPC CycleCloud + Lustre + head node (8 nodi SPOT × 200 gg × 8h) | ~€ 1.768 | € 21.219 |
+| **Totale ricorrente/anno** | **~€ 4.174** | **~€ 63.293** |
 
 ### 4.3 Budget complessivo
 
@@ -115,8 +115,8 @@ La presente offerta descrive la variante **Full Cloud Azure** per il progetto di
 |---|---|
 | Budget totale progetto | € 520.000 |
 | **Investimento iniziale (una tantum)** | **€ 78.200** |
-| **Servizi cloud anno 1** | **€ 45.538** |
-| **Totale anno 1** | **€ 123.738** |
+| **Servizi cloud anno 1** | **€ 63.293** |
+| **Totale anno 1** | **€ 141.493** |
 | Costi risorse (extra budget) | — |
 | **Margine residuo** | **~€ 396.262** |
 | Costi risorse (sistemista 55gg + PM 17gg) — extra budget | € 38.550 |

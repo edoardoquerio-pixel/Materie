@@ -23,12 +23,12 @@ Budget 520.000€
 ║  │ Azure (App, SQL, VM, DevOps): 5.336€/anno                 ║
 ║  │ VPN Gateway:                  1.170€/anno                 ║
 ║  │ Backup + DR:                  1.380€/anno                 ║
-║  │ HPC CycleCloud:               3.464€/anno (SPOT + head)   ║
+║  │ HPC CycleCloud:               21.219€/anno (SPOT 8 nodi + head)   ║
 ║  └──────────────────────────────────────────────────────────╢
 ║                                                              ║
-║  TOTALE ANNO 1:                             123.738€          ║
+║  TOTALE ANNO 1:                             141.493€          ║
 ║                                                              ║
-║  MARGINE RESIDUO:                           ~396.262€         ║
+║  MARGINE RESIDUO:                           ~378.507€         ║
 ║                                                              ║
 ║  COSTI RISORSE (extra budget):               38.550€          ║
 ║  (sistemista 55gg + PM 17gg)                                 ║
@@ -41,11 +41,11 @@ Budget 520.000€
 |---|---|---|---|
 | Rete / VPN | € 23.000 | € 4.200 (2° ISP) | € 35.600 |
 | Sicurezza ISO 27001 | € 11.500 | € 0 | € 11.500 |
-| Cluster HPC ibrido | € 16.000 | € 3.464 (Azure CycleCloud SPOT + head node) | € 26.392 |
+| Cluster HPC ibrido | € 16.000 | € 21.219 (Azure CycleCloud SPOT 8 nodi + head) | € 79.657 |
 | Pondus su Azure | € 8.500 | € 2.134 (App + SQL) | € 14.902 |
 | Cloud Migration (M1-M11) | € 12.000 | € 35.740 (M365 + Dynamics + Azure) | € 119.220 |
 | Backup / DR | € 7.200 | € 1.380 | € 11.340 |
-| **Totale** | **€ 78.200** | **€ 45.538** | **€ 214.814** |
+| **Totale** | **€ 78.200** | **€ 63.293** | **€ 268.079** |
 
 ## Costi extra budget (risorse interne)
 

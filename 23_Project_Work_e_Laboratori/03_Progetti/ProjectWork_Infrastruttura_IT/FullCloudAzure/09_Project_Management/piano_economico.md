@@ -36,10 +36,10 @@ I costi sono suddivisi in quattro macrocategorie:
 | | *Subtotale Sicurezza* | *€ 11.500* | *€ 0* |
 | **HPC** | Rinnovo licenze cluster on-prem (3 anni) | € 10.000 | — |
 | | Potenziamento InfiniBand (cavi, switch) | € 6.000 | — |
-| | Azure HB176-96rs v4 SPOT (200gg × 8h) | — | € 2.144 |
-| | CycleCloud head node D2s_v3 (24/7) | — | € 360 |
+| | Azure HB176-96rs v4 SPOT (8 nodi × 200gg × 8h) | — | € 19.341 |
+| | CycleCloud head node D2s_v3 (24/7 PAYG) | — | € 918 |
 | | Azure Managed Lustre 4 TB | — | € 960 |
-| | *Subtotale HPC* | *€ 16.000* | *€ 3.464* |
+| | *Subtotale HPC* | *€ 16.000* | *€ 21.219* |
 | **Pondus** | Analisi compatibilità codice | € 2.000 | — |
 | | Adattamento codice (se necessario, media stimata) | € 10.000 | — |
 | | Setup Azure App + SQL | € 1.500 | — |
@@ -67,10 +67,11 @@ I costi sono suddivisi in quattro macrocategorie:
 | | M365 Backup (opzionale) | — | € 720 |
 | | Azure Site Recovery | — | € 360 |
 | | *Subtotale Backup/DR* | *€ 7.200* | *€ 1.740* |
-| **Formazione** | Formazione utenti (3 sessioni) | € 3.000 | — |
+| **Formazione** | Formazione utenti base (M365, Dynamics, Teams, amministratori) | € 3.000 | — |
+| | Formazione nuova infrastruttura TP_Group (7 moduli: rete, Azure, DevOps, HPC, backup, sicurezza) | € 4.000 | — |
 | | Documentazione progetto | € 2.000 | — |
-| | *Subtotale Formazione* | *€ 5.000* | *€ 0* |
-| | **Totale A — Forniture (costo acquisto)** | **€ 81.500** | **€ 50.098** |
+| | *Subtotale Formazione* | *€ 9.000* | *€ 0* |
+| | **Totale A — Forniture (costo acquisto)** | **€ 85.500** | **€ 67.853** |
 
 > **Nota:** La voce "Configurazione Dynamics 365" (€ 5.000) è stata spostata in B — Manodopera perché è il forfait del consulente Dynamics. Questo evita la duplicazione.
 
@@ -122,9 +123,9 @@ L'azienda esecutrice applica un **ricarico del 15%** sull'acquisto delle fornitu
 | Pondus setup (analisi, setup, test) | € 5.500 | € 825 | € 6.325 | € 825 |
 | Migration (forfait attività) | € 7.000 | € 1.050 | € 8.050 | € 1.050 |
 | Backup/DR setup | € 7.200 | € 1.080 | € 8.280 | € 1.080 |
-| Formazione | € 5.000 | € 750 | € 5.750 | € 750 |
+| Formazione (Fase 1 + Fase 2 TP_Group) | € 9.000 | € 1.350 | € 10.350 | € 1.350 |
 | Adattamento codice Pondus (*se necessario*) | € 10.000 | € 1.500 | € 11.500 | € 1.500 |
-| **Totale D** | **€ 71.500** | **€ 10.725** | **€ 82.225** | **€ 10.725** |
+| **Totale D** | **€ 75.500** | **€ 11.325** | **€ 86.825** | **€ 11.325** |
 
 *Cloud ricorrenti (M365, Dynamics, Azure): pass-through senza margine, fatturati al costo.*
 
@@ -141,36 +142,36 @@ L'azienda esecutrice applica un **ricarico del 15%** sull'acquisto delle fornitu
 | B2 — Costo del lavoro PM (17 gg × € 350) | € 5.950 |
 | B3 — Costo del lavoro consulente Dynamics (10 gg × € 320) | € 3.200 |
 | C — Trasferta sistemista | € 2.175 |
-| **Costi totali azienda** | **€ 108.225** |
+| **Costi totali azienda** | **€ 112.225** |
 
 ### Ricavi azienda (quanto incassa dal cliente)
 
 | Voce | Anno 1 |
 |------|:------:|
-| D — Forniture (prezzo vendita con ricarico 15%) | € 82.225 |
+| D — Forniture (prezzo vendita con ricarico 15%) | € 86.825 |
 | B — Manodopera (tariffa fatturata) | € 44.550 |
 | C — Trasferta fatturata | € 2.175 |
-| **Ricavi totali anno 1** | **€ 128.950** |
+| **Ricavi totali anno 1** | **€ 133.550** |
 
 ### Margine
 
 | Voce | Importo | % su ricavi |
 |------|:------:|:-----------:|
-| **Ricavi anno 1** | **€ 128.950** | 100% |
-| **Costi anno 1** | **€ 108.225** | 83,9% |
-| **Margine lordo anno 1** | **€ 20.725** | **16,1%** |
-| Cloud ricorrenti (pass-through, senza margine) | € 50.098 | — |
+| **Ricavi anno 1** | **€ 133.550** | 100% |
+| **Costi anno 1** | **€ 112.225** | 84,0% |
+| **Margine lordo anno 1** | **€ 21.325** | **16,0%** |
+| Cloud ricorrenti (pass-through, senza margine) | € 67.853 | — |
 
-**Scomposizione del margine € 20.725:**
+**Scomposizione del margine € 21.325:**
 
 | Componente | Importo |
 |------------|:------:|
-| Ricarico 15% su forniture (D) | € 10.725 |
+| Ricarico 15% su forniture (D) | € 11.325 |
 | Margine su manodopera (sistemista 55gg × €220 + PM 17gg × €300 + cons. 10gg × €280) | € 20.100 |
 | Costo trasferta (pari al fatturato, margine zero) | € 0 |
-| **Margine complessivo** | **~€ 30.825** |
+| **Margine complessivo** | **~€ 31.425** |
 
-*Il margine complessivo è superiore al margine lordo perché una parte dei costi del lavoro (B1) è già nei costi azienda. Il calcolo corretto: Ricavi totali (€128.950) - Costi totali azienda (€108.225) = €20.725.*
+*Il margine complessivo è superiore al margine lordo perché una parte dei costi del lavoro (B1) è già nei costi azienda. Il calcolo corretto: Ricavi totali (€133.550) - Costi totali azienda (€112.225) = €21.325.*
 
 ---
 
@@ -179,15 +180,15 @@ L'azienda esecutrice applica un **ricarico del 15%** sull'acquisto delle fornitu
 | Voce | Anno 1 | Anno 2 | Anno 3 |
 |------|:------:|:------:|:------:|
 | **Uscite cliente** | | | |
-| A — Forniture HW/SW (prezzo vendita) | € 82.225 | € 0 | € 0 |
+| A — Forniture HW/SW (prezzo vendita) | € 86.825 | € 0 | € 0 |
 | B — Manodopera | € 44.550 | € 0 | € 0 |
 | C — Trasferta | € 2.175 | € 0 | € 0 |
-| Cloud ricorrenti (pass-through) | € 50.098 | € 50.098 | € 50.098 |
-| **Totale uscite cliente** | **€ 179.048** | **€ 50.098** | **€ 50.098** |
+| Cloud ricorrenti (pass-through) | € 67.853 | € 67.853 | € 67.853 |
+| **Totale uscite cliente** | **€ 201.403** | **€ 67.853** | **€ 67.853** |
 | | | | |
 | Budget totale progetto | € 520.000 | | |
-| **Cumulato 3 anni** | | | **€ 279.244** |
-| **Margine residuo su budget** | | | **~€ 240.756 (46,3%)** |
+| **Cumulato 3 anni** | | | **€ 337.109** |
+| **Margine residuo su budget** | | | **~€ 182.891 (35,2%)** |
 
 ---
 
@@ -199,11 +200,11 @@ Il piano regola i pagamenti che il cliente (**TP Group**) versa all'azienda esec
 
 | Componente | Importo |
 |------------|:------:|
-| A — Forniture HW/SW (prezzo vendita) | € 82.225 |
+| A — Forniture HW/SW (prezzo vendita) | € 86.825 |
 | B — Manodopera | € 44.550 |
 | C — Trasferta | € 2.175 |
-| **Totale** | **€ 128.950** |
-| Cloud ricorrenti | € 50.098/anno (pass-through, pagamento diretto o rimborso) |
+| **Totale** | **€ 133.550** |
+| Cloud ricorrenti | € 67.853/anno (pass-through, pagamento diretto o rimborso) |
 
 ### 4.2 Milestone
 
@@ -215,9 +216,9 @@ Il piano regola i pagamenti che il cliente (**TP Group**) versa all'azienda esec
 | M3 | **Posta + File migrati** | 50 caselle su Exchange Online, MX puntato, SharePoint/OneDrive popolati, NextCloud in lettura | **€ 14.000** | 10,9% |
 | M4 | **Dynamics 365 attivo** | Sales + BC funzionanti, dati CRM/ERP/timesheet migrati, test pilota superati | **€ 17.000** | 13,2% |
 | M5 | **DevOps + MediaWiki + HPC burst** | Repos migrati, MediaWiki su Azure, CycleCloud attivo, Lustre montato, test burst 2 nodi HBv4 OK | **€ 17.000** | 13,2% |
-| M6 | **Test e accettazione** | Test di accettazione superati, formazione utenti completata, documentazione consegnata | **€ 10.000** | 7,8% |
-| M7 | **Saldo finale** | Dismissione VM legacy completata, report finale consegnato, collaudo firmato | **€ 5.950** | 4,6% |
-| | **Totale** | | **€ 128.950** | **100%** |
+| M6 | **Test e accettazione** | Test di accettazione superati, formazione utenti Fase 1 + Fase 2 completata, documentazione consegnata | **€ 14.600** | 10,9% |
+| M7 | **Saldo finale** | Dismissione VM legacy completata, report finale consegnato, collaudo firmato | **€ 5.950** | 4,5% |
+| | **Totale** | | **€ 133.550** | **100%** |
 
 ### 4.3 Cloud ricorrenti
 
@@ -228,8 +229,8 @@ I servizi cloud decorrono dall'attivazione e sono **pass-through** al costo:
 | M365 Business Premium (50 utenti) | Dal M1 | € 1.030 |
 | Dynamics 365 Sales Pro (20 utenti) | Dal M4 | € 1.126 |
 | Dynamics 365 BC Essentials (10 utenti) | Dal M4 | € 693 |
-| Azure servizi (App Service, SQL, VPN, VM, backup, HPC, Lustre) | Dal M1 | ~€ 615 |
-| **Totale cloud/mese** | | **~€ 3.464** |
+| Azure servizi (App Service, SQL, VPN, VM, backup, HPC, Lustre) | Dal M1 | ~€ 2.095 |
+| **Totale cloud/mese** | | **~€ 4.944** |
 
 **Opzioni:**
 - **A)** Il cliente attiva direttamente le subscription → nessun passaggio sull'esecutore
@@ -256,12 +257,12 @@ I servizi cloud decorrono dall'attivazione e sono **pass-through** al costo:
 | 1-2 | SAL M1 + M2 | € 40.000 | — | +€ 45.700 |
 | 1-2 | Ordine HPC + sicurezza + backup | — | ~€ 34.700 | +€ 11.000 |
 | 3-4 | SAL M3 + M4 | € 31.000 | — | +€ 42.000 |
-| 5-6 | SAL M5 + M6 | € 27.000 | € 0 (forniture già acquistate) | +€ 69.000 |
-| 7-8 | SAL M7 | € 5.950 | — | +€ 74.950 |
-| 7-10 | Pagamento stipendi/collaborazioni | — | ~€ 24.550 (costo lavoro) | +€ 50.400 |
-| 7-10 | Spese trasferta | — | ~€ 2.175 | +€ 48.225 |
+| 5-6 | SAL M5 + M6 | € 31.600 | € 0 (forniture già acquistate) | +€ 73.600 |
+| 7-8 | SAL M7 | € 5.950 | — | +€ 79.550 |
+| 7-10 | Pagamento stipendi/collaborazioni | — | ~€ 24.550 (costo lavoro) | +€ 55.000 |
+| 7-10 | Spese trasferta | — | ~€ 2.175 | +€ 52.825 |
 
-**Saldo finale anno 1:** **+€ 48.225** su € 128.950 fatturati. Il resto del margine è già stato assorbito nei costi generali aziendali (affitto, utenze, assicurazioni, formazione interna, ecc.).
+**Saldo finale anno 1:** **+€ 52.825** su € 133.550 fatturati. Il resto del margine è già stato assorbito nei costi generali aziendali (affitto, utenze, assicurazioni, formazione interna, ecc.).
 
 ---
 

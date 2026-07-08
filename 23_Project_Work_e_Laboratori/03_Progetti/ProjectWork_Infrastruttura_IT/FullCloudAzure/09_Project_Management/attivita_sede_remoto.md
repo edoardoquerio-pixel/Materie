@@ -46,10 +46,10 @@ Ogni riga del budget è analizzata confrontando ciò che è previsto a progetto 
 |---------------|:----:|:-----------------:|:-----------:|------|
 | **Rinnovo licenze cluster on-prem (3 anni)** | € 10.000 | ✅ **8 nodi HPC attivi** con licenze in scadenza | **SÌ** — rinnovo necessario | Le licenze del cluster on-prem (sistema operativo, scheduler PBS/Torque, librerie MPI, compilatori) vanno rinnovate per continuare l'operatività. Se il cluster è già sotto contratto di manutenzione, verificare la scadenza |
 | **Potenziamento InfiniBand** (cavi, switch) | € 6.000 | ✅ **InfiniBand HDR 200 Gbps** (presunto) | **Da verificare** | Le due fabbriche InfiniBand (on-prem HDR, Azure NDR 400 Gbps) sono separate e indipendenti. **Se la fabbrica on-prem HDR funziona correttamente** (cavi in buono stato, switch operativo), il potenziamento potrebbe non essere necessario subito. **Verifica in sede**: testare bit error rate sui cavi esistenti, temperatura switch. Se OK → risparmio €6.000 |
-| **HB176-96rs v4 SPOT** (200 gg × 8h) | € 2.144/anno | ❌ Non esistente | **SÌ** | Nuovo servizio cloud, nessuna alternativa on-prem |
-| **CycleCloud head node D2s_v3** (24/7) | € 360/anno | ❌ Non esistente | **SÌ** | Nuovo servizio cloud |
+| **HB176-96rs v4 SPOT** (8 nodi × 200 gg × 8h) | € 19.341/anno | ❌ Non esistente | **SÌ** | Nuovo servizio cloud, nessuna alternativa on-prem |
+| **CycleCloud head node D2s_v3** (24/7 PAYG) | € 918/anno | ❌ Non esistente | **SÌ** | Nuovo servizio cloud |
 | **Azure Managed Lustre 4 TB** | € 960/anno | ❌ Non esistente | **SÌ** | Nuovo servizio cloud |
-| **Subtotale HPC** | **€ 16.000 + € 3.464/anno** | | **Risparmio potenziale:** ~€ 6.000 | Se InfiniBand on-prem non necessita upgrade |
+| **Subtotale HPC** | **€ 16.000 + € 21.219/anno** | | **Risparmio potenziale:** ~€ 6.000 | Se InfiniBand on-prem non necessita upgrade |
 
 ### Pondus su Azure
 

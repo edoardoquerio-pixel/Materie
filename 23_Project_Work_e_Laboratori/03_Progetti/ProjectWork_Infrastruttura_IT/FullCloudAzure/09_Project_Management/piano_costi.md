@@ -5,10 +5,10 @@
 | Voce | Budget |
 |---|---|
 | Budget totale progetto | € 520.000 |
-| Investimento iniziale (una tantum) | € 78.200 |
-| Servizi cloud anno 1 | € 46.498 |
-| **Totale anno 1** | **€ 124.698** |
-| **Margine residuo** | **~€ 395.302** |
+| Investimento iniziale (una tantum) | € 82.200 |
+| Servizi cloud anno 1 | € 64.253 |
+| **Totale anno 1** | **€ 146.453** |
+| **Margine residuo** | **~€ 391.302** |
 
 ## Costi per area
 
@@ -30,11 +30,11 @@
 | **Cluster HPC** | | |
 | Rinnovo licenze cluster on-prem (3 anni) | € 10.000 | — |
 | Potenziamento InfiniBand | € 6.000 | — |
-| Azure CycleCloud HB176-96rs v4 (200 gg SPOT) | — | € 2.144 |
-| Azure CycleCloud head node D2s_v3 (24/7) | — | € 360 |
+| Azure CycleCloud HB176-96rs v4 SPOT (8 nodi × 8h × 200gg) | — | € 19.341 |
+| Azure CycleCloud head node D2s_v3 (24/7 PAYG) | — | € 918 |
 | Azure Managed Lustre 4 TB | — | € 960 |
-| *Subtotale (senza ER)* | *€ 16.000* | *€ 3.464* |
-| *Subtotale (con ER)* | *€ 16.000* | *€ 7.064* |
+| *Subtotale (senza ER)* | *€ 16.000* | *€ 21.219* |
+| *Subtotale (con ER)* | *€ 16.000* | *€ 24.819* |
 | **Pondus su Azure** | | |
 | Analisi compatibilità codice | € 2.000 | — |
 | Adattamento codice (se necessario) | € 10.000 (media) | — |
@@ -71,16 +71,17 @@
 | Sistemista (55 giorni × €500) — extra budget | — | € 27.500 |
 | *Subtotale (extra budget)* | *€ 0* | *€ 38.550* |
 | **Formazione** | | |
-| Formazione utenti | € 3.000 | — |
+| Formazione utenti base (M365, Dynamics, Teams, amministratori) | € 3.000 | — |
+| Formazione nuova infrastruttura TP_Group (7 moduli: rete, Azure, DevOps, HPC, backup, sicurezza) | € 4.000 | — |
 | Documentazione | € 2.000 | — |
-| *Subtotale* | *€ 5.000* | *€ 0* |
+| *Subtotale* | *€ 9.000* | *€ 0* |
 
 ## Riepilogo
 
 | Categoria | Una tantum | Ricorrente/anno |
 |---|---|---|
-| Infrastruttura e servizi (A) | € 86.000 | € 40.914 |
+| Infrastruttura e servizi (A) | € 90.000 | € 58.669 |
 | Risorse interne (B) — extra budget | € 0 | € 38.550 |
-| **Totale A + B anno 1** | **€ 86.000** | **€ 79.464** |
+| **Totale A + B anno 1** | **€ 90.000** | **€ 97.219** |
 | Budget disponibile | € 520.000 | |
-| **Margine residuo** | | **~€ 354.536** |
+| **Margine residuo** | | **~€ 332.781** |
