@@ -94,3 +94,7 @@ jobs:
             sudo /tmp/bats/install.sh /usr/local
           fi
           echo "$bats_files" | tr '\n' ' ' | xargs bats
+
+            sudo /tmp/bats/install.sh /usr/local
+          fi
+          echo "$bats_files" | tr '\n' ' ' | xargs bats
