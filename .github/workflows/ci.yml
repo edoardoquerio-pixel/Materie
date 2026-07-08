@@ -15,7 +15,7 @@ jobs:
 
       - name: Validate JSON files
         run: |
-          files=$(find . -name '*.json' -not -path './.git/*' -type f)
+          files=$(find . -name '*.json' -not -path './.git/*' -not -path './.vscode/*' -type f)
           if [ -z "$files" ]; then
             echo "No JSON files found"
           else
