@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: main
-          submodules: 'false'
+          submodules: 'recursive'  # ← clona anche i submodule
 
       - name: Configure git identity
         run: |
@@ -36,8 +36,33 @@ jobs:
           cp .gitmodules .gitmodules.forkbak 2>/dev/null || true
           cp .github/workflows/sync-upstream.yml .sync-upstream.bak 2>/dev/null || true
 
-          # Merge from upstream (allow failure on conflicts)
-          git merge upstream/main --no-edit --no-commit 2>/dev/null || true
+          # Initialize submodule if upstream touched it but it's empty
+          git submodule update --init --recursive || true
+
+          # Merge from upstream with strategy to prefer our version on conflicts
+          # For binary files (PDFs) and submodule, keep our fork's version
+          git merge upstream/main --no-edit --no-commit -X ours || true
+
+          # Handle the submodule conflict explicitly: keep our version
+          if [ -f .gitmodules ]; then
+            git checkout --ours 17_Container_Docker_Kubernetes || true
+            git add 17_Container_Docker_Kubernetes || true
+          fi
+
+          # Remove upstream workflow files — we don't need them in the fork
+          # Handle ci.yml modify/delete conflict: keep deleted (our version)
+          for f in ci.yml release.yml security.yml sync-gitlab.yml; do
+            git rm -f ".github/workflows/$f" 2>/dev/null || true
+            rm -f ".github/workflows/$f" 2>/dev/null || true
+          done
+
+          # Resolve remaining text conflicts automatically where possible
+          # If .gitignore or other files still conflict, prefer ours
+          git diff --name-only --diff-filter=U | while read -r file; do
+            echo "Resolving conflict in $file (keeping ours)"
+            git checkout --ours "$file" || true
+            git add "$file" || true
+          done
 
           # Restore our .gitmodules (upstream doesn't have submodules)
           if [ -f .gitmodules.forkbak ]; then
@@ -45,20 +70,22 @@ jobs:
             rm .gitmodules.forkbak
           fi
 
-          # Remove upstream workflow files — we don't need them in the fork
-          for f in ci.yml release.yml security.yml sync-gitlab.yml; do
-            git rm --cached ".github/workflows/$f" 2>/dev/null || true
-            rm -f ".github/workflows/$f" 2>/dev/null || true
-          done
-
           # Restore our sync workflow (in case upstream ever adds it)
           if [ -f .sync-upstream.bak ]; then
+            mkdir -p .github/workflows
             cp .sync-upstream.bak .github/workflows/sync-upstream.yml
             rm .sync-upstream.bak
           fi
 
+          # Add all changes
           git add -A
-          git commit -m "sync: merge upstream changes" 2>/dev/null || echo "Nothing new to merge"
+
+          # Commit if there are changes
+          if git diff --cached --quiet; then
+            echo "Nothing new to merge"
+          else
+            git commit -m "sync: merge upstream changes"
+          fi
 
       - name: Push changes to fork
         run: |
