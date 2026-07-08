@@ -21,7 +21,7 @@ jobs:
           else
             echo "$files" | while read -r f; do
               echo "Validating: $f"
-              python3 -m json.tool "$f" || exit 1
+              python3 -c "import json,sys; json.load(open('$f', encoding='utf-8-sig'))" || exit 1
             done
           fi
 
