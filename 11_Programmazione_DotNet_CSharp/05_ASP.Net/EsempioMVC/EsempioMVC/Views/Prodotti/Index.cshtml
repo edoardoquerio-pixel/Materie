@@ -1,0 +1,12 @@
+@model List<Prodotto>
+@*
+ For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+}
+
+<h1>Elenco Prodotti</h1>
+<p>Elenco Prodotti</p>
+@foreach (var item in Model)
+{
+<p>@item.ToString() - <a href="~/Prodotti/Details?codice=@item.Codice">Dettagli</a></p>
+}

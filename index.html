@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Azure E2E Lab - Frontend</title>
+    <style>
+        body {font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5;}
+        .container {max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);}
+        h1 {color: #0078d4; text-align: center;}
+        .section {margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 6px;}
+        label {display: block; margin-bottom: 5px; font-weight: bold;}
+        input, textarea {width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;}
+        textarea {min-height: 80px; resize: vertical;}
+        button {background: #0078d4; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer;}
+        button:hover {background: #005a9e;}
+        #result {margin-top: 15px; padding: 10px; border-radius: 4px;}
+        .success {background: #d4edda; color: #155724; border: 1px solid #c3e6cb;}
+        .error {background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;}
+        #messages {margin-top: 20px;}
+        .msg {background: #f9f9f9; border-left: 4px solid #0078d4; padding: 10px; margin: 10px 0;}
+        .msg-author {font-weight: bold; color: #0078d4;}
+        .msg-time {font-size: 0.9em; color: #666;}
+        .msg-content {margin-top: 5px;}
+        .empty {text-align: center; color: #666; font-style: italic; padding: 20px;}
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Demo App: Azure Functions + Cosmos DB</h1>
+
+    <div class="section">
+        <h2>Invia una nuova richiesta</h2>
+        <form id="msgForm">
+            <div>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="utente" placeholder="Inserisci il tuo nome" required>
+            </div>
+            <div>
+                <label for="messaggio">Messaggio:</label>
+                <textarea id="messaggio" name="messaggio" rows="3" placeholder="Scrivi il tuo messaggio" required></textarea>
+            </div>
+            <button type="submit">Invia</button>
+        </form>
+        <div id="formResult"></div>
+    </div>
+
+    <div class="section">
+        <h2>Messaggi Ricevuti</h2>
+        <button id="btnRefresh">Aggiorna</button>
+        <div id="messages"></div>
+    </div>
+</div>
+
+<script>
+    // Configuration
+    const config = {
+        functionApiUrl: 'https://funcapp-e2e07171436.azurewebsites.net' // Replace with your function app URL
+    };
+
+    const form = document.getElementById('msgForm');
+    const formResult = document.getElementById('formResult');
+    const btnRefresh = document.getElementById('btnRefresh');
+    const messagesDiv = document.getElementById('messages');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const nome = document.getElementById('nome').value.trim();
+        const messaggio = document.getElementById('messaggio').value.trim();
+
+        if (!nome || !messaggio) {
+            showResult('Inserisci sia nome che messaggio', 'error');
+            return;
+        }
+
+        // Disable button
+        const btn = e.target.querySelector('button');
+        btn.disabled = true;
+        btn.textContent = 'Invio...';
+
+        try {
+            const resp = await fetch(`${config.functionApiUrl}/api/crea_richiesta`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({utente: nome, messaggio: messaggio})
+            });
+            if (!resp.ok) {
+                const errText = await resp.text();
+                throw new Error(`Errore ${resp.status}: ${errText}`);
+            }
+            const data = await resp.json();
+            showResult(`Messaggio inviato! ID: ${data.id}`, 'success');
+            form.reset();
+            await loadMessages();
+        } catch (err) {
+            showResult(`Errore: ${err.message}`, 'error');
+            console.error(err);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = 'Invia';
+        }
+    });
+
+    async function loadMessages() {
+        messagesDiv.innerHTML = '<p>Caricamento...</p>';
+        try {
+            const resp = await fetch(`${config.functionApiUrl}/api/lista_richieste`);
+            if (!resp.ok) {
+                throw new Error(`Errore ${resp.status}: ${await resp.text()}`);
+            }
+            const data = await resp.json();
+            renderMessages(data);
+        } catch (err) {
+            messagesDiv.innerHTML = `<p style="color:red;">Errore: ${err.message}</p>`;
+            console.error(err);
+        }
+    }
+
+    function renderMessages(items) {
+        if (items.length === 0) {
+            messagesDiv.innerHTML = '<p class="empty">Nessun messaggio ancora.</p>';
+            return;
+        }
+        // Sort by date descending
+        const sorted = [...items].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        const container = document.createElement('div');
+        // Show max 100
+        const toShow = sliced.slice(0, 100);
+        toShow.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'msg';
+            const date = new Date(item.timestamp);
+            const timeStr = date.toLocaleString('it-IT');
+            const escapedUser = String(item.utente).replace(/[&<>"']/g, c => ({
+                '&': '&',
+                '<': '<',
+                '>': '>',
+                '"': '"',
+                "'": "'"
+            }[c]));
+            const escapedMsg = String(item.messaggio).replace(/[&<>"']/g, c => ({
+                '&': '&',
+                '<': '<',
+                '>': '>',
+                '"': '"',
+                "'": "'"
+            }[c]));
+            div.innerHTML = `<div class="msg-author">${escapedUser}</div><div class="msg-time">${timeStr}</div><div class="msg-content">${escapedMsg}</div>`;
+            container.appendChild(div);
+        });
+        messagesDiv.innerHTML = '';
+        messagesDiv.appendChild(container);
+    }
+
+    btnRefresh.addEventListener('click', loadMessages);
+    // Load on start
+    window.addEventListener('load', loadMessages);
+</script>
+</body>
+</html>

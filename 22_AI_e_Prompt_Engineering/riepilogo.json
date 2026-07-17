@@ -1,0 +1,30 @@
+[
+  {
+    "timestamp": "2026-07-16T09:11:58",
+    "servizio": "app-db",
+    "severità": "FATAL",
+    "messaggio": "Nessun spazio lasciato sul dispositivo per il database",
+    "e_causa_radice": true
+  },
+  {
+    "timestamp": "2026-07-16T09:11:58",
+    "servizio": "app-db",
+    "severità": "LOG",
+    "messaggio": "Il database PostgreSQL si è spento per mancanza di spazio",
+    "e_causa_radice": true
+  },
+  {
+    "timestamp": "2026-07-16T09:12:03",
+    "servizio": "app-backend",
+    "severità": "ERROR",
+    "messaggio": "Spring Boot ha fallito l'avvio per connessione rifiutata",
+    "e_causa_radice": true
+  },
+  {
+    "timestamp": "2026-07-16T09:12:04",
+    "servizio": "nginx",
+    "severità": "WARN",
+    "messaggio": "Errore di connessione al backend rifiutato da upstream 172.18.0.5:8080",
+    "e_causa_radice": true
+  }
+]

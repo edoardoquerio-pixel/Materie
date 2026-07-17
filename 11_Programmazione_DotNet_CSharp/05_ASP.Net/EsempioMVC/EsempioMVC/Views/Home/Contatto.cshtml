@@ -1,0 +1,50 @@
+﻿@model EsempioMVC.Models.Prodotto
+
+@{
+    ViewData["Title"] = "Contatto";
+}
+
+<h1>Contatto</h1>
+
+<h4>Prodotto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Contatto">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Codice" class="control-label"></label>
+                <input asp-for="Codice" class="form-control" />
+                <span asp-validation-for="Codice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Denominazione" class="control-label"></label>
+                <input asp-for="Denominazione" class="form-control" />
+                <span asp-validation-for="Denominazione" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descrizione" class="control-label"></label>
+                <input asp-for="Descrizione" class="form-control" />
+                <span asp-validation-for="Descrizione" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prezzo" class="control-label"></label>
+                <input asp-for="Prezzo" class="form-control" />
+                <span asp-validation-for="Prezzo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Giacenza" class="control-label"></label>
+                <input asp-for="Giacenza" class="form-control" />
+                <span asp-validation-for="Giacenza" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

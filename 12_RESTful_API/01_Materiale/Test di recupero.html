@@ -11,7 +11,7 @@
 //<![CDATA[
 var M = {}; M.yui = {};
 M.pageloadstarttime = new Date();
-M.cfg = {"wwwroot":"https:\/\/fad.its-ictpiemonte.it","sesskey":"pJF3jHw0R0","sessiontimeout":"28800","themerev":"1703178611","slasharguments":1,"theme":"snap","iconsystemmodule":"core\/icon_system_fontawesome","jsrev":"1702224476","admin":"admin","svgicons":true,"usertimezone":"Europa\/Roma","contextid":84087,"langrev":1782439383,"templaterev":"1702224476"};var yui1ConfigFn = function(me) {if(/-skin|reset|fonts|grids|base/.test(me.name)){me.type='css';me.path=me.path.replace(/\.js/,'.css');me.path=me.path.replace(/\/yui2-skin/,'/assets/skins/sam/yui2-skin')}};
+M.cfg = {"wwwroot":"https:\/\/fad.its-ictpiemonte.it","sesskey":"UgIJJAGxzq","sessiontimeout":"28800","themerev":"1703178611","slasharguments":1,"theme":"snap","iconsystemmodule":"core\/icon_system_fontawesome","jsrev":"1702224476","admin":"admin","svgicons":true,"usertimezone":"Europa\/Roma","contextid":84087,"langrev":1782439383,"templaterev":"1702224476"};var yui1ConfigFn = function(me) {if(/-skin|reset|fonts|grids|base/.test(me.name)){me.type='css';me.path=me.path.replace(/\.js/,'.css');me.path=me.path.replace(/\/yui2-skin/,'/assets/skins/sam/yui2-skin')}};
 var yui2ConfigFn = function(me) {var parts=me.name.replace(/^moodle-/,'').split('-'),component=parts.shift(),module=parts[0],min='-min';if(/-(skin|core)$/.test(me.name)){parts.pop();me.type='css';min=''}
 if(module){var filename=parts.join('-');me.path=component+'/'+module+'/'+filename+min+'.'+me.type}else{me.path=component+'/'+component+'.'+me.type}};
 YUI_config = {"debug":false,"base":"https:\/\/fad.its-ictpiemonte.it\/lib\/yuilib\/3.17.2\/","comboBase":"https:\/\/fad.its-ictpiemonte.it\/theme\/yui_combo.php?","combine":true,"filter":null,"insertBefore":"firstthemesheet","groups":{"yui2":{"base":"https:\/\/fad.its-ictpiemonte.it\/lib\/yuilib\/2in3\/2.9.0\/build\/","comboBase":"https:\/\/fad.its-ictpiemonte.it\/theme\/yui_combo.php?","combine":true,"ext":false,"root":"2in3\/2.9.0\/build\/","patterns":{"yui2-":{"group":"yui2","configFn":yui1ConfigFn}}},"moodle":{"name":"moodle","base":"https:\/\/fad.its-ictpiemonte.it\/theme\/yui_combo.php?m\/1702224476\/","combine":true,"comboBase":"https:\/\/fad.its-ictpiemonte.it\/theme\/yui_combo.php?","ext":false,"root":"m\/1702224476\/","patterns":{"moodle-":{"group":"moodle","configFn":yui2ConfigFn}},"filter":null,"modules":{"moodle-core-handlebars":{"condition":{"trigger":"handlebars","when":"after"}},"moodle-core-chooserdialogue":{"requires":["base","panel","moodle-core-notification"]},"moodle-core-actionmenu":{"requires":["base","event","node-event-simulate"]},"moodle-core-event":{"requires":["event-custom"]},"moodle-core-tooltip":{"requires":["base","node","io-base","moodle-core-notification-dialogue","json-parse","widget-position","widget-position-align","event-outside","cache-base"]},"moodle-core-notification":{"requires":["moodle-core-notification-dialogue","moodle-core-notification-alert","moodle-core-notification-confirm","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-core-notification-dialogue":{"requires":["base","node","panel","escape","event-key","dd-plugin","moodle-core-widget-focusafterclose","moodle-core-lockscroll"]},"moodle-core-notification-alert":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-confirm":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-exception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-ajaxexception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-maintenancemodetimer":{"requires":["base","node"]},"moodle-core-blocks":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification"]},"moodle-core-languninstallconfirm":{"requires":["base","node","moodle-core-notification-confirm","moodle-core-notification-alert"]},"moodle-core-dragdrop":{"requires":["base","node","io","dom","dd","event-key","event-focus","moodle-core-notification"]},"moodle-core-popuphelp":{"requires":["moodle-core-tooltip"]},"moodle-core-formchangechecker":{"requires":["base","event-focus","moodle-core-event"]},"moodle-core-lockscroll":{"requires":["plugin","base-build"]},"moodle-core_availability-form":{"requires":["base","node","event","event-delegate","panel","moodle-core-notification-dialogue","json"]},"moodle-backup-confirmcancel":{"requires":["node","node-event-simulate","moodle-core-notification-confirm"]},"moodle-backup-backupselectall":{"requires":["node","event","node-event-simulate","anim"]},"moodle-course-categoryexpander":{"requires":["node","event-key"]},"moodle-course-management":{"requires":["base","node","io-base","moodle-core-notification-exception","json-parse","dd-constrain","dd-proxy","dd-drop","dd-delegate","node-event-delegate"]},"moodle-course-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-course-coursebase","moodle-course-util"]},"moodle-course-util":{"requires":["node"],"use":["moodle-course-util-base"],"submodules":{"moodle-course-util-base":{},"moodle-course-util-section":{"requires":["node","moodle-course-util-base"]},"moodle-course-util-cm":{"requires":["node","moodle-course-util-base"]}}},"moodle-course-formatchooser":{"requires":["base","node","node-event-simulate"]},"moodle-form-dateselector":{"requires":["base","node","overlay","calendar"]},"moodle-form-shortforms":{"requires":["node","base","selector-css3","moodle-core-event"]},"moodle-form-passwordunmask":{"requires":[]},"moodle-question-searchform":{"requires":["base","node"]},"moodle-question-preview":{"requires":["base","dom","event-delegate","event-key","core_question_engine"]},"moodle-question-chooser":{"requires":["moodle-core-chooserdialogue"]},"moodle-availability_completion-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_date-form":{"requires":["base","node","event","io","moodle-core_availability-form"]},"moodle-availability_grade-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_group-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_grouping-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_profile-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-mod_assign-history":{"requires":["node","transition"]},"moodle-mod_attendance-groupfilter":{"requires":["base","node"]},"moodle-mod_quiz-toolboxes":{"requires":["base","node","event","event-key","io","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-slot","moodle-core-notification-ajaxexception"]},"moodle-mod_quiz-modform":{"requires":["base","node","event"]},"moodle-mod_quiz-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-base","moodle-mod_quiz-util-page","moodle-mod_quiz-util-slot","moodle-course-util"]},"moodle-mod_quiz-util":{"requires":["node","moodle-core-actionmenu"],"use":["moodle-mod_quiz-util-base"],"submodules":{"moodle-mod_quiz-util-base":{},"moodle-mod_quiz-util-slot":{"requires":["node","moodle-mod_quiz-util-base"]},"moodle-mod_quiz-util-page":{"requires":["node","moodle-mod_quiz-util-base"]}}},"moodle-mod_quiz-questionchooser":{"requires":["moodle-core-chooserdialogue","moodle-mod_quiz-util","querystring-parse"]},"moodle-mod_quiz-autosave":{"requires":["base","node","event","event-valuechange","node-event-delegate","io-form"]},"moodle-mod_quiz-quizbase":{"requires":["base","node"]},"moodle-message_airnotifier-toolboxes":{"requires":["base","node","io"]},"moodle-filter_glossary-autolinker":{"requires":["base","node","io-base","json-parse","event-delegate","overlay","moodle-core-event","moodle-core-notification-alert","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-filter_mathjaxloader-loader":{"requires":["moodle-core-event"]},"moodle-editor_atto-rangy":{"requires":[]},"moodle-editor_atto-editor":{"requires":["node","transition","io","overlay","escape","event","event-simulate","event-custom","node-event-html5","node-event-simulate","yui-throttle","moodle-core-notification-dialogue","moodle-core-notification-confirm","moodle-editor_atto-rangy","handlebars","timers","querystring-stringify"]},"moodle-editor_atto-plugin":{"requires":["node","base","escape","event","event-outside","handlebars","event-custom","timers","moodle-editor_atto-menu"]},"moodle-editor_atto-menu":{"requires":["moodle-core-notification-dialogue","node","event","event-custom"]},"moodle-report_eventlist-eventfilter":{"requires":["base","event","node","node-event-delegate","datatable","autocomplete","autocomplete-filters"]},"moodle-report_loglive-fetchlogs":{"requires":["base","event","node","io","node-event-delegate"]},"moodle-gradereport_grader-gradereporttable":{"requires":["base","node","event","handlebars","overlay","event-hover"]},"moodle-gradereport_history-userselector":{"requires":["escape","event-delegate","event-key","handlebars","io-base","json-parse","moodle-core-notification-dialogue"]},"moodle-tool_capability-search":{"requires":["base","node"]},"moodle-tool_lp-dragdrop-reorder":{"requires":["moodle-core-dragdrop"]},"moodle-tool_monitor-dropdown":{"requires":["base","event","node"]},"moodle-assignfeedback_editpdf-editor":{"requires":["base","event","node","io","graphics","json","event-move","event-resize","transition","querystring-stringify-simple","moodle-core-notification-dialog","moodle-core-notification-alert","moodle-core-notification-warning","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-atto_accessibilitychecker-button":{"requires":["color-base","moodle-editor_atto-plugin"]},"moodle-atto_accessibilityhelper-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_align-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_bold-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_charmap-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_clear-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_collapse-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_emojipicker-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_emoticon-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_equation-button":{"requires":["moodle-editor_atto-plugin","moodle-core-event","io","event-valuechange","tabview","array-extras"]},"moodle-atto_h5p-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_html-codemirror":{"requires":["moodle-atto_html-codemirror-skin"]},"moodle-atto_html-beautify":{},"moodle-atto_html-button":{"requires":["promise","moodle-editor_atto-plugin","moodle-atto_html-beautify","moodle-atto_html-codemirror","event-valuechange"]},"moodle-atto_image-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_indent-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_italic-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_link-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-usedfiles":{"requires":["node","escape"]},"moodle-atto_managefiles-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_media-button":{"requires":["moodle-editor_atto-plugin","moodle-form-shortforms"]},"moodle-atto_noautolink-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_orderedlist-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_recordrtc-recording":{"requires":["moodle-atto_recordrtc-button"]},"moodle-atto_recordrtc-button":{"requires":["moodle-editor_atto-plugin","moodle-atto_recordrtc-recording"]},"moodle-atto_rtl-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_strike-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_subscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_superscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_table-button":{"requires":["moodle-editor_atto-plugin","moodle-editor_atto-menu","event","event-valuechange"]},"moodle-atto_title-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_underline-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_undo-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_unorderedlist-button":{"requires":["moodle-editor_atto-plugin"]}}},"gallery":{"name":"gallery","base":"https:\/\/fad.its-ictpiemonte.it\/lib\/yuilib\/gallery\/","combine":true,"comboBase":"https:\/\/fad.its-ictpiemonte.it\/theme\/yui_combo.php?","ext":false,"root":"gallery\/1702224476\/","patterns":{"gallery-":{"group":"gallery"}}}},"modules":{"core_filepicker":{"name":"core_filepicker","fullpath":"https:\/\/fad.its-ictpiemonte.it\/lib\/javascript.php\/1702224476\/repository\/filepicker.js","requires":["base","node","node-event-simulate","json","async-queue","io-base","io-upload-iframe","io-form","yui2-treeview","panel","cookie","datatable","datatable-sort","resize-plugin","dd-plugin","escape","moodle-core_filepicker","moodle-core-notification-dialogue"]},"core_comment":{"name":"core_comment","fullpath":"https:\/\/fad.its-ictpiemonte.it\/lib\/javascript.php\/1702224476\/comment\/comment.js","requires":["base","io-base","node","json","yui2-animation","overlay","escape"]},"mathjax":{"name":"mathjax","fullpath":"https:\/\/cdn.jsdelivr.net\/npm\/mathjax@2.7.8\/MathJax.js?delayStartupUntil=configured"}}};
@@ -57,7 +57,7 @@ document.body.className += ' jsenabled';
     <div class="popover-region-toggle nav-link icon-no-margin"
         data-region="popover-region-toggle"
         role="button"
-        aria-controls="popover-region-container-6a4d26135dc386a4d26135af484"
+        aria-controls="popover-region-container-6a4e1dbdbfb166a4e1dbdbd1304"
         aria-haspopup="true"
         aria-label="Visualizza la finestra delle notifiche senza notifiche nuove"
         tabindex="0">
@@ -67,7 +67,7 @@ document.body.className += ' jsenabled';
 
     </div>
     <div 
-        id="popover-region-container-6a4d26135dc386a4d26135af484"
+        id="popover-region-container-6a4e1dbdbfb166a4e1dbdbd1304"
         class="popover-region-container"
         data-region="popover-region-container"
         aria-expanded="false"
@@ -138,7 +138,7 @@ document.body.className += ' jsenabled';
                     <a id="snap-pm-dashboard" href="https://fad.its-ictpiemonte.it/my">Dashboard</a>
                     <a id="snap-pm-grades" href="https://fad.its-ictpiemonte.it/grade/report/overview/index.php">Valutazioni</a>
                     <a id="snap-pm-preferences" href="https://fad.its-ictpiemonte.it/user/preferences.php">Preferenze</a>
-                    <a id="snap-pm-logout" href="https://fad.its-ictpiemonte.it/login/logout.php?sesskey=pJF3jHw0R0">Esci</a>
+                    <a id="snap-pm-logout" href="https://fad.its-ictpiemonte.it/login/logout.php?sesskey=UgIJJAGxzq">Esci</a>
                 </div>
             </div>
 
@@ -580,7 +580,7 @@ document.body.className += ' jsenabled';
                             <div class="dropdown-menu dropdown-menu-right menu align-tr-br" id="action-menu-0-menu" data-rel="menu-content" aria-labelledby="action-menu-toggle-0" role="menu" data-align="tr-br">
                                             <div class="dropdown-item">
 
-    <a href="https://fad.its-ictpiemonte.it/mod/questionnaire/complete.php?id=58170" id="action_link6a4d26135af485" class=""  role="menuitem" ><i class="icon fa fa-info fa-fw "  title="answerquestions" aria-label="answerquestions"></i>Rispondi alle domande...</a>
+    <a href="https://fad.its-ictpiemonte.it/mod/questionnaire/complete.php?id=58170" id="action_link6a4e1dbdbd1305" class=""  role="menuitem" ><i class="icon fa fa-info fa-fw "  title="answerquestions" aria-label="answerquestions"></i>Rispondi alle domande...</a>
 
 
 
@@ -608,8 +608,8 @@ document.body.className += ' jsenabled';
 </div>
     <div class="col-md-4">        <div class="mdl-align">
             <div class="urlselect">
-    <form method="post" action="https://fad.its-ictpiemonte.it/course/jumpto.php" class="form-inline" id="url_select_f6a4d26135af486">
-        <input type="hidden" name="sesskey" value="pJF3jHw0R0">
+    <form method="post" action="https://fad.its-ictpiemonte.it/course/jumpto.php" class="form-inline" id="url_select_f6a4e1dbdbd1306">
+        <input type="hidden" name="sesskey" value="UgIJJAGxzq">
             <label for="jump-to-activity" class="sr-only">
                 Vai a...
             </label>
@@ -675,7 +675,7 @@ document.body.className += ' jsenabled';
 
 
         <div class="card-text content mt-3">
-            <div id="settingsnav" class="box py-3 block_tree_box"><ul class="block_tree list" role="tree" data-ajax-loader="block_navigation/site_admin_loader"><li class="type_setting depth_1 contains_branch" tabindex="-1" role="treeitem" aria-expanded="true" aria-owns="random6a4d26135af481_group"><p class="tree_item root_node tree_item branch"><span tabindex="0">Amministrazione del Questionario</span></p><ul id="random6a4d26135af481_group" role="group"><li class="type_setting depth_2 item_with_icon" tabindex="-1" role="treeitem"><p class="tree_item hasicon tree_item leaf"><a href="https://fad.its-ictpiemonte.it/mod/questionnaire/complete.php?id=58170"><i class="icon fa fa-info fa-fw navicon"  title="answerquestions" aria-label="answerquestions"></i>Rispondi alle domande...</a></p></li></ul></li></ul></div>
+            <div id="settingsnav" class="box py-3 block_tree_box"><ul class="block_tree list" role="tree" data-ajax-loader="block_navigation/site_admin_loader"><li class="type_setting depth_1 contains_branch" tabindex="-1" role="treeitem" aria-expanded="true" aria-owns="random6a4e1dbdbd1301_group"><p class="tree_item root_node tree_item branch"><span tabindex="0">Amministrazione del Questionario</span></p><ul id="random6a4e1dbdbd1301_group" role="group"><li class="type_setting depth_2 item_with_icon" tabindex="-1" role="treeitem"><p class="tree_item hasicon tree_item leaf"><a href="https://fad.its-ictpiemonte.it/mod/questionnaire/complete.php?id=58170"><i class="icon fa fa-info fa-fw navicon"  title="answerquestions" aria-label="answerquestions"></i>Rispondi alle domande...</a></p></li></ul></li></ul></div>
             <div class="footer"></div>
             
         </div>
@@ -690,7 +690,7 @@ document.body.className += ' jsenabled';
 </div>
 
 <div
-    id="drawer-6a4d26136c5fc6a4d26135af487"
+    id="drawer-6a4e1dbdca08a6a4e1dbdbd1307"
     class=" drawer bg-white hidden snap-drawer-headroom"
     aria-expanded="false"
     aria-hidden="true"
@@ -698,7 +698,7 @@ document.body.className += ' jsenabled';
     role="region"
     tabindex="0"
 >
-            <div id="message-drawer-6a4d26136c5fc6a4d26135af487" class="message-app" data-region="message-drawer" role="region">
+            <div id="message-drawer-6a4e1dbdca08a6a4e1dbdbd1307" class="message-app" data-region="message-drawer" role="region">
             <div class="closewidget bg-light border-bottom text-right">
                 <a class="text-dark" data-action="closedrawer" href="#"
                    title="Chiudi" aria-label="Chiudi"
@@ -887,13 +887,13 @@ document.body.className += ' jsenabled';
                             <ul class="nav nav-pills nav-fill" role="tablist">
                                 <li class="nav-item">
                                     <a
-                                        id="contacts-tab-6a4d26136c5fc6a4d26135af487"
+                                        id="contacts-tab-6a4e1dbdca08a6a4e1dbdbd1307"
                                         class="nav-link active"
-                                        href="#contacts-tab-panel-6a4d26136c5fc6a4d26135af487"
+                                        href="#contacts-tab-panel-6a4e1dbdca08a6a4e1dbdbd1307"
                                         data-toggle="tab"
                                         data-action="show-contacts-section"
                                         role="tab"
-                                        aria-controls="contacts-tab-panel-6a4d26136c5fc6a4d26135af487"
+                                        aria-controls="contacts-tab-panel-6a4e1dbdca08a6a4e1dbdbd1307"
                                         aria-selected="true"
                                     >
                                         Contatti
@@ -901,13 +901,13 @@ document.body.className += ' jsenabled';
                                 </li>
                                 <li class="nav-item">
                                     <a
-                                        id="requests-tab-6a4d26136c5fc6a4d26135af487"
+                                        id="requests-tab-6a4e1dbdca08a6a4e1dbdbd1307"
                                         class="nav-link"
-                                        href="#requests-tab-panel-6a4d26136c5fc6a4d26135af487"
+                                        href="#requests-tab-panel-6a4e1dbdca08a6a4e1dbdbd1307"
                                         data-toggle="tab"
                                         data-action="show-requests-section"
                                         role="tab"
-                                        aria-controls="requests-tab-panel-6a4d26136c5fc6a4d26135af487"
+                                        aria-controls="requests-tab-panel-6a4e1dbdca08a6a4e1dbdbd1307"
                                         aria-selected="false"
                                     >
                                         Richieste
@@ -926,10 +926,10 @@ document.body.className += ' jsenabled';
                     aria-live="polite"
                     data-region="lazy-load-list"
                     data-user-id="3925"
-                                        id="contacts-tab-panel-6a4d26136c5fc6a4d26135af487"
+                                        id="contacts-tab-panel-6a4e1dbdca08a6a4e1dbdbd1307"
                     data-section="contacts"
                     role="tabpanel"
-                    aria-labelledby="contacts-tab-6a4d26136c5fc6a4d26135af487"
+                    aria-labelledby="contacts-tab-6a4e1dbdca08a6a4e1dbdbd1307"
 
                 >
                     
@@ -963,10 +963,10 @@ document.body.className += ' jsenabled';
                     aria-live="polite"
                     data-region="lazy-load-list"
                     data-user-id="3925"
-                                        id="requests-tab-panel-6a4d26136c5fc6a4d26135af487"
+                                        id="requests-tab-panel-6a4e1dbdca08a6a4e1dbdbd1307"
                     data-section="requests"
                     role="tabpanel"
-                    aria-labelledby="requests-tab-6a4d26136c5fc6a4d26135af487"
+                    aria-labelledby="requests-tab-6a4e1dbdca08a6a4e1dbdbd1307"
 
                 >
                     
@@ -991,7 +991,7 @@ document.body.className += ' jsenabled';
                     aria-hidden="true"
                     data-region="view-conversation"
                     data-user-id="3925"
-                    data-midnight="1783375200"
+                    data-midnight="1783461600"
                     data-message-poll-min="10"
                     data-message-poll-max="120"
                     data-message-poll-after-max="300"
@@ -1321,7 +1321,7 @@ document.body.className += ' jsenabled';
                         style="overflow-y: auto"
                     ></div>
                 </div>                <div class="h-100 view-overview-body" aria-hidden="false" data-region="view-overview"  data-user-id="3925">
-                    <div id="message-drawer-view-overview-container-6a4d26136c5fc6a4d26135af487" class="d-flex flex-column h-100" style="overflow-y: auto">
+                    <div id="message-drawer-view-overview-container-6a4e1dbdca08a6a4e1dbdbd1307" class="d-flex flex-column h-100" style="overflow-y: auto">
                             
                             
                             <div
@@ -1332,9 +1332,9 @@ document.body.className += ' jsenabled';
                                     <button
                                         class="btn btn-link w-100 text-left p-1 p-sm-2 d-flex align-items-center overview-section-toggle collapsed"
                                         data-toggle="collapse"
-                                        data-target="#view-overview-favourites-target-6a4d26136c5fc6a4d26135af487"
+                                        data-target="#view-overview-favourites-target-6a4e1dbdca08a6a4e1dbdbd1307"
                                         aria-expanded="false"
-                                        aria-controls="view-overview-favourites-target-6a4d26136c5fc6a4d26135af487"
+                                        aria-controls="view-overview-favourites-target-6a4e1dbdca08a6a4e1dbdbd1307"
                                     >
                                         <span class="collapsed-icon-container">
                                             <i class="icon fa fa-caret-right fa-fw " aria-hidden="true"  ></i>
@@ -1362,9 +1362,9 @@ document.body.className += ' jsenabled';
                                 aria-live="polite"
                                 data-region="lazy-load-list"
                                 data-user-id="3925"
-                                            id="view-overview-favourites-target-6a4d26136c5fc6a4d26135af487"
+                                            id="view-overview-favourites-target-6a4e1dbdca08a6a4e1dbdbd1307"
             aria-labelledby="view-overview-favourites-toggle"
-            data-parent="#message-drawer-view-overview-container-6a4d26136c5fc6a4d26135af487"
+            data-parent="#message-drawer-view-overview-container-6a4e1dbdca08a6a4e1dbdbd1307"
 
                             >
                                 
@@ -1395,9 +1395,9 @@ document.body.className += ' jsenabled';
                                     <button
                                         class="btn btn-link w-100 text-left p-1 p-sm-2 d-flex align-items-center overview-section-toggle collapsed"
                                         data-toggle="collapse"
-                                        data-target="#view-overview-group-messages-target-6a4d26136c5fc6a4d26135af487"
+                                        data-target="#view-overview-group-messages-target-6a4e1dbdca08a6a4e1dbdbd1307"
                                         aria-expanded="false"
-                                        aria-controls="view-overview-group-messages-target-6a4d26136c5fc6a4d26135af487"
+                                        aria-controls="view-overview-group-messages-target-6a4e1dbdca08a6a4e1dbdbd1307"
                                     >
                                         <span class="collapsed-icon-container">
                                             <i class="icon fa fa-caret-right fa-fw " aria-hidden="true"  ></i>
@@ -1425,9 +1425,9 @@ document.body.className += ' jsenabled';
                                 aria-live="polite"
                                 data-region="lazy-load-list"
                                 data-user-id="3925"
-                                            id="view-overview-group-messages-target-6a4d26136c5fc6a4d26135af487"
+                                            id="view-overview-group-messages-target-6a4e1dbdca08a6a4e1dbdbd1307"
             aria-labelledby="view-overview-group-messages-toggle"
-            data-parent="#message-drawer-view-overview-container-6a4d26136c5fc6a4d26135af487"
+            data-parent="#message-drawer-view-overview-container-6a4e1dbdca08a6a4e1dbdbd1307"
 
                             >
                                 
@@ -1458,9 +1458,9 @@ document.body.className += ' jsenabled';
                                     <button
                                         class="btn btn-link w-100 text-left p-1 p-sm-2 d-flex align-items-center overview-section-toggle collapsed"
                                         data-toggle="collapse"
-                                        data-target="#view-overview-messages-target-6a4d26136c5fc6a4d26135af487"
+                                        data-target="#view-overview-messages-target-6a4e1dbdca08a6a4e1dbdbd1307"
                                         aria-expanded="false"
-                                        aria-controls="view-overview-messages-target-6a4d26136c5fc6a4d26135af487"
+                                        aria-controls="view-overview-messages-target-6a4e1dbdca08a6a4e1dbdbd1307"
                                     >
                                         <span class="collapsed-icon-container">
                                             <i class="icon fa fa-caret-right fa-fw " aria-hidden="true"  ></i>
@@ -1488,9 +1488,9 @@ document.body.className += ' jsenabled';
                                 aria-live="polite"
                                 data-region="lazy-load-list"
                                 data-user-id="3925"
-                                            id="view-overview-messages-target-6a4d26136c5fc6a4d26135af487"
+                                            id="view-overview-messages-target-6a4e1dbdca08a6a4e1dbdbd1307"
             aria-labelledby="view-overview-messages-toggle"
-            data-parent="#message-drawer-view-overview-container-6a4d26136c5fc6a4d26135af487"
+            data-parent="#message-drawer-view-overview-container-6a4e1dbdca08a6a4e1dbdbd1307"
 
                             >
                                 
@@ -1579,10 +1579,10 @@ document.body.className += ' jsenabled';
                                                 type="radio"
                                                 name="message_blocknoncontacts"
                                                 class="custom-control-input"
-                                                id="block-noncontacts-6a4d26136c5fc6a4d26135af487-1"
+                                                id="block-noncontacts-6a4e1dbdca08a6a4e1dbdbd1307-1"
                                                 value="1"
                                             >
-                                            <label class="custom-control-label ml-2" for="block-noncontacts-6a4d26136c5fc6a4d26135af487-1">
+                                            <label class="custom-control-label ml-2" for="block-noncontacts-6a4e1dbdca08a6a4e1dbdbd1307-1">
                                                 I miei contatti solamente
                                             </label>
                                         </div>
@@ -1591,10 +1591,10 @@ document.body.className += ' jsenabled';
                                                 type="radio"
                                                 name="message_blocknoncontacts"
                                                 class="custom-control-input"
-                                                id="block-noncontacts-6a4d26136c5fc6a4d26135af487-0"
+                                                id="block-noncontacts-6a4e1dbdca08a6a4e1dbdbd1307-0"
                                                 value="0"
                                             >
-                                            <label class="custom-control-label ml-2" for="block-noncontacts-6a4d26136c5fc6a4d26135af487-0">
+                                            <label class="custom-control-label ml-2" for="block-noncontacts-6a4e1dbdca08a6a4e1dbdbd1307-0">
                                                 I miei contatti e i miei compagni di corso
                                             </label>
                                         </div>
@@ -1608,8 +1608,8 @@ document.body.className += ' jsenabled';
                             <h3 class="mb-2 mt-4 h6 font-weight-bold">Generale</h3>
                             <div data-preference="entertosend">
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="enter-to-send-6a4d26136c5fc6a4d26135af487" checked>
-                                    <label class="custom-control-label" for="enter-to-send-6a4d26136c5fc6a4d26135af487">
+                                    <input type="checkbox" class="custom-control-input" id="enter-to-send-6a4e1dbdca08a6a4e1dbdbd1307" checked>
+                                    <label class="custom-control-label" for="enter-to-send-6a4e1dbdca08a6a4e1dbdbd1307">
                                         Tasto invio per spedire
                                     </label>
                                 </div>
@@ -1968,14 +1968,14 @@ require(['jquery', 'message_popup/notification_popover_controller'], function($,
                 if (!$(this).val()) {
                     return false;
                 }
-                $('#url_select_f6a4d26135af486').submit();
+                $('#url_select_f6a4e1dbdbd1306').submit();
             });
         });
     ;
 
 require(['jquery', 'core_message/message_drawer'], function($, MessageDrawer) {
-    var root = $('#message-drawer-6a4d26136c5fc6a4d26135af487');
-    MessageDrawer.init(root, '6a4d26136c5fc6a4d26135af487', false);
+    var root = $('#message-drawer-6a4e1dbdca08a6a4e1dbdbd1307');
+    MessageDrawer.init(root, '6a4e1dbdca08a6a4e1dbdbd1307', false);
 });
 ;
 M.util.js_pending('core/notification'); require(['core/notification'], function(amd) {amd.init(84087, []); M.util.js_complete('core/notification');});;
@@ -1995,7 +1995,7 @@ M.str = {"moodle":{"lastmodified":"Ultime modifiche","name":"Nome","error":"Erro
 (function() {Y.use("moodle-filter_mathjaxloader-loader",function() {M.filter_mathjaxloader.configure({"mathjaxconfig":"\nMathJax.Hub.Config({\n    config: [\"Accessible.js\", \"Safe.js\"],\n    errorSettings: { message: [\"!\"] },\n    skipStartupTypeset: true,\n    messageStyle: \"none\"\n});\n","lang":"it"});
 });
 M.util.help_popups.setup(Y);
- M.util.js_pending('random6a4d26135af488'); Y.on('domready', function() { M.util.js_complete("init");  M.util.js_complete('random6a4d26135af488'); });
+ M.util.js_pending('random6a4e1dbdbd1308'); Y.on('domready', function() { M.util.js_complete("init");  M.util.js_complete('random6a4e1dbdbd1308'); });
 })();
 //]]>
 </script>
