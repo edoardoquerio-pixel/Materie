@@ -66,9 +66,12 @@
     </div>
 
     <script>
-        // Configuration
+        // Configuration - auto-detect local vs Azure deployment
+        const isLocal = window.location.hostname === 'localhost';
         const config = {
-            functionAppUrl: 'https://funcapp-e2e07171436.azurewebsites.net' // Will be replaced if needed
+            functionAppUrl: isLocal
+                ? window.location.origin  // Use same origin (mock server)
+                : 'https://funcapp-e2e07171436.azurewebsites.net'
         };
 
         // DOM elements
@@ -173,7 +176,7 @@
 
             const container = document.createElement('div');
             // Limit to last 50 messages for performance
-            const displayMessages = sliced.slice(0, 50);
+            const displayMessages = sorted.slice(0, 50);
 
             displayMessages.forEach(msg => {
                 const card = document.createElement('div');
@@ -195,7 +198,7 @@
                     return div.innerHTML;
                 };
                 const safeUtente = escapeHtml(String(msg.utente));
-                const safeMessaggio = escapeHai(String(msg.messaggio));
+                const safeMessaggio = escapeHtml(String(msg.messaggio));
 
                 card.innerHTML = `
                     <div class="message-header">
