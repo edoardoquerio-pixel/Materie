@@ -1,0 +1,216 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|c:\\users\\edoardo.querio\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\studentimvc\\studentimvc\\views\\studenti\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|solutionrelative:studentimvc\\views\\studenti\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|c:\\users\\edoardo.querio\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\studentimvc\\studentimvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|solutionrelative:studentimvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|c:\\users\\edoardo.querio\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\studentimvc\\studentimvc\\models\\anagraficacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|solutionrelative:studentimvc\\models\\anagraficacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|c:\\users\\edoardo.querio\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\studentimvc\\studentimvc\\controllers\\studenticontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|solutionrelative:studentimvc\\controllers\\studenticontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|c:\\users\\edoardo.querio\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\studentimvc\\studentimvc\\views\\studenti\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|solutionrelative:studentimvc\\views\\studenti\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|c:\\users\\edoardo.querio\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\studentimvc\\studentimvc\\views\\studenti\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|solutionrelative:studentimvc\\views\\studenti\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|c:\\users\\edoardo.querio\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\studentimvc\\studentimvc\\views\\studenti\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|solutionrelative:studentimvc\\views\\studenti\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|c:\\users\\edoardo.querio\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\studentimvc\\studentimvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|solutionrelative:studentimvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|c:\\users\\edoardo.querio\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\studentimvc\\studentimvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|solutionrelative:studentimvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|c:\\users\\edoardo.querio\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\studentimvc\\studentimvc\\models\\studente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|solutionrelative:studentimvc\\models\\studente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|c:\\users\\edoardo.querio\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\studentimvc\\studentimvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|solutionrelative:studentimvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|c:\\users\\edoardo.querio\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\studentimvc\\studentimvc\\areas\\identity\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E16FF50-F6F1-A03A-9A17-423FA9A77BFA}|StudentiMVC\\StudentiMVC.csproj|solutionrelative:studentimvc\\areas\\identity\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Views\\Studenti\\Delete.cshtml",
+              "RelativeDocumentMoniker": "StudentiMVC\\Views\\Studenti\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Views\\Studenti\\Delete.cshtml",
+              "RelativeToolTip": "StudentiMVC\\Views\\Studenti\\Delete.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACcAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-14T15:20:41.989Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StudentiController.cs",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Controllers\\StudentiController.cs",
+              "RelativeDocumentMoniker": "StudentiMVC\\Controllers\\StudentiController.cs",
+              "ToolTip": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Controllers\\StudentiController.cs",
+              "RelativeToolTip": "StudentiMVC\\Controllers\\StudentiController.cs",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAuwIIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T15:12:17.442Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Views\\Studenti\\Details.cshtml",
+              "RelativeDocumentMoniker": "StudentiMVC\\Views\\Studenti\\Details.cshtml",
+              "ToolTip": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Views\\Studenti\\Details.cshtml",
+              "RelativeToolTip": "StudentiMVC\\Views\\Studenti\\Details.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACgAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-14T15:21:05.036Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Views\\Studenti\\Create.cshtml",
+              "RelativeDocumentMoniker": "StudentiMVC\\Views\\Studenti\\Create.cshtml",
+              "ToolTip": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Views\\Studenti\\Create.cshtml",
+              "RelativeToolTip": "StudentiMVC\\Views\\Studenti\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-14T15:19:55.573Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Views\\Studenti\\Index.cshtml",
+              "RelativeDocumentMoniker": "StudentiMVC\\Views\\Studenti\\Index.cshtml",
+              "ToolTip": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Views\\Studenti\\Index.cshtml",
+              "RelativeToolTip": "StudentiMVC\\Views\\Studenti\\Index.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABAAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-14T15:19:06.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "StudentiMVC\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "StudentiMVC\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-14T15:15:01.361Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Program.cs",
+              "RelativeDocumentMoniker": "StudentiMVC\\Program.cs",
+              "ToolTip": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Program.cs",
+              "RelativeToolTip": "StudentiMVC\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T15:06:16.496Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AnagraficaContext.cs",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Models\\AnagraficaContext.cs",
+              "RelativeDocumentMoniker": "StudentiMVC\\Models\\AnagraficaContext.cs",
+              "ToolTip": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Models\\AnagraficaContext.cs",
+              "RelativeToolTip": "StudentiMVC\\Models\\AnagraficaContext.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwCsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T15:02:41.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Studente.cs",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Models\\Studente.cs",
+              "RelativeDocumentMoniker": "StudentiMVC\\Models\\Studente.cs",
+              "ToolTip": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Models\\Studente.cs",
+              "RelativeToolTip": "StudentiMVC\\Models\\Studente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T15:01:49.193Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\appsettings.json",
+              "RelativeDocumentMoniker": "StudentiMVC\\appsettings.json",
+              "ToolTip": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\appsettings.json",
+              "RelativeToolTip": "StudentiMVC\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAACSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-14T14:51:21.108Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "StudentiMVC\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "StudentiMVC\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T14:48:33.335Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "StudentiMVC\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\edoardo.querio\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\StudentiMVC\\StudentiMVC\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
+              "RelativeToolTip": "StudentiMVC\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-14T14:47:36.378Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

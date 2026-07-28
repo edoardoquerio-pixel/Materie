@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forty Group — Presentazione Azienda</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/simple.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --r-background-color: #0f172a;
+      --r-main-font: 'Inter', sans-serif;
+      --r-heading-font: 'Inter', sans-serif;
+      --r-main-color: #e2e8f0;
+      --r-heading-color: #f8fafc;
+      --r-link-color: #38bdf8;
+      --accent-blue: #3b82f6;
+      --accent-sky: #38bdf8;
+      --accent-emerald: #34d399;
+      --accent-amber: #fbbf24;
+      --accent-rose: #fb7185;
+      --accent-violet: #a78bfa;
+      --text-muted: #94a3b8;
+      --surface: #1e293b;
+      --surface-light: #334155;
+    }
+
+    .reveal {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .reveal .slides {
+      text-align: left;
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      text-transform: none;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .reveal h1 { font-size: 2.4em; }
+    .reveal h2 { font-size: 1.6em; margin-bottom: 0.4em; }
+    .reveal h3 { font-size: 1.15em; color: var(--accent-sky); margin-bottom: 0.3em; }
+
+    .reveal .slides section {
+      padding: 40px;
+    }
+
+    /* Cover slide */
+    .cover-slide {
+      text-align: center !important;
+    }
+    .cover-slide h1 {
+      font-size: 3em;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-sky));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.2em;
+    }
+    .cover-slide .tagline {
+      font-size: 1.2em;
+      color: var(--text-muted);
+      font-weight: 300;
+      margin-bottom: 1.5em;
+    }
+    .cover-slide .meta {
+      font-size: 0.7em;
+      color: var(--text-muted);
+      margin-top: 2em;
+    }
+
+    /* Team cards */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .team-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 20px;
+      border-left: 4px solid var(--accent-blue);
+      transition: transform 0.2s;
+    }
+    .team-card:nth-child(2) { border-left-color: var(--accent-emerald); }
+    .team-card:nth-child(3) { border-left-color: var(--accent-amber); }
+    .team-card:nth-child(4) { border-left-color: var(--accent-rose); }
+    .team-card:nth-child(5) { border-left-color: var(--accent-violet); }
+    .team-card .name {
+      font-weight: 700;
+      font-size: 1.05em;
+      color: var(--r-heading-color);
+      margin-bottom: 4px;
+    }
+    .team-card .role {
+      font-weight: 500;
+      font-size: 0.85em;
+      color: var(--accent-sky);
+      margin-bottom: 8px;
+    }
+    .team-card .desc {
+      font-size: 0.75em;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Competency pills */
+    .comp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .comp-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+    .comp-card .icon {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    .comp-card h3 {
+      font-size: 1em;
+      margin-bottom: 8px;
+    }
+    .comp-card p {
+      font-size: 0.72em;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Timeline */
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 30px;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 10%;
+      right: 10%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-sky), var(--accent-emerald), var(--accent-amber));
+      border-radius: 2px;
+    }
+    .timeline-step {
+      text-align: center;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-step .dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent-blue);
+      margin: 20px auto 12px;
+      border: 3px solid var(--r-background-color);
+    }
+    .timeline-step:nth-child(2) .dot { background: var(--accent-sky); }
+    .timeline-step:nth-child(3) .dot { background: var(--accent-emerald); }
+    .timeline-step:nth-child(4) .dot { background: var(--accent-amber); }
+    .timeline-step .step-title {
+      font-weight: 700;
+      font-size: 0.85em;
+      color: var(--r-heading-color);
+    }
+    .timeline-step .step-desc {
+      font-size: 0.65em;
+      color: var(--text-muted);
+      margin-top: 6px;
+      padding: 0 8px;
+    }
+
+    /* Stats row */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-item .number {
+      font-size: 2.2em;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-sky));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-item .label {
+      font-size: 0.7em;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Benefits list */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .benefit-item {
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .benefit-item .emoji {
+      font-size: 1.4em;
+      flex-shrink: 0;
+    }
+    .benefit-item .text h4 {
+      font-size: 0.9em;
+      font-weight: 600;
+      color: var(--r-heading-color);
+      margin-bottom: 4px;
+    }
+    .benefit-item .text p {
+      font-size: 0.7em;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Proposal summary */
+    .proposal-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 0.8em;
+    }
+    .proposal-table th {
+      background: var(--surface);
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+      color: var(--accent-sky);
+      border-bottom: 2px solid var(--accent-blue);
+    }
+    .proposal-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--surface-light);
+      color: var(--r-main-color);
+    }
+    .proposal-table tr:hover td {
+      background: var(--surface);
+    }
+
+    /* Why us */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .why-item {
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 20px;
+      border-top: 3px solid var(--accent-blue);
+    }
+    .why-item:nth-child(2) { border-top-color: var(--accent-emerald); }
+    .why-item:nth-child(3) { border-top-color: var(--accent-amber); }
+    .why-item:nth-child(4) { border-top-color: var(--accent-rose); }
+    .why-item h3 {
+      font-size: 0.9em;
+      margin-bottom: 6px;
+    }
+    .why-item p {
+      font-size: 0.7em;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Next steps */
+    .steps-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+    .steps-list li {
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.85em;
+    }
+    .steps-list .step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent-blue);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9em;
+      flex-shrink: 0;
+    }
+    .steps-list .step-text strong {
+      color: var(--r-heading-color);
+    }
+    .steps-list .step-text span {
+      color: var(--text-muted);
+      font-size: 0.85em;
+    }
+
+    /* Contact slide */
+    .contact-slide {
+      text-align: center !important;
+    }
+    .contact-slide h2 {
+      font-size: 2em;
+      margin-bottom: 0.3em;
+    }
+    .contact-slide .contact-info {
+      font-size: 0.9em;
+      color: var(--text-muted);
+      margin-top: 30px;
+      line-height: 2;
+    }
+
+    /* Lists */
+    .reveal ul, .reveal ol {
+      font-size: 0.85em;
+      line-height: 1.7;
+    }
+    .reveal li {
+      margin-bottom: 0.2em;
+    }
+
+    /* Fragment tweaks */
+    .reveal .fragment.visible {
+      opacity: 1;
+    }
+
+    /* Subtle gradient border */
+    .gradient-border {
+      position: relative;
+    }
+    .gradient-border::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-sky));
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ===================== SLIDE 1: COVER ===================== -->
+      <section class="cover-slide">
+        <div>
+          <h1>Forty Group</h1>
+          <p class="tagline">Consulenza IT &bull; Cloud Architecture &bull; Infrastructure</p>
+          <p style="font-size: 0.8em; color: var(--text-muted);">Presentazione Azienda</p>
+          <div class="meta">
+            <p>Offerta Tecnico/Economica per <strong style="color: var(--accent-sky);">TP Group srl</strong></p>
+            <p>Progetto Integrazione IT &mdash; Variante Full Cloud Azure</p>
+            <p style="margin-top: 8px;">Luglio 2026</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SLIDE 2: CHI SIAMO ===================== -->
+      <section>
+        <div>
+          <h2>Chi siamo</h2>
+          <div class="gradient-border" style="margin-bottom: 20px;"></div>
+
+          <p style="font-size: 0.85em; line-height: 1.7; margin-bottom: 24px;">
+            <strong style="color: var(--accent-sky);">Forty Group</strong> &egrave; una societ&agrave; di consulenza IT con sede operativa a <strong>Torino</strong>,
+            specializzata nella progettazione e implementazione di infrastrutture cloud-native e nella gestione di progetti di trasformazione digitale.
+          </p>
+
+          <div class="stats-row">
+            <div class="stat-item">
+              <div class="number">5</div>
+              <div class="label">Specialisti certificati</div>
+            </div>
+            <div class="stat-item">
+              <div class="number">4</div>
+              <div class="label">Aree di competenza</div>
+            </div>
+            <div class="stat-item">
+              <div class="number">1</div>
+              <div class="label">Focus: Azure &amp; Microsoft</div>
+            </div>
+          </div>
+
+          <p style="font-size: 0.75em; color: var(--text-muted); margin-top: 30px; text-align: center;">
+            Il nostro nucleo &egrave; composto da professionisti con comprovata esperienza in<br>
+            <strong style="color: var(--r-main-color);">cloud architecture</strong>, <strong style="color: var(--r-main-color);">project management</strong>,
+            <strong style="color: var(--r-main-color);">cybersecurity</strong> e <strong style="color: var(--r-main-color);">infrastruttura IT</strong>.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== SLIDE 3: IL NOSTRO TEAM ===================== -->
+      <section>
+        <div>
+          <h2>Il nostro team</h2>
+          <div class="gradient-border" style="margin-bottom: 20px;"></div>
+
+          <div class="team-grid">
+            <div class="team-card fragment">
+              <div class="name">Mario Mogavero</div>
+              <div class="role">Project Manager</div>
+              <div class="desc">Responsabile del lavoro del team e del potenziamento dell'applicazione Pondus. Coordina le fasi di progetto e garantisce il raggiungimento degli obiettivi.</div>
+            </div>
+            <div class="team-card fragment">
+              <div class="name">Rita Cignarelli</div>
+              <div class="role">Business Analyst</div>
+              <div class="desc">Incaricata della redazione del budget e dell'analisi dei costi. Valuta il rapporto costo/beneficio di ogni soluzione proposta.</div>
+            </div>
+            <div class="team-card fragment">
+              <div class="name">Lorenzo Sasso</div>
+              <div class="role">Infrastructure Architect</div>
+              <div class="desc">Responsabile dell'infrastruttura e del merge dei sistemi. Progetta la convergenza IT tra Thema Consulting e Pro Studio.</div>
+            </div>
+            <div class="team-card fragment">
+              <div class="name">Edoardo Querio Gianetto</div>
+              <div class="role">Cloud &amp; Datacenter Engineer</div>
+              <div class="desc">Responsabile del potenziamento del datacenter. Gestisce la migrazione verso Azure e l'ottimizzazione delle risorse cloud.</div>
+            </div>
+            <div class="team-card fragment">
+              <div class="name">Luca Tarallo</div>
+              <div class="role">Security &amp; Compliance Engineer</div>
+              <div class="desc">Responsabile della sicurezza e della conformit&agrave; ISO 27001. Definisce le policy di accesso, cifratura e business continuity.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SLIDE 4: COMPETENZE ===================== -->
+      <section>
+        <div>
+          <h2>Le nostre competenze</h2>
+          <div class="gradient-border" style="margin-bottom: 20px;"></div>
+
+          <div class="comp-grid">
+            <div class="comp-card fragment">
+              <div class="icon">&#9729;</div>
+              <h3>Cloud Architecture</h3>
+              <p>Progettazione e deployment di soluzioni Azure, migrazione workload, gestione di identit&agrave; e piattaforme M365 per aziende in trasformazione.</p>
+            </div>
+            <div class="comp-card fragment">
+              <div class="icon">&#9881;</div>
+              <h3>Project Management</h3>
+              <p>Gestione Agile/Scrum di progetti complessi, pianificazione WBS, monitoraggio avanzamento e mitigazione rischi con approccio strutturato.</p>
+            </div>
+            <div class="comp-card fragment">
+              <div class="icon">&#128274;</div>
+              <h3>Cybersecurity</h3>
+              <p>Implementazione policy di sicurezza, conformit&agrave; ISO 27001, MFA, Conditional Access, SIEM e disaster recovery cross-regione.</p>
+            </div>
+            <div class="comp-card fragment">
+              <div class="icon">&#128736;</div>
+              <h3>Infrastruttura &amp; DevOps</h3>
+              <p>Configurazione reti VPN, firewall HA, CI/CD pipeline, containerizzazione e automazione dell'infrastruttura come codice.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SLIDE 5: PERCHÉ FORTY GROUP ===================== -->
+      <section>
+        <div>
+          <h2>Perch&eacute; Forty Group</h2>
+          <div class="gradient-border" style="margin-bottom: 20px;"></div>
+
+          <div class="why-grid">
+            <div class="why-item fragment">
+              <h3>&#9889; Approccio Agile</h3>
+              <p>Metodologia Scrum con sprint bisettimanali, deliverable chiari e retrospettive continue. Trasparenza totale verso il cliente.</p>
+            </div>
+            <div class="why-item fragment">
+              <h3>&#9878; Conformit&agrave; ISO 27001</h3>
+              <p>Ogni soluzione &egrave; progettata fin dall'inizio per ottemperare ai requisiti ISO/IEC 27001: sicurezza by design, non come retrofit.</p>
+            </div>
+            <div class="why-item fragment">
+              <h3>&#9733; Focus Microsoft Azure</h3>
+              <p>Specializzazione nell'ecosistema Microsoft: M365, Dynamics 365, Azure, Entra ID. Competenze trasversali su tutta la piattaforma.</p>
+            </div>
+            <div class="why-item fragment">
+              <h3>&#9879; Esperienza Migrazioni</h3>
+              <p>Track record nella migrazione da infrastrutture on-premise a cloud, con zero downtime e verifica completa dei dati migrati.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SLIDE 6: IL NOSTRO APPROCCIO ===================== -->
+      <section>
+        <div>
+          <h2>Il nostro approccio</h2>
+          <div class="gradient-border" style="margin-bottom: 20px;"></div>
+
+          <div class="timeline">
+            <div class="timeline-step fragment">
+              <div class="dot"></div>
+              <div class="step-title">Assessment</div>
+              <div class="step-desc">Analisi AS-IS di entrambe le aziende, gap analysis, mappatura servizi e identificazione criticit&agrave;</div>
+            </div>
+            <div class="timeline-step fragment">
+              <div class="dot"></div>
+              <div class="step-title">Design</div>
+              <div class="step-desc">Progettazione architettura TO-BE, dimensionamento risorse, piano di migrazione e stima costi</div>
+            </div>
+            <div class="timeline-step fragment">
+              <div class="dot"></div>
+              <div class="step-title">Migration</div>
+              <div class="step-desc">Esecuzione migrazione con roll-out graduale, test funzionali e formazione utenti</div>
+            </div>
+            <div class="timeline-step fragment">
+              <div class="dot"></div>
+              <div class="step-title">Validation</div>
+              <div class="step-desc">Verifica integrit&agrave; dati, test di carico, audit sicurezza, affiancamento e chiusura progetto</div>
+            </div>
+          </div>
+
+          <p style="font-size: 0.75em; color: var(--text-muted); margin-top: 40px; text-align: center;">
+            Ogni fase produce <strong style="color: var(--r-main-color);">deliverable documentati</strong> e viene validata con il Comitato di Progetto prima di passare alla fase successiva.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== SLIDE 7: LA PROPOSTA ===================== -->
+      <section>
+        <div>
+          <h2>La proposta per TP Group</h2>
+          <div class="gradient-border" style="margin-bottom: 20px;"></div>
+
+          <p style="font-size: 0.8em; color: var(--text-muted); margin-bottom: 16px;">
+            Variante <strong style="color: var(--accent-sky);">Full Cloud Azure</strong> + Ecosistema Microsoft &mdash; Migrazione completa di 12 servizi per 50 utenti.
+          </p>
+
+          <table class="proposal-table">
+            <thead>
+              <tr>
+                <th>Voce</th>
+                <th>Dettaglio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Piattaforma</strong></td>
+                <td>M365 Business Premium + Dynamics 365 + Azure</td>
+              </tr>
+              <tr>
+                <td><strong>Utenti</strong></td>
+                <td>50 (30 Thema + 20 Pro Studio)</td>
+              </tr>
+              <tr>
+                <td><strong>Costo migrazione (una tantum)</strong></td>
+                <td>&euro; 12.000 (setup servizi cloud M1-M11)</td>
+              </tr>
+              <tr>
+                <td><strong>Costo ricorrente/anno (migrazione)</strong></td>
+                <td>&euro; 39.524 (M365 + Dynamics + Azure)</td>
+              </tr>
+              <tr>
+                <td><strong>Costo totale 3 anni</strong></td>
+                <td>&euro; 130.572</td>
+              </tr>
+              <tr>
+                <td><strong>Durata migrazione</strong></td>
+                <td>10 settimane + 2 settimane affiancamento</td>
+              </tr>
+              <tr>
+                <td><strong>Costo netto 3 anni</strong></td>
+                <td>&euro; ~107.172 (dopo risparmio dismissioni ~&euro;23.400)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ===================== SLIDE 8: PUNTI DI FORZA ===================== -->
+      <section>
+        <div>
+          <h2>Punti di forza della soluzione</h2>
+          <div class="gradient-border" style="margin-bottom: 20px;"></div>
+
+          <div class="benefits-grid">
+            <div class="benefit-item fragment">
+              <div class="emoji">&#128176;</div>
+              <div class="text">
+                <h4>Riduzione costi operativi</h4>
+                <p>Risparmio di ~&euro;7.800/anno (~&euro;23.400 in 3 anni) grazie alla dismissione dei servizi legacy (Google Workspace, Odoo, datacenter on-prem).</p>
+              </div>
+            </div>
+            <div class="benefit-item fragment">
+              <div class="emoji">&#127760;</div>
+              <div class="text">
+                <h4>Piattaforma unificata</h4>
+                <p>Un solo ecosistema Microsoft per posta, CRM, ERP, file sharing e sviluppo. Meno integrazioni, meno complessit&agrave;.</p>
+              </div>
+            </div>
+            <div class="benefit-item fragment">
+              <div class="emoji">&#128274;</div>
+              <div class="text">
+                <h4>Sicurezza enterprise</h4>
+                <p>MFA, Conditional Access, Defender, Backup RA-GRS, DR cross-regione. Conformit&agrave; ISO 27001 by design.</p>
+              </div>
+            </div>
+            <div class="benefit-item fragment">
+              <div class="emoji">&#128640;</div>
+              <div class="text">
+                <h4>Scalabilit&agrave; HPC</h4>
+                <p>Cluster ibrido con burst su Azure CycleCloud. 8 nodi on-prem + 8 nodi SPOT per calcolo intensivo senza investimenti hardware.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SLIDE 9: PROSSIMI PASSI ===================== -->
+      <section>
+        <div>
+          <h2>Prossimi passi</h2>
+          <div class="gradient-border" style="margin-bottom: 20px;"></div>
+
+          <ul class="steps-list">
+            <li class="fragment">
+              <div class="step-num">1</div>
+              <div class="step-text">
+                <strong>Kick-off Meeting</strong><br>
+                <span>Confronto iniziale con il Comitato di Progetto TP Group, allineamento su obiettivi e aspettative</span>
+              </div>
+            </li>
+            <li class="fragment">
+              <div class="step-num">2</div>
+              <div class="step-text">
+                <strong>Assessment Dettagliato</strong><br>
+                <span>Analisi approfondita dell'infrastruttura AS-IS, interviste con le IT team di Thema e Pro Studio</span>
+              </div>
+            </li>
+            <li class="fragment">
+              <div class="step-num">3</div>
+              <div class="step-text">
+                <strong>Roadmap di Migrazione</strong><br>
+                <span>Piano dettagliato con WBS, Gantt, matrice RACI e registro rischi aggiornato</span>
+              </div>
+            </li>
+            <li class="fragment">
+              <div class="step-num">4</div>
+              <div class="step-text">
+                <strong>Avvio Migrazione</strong><br>
+                <span>Roll-out graduale dei servizi con test intermedi e validazione ad ogni milestone</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===================== SLIDE 10: CONTATTI & Q&A ===================== -->
+      <section class="contact-slide">
+        <div>
+          <h2>Grazie per l'attenzione</h2>
+          <div style="margin: 20px auto; width: 60px; height: 3px; background: linear-gradient(90deg, var(--accent-blue), var(--accent-sky)); border-radius: 2px;"></div>
+
+          <p style="font-size: 1em; color: var(--r-main-color); margin-bottom: 30px;">
+            Siamo a disposizione per ogni domanda.
+          </p>
+
+          <div class="contact-info">
+            <p><strong style="color: var(--accent-sky);">Forty Group</strong> &mdash; Consulenza IT</p>
+            <p>Torino, Italia</p>
+            <p style="margin-top: 16px; font-size: 0.85em;">
+              Mario Mogavero (PM) &bull; Rita Cignarelli (BA)<br>
+              Lorenzo Sasso (Infra) &bull; Edoardo Querio Gianetto (Cloud)<br>
+              Luca Tarallo (Security)
+            </p>
+          </div>
+
+          <p style="font-size: 0.6em; color: var(--text-muted); margin-top: 40px;">
+            &mdash; Q &amp; A &mdash;
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      width: 1200,
+      height: 700,
+      margin: 0.04,
+      center: false,
+      controls: true,
+      progress: true,
+      embedded: false,
+    });
+  </script>
+</body>
+</html>

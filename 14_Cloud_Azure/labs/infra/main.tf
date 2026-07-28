@@ -80,7 +80,7 @@ resource "azurerm_container_registry" "main" {
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
   sku                 = "Basic"
-  admin_enabled       = true
+  admin_enabled       = false
   tags                = local.tags
 }
 
@@ -101,13 +101,17 @@ resource "azurerm_linux_web_app" "frontend" {
   location            = azurerm_resource_group.main.location
   service_plan_id     = azurerm_service_plan.frontend.id
 
+  identity {
+    type = "SystemAssigned"
+  }
+
   site_config {
     application_stack {
       docker_image_name   = "frontend:v1"
       docker_registry_url = "https://${azurerm_container_registry.main.login_server}"
-      docker_registry_username = azurerm_container_registry.main.admin_username
-      docker_registry_password = azurerm_container_registry.main.admin_password
     }
+
+    acr_use_managed_identity_credentials = true
   }
 
   tags = local.tags
@@ -122,7 +126,7 @@ resource "azurerm_application_insights" "main" {
   tags                = local.tags
 }
 
-# ─── Function App (Python, Consumption) ───────────────────────────────────────
+# ─── Function App (Python, B1) ────────────────────────────────────────────────
 resource "azurerm_linux_function_app" "main" {
   name                = local.function_app
   resource_group_name = azurerm_resource_group.main.name
@@ -137,6 +141,8 @@ resource "azurerm_linux_function_app" "main" {
   }
 
   site_config {
+    always_on = true
+
     application_stack {
       python_version = "3.11"
     }
@@ -145,18 +151,24 @@ resource "azurerm_linux_function_app" "main" {
     application_insights_key               = azurerm_application_insights.main.instrumentation_key
 
     cors {
-      allowed_origins = ["*"]
+      allowed_origins = ["https://${azurerm_linux_web_app.frontend.default_hostname}"]
     }
   }
 
   app_settings = {
-    COSMOS_CONNECTION_STRING = azurerm_cosmosdb_account.main.primary_sql_connection_string
-    QUEUE_STORAGE_CONNECTION = azurerm_storage_account.main.primary_connection_string
-    AzureWebJobsStorage      = azurerm_storage_account.main.primary_connection_string
+    COSMOS_CONNECTION_STRING = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault.main.vault_uri}secrets/${azurerm_key_vault_secret.cosmos_conn.name}/)"
+    QUEUE_STORAGE_CONNECTION = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault.main.vault_uri}secrets/${azurerm_key_vault_secret.storage_conn.name}/)"
+    AzureWebJobsStorage      = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault.main.vault_uri}secrets/${azurerm_key_vault_secret.storage_conn.name}/)"
     FUNCTIONS_WORKER_RUNTIME = "python"
   }
 
   tags = local.tags
+
+  depends_on = [
+    azurerm_key_vault_access_policy.function_app,
+    azurerm_key_vault_secret.cosmos_conn,
+    azurerm_key_vault_secret.storage_conn,
+  ]
 }
 
 # ─── Key Vault ────────────────────────────────────────────────────────────────
@@ -185,9 +197,18 @@ resource "azurerm_key_vault_access_policy" "deployer" {
   ]
 }
 
+# ─── Key Vault Secrets ─────────────────────────────────────────────────────────
 resource "azurerm_key_vault_secret" "cosmos_conn" {
   name         = "cosmos-conn"
   value        = azurerm_cosmosdb_account.main.primary_sql_connection_string
+  key_vault_id = azurerm_key_vault.main.id
+
+  depends_on = [azurerm_key_vault_access_policy.deployer]
+}
+
+resource "azurerm_key_vault_secret" "storage_conn" {
+  name         = "storage-conn"
+  value        = azurerm_storage_account.main.primary_connection_string
   key_vault_id = azurerm_key_vault.main.id
 
   depends_on = [azurerm_key_vault_access_policy.deployer]
@@ -204,4 +225,26 @@ resource "azurerm_key_vault_access_policy" "function_app" {
   ]
 
   depends_on = [azurerm_linux_function_app.main]
+}
+
+# ─── Key Vault Access Policy for Frontend Web App Managed Identity ────────────
+resource "azurerm_key_vault_access_policy" "frontend" {
+  key_vault_id = azurerm_key_vault.main.id
+  tenant_id    = data.azurerm_client_config.current.tenant_id
+  object_id    = azurerm_linux_web_app.frontend.identity[0].principal_id
+
+  secret_permissions = [
+    "Get", "List",
+  ]
+
+  depends_on = [azurerm_linux_web_app.frontend]
+}
+
+# ─── ACR Role Assignment for Frontend Web App ──────────────────────────────────
+resource "azurerm_role_assignment" "acr_pull_frontend" {
+  scope                = azurerm_container_registry.main.id
+  role_definition_name = "AcrPull"
+  principal_id         = azurerm_linux_web_app.frontend.identity[0].principal_id
+
+  depends_on = [azurerm_linux_web_app.frontend]
 }

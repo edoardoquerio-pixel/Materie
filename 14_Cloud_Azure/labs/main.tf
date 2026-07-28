@@ -1,152 +1,43 @@
-resource "azurerm_resource_group" "rg" {
-  name     = var.resource_group_name
-  location = var.location
-}
-
-/* Optional random suffix for unique names (if suffix var is empty we can still use random_id for uniqueness) */
+# ─── Random suffix ──────────────────────────────────────────────────────────
 resource "random_id" "suffix" {
   byte_length = 4
 }
 
 locals {
-  suffix                = var.suffix != "" ? var.suffix : random_id.suffix.hex
-  storage_account_name  = "sa${var.resource_group_name}${local.suffix}"
-  function_app_name     = "funcapp${var.resource_group_name}${local.suffix}"
-  app_service_plan_name = "asp${var.resource_group_name}${local.suffix}"
-  frontend_app_name     = "webappfrontend${var.resource_group_name}${local.suffix}"
-  frontend_plan_name    = "planfrontend${var.resource_group_name}${local.suffix}"
-  cosmos_account_name   = "cosmos${var.resource_group_name}${local.suffix}"
-  app_insights_name     = "ai${var.resource_group_name}${local.suffix}"
-}
+  suffix = random_id.suffix.hex
+  name_prefix = "e2e${random_id.suffix.hex}"
 
-/* Storage account for function app (needed for AzureWebJobsStorage) */
-resource "azurerm_storage_account" "func_storage" {
-  name                      = local.storage_account_name
-  resource_group_name       = azurerm_resource_group.rg.name
-  location                  = azurerm_resource_group.rg.location
-  account_tier              = "Standard"
-  account_replication_type  = "LRS"
-  enable_https_traffic_only = true
-}
+  cosmos_account   = "cosmos-${local.name_prefix}"
+  cosmos_db        = "appdb"
+  cosmos_container = "richieste"
+  cosmos_riepiloghi = "riepiloghi"
 
-/* App Service Plan for Function App (Linux Consumption) */
-resource "azurerm_app_service_plan" "func_plan" {
-  name                = local.function_app_name # reuse function app name for plan? better separate
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  kind                = "FunctionApp"
-  reserved            = true # Linux
+  function_app = "funcapp-${local.name_prefix}"
+  acr_name     = "acr${random_id.suffix.hex}"
+  webapp_name  = "webappfrontend-${random_id.suffix.hex}"
+  webapp_plan  = "planfrontend-${random_id.suffix.hex}"
 
-  sku {
-    tier = "Y1"
-    size = "Y1"
-  }
-}
+  key_vault       = "kv-${local.name_prefix}"
+  app_insights    = "ai-${local.name_prefix}"
+  storage_account = "sa${random_id.suffix.hex}"
 
-/* Function App (Linux) */
-resource "azurerm_linux_function_app" "functionapp" {
-  name                       = local.function_app_name
-  location                   = azurerm_resource_group.rg.location
-  resource_group_name        = azurerm_resource_group.rg.name
-  service_plan_id            = azurerm_app_service_plan.func_plan.id
-  storage_account_name       = azurerm_storage_account.func_storage.name
-  storage_account_access_key = azurerm_storage_account.func_storage.primary_access_key
-
-  site_config {
-    application_stack {
-      python_version = "3.12"
-    }
-    cors {
-      allowed_origins = [
-        "https://${azurerm_windows_web_app.frontend.default_hostname}"
-      ]
-    }
-  }
-
-  identity {
-    type = "SystemAssigned"
-  }
-
-  app_settings = {
-    "FUNCTIONS_WORKER_RUNTIME"           = "python"
-    "WEBSITE_RUN_FROM_PACKAGE"           = "1"
-    "COSMOS_CONNECTION_STRING"           = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.cosmos_secret.id})"
-    "APPLICATIONINSIGHTS_CONNECTION_STRING" = azurerm_application_insights.appinsights.connection_string
-  }
-
-  depends_on = [
-    azurerm_cosmosdb_account.cosmosdb,
-    azurerm_application_insights.appinsights,
-    azurerm_key_vault_secret.cosmos_secret
-  ]
-}
-
-/* Application Insights */
-resource "azurerm_application_insights" "appinsights" {
-  name                = local.app_insights_name
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  application_type    = "web"
-}
-
-/* Key Vault (Standard, RBAC, Soft Delete) */
-resource "azurerm_key_vault" "kv" {
-  name                        = local.cosmos_account_name
-  location                    = azurerm_resource_group.rg.location
-  resource_group_name         = azurerm_resource_group.rg.name
-  tenant_id                   = data.azurerm_client_config.current.tenant_id
-  sku_name                    = "standard"
-  soft_delete_retention_days  = 7
-  purge_protection_enabled    = false
-  enable_rbac_authorization   = true
+  queue_name = "richieste-da-elaborare"
 
   tags = {
-    Environment = "lab"
+    project = "azure-e2e-lab"
   }
 }
 
-/* Data source for current tenant ID (needed for Key Vault) */
-data "azurerm_client_config" "current" {}
-
-/* Key Vault Secret: Cosmos DB connection string */
-resource "azurerm_key_vault_secret" "cosmos_secret" {
-  name         = "cosmosdb-connection-string"
-  key_vault_id = azurerm_key_vault.kv.id
-  value        = azurerm_cosmosdb_account.cosmosdb.connection_strings[0]
+# ─── Resource Group ──────────────────────────────────────────────────────────
+resource "azurerm_resource_group" "rg" {
+  name     = var.resource_group_name
+  location = var.location
+  tags     = local.tags
 }
 
-/* Role Assignment: Function App -> Key Vault Secrets User */
-resource "azurerm_role_assignment" "kv_secrets_user" {
-  scope                = azurerm_key_vault.kv.id
-  role_definition_name = "Key Vault Secrets User"
-  principal_id         = azurerm_linux_function_app.functionapp.identity[0].principal_id
-  principal_type       = "ServicePrincipal"
-
-  depends_on = [
-    azurerm_linux_function_app.functionapp,
-    azurerm_key_vault.kv
-  ]
-}
-
-/* Restart Function App after role assignment propagates (Key Vault reference resolution) */
-resource "null_resource" "restart_functionapp" {
-  depends_on = [
-    azurerm_role_assignment.kv_secrets_user
-  ]
-
-  provisioner "local-exec" {
-    command     = "az functionapp restart --resource-group ${azurerm_resource_group.rg.name} --name ${azurerm_linux_function_app.functionapp.name}"
-    interpreter = ["PowerShell", "-Command"]
-  }
-
-  triggers = {
-    role_assignment = azurerm_role_assignment.kv_secrets_user.id
-  }
-}
-
-/* Cosmos DB Account (SQL API, Serverless) */
+# ─── Cosmos DB ───────────────────────────────────────────────────────────────
 resource "azurerm_cosmosdb_account" "cosmosdb" {
-  name                = local.cosmos_account_name
+  name                = local.cosmos_account
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   offer_type          = "Standard"
@@ -164,113 +55,214 @@ resource "azurerm_cosmosdb_account" "cosmosdb" {
   capabilities {
     name = "EnableServerless"
   }
+
+  tags = local.tags
 }
 
-/* Cosmos DB SQL Database */
 resource "azurerm_cosmosdb_sql_database" "db" {
-  name                = "appdb"
+  name                = local.cosmos_db
   resource_group_name = azurerm_resource_group.rg.name
   account_name        = azurerm_cosmosdb_account.cosmosdb.name
 }
 
-/* Cosmos DB SQL Container */
 resource "azurerm_cosmosdb_sql_container" "container" {
-  name                = "richieste"
+  name                = local.cosmos_container
   resource_group_name = azurerm_resource_group.rg.name
   account_name        = azurerm_cosmosdb_account.cosmosdb.name
   database_name       = azurerm_cosmosdb_sql_database.db.name
-  partition_key_path  = "/utente"
-}
+  partition_key_paths = ["/categoria"]
 
-/* App Service Plan for Frontend (Windows Free) */
-resource "azurerm_app_service_plan" "frontend_plan" {
-  name                = local.frontend_plan_name
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  kind                = "app"
-  reserved            = false
-
-  sku {
-    tier = "F1"
-    size = "F1"
+  indexing_policy {
+    indexing_mode = "consistent"
+    included_path {
+      path = "/*"
+    }
   }
 }
 
-/* Frontend Web App (static site, Windows) */
-resource "azurerm_windows_web_app" "frontend" {
-  name                = local.frontend_app_name
-  location            = azurerm_resource_group.rg.location
+resource "azurerm_cosmosdb_sql_container" "riepiloghi" {
+  name                = local.cosmos_riepiloghi
   resource_group_name = azurerm_resource_group.rg.name
-  service_plan_id     = azurerm_app_service_plan.frontend_plan.id
+  account_name        = azurerm_cosmosdb_account.cosmosdb.name
+  database_name       = azurerm_cosmosdb_sql_database.db.name
+  partition_key_paths = ["/tipo"]
+}
+
+# ─── Storage Account ─────────────────────────────────────────────────────────
+resource "azurerm_storage_account" "func_storage" {
+  name                     = local.storage_account
+  resource_group_name      = azurerm_resource_group.rg.name
+  location                 = azurerm_resource_group.rg.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+  tags                     = local.tags
+}
+
+resource "azurerm_storage_queue" "richieste" {
+  name                 = local.queue_name
+  storage_account_name = azurerm_storage_account.func_storage.name
+}
+
+# ─── Container Registry ──────────────────────────────────────────────────────
+resource "azurerm_container_registry" "acr" {
+  name                = local.acr_name
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  sku                 = "Basic"
+  admin_enabled       = false
+  tags                = local.tags
+}
+
+# ─── App Service Plan (Linux B1) ─────────────────────────────────────────────
+resource "azurerm_service_plan" "frontend_plan" {
+  name                = local.webapp_plan
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  os_type             = "Linux"
+  sku_name            = "B1"
+  tags                = local.tags
+}
+
+# ─── Web App for Containers (Frontend) ───────────────────────────────────────
+resource "azurerm_linux_web_app" "frontend" {
+  name                = local.webapp_name
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  service_plan_id     = azurerm_service_plan.frontend_plan.id
+
+  identity {
+    type = "SystemAssigned"
+  }
 
   site_config {
-    # No specific runtime needed for static content; we use default.
-    # We'll deploy via zip later.
-    # Ensure always on etc not needed.
+    application_stack {
+      docker_image_name   = "frontend:v1"
+      docker_registry_url = "https://${azurerm_container_registry.acr.login_server}"
+    }
+
+    container_registry_use_managed_identity = true
   }
 
-  # Deploy the frontend code from the local ./frontend folder zipped
-  # We'll use a null_resource to create zip and then az cli via local-exec (or use deploymentsource)
-  # For simplicity, we rely on external zip deployment; but we can also use app_service_source.
-  # Using app_service_source requires a zip file; we'll generate it via local-exec.
+  tags = local.tags
 }
 
-# Create zip of frontend folder (path corrected: frontend is inside labs/)
-resource "null_resource" "create_frontend_zip" {
-  provisioner "local-exec" {
-    command     = "powershell -Command \"Compress-Archive -Path '${path.module}/frontend/*' -DestinationPath '${path.module}/frontend.zip' -Force\""
-    interpreter = ["PowerShell", "-Command"]
+# ─── Application Insights ────────────────────────────────────────────────────
+resource "azurerm_application_insights" "appinsights" {
+  name                = local.app_insights
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  application_type    = "web"
+  tags                = local.tags
+}
+
+# ─── Function App (Python, B1) ───────────────────────────────────────────────
+resource "azurerm_linux_function_app" "main" {
+  name                = local.function_app
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  service_plan_id     = azurerm_service_plan.frontend_plan.id
+
+  storage_account_name       = azurerm_storage_account.func_storage.name
+  storage_account_access_key = azurerm_storage_account.func_storage.primary_access_key
+
+  identity {
+    type = "SystemAssigned"
   }
-  triggers = {
-    source_path = filesha256("${path.module}/frontend/index.html")
+
+  site_config {
+    always_on = true
+
+    application_stack {
+      python_version = "3.11"
+    }
+
+    application_insights_connection_string = azurerm_application_insights.appinsights.connection_string
+    application_insights_key               = azurerm_application_insights.appinsights.instrumentation_key
+
+    cors {
+      allowed_origins = ["https://${azurerm_linux_web_app.frontend.default_hostname}"]
+    }
   }
-}
 
-# Deploy zip to web app
-resource "null_resource" "deploy_frontend" {
-  depends_on = [
-    null_resource.create_frontend_zip,
-    azurerm_windows_web_app.frontend
-  ]
-  provisioner "local-exec" {
-    command     = <<EOT
-      az webapp deployment source config-zip `
-        --resource-group ${azurerm_resource_group.rg.name} `
-        --name ${azurerm_windows_web_app.frontend.name} `
-        --src "${path.module}/frontend.zip"
-    EOT
-    interpreter = ["PowerShell", "-Command"]
+  app_settings = {
+    COSMOS_CONNECTION_STRING = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault.kv.vault_uri}secrets/${azurerm_key_vault_secret.cosmos_conn.name}/)"
+    QUEUE_STORAGE_CONNECTION = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault.kv.vault_uri}secrets/${azurerm_key_vault_secret.storage_conn.name}/)"
+    AzureWebJobsStorage      = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault.kv.vault_uri}secrets/${azurerm_key_vault_secret.storage_conn.name}/)"
+    FUNCTIONS_WORKER_RUNTIME = "python"
   }
+
+  tags = local.tags
+
 }
 
-/* Outputs */
-output "function_app_url" {
-  description = "Base URL of the Function App"
-  value       = "https://${azurerm_linux_function_app.functionapp.default_hostname}"
+# ─── Key Vault ───────────────────────────────────────────────────────────────
+resource "azurerm_key_vault" "kv" {
+  name                = local.key_vault
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  tenant_id           = data.azurerm_client_config.current.tenant_id
+  sku_name            = "standard"
+
+  purge_protection_enabled   = false
+  soft_delete_retention_days = 7
+
+  tags = local.tags
 }
 
-output "frontend_url" {
-  description = "URL of the frontend web app"
-  value       = "https://${azurerm_windows_web_app.frontend.default_hostname}"
+data "azurerm_client_config" "current" {}
+
+resource "azurerm_key_vault_access_policy" "deployer" {
+  key_vault_id = azurerm_key_vault.kv.id
+  tenant_id    = data.azurerm_client_config.current.tenant_id
+  object_id    = data.azurerm_client_config.current.object_id
+
+  secret_permissions = ["Get", "List", "Set", "Delete", "Purge"]
 }
 
-output "cosmos_connection_string" {
-  description = "Connection string for Cosmos DB (sensitive)"
-  value       = azurerm_cosmosdb_account.cosmosdb.connection_strings[0]
-  sensitive   = true
+# ─── Key Vault Secrets ────────────────────────────────────────────────────────
+resource "azurerm_key_vault_secret" "cosmos_conn" {
+  name         = "cosmos-conn"
+  value        = azurerm_cosmosdb_account.cosmosdb.primary_sql_connection_string
+  key_vault_id = azurerm_key_vault.kv.id
+
+  depends_on = [azurerm_key_vault_access_policy.deployer]
 }
 
-output "frontend_app_service_plan_id" {
-  value = azurerm_app_service_plan.frontend_plan.id
+resource "azurerm_key_vault_secret" "storage_conn" {
+  name         = "storage-conn"
+  value        = azurerm_storage_account.func_storage.primary_connection_string
+  key_vault_id = azurerm_key_vault.kv.id
+
+  depends_on = [azurerm_key_vault_access_policy.deployer]
 }
 
-output "key_vault_uri" {
-  description = "URI of the Key Vault"
-  value       = azurerm_key_vault.kv.vault_uri
+# ─── Key Vault Access Policy for Function App Managed Identity ───────────────
+resource "azurerm_key_vault_access_policy" "function_app" {
+  key_vault_id = azurerm_key_vault.kv.id
+  tenant_id    = data.azurerm_client_config.current.tenant_id
+  object_id    = azurerm_linux_function_app.main.identity[0].principal_id
+
+  secret_permissions = ["Get", "List"]
+
+  depends_on = [azurerm_linux_function_app.main]
 }
 
-output "key_vault_secret_uri" {
-  description = "Full URI of the Cosmos DB connection string secret (for Key Vault reference)"
-  value       = azurerm_key_vault_secret.cosmos_secret.id
-  sensitive   = true
+# ─── Key Vault Access Policy for Frontend Web App Managed Identity ───────────
+resource "azurerm_key_vault_access_policy" "frontend" {
+  key_vault_id = azurerm_key_vault.kv.id
+  tenant_id    = data.azurerm_client_config.current.tenant_id
+  object_id    = azurerm_linux_web_app.frontend.identity[0].principal_id
+
+  secret_permissions = ["Get", "List"]
+
+  depends_on = [azurerm_linux_web_app.frontend]
+}
+
+# ─── ACR Role Assignment for Frontend Web App ─────────────────────────────────
+resource "azurerm_role_assignment" "acr_pull_frontend" {
+  scope                = azurerm_container_registry.acr.id
+  role_definition_name = "AcrPull"
+  principal_id         = azurerm_linux_web_app.frontend.identity[0].principal_id
+
+  depends_on = [azurerm_linux_web_app.frontend]
 }

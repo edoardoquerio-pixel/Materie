@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schema Architettura Infrastruttura — Full Cloud Azure TP Group</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azure-blue: #0078d4;
+            --azure-dark: #001d3d;
+            --azure-deep: #003566;
+            --azure-mid: #006494;
+            --azure-light: #e8f4fd;
+            --azure-glow: #60a5fa;
+            --onprem-orange: #ea580c;
+            --onprem-light: #fff7ed;
+            --onprem-glow: #fb923c;
+            --m365-purple: #7c3aed;
+            --m365-light: #f5f3ff;
+            --m365-glow: #a78bfa;
+            --d365-green: #059669;
+            --d365-light: #ecfdf5;
+            --d365-glow: #34d399;
+            --hpc-red: #dc2626;
+            --hpc-light: #fef2f2;
+            --hpc-glow: #f87171;
+            --network-teal: #0d9488;
+            --network-light: #f0fdfa;
+            --network-glow: #2dd4bf;
+            --gold: #d97706;
+            --gold-light: #fffbeb;
+            --bg: #0a0f1a;
+            --bg-subtle: #111827;
+            --card-bg: rgba(255,255,255,0.03);
+            --card-border: rgba(255,255,255,0.08);
+            --card-hover: rgba(255,255,255,0.06);
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --glass: rgba(15,23,42,0.6);
+            --glass-border: rgba(148,163,184,0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 10%, rgba(0,120,212,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 80% 90%, rgba(124,58,237,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 50% 50%, rgba(13,148,136,0.06) 0%, transparent 60%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ─── HEADER ─── */
+        .hero {
+            position: relative;
+            padding: 4rem 3rem 3.5rem;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg, #001d3d 0%, #003566 30%, #006494 60%, #0078d4 100%);
+            z-index: -2;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 30% 40%, rgba(96,165,250,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(124,58,237,0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: -1;
+            mask-image: linear-gradient(180deg, transparent 0%, white 30%, white 70%, transparent 100%);
+        }
+
+        .hero .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .badge .dot {
+            width: 6px; height: 6px;
+            background: #34d399;
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(52,211,153,0.4); }
+            50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(52,211,153,0); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .hero-stat .val {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .hero-stat .lbl {
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(255,255,255,0.45);
+        }
+
+        .hero-divider {
+            width: 1px;
+            height: 36px;
+            background: rgba(255,255,255,0.15);
+            align-self: center;
+        }
+
+        /* ─── LAYOUT ─── */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 4rem;
+        }
+
+        /* ─── SECTION CARDS ─── */
+        .section {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .section:hover {
+            border-color: rgba(148,163,184,0.2);
+        }
+
+        .section-header {
+            padding: 1.5rem 2rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            letter-spacing: -0.01em;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .section-header .icon {
+            width: 40px; height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .section-header .num {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            margin-left: auto;
+        }
+
+        .section-body {
+            padding: 2rem;
+        }
+
+        /* Icon colors */
+        .icon-azure { background: linear-gradient(135deg, var(--azure-blue), var(--azure-mid)); }
+        .icon-onprem { background: linear-gradient(135deg, var(--onprem-orange), #c2410c); }
+        .icon-m365 { background: linear-gradient(135deg, var(--m365-purple), #6d28d9); }
+        .icon-d365 { background: linear-gradient(135deg, var(--d365-green), #047857); }
+        .icon-hpc { background: linear-gradient(135deg, var(--hpc-red), #b91c1c); }
+        .icon-network { background: linear-gradient(135deg, var(--network-teal), #0f766e); }
+        .icon-gold { background: linear-gradient(135deg, var(--gold), #b45309); }
+
+        /* ─── DIAGRAM ─── */
+        .diagram-container {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        .diagram-container .mermaid {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* ─── TABLES ─── */
+        .table-wrap {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            margin: 1.25rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        th {
+            background: rgba(255,255,255,0.04);
+            padding: 0.85rem 1.25rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        td {
+            padding: 0.8rem 1.25rem;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: var(--text);
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tr:hover td {
+            background: rgba(255,255,255,0.02);
+        }
+
+        td code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(0,120,212,0.12);
+            color: var(--azure-glow);
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* ─── LAYER GRID ─── */
+        .layer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .layer-card {
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--glass-border);
+            background: rgba(255,255,255,0.02);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .layer-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .layer-card:hover {
+            background: rgba(255,255,255,0.04);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .layer-card h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .layer-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .layer-card li {
+            padding: 0.35rem 0;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .layer-card li::before {
+            content: "";
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            margin-top: 0.45rem;
+            flex-shrink: 0;
+        }
+
+        /* Layer accent colors */
+        .lc-identity::before { background: linear-gradient(135deg, var(--gold), var(--azure-blue)); }
+        .lc-identity li::before { background: var(--gold); }
+        .lc-m365::before { background: linear-gradient(135deg, var(--m365-purple), var(--m365-glow)); }
+        .lc-m365 li::before { background: var(--m365-purple); }
+        .lc-d365::before { background: linear-gradient(135deg, var(--d365-green), var(--d365-glow)); }
+        .lc-d365 li::before { background: var(--d365-green); }
+        .lc-paas::before { background: linear-gradient(135deg, var(--azure-blue), var(--azure-glow)); }
+        .lc-paas li::before { background: var(--azure-blue); }
+        .lc-devops::before { background: linear-gradient(135deg, var(--azure-mid), var(--azure-glow)); }
+        .lc-devops li::before { background: var(--azure-mid); }
+        .lc-iaas::before { background: linear-gradient(135deg, var(--network-teal), var(--network-glow)); }
+        .lc-iaas li::before { background: var(--network-teal); }
+        .lc-hpc::before { background: linear-gradient(135deg, var(--hpc-red), var(--hpc-glow)); }
+        .lc-hpc li::before { background: var(--hpc-red); }
+        .lc-dr::before { background: linear-gradient(135deg, var(--m365-purple), var(--azure-blue)); }
+        .lc-dr li::before { background: var(--m365-glow); }
+
+        /* ─── LEGEND ─── */
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            padding: 1.25rem 2rem;
+            background: rgba(255,255,255,0.02);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .legend-dot {
+            width: 12px; height: 12px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        /* ─── WARNING BOX ─── */
+        .callout {
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+
+        .callout-warning {
+            background: rgba(217,119,6,0.08);
+            border: 1px solid rgba(217,119,6,0.25);
+        }
+
+        .callout-info {
+            background: rgba(0,120,212,0.08);
+            border: 1px solid rgba(0,120,212,0.25);
+        }
+
+        .callout .callout-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .callout .callout-text {
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .callout strong {
+            color: var(--text);
+        }
+
+        .callout .callout-text {
+            color: var(--text-muted);
+        }
+
+        /* ─── STAT ROWS ─── */
+        .stat-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            border-radius: 16px;
+            padding: 1.75rem;
+            border: 1px solid var(--glass-border);
+            background: rgba(255,255,255,0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+        }
+
+        .stat-box h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stat-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .stat-box li {
+            padding: 0.4rem 0;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed rgba(255,255,255,0.04);
+        }
+
+        .stat-box li:last-child { border-bottom: none; }
+
+        .stat-box li strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .stat-box-kpi::before { background: linear-gradient(90deg, var(--azure-blue), var(--azure-glow)); }
+        .stat-box-kpi h4 { color: var(--azure-glow); }
+
+        .stat-box-compliance::before { background: linear-gradient(90deg, var(--d365-green), var(--d365-glow)); }
+        .stat-box-compliance h4 { color: var(--d365-glow); }
+
+        /* ─── TOTAL ROW ─── */
+        .total-row {
+            background: linear-gradient(135deg, rgba(0,120,212,0.08), rgba(124,58,237,0.08));
+            border: 1px solid rgba(0,120,212,0.2);
+        }
+
+        .total-row td {
+            font-weight: 700;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .total-amount {
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--azure-glow), var(--m365-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ─── SUBNET CIDR ─── */
+        .cidr {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(0,120,212,0.12);
+            color: var(--azure-glow);
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .hero { padding: 2.5rem 1.5rem; }
+            .hero h1 { font-size: 1.6rem; }
+            .container { padding: 1.5rem 1rem; }
+            .layer-grid { grid-template-columns: 1fr; }
+            .stat-row { grid-template-columns: 1fr; }
+            .hero-stats { gap: 1rem; }
+            .hero-divider { display: none; }
+            .section-header { padding: 1.2rem 1.5rem; }
+            .section-body { padding: 1.5rem; }
+        }
+
+        @media print {
+            body { background: white; color: #1e293b; }
+            body::before { display: none; }
+            .hero::before { background: #003566 !important; -webkit-print-color-adjust: exact; }
+            .section { break-inside: avoid; border-color: #e2e8f0; background: white; }
+            .diagram-container { background: #f8fafc; }
+            .layer-card, .stat-box { background: #f8fafc; border-color: #e2e8f0; }
+            .layer-card:hover { transform: none; box-shadow: none; }
+            td code { background: #e0f2fe; color: #0369a1; }
+            .cidr { background: #e0f2fe; color: #0369a1; }
+            th { color: #475569; }
+            td, .stat-box li, .layer-card li { color: #334155; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<header class="hero">
+    <div class="hero-grid"></div>
+    <div class="badge"><span class="dot"></span> Full Cloud Azure — Luglio 2026</div>
+    <h1>Schema Architettura Infrastruttura</h1>
+    <div class="subtitle">Progetto di Migrazione TP Group &mdash; Thema Consulting + Pro Studio</div>
+    <div class="hero-stats">
+        <div class="hero-stat"><span class="val">50</span><span class="lbl">Utenti</span></div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat"><span class="val">€520K</span><span class="lbl">Budget</span></div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat"><span class="val">West Europe</span><span class="lbl">Regione</span></div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat"><span class="val">10 wk</span><span class="lbl">Durata</span></div>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- ═══════════════ 1. ARCHITETTURA GENERALE ═══════════════ -->
+    <div class="section">
+        <div class="section-header">
+            <div class="icon icon-azure">&#9729;</div>
+            Architettura Generale Full Cloud Azure
+            <span class="num">01 / 07</span>
+        </div>
+        <div class="section-body">
+            <div class="diagram-container">
+                <pre class="mermaid">
+graph TB
+    subgraph ONPREM["🏢 SEDE TORINO — Thema Consulting"]
+        direction TB
+        FG["🔥 FortiGate FG-100F<br/>HA Cluster<br/>10.10.0.0/16"]
+        AD["directory AD Samba4<br/>50 utenti"]
+        ECS["🔄 Entra Connect Sync"]
+        HPC_ON["🖥️ Cluster HPC On-Prem<br/>8 nodi + InfiniBand"]
+        PBS["📋 Frontend PBS<br/>(forwarder → Slurm)"]
+        WIRE["🔑 WireGuard VPN<br/>Utenti remoti"]
+    end
+
+    subgraph AZURE["☁️ AZURE WEST EUROPE"]
+        subgraph IDENTITY["🔐 Identità"]
+            ENTRA["Entra ID P1<br/>MFA + Conditional Access"]
+        end
+
+        subgraph M365["💼 M365 Business Premium — 50 utenti"]
+            EXO["📧 Exchange Online<br/>Posta + Calendario"]
+            SPO["📁 SharePoint Online<br/>+ OneDrive<br/>File Server"]
+            TEAMS["💬 MS Teams<br/>Chat + Video"]
+            DEF["🛡️ Defender for O365"]
+        end
+
+        subgraph D365["📊 Dynamics 365"]
+            SALES["D365 Sales Professional<br/>20 utenti — CRM"]
+            BC["D365 Business Central<br/>10 utenti — ERP + Timesheet"]
+        end
+
+        subgraph PAAS["⚡ Azure PaaS"]
+            ASP["Azure App Service P1v3<br/>Pondus Web App<br/>Linux 2vCPU 8GB"]
+            SQL["Azure SQL DB S2<br/>Pondus Database<br/>50 DTU 250GB"]
+            DEVOPS["Azure DevOps<br/>Repos + Pipelines<br/>CI/CD"]
+        end
+
+        subgraph IAAS["🖥️ Azure IaaS"]
+            VMWIKI["VM B2s<br/>Media Wiki<br/>Documentazione<br/>2vCPU 4GB"]
+        end
+
+        subgraph HPC_AZ["⚡ HPC Azure Burst"]
+            CYCLE["VM D2s_v3<br/>CycleCloud Head<br/>10.30.99.0/24"]
+            HB["HB176-96rs v4<br/>SPOT nodi burst<br/>10.30.100.0/24"]
+            LUSTRE["Azure Managed Lustre<br/>4 TB — 500 MB/s<br/>10.30.101.0/24"]
+        end
+
+        subgraph NETWORK["🌐 Rete"]
+            VNET["VNet vnet-tpgroup-westeu<br/>10.30.0.0/16"]
+            VGW["VPN Gateway VpnGw1AZ<br/>IPsec IKEv2"]
+            NSG["NSG + Firewall Rules"]
+        end
+
+        subgraph DR["🔁 Backup & DR"]
+            AZBKP["Azure Backup<br/>VM + DB"]
+            AZSR["Azure Site Recovery<br/>DR replica"]
+        end
+    end
+
+    subgraph USERS["👥 UTENTI"]
+        U50["50 Utenti TP Group<br/>(Thema + Pro Studio)"]
+        REMOTE["Utenti Remoti<br/>~10/giorno"]
+        CLIENTI["Clienti Pondus<br/>(esterni)"]
+    end
+
+    FG <-->|"IPsec IKEv2<br/>BGP"| VGW
+    AD --> ECS
+    ECS -->|"Sync"| ENTRA
+    ENTRA -->|"Auth"| M365
+    ENTRA -->|"Auth"| D365
+    ENTRA -->|"Auth"| PAAS
+
+    U50 --> M365
+    U50 --> D365
+    U50 --> DEVOPS
+    REMOTE -->|"WireGuard"| FG
+    CLIENTI -->|"HTTPS"| ASP
+
+    ASP --> SQL
+    HPC_ON --> PBS
+    PBS -->|"Forwarder<br/>PBS→Slurm"| CYCLE
+    CYCLE --> HB
+    HB -->|"NFS/Internal"| LUSTRE
+    HPC_ON <-->|"Lustre mount<br/>dati condivisi"| LUSTRE
+
+    VGW --> VNET
+    VNET --> NSG
+    VMWIKI --> VNET
+    ASP -.->|"VNet Integration"| VNET
+
+    AZBKP --> VMWIKI
+    AZBKP --> SQL
+    AZSR -.->|"DR"| VMWIKI
+
+    style ONPREM fill:#1c1008,stroke:#ea580c,stroke-width:2px,color:#fed7aa
+    style AZURE fill:#0c1929,stroke:#0078d4,stroke-width:2px,color:#bae6fd
+    style M365 fill:#1e1033,stroke:#7c3aed,stroke-width:1px,color:#ddd6fe
+    style D365 fill:#0a1f17,stroke:#059669,stroke-width:1px,color:#a7f3d0
+    style PAAS fill:#0c1a2e,stroke:#0ea5e9,stroke-width:1px,color:#bae6fd
+    style IAAS fill:#0c1a2e,stroke:#0ea5e9,stroke-width:1px,color:#bae6fd
+    style HPC_AZ fill:#1f0a0a,stroke:#dc2626,stroke-width:1px,color:#fecaca
+    style NETWORK fill:#0a1a18,stroke:#0d9488,stroke-width:1px,color:#ccfbf1
+    style DR fill:#1a102e,stroke:#7c3aed,stroke-width:1px,color:#ddd6fe
+    style IDENTITY fill:#1a180a,stroke:#d97706,stroke-width:1px,color:#fef3c7
+    style USERS fill:#111827,stroke:#475569,stroke-width:1px,color:#e2e8f0
+                </pre>
+            </div>
+        </div>
+        <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:var(--onprem-orange)"></div> On-Premises (Torino)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--azure-blue)"></div> Azure Cloud</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--m365-purple)"></div> M365 / Dynamics 365</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--hpc-red)"></div> HPC Hybrid</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--network-teal)"></div> Rete</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div> Identita</div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ 2. LAYER ═══════════════ -->
+    <div class="section">
+        <div class="section-header">
+            <div class="icon icon-azure">&#9632;</div>
+            Layer Architetturali
+            <span class="num">02 / 07</span>
+        </div>
+        <div class="section-body">
+            <div class="layer-grid">
+                <div class="layer-card lc-identity">
+                    <h4>&#128272; Layer 1 &mdash; Identita & Accesso</h4>
+                    <ul>
+                        <li>Entra ID P1 (identity provider unico)</li>
+                        <li>Entra Connect Sync (da AD Samba4)</li>
+                        <li>MFA obbligatoria su tutte le app critiche</li>
+                        <li>Conditional Access (location, device, risk)</li>
+                        <li>50 utenti sincronizzati</li>
+                    </ul>
+                </div>
+                <div class="layer-card lc-m365">
+                    <h4>&#128188; Layer 2 &mdash; Produttivita M365</h4>
+                    <ul>
+                        <li>Exchange Online — posta, calendario (50 GB/utente)</li>
+                        <li>SharePoint Online — siti dipartimentali</li>
+                        <li>OneDrive — storage personale (1 TB/utente)</li>
+                        <li>MS Teams — chat, videoconferenza</li>
+                        <li>Defender for O365 — phishing, malware</li>
+                    </ul>
+                </div>
+                <div class="layer-card lc-d365">
+                    <h4>&#128202; Layer 3 &mdash; Line of Business</h4>
+                    <ul>
+                        <li>D365 Sales Professional — CRM (20 utenti)</li>
+                        <li>D365 Business Central — ERP (10 utenti)</li>
+                        <li>Migrazione: Sugar CRM &rarr; Sales</li>
+                        <li>Migrazione: Profis + Kimai &rarr; BC</li>
+                        <li>Migrazione: Odoo &rarr; Dynamics</li>
+                    </ul>
+                </div>
+                <div class="layer-card lc-paas">
+                    <h4>&#9889; Layer 4 &mdash; App Clienti (PaaS)</h4>
+                    <ul>
+                        <li>Azure App Service P1v3 — Pondus (Linux)</li>
+                        <li>Azure SQL DB S2 — database Pondus</li>
+                        <li>VNet Integration per accesso privato</li>
+                        <li>Auto-scaling e health monitoring</li>
+                    </ul>
+                </div>
+                <div class="layer-card lc-devops">
+                    <h4>&#128295; Layer 5 &mdash; DevOps</h4>
+                    <ul>
+                        <li>Azure DevOps Repos — Git centralizzato</li>
+                        <li>Azure DevOps Pipelines — CI/CD</li>
+                        <li>Azure Artifacts — NuGet/npm privati</li>
+                        <li>Migrazione: GiTea + BitBucket &rarr; Repos</li>
+                    </ul>
+                </div>
+                <div class="layer-card lc-iaas">
+                    <h4>&#128196; Layer 6 &mdash; Documentazione (IaaS)</h4>
+                    <ul>
+                        <li>VM B2s West Europe — Media Wiki</li>
+                        <li>2 vCPU, 4 GB RAM, 30 GB managed disk</li>
+                        <li>Unificazione istanze on-prem + GCP</li>
+                        <li>Backup: Azure Backup + snapshot</li>
+                    </ul>
+                </div>
+                <div class="layer-card lc-hpc">
+                    <h4>&#128421; Layer 7 &mdash; HPC Hybrid</h4>
+                    <ul>
+                        <li>On-prem: 8 nodi + InfiniBand (job MPI)</li>
+                        <li>CycleCloud head node (VM D2s_v3)</li>
+                        <li>Burst: HB176-96rs v4 SPOT (fino a 8 nodi)</li>
+                        <li>Azure Managed Lustre — 4 TB shared</li>
+                        <li>Forwarder PBS &rarr; Slurm</li>
+                    </ul>
+                </div>
+                <div class="layer-card lc-dr">
+                    <h4>&#128257; Layer 8 &mdash; Backup & DR</h4>
+                    <ul>
+                        <li>Azure Backup — VM, DB, file</li>
+                        <li>Azure Site Recovery — DR replica</li>
+                        <li>Cold storage 30 giorni (legacy)</li>
+                        <li>Snapshot giornalieri managed disk</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ 3. RETE ═══════════════ -->
+    <div class="section">
+        <div class="section-header">
+            <div class="icon icon-network">&#127760;</div>
+            Rete, Subnet & Connettivita
+            <span class="num">03 / 07</span>
+        </div>
+        <div class="section-body">
+            <div class="diagram-container">
+                <pre class="mermaid">
+graph LR
+    subgraph ONPREM_NET["🏢 Sede Torino — 10.10.0.0/16"]
+        FG_NET["FortiGate FG-100F<br/>(HA Cluster)"]
+        LAN["LAN Interno<br/>Workstation + Server"]
+        HPC_NET["HPC Cluster<br/>InfiniBand + Ethernet"]
+    end
+
+    subgraph AZURE_NET["☁️ Azure West Europe — 10.30.0.0/16"]
+        GW["snet-gateway<br/>10.30.254.0/24<br/>VPN Gateway VpnGw1AZ"]
+        MW["snet-mediawiki<br/>10.30.1.0/24<br/>VM B2s Media Wiki"]
+        APP["snet-appsvc<br/>10.30.2.0/24<br/>App Service VNet Int."]
+        CC["snet-cyclecloud<br/>10.30.99.0/24<br/>VM D2s_v3 CycleCloud"]
+        HPC_AZ_NET["snet-hpc<br/>10.30.100.0/24<br/>HB176-96rs v4 SPOT"]
+        LUS["snet-lustre<br/>10.30.101.0/24<br/>Azure Managed Lustre"]
+    end
+
+    subgraph CLOUD_SVC["☁️ Servizi Cloud (via Internet)"]
+        M365_NET["M365 / Dynamics 365<br/>Exchange, Teams, SharePoint"]
+        AZ_PaaS["Azure PaaS<br/>App Service, SQL, DevOps"]
+    end
+
+    FG_NET <-->|"IPsec IKEv2<br/>BGP < 5ms"| GW
+    LAN --> FG_NET
+    HPC_NET --> FG_NET
+    GW --> AZURE_NET
+    FG_NET -->|"Internet<br/>(auth, posta, Teams)"| M365_NET
+    FG_NET -->|"Internet"| AZ_PaaS
+
+    style ONPREM_NET fill:#1c1008,stroke:#ea580c,stroke-width:2px,color:#fed7aa
+    style AZURE_NET fill:#0c1929,stroke:#0078d4,stroke-width:2px,color:#bae6fd
+    style CLOUD_SVC fill:#1e1033,stroke:#7c3aed,stroke-width:1px,color:#ddd6fe
+                </pre>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Subnet Azure</th><th>CIDR</th><th>Risorse</th><th>Traffico</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="cidr">snet-gateway</span></td>
+                            <td style="font-family:'JetBrains Mono';font-size:0.82rem;color:var(--text-muted)">10.30.254.0/24</td>
+                            <td>VPN Gateway VpnGw1AZ</td>
+                            <td>IPsec IKEv2 &harr; FortiGate</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cidr">snet-mediawiki</span></td>
+                            <td style="font-family:'JetBrains Mono';font-size:0.82rem;color:var(--text-muted)">10.30.1.0/24</td>
+                            <td>VM B2s Media Wiki</td>
+                            <td>HTTPS (pubblico), SSH (VPN)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cidr">snet-appsvc</span></td>
+                            <td style="font-family:'JetBrains Mono';font-size:0.82rem;color:var(--text-muted)">10.30.2.0/24</td>
+                            <td>App Service VNet Integration</td>
+                            <td>HTTPS Pondus, accesso SQL privato</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cidr">snet-cyclecloud</span></td>
+                            <td style="font-family:'JetBrains Mono';font-size:0.82rem;color:var(--text-muted)">10.30.99.0/24</td>
+                            <td>VM D2s_v3 CycleCloud Head</td>
+                            <td>SSH, API CycleCloud, Slurm</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cidr">snet-hpc</span></td>
+                            <td style="font-family:'JetBrains Mono';font-size:0.82rem;color:var(--text-muted)">10.30.100.0/24</td>
+                            <td>HB176-96rs v4 SPOT (burst)</td>
+                            <td>InfiniBand (trusted, no FW)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cidr">snet-lustre</span></td>
+                            <td style="font-family:'JetBrains Mono';font-size:0.82rem;color:var(--text-muted)">10.30.101.0/24</td>
+                            <td>Azure Managed Lustre 4 TB</td>
+                            <td>NFS/Internal, dati HPC condivisi</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ 4. IDENTITA ═══════════════ -->
+    <div class="section">
+        <div class="section-header">
+            <div class="icon icon-gold">&#128273;</div>
+            Flussi Identita & Autenticazione
+            <span class="num">04 / 07</span>
+        </div>
+        <div class="section-body">
+            <div class="diagram-container">
+                <pre class="mermaid">
+graph TB
+    subgraph ONPREM_ID["🏢 On-Prem"]
+        AD_SAMBA["AD Samba4<br/>50 utenti"]
+        ENTRA_SYNC["Entra Connect Sync<br/>(server on-prem)"]
+    end
+
+    subgraph AZURE_ID["☁️ Azure Cloud"]
+        ENTRA_ID["Entra ID P1<br/>Identity Provider"]
+        MFA["MFA<br/>Multi-Factor Auth"]
+        CA["Conditional Access<br/>Policy Engine"]
+    end
+
+    subgraph APPS["📱 Applicazioni"]
+        EXO_ID["Exchange Online"]
+        SPO_ID["SharePoint Online"]
+        TEAMS_ID["MS Teams"]
+        D365_ID["Dynamics 365"]
+        DEVOPS_ID["Azure DevOps"]
+        PONDUS_ID["Pondus App<br/>(Azure App Service)"]
+    end
+
+    AD_SAMBA -->|"Hash sync"| ENTRA_SYNC
+    ENTRA_SYNC -->|"Azure AD Connect"| ENTRA_ID
+    ENTRA_ID --> MFA
+    ENTRA_ID --> CA
+    ENTRA_ID -->|"OAuth / SAML"| APPS
+
+    style ONPREM_ID fill:#1c1008,stroke:#ea580c,color:#fed7aa
+    style AZURE_ID fill:#0c1929,stroke:#0078d4,color:#bae6fd
+    style APPS fill:#1e1033,stroke:#7c3aed,color:#ddd6fe
+                </pre>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Componente</th><th>Descrizione</th><th>Note</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>AD Samba4</strong></td><td>Directory on-prem, 50 utenti</td><td>Fonte di verita per sync iniziale</td></tr>
+                        <tr><td><strong>Entra Connect Sync</strong></td><td>Sincronizzazione hash password + attributi</td><td>Server on-prem o VM Azure</td></tr>
+                        <tr><td><strong>Entra ID P1</strong></td><td>Identity provider cloud unico</td><td>Licenza inclusa in M365 Business Premium</td></tr>
+                        <tr><td><strong>MFA</strong></td><td>Autenticazione a 2 fattori</td><td>Applicata su tutte le app critiche</td></tr>
+                        <tr><td><strong>Conditional Access</strong></td><td>Policy basate su rischio, posizione, device</td><td>Geofencing, device compliance</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ 5. HPC ═══════════════ -->
+    <div class="section">
+        <div class="section-header">
+            <div class="icon icon-hpc">&#128421;</div>
+            Architettura HPC Hybrid (On-Prem + Azure Burst)
+            <span class="num">05 / 07</span>
+        </div>
+        <div class="section-body">
+            <div class="diagram-container">
+                <pre class="mermaid">
+graph LR
+    subgraph ONPREM_HPC["🏢 On-Prem — InfiniBand"]
+        HEAD["Frontend PBS<br/>(forwarder → Slurm)"]
+        N1["Nodo 1<br/>InfiniBand"]
+        N2["Nodo 2<br/>InfiniBand"]
+        N8["...<br/>Nodo 8"]
+        IB_ON["InfiniBand Fabric<br/>(on-prem)"]
+        NFS_ON["Storage NFS<br/>(on-prem)"]
+    end
+
+    subgraph AZURE_HPC["☁️ Azure West Europe"]
+        CYC["CycleCloud Head<br/>VM D2s_v3"]
+        HB1["HB176-96rs v4<br/>SPOT Node 1"]
+        HB2["HB176-96rs v4<br/>SPOT Node 2"]
+        HB8["...<br/>SPOT Node 8"]
+        IB_AZ["InfiniBand Fabric<br/>(Azure)"]
+        LUST["Azure Managed Lustre<br/>4 TB — 500 MB/s"]
+    end
+
+    HEAD -->|"Forwarder<br/>PBS → Slurm"| CYC
+    CYC -->|"Slurm Scheduler"| HB1
+    CYC --> HB2
+    CYC --> HB8
+    HB1 <-->|"InfiniBand<br/>MPI/RDMA < 2μs"| IB_AZ
+    HB2 <--> IB_AZ
+    HB8 <--> IB_AZ
+
+    N1 <-->|"InfiniBand"| IB_ON
+    N2 <--> IB_ON
+    N8 <--> IB_ON
+
+    LUST <-->|"NFS mount<br/>dati condivisi"| HB1
+    LUST <--> HB2
+    LUST <--> HB8
+    LUST <-->|"Mount"| ONPREM_HPC
+
+    NFS_ON -.->|"Backup"| LUST
+
+    style ONPREM_HPC fill:#1c1008,stroke:#ea580c,stroke-width:2px,color:#fed7aa
+    style AZURE_HPC fill:#1f0a0a,stroke:#dc2626,stroke-width:2px,color:#fecaca
+                </pre>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Componente</th><th>Posizione</th><th>Specifiche</th><th>Uso</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Frontend PBS</strong></td><td>On-prem</td><td>Forwarder PBS &rarr; Slurm</td><td>Schedulazione unificata</td></tr>
+                        <tr><td><strong>CycleCloud Head</strong></td><td>Azure (VM D2s_v3)</td><td>Linux, 2 vCPU, 8 GB RAM</td><td>Gestione cluster Azure</td></tr>
+                        <tr><td><strong>HB176-96rs v4</strong></td><td>Azure (SPOT)</td><td>176 vCPU, 96 GB RAM, InfiniBand</td><td>Job MPI burst (max 8 nodi)</td></tr>
+                        <tr><td><strong>Azure Managed Lustre</strong></td><td>Azure</td><td>4 TB, 500 MB/s</td><td>Filesystem condiviso HPC</td></tr>
+                        <tr><td><strong>InfiniBand (on-prem)</strong></td><td>On-prem</td><td>Rete trusted, no firewall</td><td>MPI/RDMA &lt; 2&#181;s</td></tr>
+                        <tr><td><strong>InfiniBand (Azure)</strong></td><td>Azure</td><td>Rete trusted, no firewall</td><td>MPI/RDMA &lt; 2&#181;s</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="callout callout-warning">
+                <span class="callout-icon">&#9888;&#65039;</span>
+                <div class="callout-text">
+                    <strong>Vincolo critico:</strong> I job MPI <strong>non</strong> attraversano la VPN (latenza ~5ms = incompatibile). La schedulazione separa job on-prem (InfiniBand on-prem) da job Azure (InfiniBand Azure). I dati sono condivisi via Lustre.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ 6. DNS & NAMING ═══════════════ -->
+    <div class="section">
+        <div class="section-header">
+            <div class="icon icon-network">&#127760;</div>
+            DNS, Naming Convention & Resource Map
+            <span class="num">06 / 07</span>
+        </div>
+        <div class="section-body">
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Record DNS</th><th>Tipo</th><th>Target</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>tpgroup.it MX</code></td><td>MX</td><td>exchange.protection.outlook.com</td></tr>
+                        <tr><td><code>autodiscover.tpgroup.it</code></td><td>CNAME</td><td>autodiscover.outlook.com</td></tr>
+                        <tr><td><code>pondus.tpgroup.it</code></td><td>CNAME</td><td>app-tpgroup-pondus-westeu.azurewebsites.net</td></tr>
+                        <tr><td><code>wiki.tpgroup.it</code></td><td>A / CNAME</td><td>IP pubblico VM Media Wiki</td></tr>
+                        <tr><td><code>cyclecloud.tpgroup.it</code></td><td>A (privato)</td><td>10.30.99.x (DNS interno Azure)</td></tr>
+                        <tr><td><code>lustre.tpgroup.it</code></td><td>A (privato)</td><td>10.30.101.x (DNS interno Azure)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="margin-top:2rem;margin-bottom:1rem;font-size:1rem;font-weight:700;color:var(--text);">Resource Naming Convention</h3>
+
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Risorsa</th><th>Nome</th><th>SKU / Tag</th></tr></thead>
+                    <tbody>
+                        <tr><td>Resource Group</td><td><code>rg-tpgroup-migration-westeu</code></td><td>&mdash;</td></tr>
+                        <tr><td>VNet</td><td><code>vnet-tpgroup-westeu</code></td><td>10.30.0.0/16</td></tr>
+                        <tr><td>App Service Plan</td><td><code>asp-tpgroup-westeu</code></td><td>P1v3 Linux</td></tr>
+                        <tr><td>App Service</td><td><code>app-tpgroup-pondus-westeu</code></td><td>.NET 8</td></tr>
+                        <tr><td>Azure SQL Server</td><td><code>sql-tpgroup-pondus-westeu</code></td><td>&mdash;</td></tr>
+                        <tr><td>Azure SQL DB</td><td><code>sqldb-tpgroup-pondus-westeu</code></td><td>S2, 50 DTU</td></tr>
+                        <tr><td>VM Media Wiki</td><td><code>vm-tpgroup-mediawiki-westeu</code></td><td>B2s</td></tr>
+                        <tr><td>VM CycleCloud</td><td><code>vm-tpgroup-cyclecloud-westeu</code></td><td>D2s_v3</td></tr>
+                        <tr><td>Managed Lustre</td><td><code>lustre-tpgroup-westeu</code></td><td>4 TB</td></tr>
+                        <tr><td>VPN Gateway</td><td><code>vpngw-tpgroup-westeu</code></td><td>VpnGw1AZ</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ 7. COSTI & KPI ═══════════════ -->
+    <div class="section">
+        <div class="section-header">
+            <div class="icon icon-d365">&#128176;</div>
+            Riepilogo Costi & KPI Architettura
+            <span class="num">07 / 07</span>
+        </div>
+        <div class="section-body">
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Componente</th><th>Tipo</th><th>Costo Stimato (annuo)</th><th>Note</th></tr></thead>
+                    <tbody>
+                        <tr><td>M365 Business Premium &times; 50</td><td>SaaS</td><td>~&euro; 27.000</td><td>Incluse licenze Entra ID P1</td></tr>
+                        <tr><td>D365 Sales Professional &times; 20</td><td>SaaS</td><td>~&euro; 20.000</td><td>CRM pipeline vendita</td></tr>
+                        <tr><td>D365 Business Central &times; 10</td><td>SaaS</td><td>~&euro; 12.000</td><td>ERP + Timesheet</td></tr>
+                        <tr><td>Azure App Service P1v3</td><td>PaaS</td><td>~&euro; 3.000</td><td>Pondus Web App</td></tr>
+                        <tr><td>Azure SQL DB S2</td><td>PaaS</td><td>~&euro; 2.500</td><td>Pondus Database</td></tr>
+                        <tr><td>VM B2s (Media Wiki)</td><td>IaaS</td><td>~&euro; 350</td><td>Unica eccezione IaaS</td></tr>
+                        <tr><td>VM D2s_v3 (CycleCloud)</td><td>IaaS</td><td>~&euro; 700</td><td>HPC head node</td></tr>
+                        <tr><td>Azure Managed Lustre</td><td>Storage</td><td>~&euro; 3.000</td><td>4 TB, 500 MB/s</td></tr>
+                        <tr><td>HB176-96rs v4 (SPOT)</td><td>HPC</td><td>Variable</td><td>Solo quando usato (~70% sconto)</td></tr>
+                        <tr><td>VPN Gateway VpnGw1AZ</td><td>Networking</td><td>~&euro; 3.000</td><td>IPsec attivo-standby</td></tr>
+                        <tr><td>Azure Backup + Site Recovery</td><td>DR</td><td>~&euro; 2.000</td><td>VM + DB + file</td></tr>
+                        <tr class="total-row">
+                            <td colspan="2">TOTALE ANNUO STIMATO</td>
+                            <td><span class="total-amount">~&euro; 73.500</span></td>
+                            <td style="color:var(--text-muted);font-weight:400">+ costi burst HPC variabili</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-box stat-box-kpi">
+                    <h4>&#127919; KPI Architettura</h4>
+                    <ul>
+                        <li>Downtime servizi critici <strong>&lt; 2 ore</strong></li>
+                        <li>Posta invio/ricezione <strong>&lt; 5 sec</strong></li>
+                        <li>File upload 100 MB <strong>&lt; 10 sec</strong></li>
+                        <li>Dynamics creazione record <strong>&lt; 3 sec</strong></li>
+                        <li>HPC burst provisioning <strong>&lt; 10 min</strong></li>
+                        <li>Lustre I/O latenza <strong>&lt; 5 ms</strong></li>
+                    </ul>
+                </div>
+                <div class="stat-box stat-box-compliance">
+                    <h4>&#128203; Compliance</h4>
+                    <ul>
+                        <li>ISO/IEC 27001 <strong>entro 12 mesi</strong></li>
+                        <li>MFA obbligatoria <strong>tutti gli utenti</strong></li>
+                        <li>Conditional Access policy <strong>attiva</strong></li>
+                        <li>Backup giornalieri + DR <strong>confermati</strong></li>
+                        <li>Audit log Entra ID <strong>abilitato</strong></li>
+                        <li>Data residency <strong>West Europe</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'dark',
+        themeVariables: {
+            primaryColor: '#1e3a5f',
+            primaryTextColor: '#e2e8f0',
+            primaryBorderColor: '#334155',
+            lineColor: '#64748b',
+            secondaryColor: '#1e293b',
+            tertiaryColor: '#0f172a',
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '13px',
+            noteBkgColor: '#1e293b',
+            noteTextColor: '#94a3b8',
+            noteBorderColor: '#334155',
+            edgeLabelBackground: '#1e293b',
+        },
+        flowchart: {
+            useMaxWidth: true,
+            htmlLabels: true,
+            curve: 'basis',
+            rankSpacing: 60,
+            nodeSpacing: 30,
+        },
+        securityLevel: 'loose',
+    });
+</script>
+
+</body>
+</html>

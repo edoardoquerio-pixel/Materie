@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+
+<html  dir="ltr" lang="it" xml:lang="it">
+<head>
+    <title>Compito</title>
+<link rel="shortcut icon" href="//fad.its-ictpiemonte.it/pluginfile.php/1/theme_snap/favicon/1703178611/favicon-16x16.png"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="moodle, Compito" />
+<link rel="stylesheet" type="text/css" href="https://fad.its-ictpiemonte.it/theme/yui_combo.php?3.17.2/cssgrids/cssgrids-min.css" /><link rel="stylesheet" type="text/css" href="https://fad.its-ictpiemonte.it/theme/yui_combo.php?rollup/3.17.2/yui-moodlesimple-min.css" /><script id="firstthemesheet" type="text/css">/** Required in order to fix style inclusion problems in IE with YUI **/</script><link rel="stylesheet" type="text/css" href="https://fad.its-ictpiemonte.it/theme/styles.php/snap/1703178611_1646761033/all" />
+<script>
+//<![CDATA[
+var M = {}; M.yui = {};
+M.pageloadstarttime = new Date();
+M.cfg = {"wwwroot":"https:\/\/fad.its-ictpiemonte.it","sesskey":"8Qmv9F44Z6","sessiontimeout":"28800","themerev":"1703178611","slasharguments":1,"theme":"snap","iconsystemmodule":"core\/icon_system_fontawesome","jsrev":"1702224476","admin":"admin","svgicons":true,"usertimezone":"Europa\/Roma","contextid":72943,"langrev":1784685783,"templaterev":"1702224476"};var yui1ConfigFn = function(me) {if(/-skin|reset|fonts|grids|base/.test(me.name)){me.type='css';me.path=me.path.replace(/\.js/,'.css');me.path=me.path.replace(/\/yui2-skin/,'/assets/skins/sam/yui2-skin')}};
+var yui2ConfigFn = function(me) {var parts=me.name.replace(/^moodle-/,'').split('-'),component=parts.shift(),module=parts[0],min='-min';if(/-(skin|core)$/.test(me.name)){parts.pop();me.type='css';min=''}
+if(module){var filename=parts.join('-');me.path=component+'/'+module+'/'+filename+min+'.'+me.type}else{me.path=component+'/'+component+'.'+me.type}};
+YUI_config = {"debug":false,"base":"https:\/\/fad.its-ictpiemonte.it\/lib\/yuilib\/3.17.2\/","comboBase":"https:\/\/fad.its-ictpiemonte.it\/theme\/yui_combo.php?","combine":true,"filter":null,"insertBefore":"firstthemesheet","groups":{"yui2":{"base":"https:\/\/fad.its-ictpiemonte.it\/lib\/yuilib\/2in3\/2.9.0\/build\/","comboBase":"https:\/\/fad.its-ictpiemonte.it\/theme\/yui_combo.php?","combine":true,"ext":false,"root":"2in3\/2.9.0\/build\/","patterns":{"yui2-":{"group":"yui2","configFn":yui1ConfigFn}}},"moodle":{"name":"moodle","base":"https:\/\/fad.its-ictpiemonte.it\/theme\/yui_combo.php?m\/1702224476\/","combine":true,"comboBase":"https:\/\/fad.its-ictpiemonte.it\/theme\/yui_combo.php?","ext":false,"root":"m\/1702224476\/","patterns":{"moodle-":{"group":"moodle","configFn":yui2ConfigFn}},"filter":null,"modules":{"moodle-core-handlebars":{"condition":{"trigger":"handlebars","when":"after"}},"moodle-core-chooserdialogue":{"requires":["base","panel","moodle-core-notification"]},"moodle-core-actionmenu":{"requires":["base","event","node-event-simulate"]},"moodle-core-event":{"requires":["event-custom"]},"moodle-core-tooltip":{"requires":["base","node","io-base","moodle-core-notification-dialogue","json-parse","widget-position","widget-position-align","event-outside","cache-base"]},"moodle-core-notification":{"requires":["moodle-core-notification-dialogue","moodle-core-notification-alert","moodle-core-notification-confirm","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-core-notification-dialogue":{"requires":["base","node","panel","escape","event-key","dd-plugin","moodle-core-widget-focusafterclose","moodle-core-lockscroll"]},"moodle-core-notification-alert":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-confirm":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-exception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-ajaxexception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-maintenancemodetimer":{"requires":["base","node"]},"moodle-core-blocks":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification"]},"moodle-core-languninstallconfirm":{"requires":["base","node","moodle-core-notification-confirm","moodle-core-notification-alert"]},"moodle-core-dragdrop":{"requires":["base","node","io","dom","dd","event-key","event-focus","moodle-core-notification"]},"moodle-core-popuphelp":{"requires":["moodle-core-tooltip"]},"moodle-core-formchangechecker":{"requires":["base","event-focus","moodle-core-event"]},"moodle-core-lockscroll":{"requires":["plugin","base-build"]},"moodle-core_availability-form":{"requires":["base","node","event","event-delegate","panel","moodle-core-notification-dialogue","json"]},"moodle-backup-confirmcancel":{"requires":["node","node-event-simulate","moodle-core-notification-confirm"]},"moodle-backup-backupselectall":{"requires":["node","event","node-event-simulate","anim"]},"moodle-course-categoryexpander":{"requires":["node","event-key"]},"moodle-course-management":{"requires":["base","node","io-base","moodle-core-notification-exception","json-parse","dd-constrain","dd-proxy","dd-drop","dd-delegate","node-event-delegate"]},"moodle-course-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-course-coursebase","moodle-course-util"]},"moodle-course-util":{"requires":["node"],"use":["moodle-course-util-base"],"submodules":{"moodle-course-util-base":{},"moodle-course-util-section":{"requires":["node","moodle-course-util-base"]},"moodle-course-util-cm":{"requires":["node","moodle-course-util-base"]}}},"moodle-course-formatchooser":{"requires":["base","node","node-event-simulate"]},"moodle-form-dateselector":{"requires":["base","node","overlay","calendar"]},"moodle-form-shortforms":{"requires":["node","base","selector-css3","moodle-core-event"]},"moodle-form-passwordunmask":{"requires":[]},"moodle-question-searchform":{"requires":["base","node"]},"moodle-question-preview":{"requires":["base","dom","event-delegate","event-key","core_question_engine"]},"moodle-question-chooser":{"requires":["moodle-core-chooserdialogue"]},"moodle-availability_completion-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_date-form":{"requires":["base","node","event","io","moodle-core_availability-form"]},"moodle-availability_grade-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_group-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_grouping-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_profile-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-mod_assign-history":{"requires":["node","transition"]},"moodle-mod_attendance-groupfilter":{"requires":["base","node"]},"moodle-mod_quiz-toolboxes":{"requires":["base","node","event","event-key","io","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-slot","moodle-core-notification-ajaxexception"]},"moodle-mod_quiz-modform":{"requires":["base","node","event"]},"moodle-mod_quiz-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-base","moodle-mod_quiz-util-page","moodle-mod_quiz-util-slot","moodle-course-util"]},"moodle-mod_quiz-util":{"requires":["node","moodle-core-actionmenu"],"use":["moodle-mod_quiz-util-base"],"submodules":{"moodle-mod_quiz-util-base":{},"moodle-mod_quiz-util-slot":{"requires":["node","moodle-mod_quiz-util-base"]},"moodle-mod_quiz-util-page":{"requires":["node","moodle-mod_quiz-util-base"]}}},"moodle-mod_quiz-questionchooser":{"requires":["moodle-core-chooserdialogue","moodle-mod_quiz-util","querystring-parse"]},"moodle-mod_quiz-autosave":{"requires":["base","node","event","event-valuechange","node-event-delegate","io-form"]},"moodle-mod_quiz-quizbase":{"requires":["base","node"]},"moodle-message_airnotifier-toolboxes":{"requires":["base","node","io"]},"moodle-filter_glossary-autolinker":{"requires":["base","node","io-base","json-parse","event-delegate","overlay","moodle-core-event","moodle-core-notification-alert","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-filter_mathjaxloader-loader":{"requires":["moodle-core-event"]},"moodle-editor_atto-rangy":{"requires":[]},"moodle-editor_atto-editor":{"requires":["node","transition","io","overlay","escape","event","event-simulate","event-custom","node-event-html5","node-event-simulate","yui-throttle","moodle-core-notification-dialogue","moodle-core-notification-confirm","moodle-editor_atto-rangy","handlebars","timers","querystring-stringify"]},"moodle-editor_atto-plugin":{"requires":["node","base","escape","event","event-outside","handlebars","event-custom","timers","moodle-editor_atto-menu"]},"moodle-editor_atto-menu":{"requires":["moodle-core-notification-dialogue","node","event","event-custom"]},"moodle-report_eventlist-eventfilter":{"requires":["base","event","node","node-event-delegate","datatable","autocomplete","autocomplete-filters"]},"moodle-report_loglive-fetchlogs":{"requires":["base","event","node","io","node-event-delegate"]},"moodle-gradereport_grader-gradereporttable":{"requires":["base","node","event","handlebars","overlay","event-hover"]},"moodle-gradereport_history-userselector":{"requires":["escape","event-delegate","event-key","handlebars","io-base","json-parse","moodle-core-notification-dialogue"]},"moodle-tool_capability-search":{"requires":["base","node"]},"moodle-tool_lp-dragdrop-reorder":{"requires":["moodle-core-dragdrop"]},"moodle-tool_monitor-dropdown":{"requires":["base","event","node"]},"moodle-assignfeedback_editpdf-editor":{"requires":["base","event","node","io","graphics","json","event-move","event-resize","transition","querystring-stringify-simple","moodle-core-notification-dialog","moodle-core-notification-alert","moodle-core-notification-warning","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-atto_accessibilitychecker-button":{"requires":["color-base","moodle-editor_atto-plugin"]},"moodle-atto_accessibilityhelper-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_align-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_bold-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_charmap-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_clear-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_collapse-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_emojipicker-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_emoticon-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_equation-button":{"requires":["moodle-editor_atto-plugin","moodle-core-event","io","event-valuechange","tabview","array-extras"]},"moodle-atto_h5p-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_html-codemirror":{"requires":["moodle-atto_html-codemirror-skin"]},"moodle-atto_html-beautify":{},"moodle-atto_html-button":{"requires":["promise","moodle-editor_atto-plugin","moodle-atto_html-beautify","moodle-atto_html-codemirror","event-valuechange"]},"moodle-atto_image-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_indent-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_italic-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_link-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-usedfiles":{"requires":["node","escape"]},"moodle-atto_managefiles-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_media-button":{"requires":["moodle-editor_atto-plugin","moodle-form-shortforms"]},"moodle-atto_noautolink-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_orderedlist-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_recordrtc-recording":{"requires":["moodle-atto_recordrtc-button"]},"moodle-atto_recordrtc-button":{"requires":["moodle-editor_atto-plugin","moodle-atto_recordrtc-recording"]},"moodle-atto_rtl-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_strike-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_subscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_superscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_table-button":{"requires":["moodle-editor_atto-plugin","moodle-editor_atto-menu","event","event-valuechange"]},"moodle-atto_title-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_underline-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_undo-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_unorderedlist-button":{"requires":["moodle-editor_atto-plugin"]}}},"gallery":{"name":"gallery","base":"https:\/\/fad.its-ictpiemonte.it\/lib\/yuilib\/gallery\/","combine":true,"comboBase":"https:\/\/fad.its-ictpiemonte.it\/theme\/yui_combo.php?","ext":false,"root":"gallery\/1702224476\/","patterns":{"gallery-":{"group":"gallery"}}}},"modules":{"core_filepicker":{"name":"core_filepicker","fullpath":"https:\/\/fad.its-ictpiemonte.it\/lib\/javascript.php\/1702224476\/repository\/filepicker.js","requires":["base","node","node-event-simulate","json","async-queue","io-base","io-upload-iframe","io-form","yui2-treeview","panel","cookie","datatable","datatable-sort","resize-plugin","dd-plugin","escape","moodle-core_filepicker","moodle-core-notification-dialogue"]},"core_comment":{"name":"core_comment","fullpath":"https:\/\/fad.its-ictpiemonte.it\/lib\/javascript.php\/1702224476\/comment\/comment.js","requires":["base","io-base","node","json","yui2-animation","overlay","escape"]},"mathjax":{"name":"mathjax","fullpath":"https:\/\/cdn.jsdelivr.net\/npm\/mathjax@2.7.8\/MathJax.js?delayStartupUntil=configured"}}};
+M.yui.loader = {modules: {}};
+
+//]]>
+</script>
+<meta name="theme-color" content="#192035">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href='//fonts.googleapis.com/css?family=Roboto:500,100,400,300' rel='stylesheet' type='text/css'>
+<style>#page-header {background-image: url(https://fad.its-ictpiemonte.it/pluginfile.php/69962/theme_snap/coverimage/1768232125/course-image.png);}</style>
+</head>
+
+<body  id="page-mod-assign-view" class="format-topics  path-mod path-mod-assign chrome dir-ltr lang-it yui-skin-sam yui3-skin-sam fad-its-ictpiemonte-it pagelayout-incourse course-2213 context-72943 cmid-48664 category-98 device-type-default completion-tracking snap-resource-list theme-snap layout-incourse">
+
+<div>
+    <a class="sr-only sr-only-focusable" href="#maincontent">Vai al contenuto principale</a>
+</div><script src="https://fad.its-ictpiemonte.it/lib/javascript.php/1702224476/lib/babel-polyfill/polyfill.min.js"></script>
+<script src="https://fad.its-ictpiemonte.it/lib/javascript.php/1702224476/lib/polyfills/polyfill.js"></script>
+<script src="https://fad.its-ictpiemonte.it/theme/yui_combo.php?rollup/3.17.2/yui-moodlesimple-min.js"></script><script src="https://fad.its-ictpiemonte.it/theme/jquery.php/core/jquery-3.5.1.min.js"></script>
+<script src="https://fad.its-ictpiemonte.it/lib/javascript.php/1702224476/lib/javascript-static.js"></script>
+<script>
+//<![CDATA[
+document.body.className += ' jsenabled';
+//]]>
+</script>
+
+
+<header id='mr-nav' class='clearfix moodle-has-zindex'>
+<div id="snap-header">
+<a aria-label="home" id="snap-home" title="ITS ICT Piemonte - Piattaforma di formazione a distanza" class="logo" href="https://fad.its-ictpiemonte.it"><span class="sr-only">ITS ICT Piemonte - Piattaforma di formazione a distanza</span></a>
+<div class="pull-right js-only row">
+    <a aria-haspopup="true" class="js-snap-pm-trigger snap-my-courses-menu" id="snap-pm-trigger" aria-controls="snap-pm" href="#"><img src="https://fad.its-ictpiemonte.it/theme/image.php/snap/core/1703178611/u/f1" class="userpicture defaultuserpic" width="100" height="100" alt="" /><span class="hidden-xs-down">I miei corsi</span></a><div class="badge-count-container">
+                        <a class="snap-message-count" aria-label="Aprire il cassetto dei messaggi.Conversazioni non lette: 0" +
+                         href="https://fad.its-ictpiemonte.it/message/" title="Aprire il cassetto dei messaggi.Conversazioni non lette: 0">
+                            <i class="icon fa fa-comment fa-fw">
+                                <div class="conversation_badge_count hidden"></div>
+                            </i>
+                        </a>
+                    </div><div class="popover-region collapsed popover-region-notifications"
+    id="nav-notification-popover-container" data-userid="3925"
+    data-region="popover-region">
+    <div class="popover-region-toggle nav-link icon-no-margin"
+        data-region="popover-region-toggle"
+        role="button"
+        aria-controls="popover-region-container-6a673f37c5a506a673f37c38f22"
+        aria-haspopup="true"
+        aria-label="Visualizza la finestra delle notifiche senza notifiche nuove"
+        tabindex="0">
+                <i class="icon fa fa-bell fa-fw "  title="Visualizza/nascondi menu notifiche" aria-label="Visualizza/nascondi menu notifiche"></i>
+        <div class="count-container hidden" data-region="count-container"
+        aria-label="Notifiche non lette: 0">0</div>
+
+    </div>
+    <div 
+        id="popover-region-container-6a673f37c5a506a673f37c38f22"
+        class="popover-region-container"
+        data-region="popover-region-container"
+        aria-expanded="false"
+        aria-hidden="true"
+        aria-label="Finestra di notifica"
+        role="region">
+        <div class="popover-region-header-container">
+            <h3 class="popover-region-header-text" data-region="popover-region-header-text">Notifiche</h3>
+            <div class="popover-region-header-actions" data-region="popover-region-header-actions">        <a class="mark-all-read-button"
+           href="#"
+           title="Segna tutti come letti"
+           data-action="mark-all-read"
+           role="button"
+           aria-label="Segna tutti come letti">
+            <span class="normal-icon"><i class="icon fa fa-check fa-fw " aria-hidden="true"  ></i></span>
+            <span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+        </a>
+        <a href="https://fad.its-ictpiemonte.it/message/notificationpreferences.php?userid=3925"
+           title="Preferenze notifiche"
+           aria-label="Preferenze notifiche">
+            <i class="icon fa fa-cog fa-fw " aria-hidden="true"  ></i>
+        </a>
+</div>
+        </div>
+        <div class="popover-region-content-container" data-region="popover-region-content-container">
+            <div class="popover-region-content" data-region="popover-region-content">
+                        <div class="all-notifications"
+            data-region="all-notifications"
+            role="log"
+            aria-busy="false"
+            aria-atomic="false"
+            aria-relevant="additions"></div>
+        <div class="empty-message" tabindex="0" data-region="empty-message">Non hai notifiche</div>
+
+            </div>
+            <span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+        </div>
+                <a class="see-all-link"
+                    href="https://fad.its-ictpiemonte.it/message/output/popup/notifications.php">
+                    <div class="popover-region-footer-container">
+                        <div class="popover-region-seeall-text">Visualizza tutto</div>
+                    </div>
+                </a>
+    </div>
+</div><span class="hidden-md-down"></span></div>
+</div>
+</header>
+
+<nav id="snap-pm" tabindex="-1">
+    <div id="snap-pm-inner">
+        <!-- Header -->
+        
+        <header id="snap-pm-header" class="clearfix">
+            <div class="pull-right">
+                <a id="snap-pm-close" class="js-snap-pm-trigger snap-action-icon snap-icon-close" href="#">
+                        <small>Chiudi</small>
+                </a>
+            </div>
+            <!-- User details -->
+            <div class="snap-pm-user">
+                <img src="https://fad.its-ictpiemonte.it/theme/image.php/snap/core/1703178611/u/f1" class="userpicture defaultuserpic" width="100" height="100" alt="" />
+                <a href="https://fad.its-ictpiemonte.it/user/profile.php"
+                    title="Visualizza il profilo"
+                    class="h1" id="snap-pm-user-profile">Edoardo Querio Gianetto</a>
+                
+                <div id="snap-pm-header-quicklinks">
+                    <a id="snap-pm-profile" href="https://fad.its-ictpiemonte.it/user/profile.php">Profilo</a>
+                    <a id="snap-pm-dashboard" href="https://fad.its-ictpiemonte.it/my">Dashboard</a>
+                    <a id="snap-pm-grades" href="https://fad.its-ictpiemonte.it/grade/report/overview/index.php">Valutazioni</a>
+                    <a id="snap-pm-preferences" href="https://fad.its-ictpiemonte.it/user/preferences.php">Preferenze</a>
+                    <a id="snap-pm-logout" href="https://fad.its-ictpiemonte.it/login/logout.php?sesskey=8Qmv9F44Z6">Esci</a>
+                </div>
+            </div>
+
+
+        </header>
+        <!-- Content -->
+        <div id="snap-pm-content" class="row">
+            <!-- Courses -->
+            <section id="snap-pm-courses" class="col-lg-9">
+                <h2 class="sr-only">Corsi</h2>
+
+
+
+
+                <!-- Current courses -->
+                
+                    <div id="snap-pm-courses-current" class="tab-pane active" role="tabpanel" aria-label="snap-pm-tab-current">
+                            <div id="snap-pm-courses-current-cards" class="clearfix">
+                                    <div data-hidden="false" data-courseid="2204" data-category="98" data-model="{&quot;courseid&quot;:&quot;2204&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-00) Materiale condiviso - Cartella del partecipante&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-00) Materiale condiviso - Cartella del partecipante&quot;,&quot;favorited&quot;:true,&quot;visibleavatars&quot;:[],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2204&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #4b4edc, #2630fe);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Aggiunto ai preferiti (CSP_25-27-00) Materiale condiviso - Cartella del partecipante&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2204&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2204" data-shortname="(CSP_25-27-00) Materiale condiviso - Cartella del partecipante" class="coursecard favorited" style="background-image: linear-gradient(to bottom right, #4b4edc, #2630fe);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Aggiunto ai preferiti (CSP_25-27-00) Materiale condiviso - Cartella del partecipante" aria-pressed="true"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2204">(CSP_25-27-00) Materiale condiviso - Cartella del partecipante</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2209" data-category="98" data-model="{&quot;courseid&quot;:&quot;2209&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-02) Approfondimenti didattici e Orientamento&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-02) Approfondimenti didattici e Orientamento&quot;,&quot;favorited&quot;:true,&quot;visibleavatars&quot;:[],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2209&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #db116b, #39f7a3);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Aggiunto ai preferiti (CSP_25-27-02) Approfondimenti didattici e Orientamento&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2209&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2209" data-shortname="(CSP_25-27-02) Approfondimenti didattici e Orientamento" class="coursecard favorited" style="background-image: linear-gradient(to bottom right, #db116b, #39f7a3);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Aggiunto ai preferiti (CSP_25-27-02) Approfondimenti didattici e Orientamento" aria-pressed="true"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2209">(CSP_25-27-02) Approfondimenti didattici e Orientamento</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2210" data-category="98" data-model="{&quot;courseid&quot;:&quot;2210&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-03) Containers e microservizi - serverless&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-03) Containers e microservizi - serverless&quot;,&quot;favorited&quot;:true,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/pluginfile.php\/11432\/user\/icon\/snap\/f1?rev=223577\&quot; class=\&quot;userpicture\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Denis Maggiorotto\&quot; title=\&quot;Immagine Denis Maggiorotto\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2210&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #1368ba, #1ab6ed);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Aggiunto ai preferiti (CSP_25-27-03) Containers e microservizi - serverless&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2210&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2210" data-shortname="(CSP_25-27-03) Containers e microservizi - serverless" class="coursecard favorited" style="background-image: linear-gradient(to bottom right, #1368ba, #1ab6ed);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Aggiunto ai preferiti (CSP_25-27-03) Containers e microservizi - serverless" aria-pressed="true"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2210">(CSP_25-27-03) Containers e microservizi - serverless</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/pluginfile.php/11432/user/icon/snap/f1?rev=223577" class="userpicture" width="100" height="100" alt="Immagine Denis Maggiorotto" title="Immagine Denis Maggiorotto" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2218" data-category="98" data-model="{&quot;courseid&quot;:&quot;2218&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-11) Inglese&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-11) Inglese&quot;,&quot;favorited&quot;:true,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/pluginfile.php\/58040\/user\/icon\/snap\/f1?rev=2398949\&quot; class=\&quot;userpicture\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Rossella Baroncelli\&quot; title=\&quot;Immagine Rossella Baroncelli\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2218&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #b0df22, #70be9c);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Aggiunto ai preferiti (CSP_25-27-11) Inglese&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2218&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2218" data-shortname="(CSP_25-27-11) Inglese" class="coursecard favorited" style="background-image: linear-gradient(to bottom right, #b0df22, #70be9c);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Aggiunto ai preferiti (CSP_25-27-11) Inglese" aria-pressed="true"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2218">(CSP_25-27-11) Inglese</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/pluginfile.php/58040/user/icon/snap/f1?rev=2398949" class="userpicture" width="100" height="100" alt="Immagine Rossella Baroncelli" title="Immagine Rossella Baroncelli" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2221" data-category="98" data-model="{&quot;courseid&quot;:&quot;2221&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-14) Learning by project - Soft Skill&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-14) Learning by project - Soft Skill&quot;,&quot;favorited&quot;:true,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/pluginfile.php\/35075\/user\/icon\/snap\/f1?rev=500777\&quot; class=\&quot;userpicture\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Luca Robaldo\&quot; title=\&quot;Immagine Luca Robaldo\&quot; \/&gt;&quot;,&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/pluginfile.php\/35077\/user\/icon\/snap\/f1?rev=1334451\&quot; class=\&quot;userpicture\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Barbara Paola Ronco\&quot; title=\&quot;Immagine Barbara Paola Ronco\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2221&quot;,&quot;imagecss&quot;:&quot;background-image: url(https:\/\/fad.its-ictpiemonte.it\/pluginfile.php\/69970\/theme_snap\/coverimage\/1779964587\/course-image.jpg);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Aggiunto ai preferiti (CSP_25-27-14) Learning by project - Soft Skill&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2221&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2221" data-shortname="(CSP_25-27-14) Learning by project - Soft Skill" class="coursecard favorited" style="background-image: url(https://fad.its-ictpiemonte.it/pluginfile.php/69970/theme_snap/coverimage/1779964587/course-image.jpg);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Aggiunto ai preferiti (CSP_25-27-14) Learning by project - Soft Skill" aria-pressed="true"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2221">(CSP_25-27-14) Learning by project - Soft Skill</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/pluginfile.php/35075/user/icon/snap/f1?rev=500777" class="userpicture" width="100" height="100" alt="Immagine Luca Robaldo" title="Immagine Luca Robaldo" />
+                                                    <img src="https://fad.its-ictpiemonte.it/pluginfile.php/35077/user/icon/snap/f1?rev=1334451" class="userpicture" width="100" height="100" alt="Immagine Barbara Paola Ronco" title="Immagine Barbara Paola Ronco" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2222" data-category="98" data-model="{&quot;courseid&quot;:&quot;2222&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-15) Learning by project - Tech&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-15) Learning by project - Tech&quot;,&quot;favorited&quot;:true,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/pluginfile.php\/35075\/user\/icon\/snap\/f1?rev=500777\&quot; class=\&quot;userpicture\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Luca Robaldo\&quot; title=\&quot;Immagine Luca Robaldo\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2222&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #934b53, #5800b1);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Aggiunto ai preferiti (CSP_25-27-15) Learning by project - Tech&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2222&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2222" data-shortname="(CSP_25-27-15) Learning by project - Tech" class="coursecard favorited" style="background-image: linear-gradient(to bottom right, #934b53, #5800b1);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Aggiunto ai preferiti (CSP_25-27-15) Learning by project - Tech" aria-pressed="true"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2222">(CSP_25-27-15) Learning by project - Tech</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/pluginfile.php/35075/user/icon/snap/f1?rev=500777" class="userpicture" width="100" height="100" alt="Immagine Luca Robaldo" title="Immagine Luca Robaldo" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2225" data-category="98" data-model="{&quot;courseid&quot;:&quot;2225&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-18) Microsoft Azure&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-18) Microsoft Azure&quot;,&quot;favorited&quot;:true,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/theme\/image.php\/snap\/core\/1703178611\/u\/f1\&quot; class=\&quot;userpicture defaultuserpic\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Federico Laurianti\&quot; title=\&quot;Immagine Federico Laurianti\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2225&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #443dec, #3062d0);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Aggiunto ai preferiti (CSP_25-27-18) Microsoft Azure&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2225&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2225" data-shortname="(CSP_25-27-18) Microsoft Azure" class="coursecard favorited" style="background-image: linear-gradient(to bottom right, #443dec, #3062d0);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Aggiunto ai preferiti (CSP_25-27-18) Microsoft Azure" aria-pressed="true"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2225">(CSP_25-27-18) Microsoft Azure</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/theme/image.php/snap/core/1703178611/u/f1" class="userpicture defaultuserpic" width="100" height="100" alt="Immagine Federico Laurianti" title="Immagine Federico Laurianti" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2226" data-category="98" data-model="{&quot;courseid&quot;:&quot;2226&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-19) Orientamento al lavoro&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-19) Orientamento al lavoro&quot;,&quot;favorited&quot;:true,&quot;visibleavatars&quot;:[],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2226&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #01eee5, #09ee2f);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Aggiunto ai preferiti (CSP_25-27-19) Orientamento al lavoro&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2226&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2226" data-shortname="(CSP_25-27-19) Orientamento al lavoro" class="coursecard favorited" style="background-image: linear-gradient(to bottom right, #01eee5, #09ee2f);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Aggiunto ai preferiti (CSP_25-27-19) Orientamento al lavoro" aria-pressed="true"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2226">(CSP_25-27-19) Orientamento al lavoro</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2229" data-category="98" data-model="{&quot;courseid&quot;:&quot;2229&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-22) Programmazione \u2013 .NET \/ Framework C#&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-22) Programmazione \u2013 .NET \/ Framework C#&quot;,&quot;favorited&quot;:true,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/pluginfile.php\/1081\/user\/icon\/snap\/f1?rev=73889\&quot; class=\&quot;userpicture\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Rocco Catalano\&quot; title=\&quot;Immagine Rocco Catalano\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2229&quot;,&quot;imagecss&quot;:&quot;background-image: url(https:\/\/fad.its-ictpiemonte.it\/pluginfile.php\/69978\/theme_snap\/coverimage\/1780587056\/course-image.png);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Aggiunto ai preferiti (CSP_25-27-22) Programmazione \u2013 .NET \/ Framework C#&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2229&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2229" data-shortname="(CSP_25-27-22) Programmazione – .NET / Framework C#" class="coursecard favorited" style="background-image: url(https://fad.its-ictpiemonte.it/pluginfile.php/69978/theme_snap/coverimage/1780587056/course-image.png);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Aggiunto ai preferiti (CSP_25-27-22) Programmazione – .NET / Framework C#" aria-pressed="true"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2229">(CSP_25-27-22) Programmazione – .NET / Framework C#</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/pluginfile.php/1081/user/icon/snap/f1?rev=73889" class="userpicture" width="100" height="100" alt="Immagine Rocco Catalano" title="Immagine Rocco Catalano" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2234" data-category="98" data-model="{&quot;courseid&quot;:&quot;2234&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-27) Sistemi di virtualizzazione&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-27) Sistemi di virtualizzazione&quot;,&quot;favorited&quot;:true,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/pluginfile.php\/35047\/user\/icon\/snap\/f1?rev=547206\&quot; class=\&quot;userpicture\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Paolo Belloni\&quot; title=\&quot;Immagine Paolo Belloni\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2234&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #653ac1, #1ca60b);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Aggiunto ai preferiti (CSP_25-27-27) Sistemi di virtualizzazione&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2234&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2234" data-shortname="(CSP_25-27-27) Sistemi di virtualizzazione" class="coursecard favorited" style="background-image: linear-gradient(to bottom right, #653ac1, #1ca60b);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Aggiunto ai preferiti (CSP_25-27-27) Sistemi di virtualizzazione" aria-pressed="true"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2234">(CSP_25-27-27) Sistemi di virtualizzazione</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/pluginfile.php/35047/user/icon/snap/f1?rev=547206" class="userpicture" width="100" height="100" alt="Immagine Paolo Belloni" title="Immagine Paolo Belloni" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2235" data-category="98" data-model="{&quot;courseid&quot;:&quot;2235&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-28) Strumenti AI e Prompt Engineering&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-28) Strumenti AI e Prompt Engineering&quot;,&quot;favorited&quot;:true,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/theme\/image.php\/snap\/core\/1703178611\/u\/f1\&quot; class=\&quot;userpicture defaultuserpic\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Mattia Nardulli\&quot; title=\&quot;Immagine Mattia Nardulli\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2235&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #b0b79d, #a57b95);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Aggiunto ai preferiti (CSP_25-27-28) Strumenti AI e Prompt Engineering&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2235&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2235" data-shortname="(CSP_25-27-28) Strumenti AI e Prompt Engineering" class="coursecard favorited" style="background-image: linear-gradient(to bottom right, #b0b79d, #a57b95);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Aggiunto ai preferiti (CSP_25-27-28) Strumenti AI e Prompt Engineering" aria-pressed="true"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2235">(CSP_25-27-28) Strumenti AI e Prompt Engineering</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/theme/image.php/snap/core/1703178611/u/f1" class="userpicture defaultuserpic" width="100" height="100" alt="Immagine Mattia Nardulli" title="Immagine Mattia Nardulli" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2208" data-category="98" data-model="{&quot;courseid&quot;:&quot;2208&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-01) Amazon Web Services - Introduzione e utilizzo&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-01) Amazon Web Services - Introduzione e utilizzo&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/pluginfile.php\/74096\/user\/icon\/snap\/f1?rev=2063306\&quot; class=\&quot;userpicture\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Matteo Novembre\&quot; title=\&quot;Immagine Matteo Novembre\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2208&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #cd3afe, #f9b8b8);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (CSP_25-27-01) Amazon Web Services - Introduzione e utilizzo&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2208&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2208" data-shortname="(CSP_25-27-01) Amazon Web Services - Introduzione e utilizzo" class="coursecard" style="background-image: linear-gradient(to bottom right, #cd3afe, #f9b8b8);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (CSP_25-27-01) Amazon Web Services - Introduzione e utilizzo" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2208">(CSP_25-27-01) Amazon Web Services - Introduzione e utilizzo</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/pluginfile.php/74096/user/icon/snap/f1?rev=2063306" class="userpicture" width="100" height="100" alt="Immagine Matteo Novembre" title="Immagine Matteo Novembre" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2211" data-category="98" data-model="{&quot;courseid&quot;:&quot;2211&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-04) Copyright e norme giuridiche del mondo digitale&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-04) Copyright e norme giuridiche del mondo digitale&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/theme\/image.php\/snap\/core\/1703178611\/u\/f1\&quot; class=\&quot;userpicture defaultuserpic\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Massimo Orengia\&quot; title=\&quot;Immagine Massimo Orengia\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2211&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #3323fe, #11e959);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (CSP_25-27-04) Copyright e norme giuridiche del mondo digitale&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2211&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2211" data-shortname="(CSP_25-27-04) Copyright e norme giuridiche del mondo digitale" class="coursecard" style="background-image: linear-gradient(to bottom right, #3323fe, #11e959);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (CSP_25-27-04) Copyright e norme giuridiche del mondo digitale" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2211">(CSP_25-27-04) Copyright e norme giuridiche del mondo digitale</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/theme/image.php/snap/core/1703178611/u/f1" class="userpicture defaultuserpic" width="100" height="100" alt="Immagine Massimo Orengia" title="Immagine Massimo Orengia" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2212" data-category="98" data-model="{&quot;courseid&quot;:&quot;2212&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-05) Data Analytics e Visualization&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-05) Data Analytics e Visualization&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/theme\/image.php\/snap\/core\/1703178611\/u\/f1\&quot; class=\&quot;userpicture defaultuserpic\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Adriano Gaved\&quot; title=\&quot;Immagine Adriano Gaved\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2212&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #05a704, #54516e);&quot;,&quot;lazyloadimageurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/pluginfile.php\/69961\/theme_snap\/coverimage\/1774625517\/course-image.png&quot;,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (CSP_25-27-05) Data Analytics e Visualization&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2212&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2212" data-shortname="(CSP_25-27-05) Data Analytics e Visualization" class="coursecard" style="background-image: linear-gradient(to bottom right, #05a704, #54516e);" tabindex="-1" data-image-url="https://fad.its-ictpiemonte.it/pluginfile.php/69961/theme_snap/coverimage/1774625517/course-image.png">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (CSP_25-27-05) Data Analytics e Visualization" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2212">(CSP_25-27-05) Data Analytics e Visualization</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/theme/image.php/snap/core/1703178611/u/f1" class="userpicture defaultuserpic" width="100" height="100" alt="Immagine Adriano Gaved" title="Immagine Adriano Gaved" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2213" data-category="98" data-model="{&quot;courseid&quot;:&quot;2213&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-06) Fondamenti di basi di dati&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-06) Fondamenti di basi di dati&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/pluginfile.php\/1081\/user\/icon\/snap\/f1?rev=73889\&quot; class=\&quot;userpicture\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Rocco Catalano\&quot; title=\&quot;Immagine Rocco Catalano\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2213&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #01894d, #6f0484);&quot;,&quot;lazyloadimageurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/pluginfile.php\/69962\/theme_snap\/coverimage\/1768232125\/course-image.png&quot;,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (CSP_25-27-06) Fondamenti di basi di dati&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2213&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2213" data-shortname="(CSP_25-27-06) Fondamenti di basi di dati" class="coursecard" style="background-image: linear-gradient(to bottom right, #01894d, #6f0484);" tabindex="-1" data-image-url="https://fad.its-ictpiemonte.it/pluginfile.php/69962/theme_snap/coverimage/1768232125/course-image.png">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (CSP_25-27-06) Fondamenti di basi di dati" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2213">(CSP_25-27-06) Fondamenti di basi di dati</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/pluginfile.php/1081/user/icon/snap/f1?rev=73889" class="userpicture" width="100" height="100" alt="Immagine Rocco Catalano" title="Immagine Rocco Catalano" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2214" data-category="98" data-model="{&quot;courseid&quot;:&quot;2214&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-07) Fondamenti di programmazione&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-07) Fondamenti di programmazione&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/theme\/image.php\/snap\/core\/1703178611\/u\/f1\&quot; class=\&quot;userpicture defaultuserpic\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Fulvio Coppola\&quot; title=\&quot;Immagine Fulvio Coppola\&quot; \/&gt;&quot;,&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/theme\/image.php\/snap\/core\/1703178611\/u\/f1\&quot; class=\&quot;userpicture defaultuserpic\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Michele Scassillo\&quot; title=\&quot;Immagine Michele Scassillo\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2214&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #f3d9de, #86462c);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (CSP_25-27-07) Fondamenti di programmazione&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2214&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2214" data-shortname="(CSP_25-27-07) Fondamenti di programmazione" class="coursecard" style="background-image: linear-gradient(to bottom right, #f3d9de, #86462c);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (CSP_25-27-07) Fondamenti di programmazione" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2214">(CSP_25-27-07) Fondamenti di programmazione</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/theme/image.php/snap/core/1703178611/u/f1" class="userpicture defaultuserpic" width="100" height="100" alt="Immagine Fulvio Coppola" title="Immagine Fulvio Coppola" />
+                                                    <img src="https://fad.its-ictpiemonte.it/theme/image.php/snap/core/1703178611/u/f1" class="userpicture defaultuserpic" width="100" height="100" alt="Immagine Michele Scassillo" title="Immagine Michele Scassillo" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2215" data-category="98" data-model="{&quot;courseid&quot;:&quot;2215&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-08) Fondamenti di reti di calcolatori&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-08) Fondamenti di reti di calcolatori&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/pluginfile.php\/1756\/user\/icon\/snap\/f1?rev=75425\&quot; class=\&quot;userpicture\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Andrea Blanchietti\&quot; title=\&quot;Immagine Andrea Blanchietti\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2215&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #02e656, #adee09);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (CSP_25-27-08) Fondamenti di reti di calcolatori&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2215&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2215" data-shortname="(CSP_25-27-08) Fondamenti di reti di calcolatori" class="coursecard" style="background-image: linear-gradient(to bottom right, #02e656, #adee09);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (CSP_25-27-08) Fondamenti di reti di calcolatori" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2215">(CSP_25-27-08) Fondamenti di reti di calcolatori</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/pluginfile.php/1756/user/icon/snap/f1?rev=75425" class="userpicture" width="100" height="100" alt="Immagine Andrea Blanchietti" title="Immagine Andrea Blanchietti" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2216" data-category="98" data-model="{&quot;courseid&quot;:&quot;2216&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-09) Fondamenti di Version Control&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-09) Fondamenti di Version Control&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/theme\/image.php\/snap\/core\/1703178611\/u\/f1\&quot; class=\&quot;userpicture defaultuserpic\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Mattia Nardulli\&quot; title=\&quot;Immagine Mattia Nardulli\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2216&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #5938b4, #d05413);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (CSP_25-27-09) Fondamenti di Version Control&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2216&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2216" data-shortname="(CSP_25-27-09) Fondamenti di Version Control" class="coursecard" style="background-image: linear-gradient(to bottom right, #5938b4, #d05413);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (CSP_25-27-09) Fondamenti di Version Control" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2216">(CSP_25-27-09) Fondamenti di Version Control</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/theme/image.php/snap/core/1703178611/u/f1" class="userpicture defaultuserpic" width="100" height="100" alt="Immagine Mattia Nardulli" title="Immagine Mattia Nardulli" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2217" data-category="98" data-model="{&quot;courseid&quot;:&quot;2217&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-10) Google Cloud Platform - Introduzione e utilizzo&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-10) Google Cloud Platform - Introduzione e utilizzo&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2217&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #b5c015, #03041b);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (CSP_25-27-10) Google Cloud Platform - Introduzione e utilizzo&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2217&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2217" data-shortname="(CSP_25-27-10) Google Cloud Platform - Introduzione e utilizzo" class="coursecard" style="background-image: linear-gradient(to bottom right, #b5c015, #03041b);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (CSP_25-27-10) Google Cloud Platform - Introduzione e utilizzo" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2217">(CSP_25-27-10) Google Cloud Platform - Introduzione e utilizzo</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2219" data-category="98" data-model="{&quot;courseid&quot;:&quot;2219&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-12) Internet of Things&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-12) Internet of Things&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2219&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #13111c, #20aee5);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (CSP_25-27-12) Internet of Things&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2219&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2219" data-shortname="(CSP_25-27-12) Internet of Things" class="coursecard" style="background-image: linear-gradient(to bottom right, #13111c, #20aee5);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (CSP_25-27-12) Internet of Things" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2219">(CSP_25-27-12) Internet of Things</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2220" data-category="98" data-model="{&quot;courseid&quot;:&quot;2220&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-13) Laboratorio di preparazione project work&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-13) Laboratorio di preparazione project work&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2220&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #d2a27e, #83d429);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (CSP_25-27-13) Laboratorio di preparazione project work&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2220&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2220" data-shortname="(CSP_25-27-13) Laboratorio di preparazione project work" class="coursecard" style="background-image: linear-gradient(to bottom right, #d2a27e, #83d429);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (CSP_25-27-13) Laboratorio di preparazione project work" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2220">(CSP_25-27-13) Laboratorio di preparazione project work</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2223" data-category="98" data-model="{&quot;courseid&quot;:&quot;2223&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-16) Linux server&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-16) Linux server&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/theme\/image.php\/snap\/core\/1703178611\/u\/f1\&quot; class=\&quot;userpicture defaultuserpic\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Wolfgang Cecchin\&quot; title=\&quot;Immagine Wolfgang Cecchin\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2223&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #04048a, #eca2c0);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (CSP_25-27-16) Linux server&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2223&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2223" data-shortname="(CSP_25-27-16) Linux server" class="coursecard" style="background-image: linear-gradient(to bottom right, #04048a, #eca2c0);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (CSP_25-27-16) Linux server" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2223">(CSP_25-27-16) Linux server</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/theme/image.php/snap/core/1703178611/u/f1" class="userpicture defaultuserpic" width="100" height="100" alt="Immagine Wolfgang Cecchin" title="Immagine Wolfgang Cecchin" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2224" data-category="98" data-model="{&quot;courseid&quot;:&quot;2224&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-17) Microsoft 365 e Sharepoint&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-17) Microsoft 365 e Sharepoint&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/pluginfile.php\/74096\/user\/icon\/snap\/f1?rev=2063306\&quot; class=\&quot;userpicture\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Matteo Novembre\&quot; title=\&quot;Immagine Matteo Novembre\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2224&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #8ca8da, #41fe1e);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (CSP_25-27-17) Microsoft 365 e Sharepoint&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2224&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2224" data-shortname="(CSP_25-27-17) Microsoft 365 e Sharepoint" class="coursecard" style="background-image: linear-gradient(to bottom right, #8ca8da, #41fe1e);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (CSP_25-27-17) Microsoft 365 e Sharepoint" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2224">(CSP_25-27-17) Microsoft 365 e Sharepoint</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/pluginfile.php/74096/user/icon/snap/f1?rev=2063306" class="userpicture" width="100" height="100" alt="Immagine Matteo Novembre" title="Immagine Matteo Novembre" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2227" data-category="98" data-model="{&quot;courseid&quot;:&quot;2227&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-20) Parit\u00e0 fra uomini e donne e non discriminazione&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-20) Parit\u00e0 fra uomini e donne e non discriminazione&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2227&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #efdf56, #2ce2fb);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (CSP_25-27-20) Parit\u00e0 fra uomini e donne e non discriminazione&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2227&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2227" data-shortname="(CSP_25-27-20) Parità fra uomini e donne e non discriminazione" class="coursecard" style="background-image: linear-gradient(to bottom right, #efdf56, #2ce2fb);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (CSP_25-27-20) Parità fra uomini e donne e non discriminazione" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2227">(CSP_25-27-20) Parità fra uomini e donne e non discriminazione</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2228" data-category="98" data-model="{&quot;courseid&quot;:&quot;2228&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-21) Percorso di sviluppo soft skills&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-21) Percorso di sviluppo soft skills&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/pluginfile.php\/35077\/user\/icon\/snap\/f1?rev=1334451\&quot; class=\&quot;userpicture\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Barbara Paola Ronco\&quot; title=\&quot;Immagine Barbara Paola Ronco\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2228&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #4ae67a, #7dd7e4);&quot;,&quot;lazyloadimageurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/pluginfile.php\/69977\/theme_snap\/coverimage\/1769701936\/course-image.jpg&quot;,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (CSP_25-27-21) Percorso di sviluppo soft skills&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2228&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2228" data-shortname="(CSP_25-27-21) Percorso di sviluppo soft skills" class="coursecard" style="background-image: linear-gradient(to bottom right, #4ae67a, #7dd7e4);" tabindex="-1" data-image-url="https://fad.its-ictpiemonte.it/pluginfile.php/69977/theme_snap/coverimage/1769701936/course-image.jpg">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (CSP_25-27-21) Percorso di sviluppo soft skills" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2228">(CSP_25-27-21) Percorso di sviluppo soft skills</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/pluginfile.php/35077/user/icon/snap/f1?rev=1334451" class="userpicture" width="100" height="100" alt="Immagine Barbara Paola Ronco" title="Immagine Barbara Paola Ronco" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2230" data-category="98" data-model="{&quot;courseid&quot;:&quot;2230&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-23) Programmazione \u2013 Python&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-23) Programmazione \u2013 Python&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2230&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #329e65, #81efbc);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (CSP_25-27-23) Programmazione \u2013 Python&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2230&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2230" data-shortname="(CSP_25-27-23) Programmazione – Python" class="coursecard" style="background-image: linear-gradient(to bottom right, #329e65, #81efbc);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (CSP_25-27-23) Programmazione – Python" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2230">(CSP_25-27-23) Programmazione – Python</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2231" data-category="98" data-model="{&quot;courseid&quot;:&quot;2231&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-24) RESTful API&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-24) RESTful API&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/theme\/image.php\/snap\/core\/1703178611\/u\/f1\&quot; class=\&quot;userpicture defaultuserpic\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Fabio Abb\u00e0\&quot; title=\&quot;Immagine Fabio Abb\u00e0\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2231&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #2a8a81, #2400df);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (CSP_25-27-24) RESTful API&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2231&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2231" data-shortname="(CSP_25-27-24) RESTful API" class="coursecard" style="background-image: linear-gradient(to bottom right, #2a8a81, #2400df);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (CSP_25-27-24) RESTful API" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2231">(CSP_25-27-24) RESTful API</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/theme/image.php/snap/core/1703178611/u/f1" class="userpicture defaultuserpic" width="100" height="100" alt="Immagine Fabio Abbà" title="Immagine Fabio Abbà" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2232" data-category="98" data-model="{&quot;courseid&quot;:&quot;2232&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-25) Sicurezza informatica&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-25) Sicurezza informatica&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/pluginfile.php\/2864\/user\/icon\/snap\/f1?rev=20785\&quot; class=\&quot;userpicture\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Marco Farina\&quot; title=\&quot;Immagine Marco Farina\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2232&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #3e6260, #b81898);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (CSP_25-27-25) Sicurezza informatica&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2232&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2232" data-shortname="(CSP_25-27-25) Sicurezza informatica" class="coursecard" style="background-image: linear-gradient(to bottom right, #3e6260, #b81898);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (CSP_25-27-25) Sicurezza informatica" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2232">(CSP_25-27-25) Sicurezza informatica</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/pluginfile.php/2864/user/icon/snap/f1?rev=20785" class="userpicture" width="100" height="100" alt="Immagine Marco Farina" title="Immagine Marco Farina" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2233" data-category="98" data-model="{&quot;courseid&quot;:&quot;2233&quot;,&quot;fullname&quot;:&quot;(CSP_25-27-26) Sicurezza sul lavoro&quot;,&quot;shortname&quot;:&quot;(CSP_25-27-26) Sicurezza sul lavoro&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/theme\/image.php\/snap\/core\/1703178611\/u\/f1\&quot; class=\&quot;userpicture defaultuserpic\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Renzo Diena\&quot; title=\&quot;Immagine Renzo Diena\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2233&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #e0f7a4, #d0ef9b);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (CSP_25-27-26) Sicurezza sul lavoro&quot;,&quot;category&quot;:&quot;98&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2233&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2233" data-shortname="(CSP_25-27-26) Sicurezza sul lavoro" class="coursecard" style="background-image: linear-gradient(to bottom right, #e0f7a4, #d0ef9b);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (CSP_25-27-26) Sicurezza sul lavoro" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2233">(CSP_25-27-26) Sicurezza sul lavoro</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/theme/image.php/snap/core/1703178611/u/f1" class="userpicture defaultuserpic" width="100" height="100" alt="Immagine Renzo Diena" title="Immagine Renzo Diena" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2517" data-category="92" data-model="{&quot;courseid&quot;:&quot;2517&quot;,&quot;fullname&quot;:&quot;(D68444-2025) Erasmus+ Biennio 2025-2027&quot;,&quot;shortname&quot;:&quot;(D68444-2025) Erasmus+ Biennio 2025-2027&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[&quot;&lt;img src=\&quot;https:\/\/fad.its-ictpiemonte.it\/theme\/image.php\/snap\/core\/1703178611\/u\/f1\&quot; class=\&quot;userpicture defaultuserpic\&quot; width=\&quot;100\&quot; height=\&quot;100\&quot; alt=\&quot;Immagine Chiara Gastaldo\&quot; title=\&quot;Immagine Chiara Gastaldo\&quot; \/&gt;&quot;],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2517&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #c5dc3e, #08849b);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito (D68444-2025) Erasmus+ Biennio 2025-2027&quot;,&quot;category&quot;:&quot;92&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2517&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2517" data-shortname="(D68444-2025) Erasmus+ Biennio 2025-2027" class="coursecard" style="background-image: linear-gradient(to bottom right, #c5dc3e, #08849b);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito (D68444-2025) Erasmus+ Biennio 2025-2027" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2517">(D68444-2025) Erasmus+ Biennio 2025-2027</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                                    <img src="https://fad.its-ictpiemonte.it/theme/image.php/snap/core/1703178611/u/f1" class="userpicture defaultuserpic" width="100" height="100" alt="Immagine Chiara Gastaldo" title="Immagine Chiara Gastaldo" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hidden="false" data-courseid="2067" data-category="92" data-model="{&quot;courseid&quot;:&quot;2067&quot;,&quot;fullname&quot;:&quot;Selezione Studenti&quot;,&quot;shortname&quot;:&quot;SelStuICT25-27&quot;,&quot;favorited&quot;:false,&quot;visibleavatars&quot;:[],&quot;hiddenavatars&quot;:[],&quot;hiddenavatarcount&quot;:0,&quot;showextralink&quot;:false,&quot;url&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/course\/view.php?id=2067&quot;,&quot;imagecss&quot;:&quot;background-image: linear-gradient(to bottom right, #b5f1e8, #fb36cd);&quot;,&quot;lazyloadimageurl&quot;:null,&quot;archived&quot;:false,&quot;published&quot;:true,&quot;toggletitle&quot;:&quot;Preferito Selezione Studenti&quot;,&quot;category&quot;:&quot;92&quot;,&quot;feedbackurl&quot;:&quot;https:\/\/fad.its-ictpiemonte.it\/grade\/report\/user\/index.php?id=2067&quot;}" data-href="https://fad.its-ictpiemonte.it/course/view.php?id=2067" data-shortname="SelStuICT25-27" class="coursecard" style="background-image: linear-gradient(to bottom right, #b5f1e8, #fb36cd);" tabindex="-1">
+                                        <button class="snap-icon-toggle favoritetoggle" title="Preferito Selezione Studenti" aria-pressed="false"></button>
+                                        <div class="coursecard-body">
+                                            <h3><a class="coursecard-coursename" href="https://fad.its-ictpiemonte.it/course/view.php?id=2067">Selezione Studenti</a></h3>
+                                            <div class="coursecard-dynamicinfo">
+                                            </div>
+                                            <div class="coursecard-contacts">
+                                                <h4 class="sr-only">Contatti corso</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                
+                        <!-- Hidden courses area -->
+                        <div id="snap-pm-courses-hidden" class="clearfix ">
+                            <h2><br><a data-toggle="collapse" href="#snap-pm-courses-hidden-cards" aria-expanded="false" aria-controls="snap-pm-courses-hidden-cards">Corsi nascosti</a></h2>
+                            <div class="collapse clearfix" id="snap-pm-courses-hidden-cards">
+                            </div>
+                        </div>
+                
+                    </div>
+                
+                
+
+                
+            </section>
+            <!-- Updates -->
+            <div id="snap-pm-updates" class="col-lg-3">
+                        <section><h2>Scadenze</h2><div id="snap-personal-menu-deadlines"></div><a class="snap-personal-menu-more" href="https://fad.its-ictpiemonte.it/calendar/view.php?view=month"><small>Visualizza il mio calendario</small><img class="svg-icon" role="presentation" src="https://fad.its-ictpiemonte.it/theme/image.php/snap/theme/1703178611/calendar" alt=""></a></section>
+                        <section><h2>Commento</h2><div id="snap-personal-menu-graded"></div><a class="snap-personal-menu-more" href="https://fad.its-ictpiemonte.it/grade/report/mygrades.php"><small>Visualizza il mio feedback</small><img class="svg-icon" role="presentation" src="https://fad.its-ictpiemonte.it/theme/image.php/snap/theme/1703178611/tick" alt=""></a></section>
+                        <section><h2>Messaggi</h2><div id="snap-personal-menu-messages"></div><a class="snap-personal-menu-more" href="https://fad.its-ictpiemonte.it/message/"><small>Visualizza i miei messaggi</small><img class="svg-icon" role="presentation" src="https://fad.its-ictpiemonte.it/theme/image.php/snap/theme/1703178611/messages" alt=""></a></section>
+                        <section><h2>Interventi nei Forum</h2>
+            <div id="snap-personal-menu-forumposts"></div><a class="snap-personal-menu-more" href="https://fad.its-ictpiemonte.it/mod/forum/user.php?id=3925"><small>Visualizza i miei messaggi del forum</small><img class="svg-icon" role="presentation" src="https://fad.its-ictpiemonte.it/theme/image.php/snap/theme/1703178611/forumposts" alt=""></a></section>
+            </div>
+        </div>
+            <div id="snap-pm-mobilemenu"><a href="#snap-pm-courses" class="state-active"><img class="svg-icon" alt="Corsi" src="https://fad.its-ictpiemonte.it/theme/image.php/snap/theme/1703178611/courses"></a><a href="#snap-personal-menu-deadlines" class=""><img class="svg-icon" alt="Scadenze" src="https://fad.its-ictpiemonte.it/theme/image.php/snap/theme/1703178611/calendar"></a><a href="#snap-personal-menu-graded" class=""><img class="svg-icon" alt="Commento" src="https://fad.its-ictpiemonte.it/theme/image.php/snap/theme/1703178611/grading"></a><a href="#snap-personal-menu-messages" class=""><img class="svg-icon" alt="Messaggi" src="https://fad.its-ictpiemonte.it/theme/image.php/snap/theme/1703178611/messages"></a><a href="#snap-personal-menu-forumposts" class=""><img class="svg-icon" alt="Interventi nei Forum" src="https://fad.its-ictpiemonte.it/theme/image.php/snap/theme/1703178611/forumposts"></a></div>
+        <!-- // End Content -->
+    </div>
+</nav>
+<!-- Moodle js hooks -->
+<div id="page">
+<div id="page-content">
+
+<!--
+////////////////////////// MAIN  ///////////////////////////////
+-->
+<main id="moodle-page" class="clearfix">
+<div id="page-header" class="clearfix mast-image">
+            <div class="breadcrumb-nav" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class=" mast-breadcrumb" href="https://fad.its-ictpiemonte.it/">Home</a></li><li class="breadcrumb-item"><a class="js-snap-pm-trigger mast-breadcrumb" href="#">I miei corsi</a></li><li class="breadcrumb-item"><a class="mast-breadcrumb" href="https://fad.its-ictpiemonte.it/course/index.php?categoryid=1">ITS ICT</a></li><li class="breadcrumb-item"><a class="mast-breadcrumb" href="https://fad.its-ictpiemonte.it/course/index.php?categoryid=92">2025-2027</a></li><li class="breadcrumb-item"><a class="mast-breadcrumb" href="https://fad.its-ictpiemonte.it/course/index.php?categoryid=98">Cloud Specialist</a></li><li class="breadcrumb-item"><a class="mast-breadcrumb" href="https://fad.its-ictpiemonte.it/course/view.php?id=2213">(CSP_25-27-06) Fondamenti di basi di dati</a></li><li class="breadcrumb-item"><a class="mast-breadcrumb" href="https://fad.its-ictpiemonte.it/course/view.php?id=2213#section-18">Esame finale</a></li><li class="breadcrumb-item"><a class="mast-breadcrumb" href="https://fad.its-ictpiemonte.it/mod/assign/view.php?id=48664">Esame finale - Prova pratica</a></li></ol></div>
+            <div id="page-mast">
+        <h1><a href="https://fad.its-ictpiemonte.it/course/view.php?id=2213">(CSP_25-27-06) Fondamenti di basi di dati</a></h1>        </div>
+        </div>
+<section id="region-main">
+<span class="notifications" id="user-notifications"></span><div class='snap-page-heading-button' ></div><div role="main"><span id="maincontent"></span><h2>Esame finale - Prova pratica</h2><div class="assign-intro"><div class="duedata"><div>Scadenza mercoledì, 22 aprile 2026, 18:15</div></div><div class="p-y-1"><div class="no-overflow"><p dir="ltr" style="text-align: left;"></p><p dir="ltr"><strong><strong>Data della prova</strong>:&nbsp;</strong>22/04/2026</p><p dir="ltr"><strong><strong>Durata</strong>:&nbsp;</strong>3 ore</p><p dir="ltr"><strong><strong>Obiettivo della verifica</strong>:&nbsp;</strong>Prova pratica su MS SQL Server</p><p dir="ltr"><strong>Descrizione della consegna</strong><strong>:&nbsp;</strong>File con risultati ottenuti in base alle richieste</p><p dir="ltr"><strong>Metodologia della valutazione</strong><strong>:&nbsp;</strong>Il voto sarà espresso in trentesimi</p><p dir="ltr"><strong>Testo</strong></p><p dir="ltr">Download&nbsp;<a href="https://fad.its-ictpiemonte.it/pluginfile.php/72943/mod_assign/intro/BikeStores.zip">BikeStores</a></p><p dir="ltr">Operazioni da eseguire:<br></p><p dir="ltr"></p><ol><li>creare il database BikeStores</li><li>eseguire il file ... drop all objects (inserire il database da utilizzare)</li><li>eseguire il file ... create object</li><li>eseguire il file ... load data</li></ol><p></p><p dir="ltr"><br></p><p dir="ltr">Eseguire le seguenti queries<br></p><p dir="ltr"></p><ol><li>Selezionare i prodotti che hanno una certa marca</li><li>Selezionare i prodotti che hanno in stocks almeno 20 pezzi</li><li>Selezionare gli ordini gestiti da un certo componente dello staff (cognome)</li><li>Selezionare il totale delle vendite del primo semestre 2016</li><li>Selezionare i clienti che hanno acquistato prodotti di una certa categoria (nome)</li></ol>Creare le seguenti views<br><ol><li>Creare la vista vw_ProductionByQuantity con category_name, brand_name, product_name, model_year, list_price, quantity dello schema production. Interrogare la view richiedendo solo i dati con quantity strettamente inferiori a 25 unità</li><li>Creare la vista vw_StoresByQuantity con brand_name, product_name, store_name, city, quantity. Interrogare la view per visualizzare i dati solo di una certa città</li><li>Creare la vista vw_ProductsByCustomers con product_name, brand_name, category_name, quantity (quantità di acquisto), list_price (prezzo finale di acquisto), discount (sconto di acquisto), order_date, first_name, last_name, city. Interrogare la view vw_ProductsByCustomers per visualizzare i prodotti ordinati in una certa data&nbsp;&nbsp;</li></ol>Creare le seguenti Stored Procedures<br><ol><li>Selezionare il prodotto, il prezzo, il magazzino e le quantità dei prodotti di una certa categoria</li><li>Selezionare il nome, il prezzo, la categoria, la quantità e la marca dei prodotti che hanno in magazzino almeno n pezzi</li><li>Selezionare il nome, il cognome, l'email e il telefono degli impiegati che lavorano in un certo negozio individuato tramite il nome</li><li>Selezionare l'id, la data dell'ordine, la data di richiesta e di spedizione, lo stato degli ordini gestiti da un certo impiegato individuato tramite il cognome e il nome</li><li>Visualizzare il numero di prodotti venduti in un certo negozio in un determinato anno&nbsp;e un certo impiegato</li><li>Selezionare il nome e cognome del cliente, il modello, il prezzo e l'anno di produzione del prodotto, la data dell'ordine di tutti i clienti che hanno acquistato prodotti di una certa categoria individuata tramite il nome della categoria</li><li>Definire un elenco per determinare quanti sono i prodotti in Pending, in Processing, in Rejected e in Completed&nbsp; (es. 182 Pending, ... Processing, ... Rejected, ... Completed). Si consideri a tal proposito l'aggiunta di una tabella Order_Status con i riferimenti agli stati Pending=1, Processing=2, Rejected=3, Completed=4</li></ol>Per ogni stored procedures fornire degli esempi di interrogazione.<br><strong>Consegna</strong>:<br>Sviluppare le queries, le views e le stored procedures riportando il risultato ottenuto come sintassi sql su file. Per ogni queries, le views&nbsp; e stored procedures effettuare uno screenshot per rendere evidente il risultato ottenuto. Nello screenshot è necessario riportare anche la barra di stato di SSMS per rendere visibile il nome dell'istanza di SQL Server.&nbsp;<br><br><p dir="ltr"><strong>Consegnare un file pdf rinominato NN_Cognome con all'interno quanto richiesto.</strong></p><p dir="ltr"><strong>Nel file, all'inizio, inserire Cognome, Nome, Data</strong></p><br><p></p></div></div></div><div class="assign-submission-data"><div><img src="https://fad.its-ictpiemonte.it/theme/image.php/snap/core/1703178611/u/f2" class="userpicture defaultuserpic" width="35" height="35" alt="" /> Edoardo Querio Gianetto</div><hr><h4 class="h6 plugin-submission-title">Consegna file</h4><div class="box py-3 boxaligncenter plugincontentsummary summary_assignsubmission_file_112697"><div id="assign_files_tree6a673f37c38f25"><ul><li yuiConfig='{"type":"html"}'><div><div class="fileuploadsubmission"><img class="icon icon" alt="19_QuerioGianetto .pdf" title="19_QuerioGianetto .pdf" src="https://fad.its-ictpiemonte.it/theme/image.php/snap/core/1703178611/f/pdf" /> <a target="_blank" href="https://fad.its-ictpiemonte.it/pluginfile.php/72943/assignsubmission_file/submission_files/112697/19_QuerioGianetto%20.pdf?forcedownload=1">19_QuerioGianetto .pdf</a>   </div><div class="fileuploadsubmissiontime">22 aprile 2026, 17:45</div></div></li></ul></div></div><div class="statusdata"><div><i class="icon fa fa-check text-success fa-fw " aria-hidden="true" role="presentation"></i><strong>Stato consegna:</strong><span class="submissionstatus">Consegnato per la valutazione</span></div></div><div class="gradingdata"><div><strong>Stato valutazione:</strong><span class="gradingstatus">Non valutata</span></div></div><div class="lastmodified"><i class="icon fa fa-calendar fa-fw " aria-hidden="true" role="presentation"></i><strong>Ultima modifica:</strong><span>mercoledì, 22 aprile 2026, 17:45</span></div><br><a href="https://fad.its-ictpiemonte.it/mod/assign/view.php?id=48664&amp;action=editsubmission" role="button" class="btn btn-primary">Modifica consegna</a><a href="https://fad.its-ictpiemonte.it/mod/assign/view.php?id=48664&amp;action=removesubmissionconfirm" role="button" class="btn btn-primary">Elimina consegna</a></div><!-- close assign-submission-data --></div><div class="m-t-2 m-b-1 activity-navigation">
+<div class="row">
+    <div class="col-md-4">        <div class="pull-left">
+                <a href="https://fad.its-ictpiemonte.it/mod/quiz/view.php?id=48663&forceview=1" id="prev-activity-link" class="btn btn-link"  title="Test Conoscenze - Fondamenti SQL" >&#x25C4; Test Conoscenze - Fondamenti SQL</a>
+
+        </div>
+</div>
+    <div class="col-md-4">        <div class="mdl-align">
+            <div class="urlselect">
+    <form method="post" action="https://fad.its-ictpiemonte.it/course/jumpto.php" class="form-inline" id="url_select_f6a673f37c38f23">
+        <input type="hidden" name="sesskey" value="8Qmv9F44Z6">
+            <label for="jump-to-activity" class="sr-only">
+                Vai a...
+            </label>
+        <select  id="jump-to-activity" class="custom-select urlselect" name="jump"
+                 >
+                    <option value="" selected>Vai a...</option>
+                    <option value="/mod/url/view.php?id=49957&amp;forceview=1" >Google Meet</option>
+                    <option value="/mod/assign/view.php?id=48592&amp;forceview=1" >Analisi e Progettazione - Gestione Esami</option>
+                    <option value="/mod/resource/view.php?id=48593&amp;forceview=1" >Schema logico - Gestione Esami</option>
+                    <option value="/mod/resource/view.php?id=48595&amp;forceview=1" >Dati - Gestione Esami</option>
+                    <option value="/mod/resource/view.php?id=49956&amp;forceview=1" >Dati - Gestione Esami - No Funzioni</option>
+                    <option value="/mod/resource/view.php?id=48597&amp;forceview=1" >COLLEZIONI GAM XLSX</option>
+                    <option value="/mod/resource/view.php?id=48598&amp;forceview=1" >Anagrafica Scuole Italiane</option>
+                    <option value="/mod/resource/view.php?id=48602&amp;forceview=1" >NorthWind-ScriptSQL</option>
+                    <option value="/mod/resource/view.php?id=48657&amp;forceview=1" >Database - Istat</option>
+                    <option value="/mod/resource/view.php?id=51114&amp;forceview=1" >Database - GalleriaArte-PalazzoMadama</option>
+                    <option value="/mod/resource/view.php?id=48661&amp;forceview=1" >Database - PrestitiBiblioteca</option>
+                    <option value="/mod/resource/view.php?id=51118&amp;forceview=1" >Database - ScuoleItaliane</option>
+                    <option value="/mod/resource/view.php?id=51699&amp;forceview=1" >PrestitiVideoteca</option>
+                    <option value="/mod/assign/view.php?id=48662&amp;forceview=1" >Esercitazione - Progettazione di database</option>
+                    <option value="/mod/assign/view.php?id=51698&amp;forceview=1" >Esercitazione - Queries</option>
+                    <option value="/mod/quiz/view.php?id=48663&amp;forceview=1" >Test Conoscenze - Fondamenti SQL</option>
+                    <option value="/mod/googlemeet/view.php?id=53374&amp;forceview=1" >(D68444-15-2025-06) Fad 01 (08-04-2026 | 14.00 - 18.00 | Catalano)</option>
+        </select>
+            <noscript>
+                <input type="submit" class="btn btn-secondary ml-1" value="Vai">
+            </noscript>
+    </form>
+</div>
+
+        </div>
+</div>
+    <div class="col-md-4">        <div class="pull-right">
+                <a href="https://fad.its-ictpiemonte.it/mod/googlemeet/view.php?id=53374&forceview=1" id="next-activity-link" class="btn btn-link"  title="(D68444-15-2025-06) Fad 01 (08-04-2026 | 14.00 - 18.00 | Catalano)" >(D68444-15-2025-06) Fad 01 (08-04-2026 | 14.00 - 18.00 | Catalano) &#x25BA;</a>
+
+        </div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+
+</div>
+</div>
+
+<div
+    id="drawer-6a673f37cfcc76a673f37c38f24"
+    class=" drawer bg-white hidden snap-drawer-headroom"
+    aria-expanded="false"
+    aria-hidden="true"
+    data-region="right-hand-drawer"
+    role="region"
+    tabindex="0"
+>
+            <div id="message-drawer-6a673f37cfcc76a673f37c38f24" class="message-app" data-region="message-drawer" role="region">
+            <div class="closewidget bg-light border-bottom text-right">
+                <a class="text-dark" data-action="closedrawer" href="#"
+                   title="Chiudi" aria-label="Chiudi"
+                >
+                    <i class="icon fa fa-window-close fa-fw " aria-hidden="true"  ></i>
+                </a>
+            </div>
+            <div class="header-container position-relative" data-region="header-container">
+                <div class="hidden border-bottom px-2 py-3" aria-hidden="true" data-region="view-contacts">
+                    <div class="d-flex align-items-center">
+                        <div class="align-self-stretch">
+                            <a class="h-100 d-flex align-items-center mr-2" href="#" data-route-back role="button">
+                                <div class="icon-back-in-drawer">
+                                    <span class="dir-rtl-hide"><i class="icon fa fa-chevron-left fa-fw " aria-hidden="true"  ></i></span>
+                                    <span class="dir-ltr-hide"><i class="icon fa fa-chevron-right fa-fw " aria-hidden="true"  ></i></span>
+                                </div>
+                                <div class="icon-back-in-app">
+                                    <span class="dir-rtl-hide"><i class="icon fa fa-times fa-fw " aria-hidden="true"  ></i></span>
+                                </div>                            </a>
+                        </div>
+                        <div>
+                            Contatti
+                        </div>
+                        <div class="ml-auto">
+                            <a href="#" data-route="view-search" role="button" aria-label="Ricerca">
+                                <i class="icon fa fa-search fa-fw " aria-hidden="true"  ></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>                
+                <div
+                    class="hidden bg-white position-relative border-bottom p-1 p-sm-2"
+                    aria-hidden="true"
+                    data-region="view-conversation"
+                >
+                    <div class="hidden" data-region="header-content"></div>
+                    <div class="hidden" data-region="header-edit-mode">
+                        
+                        <div class="d-flex p-2 align-items-center">
+                            Messaggi selezionati:
+                            <span class="ml-1" data-region="message-selected-court">1</span>
+                            <button type="button" class="ml-auto close" aria-label="Annulla selezione messaggi"
+                                data-action="cancel-edit-mode">
+                                    <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div data-region="header-placeholder">
+                        <div class="d-flex">
+                            <div
+                                class="ml-2 rounded-circle bg-pulse-grey align-self-center"
+                                style="height: 38px; width: 38px"
+                            >
+                            </div>
+                            <div class="ml-2 " style="flex: 1">
+                                <div
+                                    class="mt-1 bg-pulse-grey w-75"
+                                    style="height: 16px;"
+                                >
+                                </div>
+                            </div>
+                            <div
+                                class="ml-2 bg-pulse-grey align-self-center"
+                                style="height: 16px; width: 20px"
+                            >
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="hidden position-absolute z-index-1"
+                        data-region="confirm-dialogue-container"
+                        style="top: 0; bottom: -1px; right: 0; left: 0; background: rgba(0,0,0,0.3);"
+                    ></div>
+                </div>                <div class="border-bottom  p-1 px-sm-2 py-sm-3" aria-hidden="false"  data-region="view-overview">
+                    <div class="d-flex align-items-center">
+                        <div class="input-group simplesearchform">
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Ricerca"
+                                aria-label="Ricerca"
+                                data-region="view-overview-search-input"
+                            >
+                            <div class="input-group-append">
+                                <span class="icon-no-margin btn btn-submit">
+                                    <i class="icon fa fa-search fa-fw " aria-hidden="true"  ></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="ml-2">
+                            <a
+                                href="#"
+                                data-route="view-settings"
+                                data-route-param="3925"
+                                aria-label="Impostazioni"
+                                role="button"
+                            >
+                                <i class="icon fa fa-cog fa-fw " aria-hidden="true"  ></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="text-right mt-sm-3">
+                        <a href="#" data-route="view-contacts" role="button">
+                            <i class="icon fa fa-user fa-fw " aria-hidden="true"  ></i>
+                            Contatti
+                            <span class="badge badge-primary bg-primary ml-2 hidden"
+                            data-region="contact-request-count"
+                            aria-label="Hai 0 richieste di contatto in attesa">
+                                0
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hidden border-bottom px-2 py-3 view-search"  aria-hidden="true" data-region="view-search">
+                    <div class="d-flex align-items-center">
+                        <a
+                            class="mr-2 align-self-stretch d-flex align-items-center"
+                            href="#"
+                            data-route-back
+                            data-action="cancel-search"
+                            role="button"
+                        >
+                            <div class="icon-back-in-drawer">
+                                <span class="dir-rtl-hide"><i class="icon fa fa-chevron-left fa-fw " aria-hidden="true"  ></i></span>
+                                <span class="dir-ltr-hide"><i class="icon fa fa-chevron-right fa-fw " aria-hidden="true"  ></i></span>
+                            </div>
+                            <div class="icon-back-in-app">
+                                <span class="dir-rtl-hide"><i class="icon fa fa-times fa-fw " aria-hidden="true"  ></i></span>
+                            </div>                        </a>
+                        <div class="input-group simplesearchform">
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Ricerca"
+                                aria-label="Ricerca"
+                                data-region="search-input"
+                            >
+                            <div class="input-group-append">
+                                <button
+                                    class="btn btn-submit icon-no-margin"
+                                    type="button"
+                                    data-action="search"
+                                    aria-label="Ricerca"
+                                >
+                                    <span data-region="search-icon-container">
+                                        <i class="icon fa fa-search fa-fw " aria-hidden="true"  ></i>
+                                    </span>
+                                    <span class="hidden" data-region="loading-icon-container">
+                                        <span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+                <div class="hidden border-bottom px-2 py-3" aria-hidden="true" data-region="view-settings">
+                    <div class="d-flex align-items-center">
+                        <div class="align-self-stretch" >
+                            <a class="h-100 d-flex mr-2 align-items-center" href="#" data-route-back role="button">
+                                <div class="icon-back-in-drawer">
+                                    <span class="dir-rtl-hide"><i class="icon fa fa-chevron-left fa-fw " aria-hidden="true"  ></i></span>
+                                    <span class="dir-ltr-hide"><i class="icon fa fa-chevron-right fa-fw " aria-hidden="true"  ></i></span>
+                                </div>
+                                <div class="icon-back-in-app">
+                                    <span class="dir-rtl-hide"><i class="icon fa fa-times fa-fw " aria-hidden="true"  ></i></span>
+                                </div>                            </a>
+                        </div>
+                        <div>
+                            Impostazioni
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="body-container position-relative" data-region="body-container">
+                
+                <div
+                    class="hidden"
+                    data-region="view-contact"
+                    aria-hidden="true"
+                >
+                    <div class="p-2 pt-3" data-region="content-container"></div>
+                </div>                <div class="hidden h-100" data-region="view-contacts" aria-hidden="true" data-user-id="3925">
+                    <div class="d-flex flex-column h-100">
+                        <div class="p-3 border-bottom">
+                            <ul class="nav nav-pills nav-fill" role="tablist">
+                                <li class="nav-item">
+                                    <a
+                                        id="contacts-tab-6a673f37cfcc76a673f37c38f24"
+                                        class="nav-link active"
+                                        href="#contacts-tab-panel-6a673f37cfcc76a673f37c38f24"
+                                        data-toggle="tab"
+                                        data-action="show-contacts-section"
+                                        role="tab"
+                                        aria-controls="contacts-tab-panel-6a673f37cfcc76a673f37c38f24"
+                                        aria-selected="true"
+                                    >
+                                        Contatti
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a
+                                        id="requests-tab-6a673f37cfcc76a673f37c38f24"
+                                        class="nav-link"
+                                        href="#requests-tab-panel-6a673f37cfcc76a673f37c38f24"
+                                        data-toggle="tab"
+                                        data-action="show-requests-section"
+                                        role="tab"
+                                        aria-controls="requests-tab-panel-6a673f37cfcc76a673f37c38f24"
+                                        aria-selected="false"
+                                    >
+                                        Richieste
+                                        <span class="badge badge-primary bg-primary ml-2 hidden"
+                                        data-region="contact-request-count"
+                                        aria-label="Hai 0 richieste di contatto in attesa">
+                                            0
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content d-flex flex-column h-100">
+                                            <div
+                    class="tab-pane fade show active h-100 lazy-load-list"
+                    aria-live="polite"
+                    data-region="lazy-load-list"
+                    data-user-id="3925"
+                                        id="contacts-tab-panel-6a673f37cfcc76a673f37c38f24"
+                    data-section="contacts"
+                    role="tabpanel"
+                    aria-labelledby="contacts-tab-6a673f37cfcc76a673f37c38f24"
+
+                >
+                    
+                    <div class="hidden text-center p-2" data-region="empty-message-container">
+                        Nessun contatto
+                    </div>
+                    <div class="hidden list-group" data-region="content-container">
+                        
+                    </div>
+                    <div class="list-group" data-region="placeholder-container">
+                                            <div class="p-2 d-flex list-group-item border-0" data-region="placeholder">
+                        <div
+                            class="rounded-circle bg-pulse-grey"
+                            style="height: 38px; width: 38px"
+                        >
+                        </div>
+                        <div
+                            class="ml-2 bg-pulse-grey w-50"
+                            style="height: 20px;"
+                        >
+                        </div>
+                    </div>                    <div class="p-2 d-flex list-group-item border-0" data-region="placeholder">
+                        <div
+                            class="rounded-circle bg-pulse-grey"
+                            style="height: 38px; width: 38px"
+                        >
+                        </div>
+                        <div
+                            class="ml-2 bg-pulse-grey w-50"
+                            style="height: 20px;"
+                        >
+                        </div>
+                    </div>
+                    </div>
+                    <div class="w-100 text-center p-3 hidden" data-region="loading-icon-container" >
+                        <span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+                    </div>
+                </div>
+                
+                                            <div
+                    class="tab-pane fade h-100 lazy-load-list"
+                    aria-live="polite"
+                    data-region="lazy-load-list"
+                    data-user-id="3925"
+                                        id="requests-tab-panel-6a673f37cfcc76a673f37c38f24"
+                    data-section="requests"
+                    role="tabpanel"
+                    aria-labelledby="requests-tab-6a673f37cfcc76a673f37c38f24"
+
+                >
+                    
+                    <div class="hidden text-center p-2" data-region="empty-message-container">
+                        Nessuna richiesta di contatto
+                    </div>
+                    <div class="hidden list-group" data-region="content-container">
+                        
+                    </div>
+                    <div class="list-group" data-region="placeholder-container">
+                        
+                    </div>
+                    <div class="w-100 text-center p-3 hidden" data-region="loading-icon-container" >
+                        <span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+                    </div>
+                </div>
+                        </div>
+                    </div>
+                </div>                
+                <div
+                    class="view-conversation hidden h-100"
+                    aria-hidden="true"
+                    data-region="view-conversation"
+                    data-user-id="3925"
+                    data-midnight="1785103200"
+                    data-message-poll-min="10"
+                    data-message-poll-max="120"
+                    data-message-poll-after-max="300"
+                    style="overflow-y: auto; overflow-x: hidden"
+                >
+                    <div class="position-relative h-100" data-region="content-container" style="overflow-y: auto; overflow-x: hidden">
+                        <div class="content-message-container hidden h-100 px-2 pt-0" data-region="content-message-container" role="log" style="overflow-y: auto; overflow-x: hidden">
+                            <div class="py-3 sticky-top z-index-1 border-bottom text-center hidden" data-region="contact-request-sent-message-container">
+                                <p class="m-0">Richiesta di contatto inviata</p>
+                                <p class="font-italic font-weight-light" data-region="text"></p>
+                            </div>
+                            <div class="p-3 text-center hidden" data-region="self-conversation-message-container">
+                                <p class="m-0">Spazio personale</p>
+                                <p class="font-italic font-weight-light" data-region="text">Salva per uso futuro i messaggi in bozza, i collegamenti, le note, eccetera,</p>
+                           </div>
+                            <div class="hidden text-center p-3" data-region="more-messages-loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</div>
+                        </div>
+                        <div class="p-4 w-100 h-100 hidden position-absolute z-index-1" data-region="confirm-dialogue-container" style="top: 0; background: rgba(0,0,0,0.3);">
+                            
+                            <div class="p-3 bg-white" data-region="confirm-dialogue" role="alert">
+                                <p class="text-muted" data-region="dialogue-text"></p>
+                                <div class="mb-2 custom-control custom-checkbox hidden" data-region="delete-messages-for-all-users-toggle-container">
+                                    <input type="checkbox" class="custom-control-input" id="delete-messages-for-all-users" data-region="delete-messages-for-all-users-toggle">
+                                    <label class="custom-control-label text-muted" for="delete-messages-for-all-users">
+                                        Elimina per me e per tutti gli altri
+                                    </label>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-block hidden" data-action="confirm-block">
+                                    <span data-region="dialogue-button-text">Blocco</span>
+                                    <span class="hidden" data-region="loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</span>
+                                </button>
+                                <button type="button" class="btn btn-primary btn-block hidden" data-action="confirm-unblock">
+                                    <span data-region="dialogue-button-text">Sblocca</span>
+                                    <span class="hidden" data-region="loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</span>
+                                </button>
+                                <button type="button" class="btn btn-primary btn-block hidden" data-action="confirm-remove-contact">
+                                    <span data-region="dialogue-button-text">Rimuovi</span>
+                                    <span class="hidden" data-region="loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</span>
+                                </button>
+                                <button type="button" class="btn btn-primary btn-block hidden" data-action="confirm-add-contact">
+                                    <span data-region="dialogue-button-text">Aggiungi</span>
+                                    <span class="hidden" data-region="loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</span>
+                                </button>
+                                <button type="button" class="btn btn-primary btn-block hidden" data-action="confirm-delete-selected-messages">
+                                    <span data-region="dialogue-button-text">Elimina</span>
+                                    <span class="hidden" data-region="loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</span>
+                                </button>
+                                <button type="button" class="btn btn-primary btn-block hidden" data-action="confirm-delete-conversation">
+                                    <span data-region="dialogue-button-text">Elimina</span>
+                                    <span class="hidden" data-region="loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</span>
+                                </button>
+                                <button type="button" class="btn btn-primary btn-block hidden" data-action="request-add-contact">
+                                    <span data-region="dialogue-button-text">Invia richiesta di contatto</span>
+                                    <span class="hidden" data-region="loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</span>
+                                </button>
+                                <button type="button" class="btn btn-primary btn-block hidden" data-action="accept-contact-request">
+                                    <span data-region="dialogue-button-text">Accetta ed aggiungi ai contatti</span>
+                                    <span class="hidden" data-region="loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</span>
+                                </button>
+                                <button type="button" class="btn btn-secondary btn-block hidden" data-action="decline-contact-request">
+                                    <span data-region="dialogue-button-text">Rifiuta</span>
+                                    <span class="hidden" data-region="loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</span>
+                                </button>
+                                <button type="button" class="btn btn-primary btn-block" data-action="okay-confirm">OK</button>
+                                <button type="button" class="btn btn-secondary btn-block" data-action="cancel-confirm">Annulla</button>
+                            </div>
+                        </div>
+                        <div class="px-2 pb-2 pt-0" data-region="content-placeholder">
+                            <div class="h-100 d-flex flex-column">
+                                <div
+                                    class="px-2 pb-2 pt-0 bg-light h-100"
+                                    style="overflow-y: auto"
+                                >
+                                    <div class="mt-4">
+                                        <div class="mb-4">
+                                            <div class="mx-auto bg-white" style="height: 25px; width: 100px"></div>
+                                        </div>
+                                        <div class="d-flex flex-column p-2 bg-white rounded mb-2">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <div class="mr-2">
+                                                    <div class="rounded-circle bg-pulse-grey" style="height: 35px; width: 35px"></div>
+                                                </div>
+                                                <div class="mr-4 w-75 bg-pulse-grey" style="height: 16px"></div>
+                                                <div class="ml-auto bg-pulse-grey" style="width: 35px; height: 16px"></div>
+                                            </div>
+                                            <div class="bg-pulse-grey w-100" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-75 mt-2" style="height: 16px"></div>
+                                        </div>
+                                        <div class="d-flex flex-column p-2 bg-white rounded mb-2">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <div class="mr-2">
+                                                    <div class="rounded-circle bg-pulse-grey" style="height: 35px; width: 35px"></div>
+                                                </div>
+                                                <div class="mr-4 w-75 bg-pulse-grey" style="height: 16px"></div>
+                                                <div class="ml-auto bg-pulse-grey" style="width: 35px; height: 16px"></div>
+                                            </div>
+                                            <div class="bg-pulse-grey w-100" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-75 mt-2" style="height: 16px"></div>
+                                        </div>
+                                        <div class="d-flex flex-column p-2 bg-white rounded mb-2">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <div class="mr-2">
+                                                    <div class="rounded-circle bg-pulse-grey" style="height: 35px; width: 35px"></div>
+                                                </div>
+                                                <div class="mr-4 w-75 bg-pulse-grey" style="height: 16px"></div>
+                                                <div class="ml-auto bg-pulse-grey" style="width: 35px; height: 16px"></div>
+                                            </div>
+                                            <div class="bg-pulse-grey w-100" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-75 mt-2" style="height: 16px"></div>
+                                        </div>
+                                    </div>                                    <div class="mt-4">
+                                        <div class="mb-4">
+                                            <div class="mx-auto bg-white" style="height: 25px; width: 100px"></div>
+                                        </div>
+                                        <div class="d-flex flex-column p-2 bg-white rounded mb-2">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <div class="mr-2">
+                                                    <div class="rounded-circle bg-pulse-grey" style="height: 35px; width: 35px"></div>
+                                                </div>
+                                                <div class="mr-4 w-75 bg-pulse-grey" style="height: 16px"></div>
+                                                <div class="ml-auto bg-pulse-grey" style="width: 35px; height: 16px"></div>
+                                            </div>
+                                            <div class="bg-pulse-grey w-100" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-75 mt-2" style="height: 16px"></div>
+                                        </div>
+                                        <div class="d-flex flex-column p-2 bg-white rounded mb-2">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <div class="mr-2">
+                                                    <div class="rounded-circle bg-pulse-grey" style="height: 35px; width: 35px"></div>
+                                                </div>
+                                                <div class="mr-4 w-75 bg-pulse-grey" style="height: 16px"></div>
+                                                <div class="ml-auto bg-pulse-grey" style="width: 35px; height: 16px"></div>
+                                            </div>
+                                            <div class="bg-pulse-grey w-100" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-75 mt-2" style="height: 16px"></div>
+                                        </div>
+                                        <div class="d-flex flex-column p-2 bg-white rounded mb-2">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <div class="mr-2">
+                                                    <div class="rounded-circle bg-pulse-grey" style="height: 35px; width: 35px"></div>
+                                                </div>
+                                                <div class="mr-4 w-75 bg-pulse-grey" style="height: 16px"></div>
+                                                <div class="ml-auto bg-pulse-grey" style="width: 35px; height: 16px"></div>
+                                            </div>
+                                            <div class="bg-pulse-grey w-100" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-75 mt-2" style="height: 16px"></div>
+                                        </div>
+                                    </div>                                    <div class="mt-4">
+                                        <div class="mb-4">
+                                            <div class="mx-auto bg-white" style="height: 25px; width: 100px"></div>
+                                        </div>
+                                        <div class="d-flex flex-column p-2 bg-white rounded mb-2">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <div class="mr-2">
+                                                    <div class="rounded-circle bg-pulse-grey" style="height: 35px; width: 35px"></div>
+                                                </div>
+                                                <div class="mr-4 w-75 bg-pulse-grey" style="height: 16px"></div>
+                                                <div class="ml-auto bg-pulse-grey" style="width: 35px; height: 16px"></div>
+                                            </div>
+                                            <div class="bg-pulse-grey w-100" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-75 mt-2" style="height: 16px"></div>
+                                        </div>
+                                        <div class="d-flex flex-column p-2 bg-white rounded mb-2">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <div class="mr-2">
+                                                    <div class="rounded-circle bg-pulse-grey" style="height: 35px; width: 35px"></div>
+                                                </div>
+                                                <div class="mr-4 w-75 bg-pulse-grey" style="height: 16px"></div>
+                                                <div class="ml-auto bg-pulse-grey" style="width: 35px; height: 16px"></div>
+                                            </div>
+                                            <div class="bg-pulse-grey w-100" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-75 mt-2" style="height: 16px"></div>
+                                        </div>
+                                        <div class="d-flex flex-column p-2 bg-white rounded mb-2">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <div class="mr-2">
+                                                    <div class="rounded-circle bg-pulse-grey" style="height: 35px; width: 35px"></div>
+                                                </div>
+                                                <div class="mr-4 w-75 bg-pulse-grey" style="height: 16px"></div>
+                                                <div class="ml-auto bg-pulse-grey" style="width: 35px; height: 16px"></div>
+                                            </div>
+                                            <div class="bg-pulse-grey w-100" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-75 mt-2" style="height: 16px"></div>
+                                        </div>
+                                    </div>                                    <div class="mt-4">
+                                        <div class="mb-4">
+                                            <div class="mx-auto bg-white" style="height: 25px; width: 100px"></div>
+                                        </div>
+                                        <div class="d-flex flex-column p-2 bg-white rounded mb-2">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <div class="mr-2">
+                                                    <div class="rounded-circle bg-pulse-grey" style="height: 35px; width: 35px"></div>
+                                                </div>
+                                                <div class="mr-4 w-75 bg-pulse-grey" style="height: 16px"></div>
+                                                <div class="ml-auto bg-pulse-grey" style="width: 35px; height: 16px"></div>
+                                            </div>
+                                            <div class="bg-pulse-grey w-100" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-75 mt-2" style="height: 16px"></div>
+                                        </div>
+                                        <div class="d-flex flex-column p-2 bg-white rounded mb-2">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <div class="mr-2">
+                                                    <div class="rounded-circle bg-pulse-grey" style="height: 35px; width: 35px"></div>
+                                                </div>
+                                                <div class="mr-4 w-75 bg-pulse-grey" style="height: 16px"></div>
+                                                <div class="ml-auto bg-pulse-grey" style="width: 35px; height: 16px"></div>
+                                            </div>
+                                            <div class="bg-pulse-grey w-100" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-75 mt-2" style="height: 16px"></div>
+                                        </div>
+                                        <div class="d-flex flex-column p-2 bg-white rounded mb-2">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <div class="mr-2">
+                                                    <div class="rounded-circle bg-pulse-grey" style="height: 35px; width: 35px"></div>
+                                                </div>
+                                                <div class="mr-4 w-75 bg-pulse-grey" style="height: 16px"></div>
+                                                <div class="ml-auto bg-pulse-grey" style="width: 35px; height: 16px"></div>
+                                            </div>
+                                            <div class="bg-pulse-grey w-100" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-75 mt-2" style="height: 16px"></div>
+                                        </div>
+                                    </div>                                    <div class="mt-4">
+                                        <div class="mb-4">
+                                            <div class="mx-auto bg-white" style="height: 25px; width: 100px"></div>
+                                        </div>
+                                        <div class="d-flex flex-column p-2 bg-white rounded mb-2">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <div class="mr-2">
+                                                    <div class="rounded-circle bg-pulse-grey" style="height: 35px; width: 35px"></div>
+                                                </div>
+                                                <div class="mr-4 w-75 bg-pulse-grey" style="height: 16px"></div>
+                                                <div class="ml-auto bg-pulse-grey" style="width: 35px; height: 16px"></div>
+                                            </div>
+                                            <div class="bg-pulse-grey w-100" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-75 mt-2" style="height: 16px"></div>
+                                        </div>
+                                        <div class="d-flex flex-column p-2 bg-white rounded mb-2">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <div class="mr-2">
+                                                    <div class="rounded-circle bg-pulse-grey" style="height: 35px; width: 35px"></div>
+                                                </div>
+                                                <div class="mr-4 w-75 bg-pulse-grey" style="height: 16px"></div>
+                                                <div class="ml-auto bg-pulse-grey" style="width: 35px; height: 16px"></div>
+                                            </div>
+                                            <div class="bg-pulse-grey w-100" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-75 mt-2" style="height: 16px"></div>
+                                        </div>
+                                        <div class="d-flex flex-column p-2 bg-white rounded mb-2">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <div class="mr-2">
+                                                    <div class="rounded-circle bg-pulse-grey" style="height: 35px; width: 35px"></div>
+                                                </div>
+                                                <div class="mr-4 w-75 bg-pulse-grey" style="height: 16px"></div>
+                                                <div class="ml-auto bg-pulse-grey" style="width: 35px; height: 16px"></div>
+                                            </div>
+                                            <div class="bg-pulse-grey w-100" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-100 mt-2" style="height: 16px"></div>
+                                            <div class="bg-pulse-grey w-75 mt-2" style="height: 16px"></div>
+                                        </div>
+                                    </div>                                </div>
+                            </div>                        </div>
+                    </div>
+                </div>
+                
+                <div
+                    class="hidden"
+                    aria-hidden="true"
+                    data-region="view-group-info"
+                >
+                    <div
+                        class="pt-3 h-100 d-flex flex-column"
+                        data-region="group-info-content-container"
+                        style="overflow-y: auto"
+                    ></div>
+                </div>                <div class="h-100 view-overview-body" aria-hidden="false" data-region="view-overview"  data-user-id="3925">
+                    <div id="message-drawer-view-overview-container-6a673f37cfcc76a673f37c38f24" class="d-flex flex-column h-100" style="overflow-y: auto">
+                            
+                            
+                            <div
+                                class="section border-0 card"
+                                data-region="view-overview-favourites"
+                            >
+                                <div id="view-overview-favourites-toggle" class="card-header" data-region="toggle">
+                                    <button
+                                        class="btn btn-link w-100 text-left p-1 p-sm-2 d-flex align-items-center overview-section-toggle collapsed"
+                                        data-toggle="collapse"
+                                        data-target="#view-overview-favourites-target-6a673f37cfcc76a673f37c38f24"
+                                        aria-expanded="false"
+                                        aria-controls="view-overview-favourites-target-6a673f37cfcc76a673f37c38f24"
+                                    >
+                                        <span class="collapsed-icon-container">
+                                            <i class="icon fa fa-caret-right fa-fw " aria-hidden="true"  ></i>
+                                        </span>
+                                        <span class="expanded-icon-container">
+                                            <i class="icon fa fa-caret-down fa-fw " aria-hidden="true"  ></i>
+                                        </span>
+                                        <span class="font-weight-bold">Preferiti</span>
+                                        <small class="hidden ml-1" data-region="section-total-count-container"
+                                        aria-label="Totale:  conversazioni">
+                                            (<span data-region="section-total-count"></span>)
+                                        </small>
+                                        <span class="hidden ml-2" data-region="loading-icon-container">
+                                            <span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+                                        </span>
+                                        <span class="hidden badge badge-pill badge-primary ml-auto bg-primary"
+                                        data-region="section-unread-count"
+                                        >
+                                            
+                                        </span>
+                                    </button>
+                                </div>
+                                                            <div
+                                class="collapse border-bottom  lazy-load-list"
+                                aria-live="polite"
+                                data-region="lazy-load-list"
+                                data-user-id="3925"
+                                            id="view-overview-favourites-target-6a673f37cfcc76a673f37c38f24"
+            aria-labelledby="view-overview-favourites-toggle"
+            data-parent="#message-drawer-view-overview-container-6a673f37cfcc76a673f37c38f24"
+
+                            >
+                                
+                                <div class="hidden text-center p-2" data-region="empty-message-container">
+                                            <p class="text-muted mt-2">Nessuna conversazione contrassegnata</p>
+
+                                </div>
+                                <div class="hidden list-group" data-region="content-container">
+                                    
+                                </div>
+                                <div class="list-group" data-region="placeholder-container">
+                                            <div class="text-center py-2"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</div>
+
+                                </div>
+                                <div class="w-100 text-center p-3 hidden" data-region="loading-icon-container" >
+                                    <span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+                                </div>
+                            </div>
+                            </div>
+                            
+                            
+                            <div
+                                class="section border-0 card"
+                                data-region="view-overview-group-messages"
+                            >
+                                <div id="view-overview-group-messages-toggle" class="card-header" data-region="toggle">
+                                    <button
+                                        class="btn btn-link w-100 text-left p-1 p-sm-2 d-flex align-items-center overview-section-toggle collapsed"
+                                        data-toggle="collapse"
+                                        data-target="#view-overview-group-messages-target-6a673f37cfcc76a673f37c38f24"
+                                        aria-expanded="false"
+                                        aria-controls="view-overview-group-messages-target-6a673f37cfcc76a673f37c38f24"
+                                    >
+                                        <span class="collapsed-icon-container">
+                                            <i class="icon fa fa-caret-right fa-fw " aria-hidden="true"  ></i>
+                                        </span>
+                                        <span class="expanded-icon-container">
+                                            <i class="icon fa fa-caret-down fa-fw " aria-hidden="true"  ></i>
+                                        </span>
+                                        <span class="font-weight-bold">Gruppo</span>
+                                        <small class="hidden ml-1" data-region="section-total-count-container"
+                                        aria-label="Totale:  conversazioni">
+                                            (<span data-region="section-total-count"></span>)
+                                        </small>
+                                        <span class="hidden ml-2" data-region="loading-icon-container">
+                                            <span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+                                        </span>
+                                        <span class="hidden badge badge-pill badge-primary ml-auto bg-primary"
+                                        data-region="section-unread-count"
+                                        >
+                                            
+                                        </span>
+                                    </button>
+                                </div>
+                                                            <div
+                                class="collapse border-bottom  lazy-load-list"
+                                aria-live="polite"
+                                data-region="lazy-load-list"
+                                data-user-id="3925"
+                                            id="view-overview-group-messages-target-6a673f37cfcc76a673f37c38f24"
+            aria-labelledby="view-overview-group-messages-toggle"
+            data-parent="#message-drawer-view-overview-container-6a673f37cfcc76a673f37c38f24"
+
+                            >
+                                
+                                <div class="hidden text-center p-2" data-region="empty-message-container">
+                                            <p class="text-muted mt-2">Nessuna conversazione di gruppo</p>
+
+                                </div>
+                                <div class="hidden list-group" data-region="content-container">
+                                    
+                                </div>
+                                <div class="list-group" data-region="placeholder-container">
+                                            <div class="text-center py-2"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</div>
+
+                                </div>
+                                <div class="w-100 text-center p-3 hidden" data-region="loading-icon-container" >
+                                    <span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+                                </div>
+                            </div>
+                            </div>
+                            
+                            
+                            <div
+                                class="section border-0 card"
+                                data-region="view-overview-messages"
+                            >
+                                <div id="view-overview-messages-toggle" class="card-header" data-region="toggle">
+                                    <button
+                                        class="btn btn-link w-100 text-left p-1 p-sm-2 d-flex align-items-center overview-section-toggle collapsed"
+                                        data-toggle="collapse"
+                                        data-target="#view-overview-messages-target-6a673f37cfcc76a673f37c38f24"
+                                        aria-expanded="false"
+                                        aria-controls="view-overview-messages-target-6a673f37cfcc76a673f37c38f24"
+                                    >
+                                        <span class="collapsed-icon-container">
+                                            <i class="icon fa fa-caret-right fa-fw " aria-hidden="true"  ></i>
+                                        </span>
+                                        <span class="expanded-icon-container">
+                                            <i class="icon fa fa-caret-down fa-fw " aria-hidden="true"  ></i>
+                                        </span>
+                                        <span class="font-weight-bold">privato</span>
+                                        <small class="hidden ml-1" data-region="section-total-count-container"
+                                        aria-label="Totale:  conversazioni">
+                                            (<span data-region="section-total-count"></span>)
+                                        </small>
+                                        <span class="hidden ml-2" data-region="loading-icon-container">
+                                            <span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+                                        </span>
+                                        <span class="hidden badge badge-pill badge-primary ml-auto bg-primary"
+                                        data-region="section-unread-count"
+                                        >
+                                            
+                                        </span>
+                                    </button>
+                                </div>
+                                                            <div
+                                class="collapse border-bottom  lazy-load-list"
+                                aria-live="polite"
+                                data-region="lazy-load-list"
+                                data-user-id="3925"
+                                            id="view-overview-messages-target-6a673f37cfcc76a673f37c38f24"
+            aria-labelledby="view-overview-messages-toggle"
+            data-parent="#message-drawer-view-overview-container-6a673f37cfcc76a673f37c38f24"
+
+                            >
+                                
+                                <div class="hidden text-center p-2" data-region="empty-message-container">
+                                            <p class="text-muted mt-2">Nessuna conversazione privata</p>
+
+                                </div>
+                                <div class="hidden list-group" data-region="content-container">
+                                    
+                                </div>
+                                <div class="list-group" data-region="placeholder-container">
+                                            <div class="text-center py-2"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</div>
+
+                                </div>
+                                <div class="w-100 text-center p-3 hidden" data-region="loading-icon-container" >
+                                    <span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+                
+                <div
+                    data-region="view-search"
+                    aria-hidden="true"
+                    class="h-100 hidden"
+                    data-user-id="3925"
+                    data-users-offset="0"
+                    data-messages-offset="0"
+                    style="overflow-y: auto"
+                    
+                >
+                    <div class="hidden" data-region="search-results-container" style="overflow-y: auto">
+                        
+                        <div class="d-flex flex-column">
+                            <div class="mb-3 bg-white" data-region="all-contacts-container">
+                                <div data-region="contacts-container"  class="pt-2">
+                                    <h4 class="h6 px-2">Contatti</h4>
+                                    <div class="list-group" data-region="list"></div>
+                                </div>
+                                <div data-region="non-contacts-container" class="pt-2 border-top">
+                                    <h4 class="h6 px-2">Non tra i contatti</h4>
+                                    <div class="list-group" data-region="list"></div>
+                                </div>
+                                <div class="text-right">
+                                    <button class="btn btn-link text-primary" data-action="load-more-users">
+                                        <span data-region="button-text">Carica di più</span>
+                                        <span data-region="loading-icon-container" class="hidden"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="bg-white" data-region="messages-container">
+                                <h4 class="h6 px-2 pt-2">Messaggi</h4>
+                                <div class="list-group" data-region="list"></div>
+                                <div class="text-right">
+                                    <button class="btn btn-link text-primary" data-action="load-more-messages">
+                                        <span data-region="button-text">Carica di più</span>
+                                        <span data-region="loading-icon-container" class="hidden"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="hidden p-3 text-center" data-region="no-results-container">Nessun risultato</p>
+                        </div>                    </div>
+                    <div class="hidden" data-region="loading-placeholder">
+                        <div class="text-center pt-3 icon-size-4"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</div>
+                    </div>
+                    <div class="p-3 text-center" data-region="empty-message-container">
+                        <p>Cerca persone e messaggi</p>
+                    </div>
+                </div>                
+                <div class="h-100 hidden bg-white" aria-hidden="true" data-region="view-settings">
+                    <div class="hidden" data-region="content-container">
+                        
+                        <div data-region="settings" class="p-3">
+                            <h3 class="h6 font-weight-bold">Privacy</h3>
+                            <p>È possibile definire quali utenti possono inviarti messaggi</p>
+                            <div data-preference="blocknoncontacts" class="mb-3">
+                                <fieldset>
+                                    <legend class="sr-only">Accetta messaggi da:</legend>
+                                        <div class="custom-control custom-radio mb-2">
+                                            <input
+                                                type="radio"
+                                                name="message_blocknoncontacts"
+                                                class="custom-control-input"
+                                                id="block-noncontacts-6a673f37cfcc76a673f37c38f24-1"
+                                                value="1"
+                                            >
+                                            <label class="custom-control-label ml-2" for="block-noncontacts-6a673f37cfcc76a673f37c38f24-1">
+                                                I miei contatti solamente
+                                            </label>
+                                        </div>
+                                        <div class="custom-control custom-radio mb-2">
+                                            <input
+                                                type="radio"
+                                                name="message_blocknoncontacts"
+                                                class="custom-control-input"
+                                                id="block-noncontacts-6a673f37cfcc76a673f37c38f24-0"
+                                                value="0"
+                                            >
+                                            <label class="custom-control-label ml-2" for="block-noncontacts-6a673f37cfcc76a673f37c38f24-0">
+                                                I miei contatti e i miei compagni di corso
+                                            </label>
+                                        </div>
+                                </fieldset>
+                            </div>
+                        
+                            <div class="hidden" data-region="notification-preference-container">
+                                <h3 class="mb-2 mt-4 h6 font-weight-bold">Preferenze notifiche</h3>
+                            </div>
+                        
+                            <h3 class="mb-2 mt-4 h6 font-weight-bold">Generale</h3>
+                            <div data-preference="entertosend">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="enter-to-send-6a673f37cfcc76a673f37c38f24" checked>
+                                    <label class="custom-control-label" for="enter-to-send-6a673f37cfcc76a673f37c38f24">
+                                        Tasto invio per spedire
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-region="placeholder-container">
+                        
+                        <div class="d-flex flex-column p-3">
+                            <div class="w-25 bg-pulse-grey h6" style="height: 18px"></div>
+                            <div class="w-75 bg-pulse-grey mb-4" style="height: 18px"></div>
+                            <div class="mb-3">
+                                <div class="w-100 d-flex mb-3">
+                                    <div class="bg-pulse-grey rounded-circle" style="width: 18px; height: 18px"></div>
+                                    <div class="bg-pulse-grey w-50 ml-2" style="height: 18px"></div>
+                                </div>
+                                <div class="w-100 d-flex mb-3">
+                                    <div class="bg-pulse-grey rounded-circle" style="width: 18px; height: 18px"></div>
+                                    <div class="bg-pulse-grey w-50 ml-2" style="height: 18px"></div>
+                                </div>
+                                <div class="w-100 d-flex mb-3">
+                                    <div class="bg-pulse-grey rounded-circle" style="width: 18px; height: 18px"></div>
+                                    <div class="bg-pulse-grey w-50 ml-2" style="height: 18px"></div>
+                                </div>
+                            </div>
+                            <div class="w-50 bg-pulse-grey h6 mb-3 mt-2" style="height: 18px"></div>
+                            <div class="mb-4">
+                                <div class="w-100 d-flex mb-2 align-items-center">
+                                    <div class="bg-pulse-grey w-25" style="width: 18px; height: 27px"></div>
+                                    <div class="bg-pulse-grey w-25 ml-2" style="height: 18px"></div>
+                                </div>
+                                <div class="w-100 d-flex mb-2 align-items-center">
+                                    <div class="bg-pulse-grey w-25" style="width: 18px; height: 27px"></div>
+                                    <div class="bg-pulse-grey w-25 ml-2" style="height: 18px"></div>
+                                </div>
+                            </div>
+                            <div class="w-25 bg-pulse-grey h6 mb-3 mt-2" style="height: 18px"></div>
+                            <div class="mb-3">
+                                <div class="w-100 d-flex mb-2 align-items-center">
+                                    <div class="bg-pulse-grey w-25" style="width: 18px; height: 27px"></div>
+                                    <div class="bg-pulse-grey w-50 ml-2" style="height: 18px"></div>
+                                </div>
+                            </div>
+                        </div>                    </div>
+                </div>            </div>
+            <div class="footer-container position-relative" data-region="footer-container">
+                
+                <div
+                    class="hidden border-top bg-white position-relative"
+                    aria-hidden="true"
+                    data-region="view-conversation"
+                    data-enter-to-send="1"
+                >
+                    <div class="hidden p-sm-2" data-region="content-messages-footer-container">
+                        
+                            <div
+                                class="emoji-auto-complete-container w-100 hidden"
+                                data-region="emoji-auto-complete-container"
+                                aria-live="polite"
+                                aria-hidden="true"
+                            >
+                            </div>
+                        <div class="d-flex mt-sm-1">
+                            <textarea
+                                dir="auto"
+                                data-region="send-message-txt"
+                                class="form-control bg-light"
+                                rows="3"
+                                data-auto-rows
+                                data-min-rows="3"
+                                data-max-rows="5"
+                                aria-label="Scrivi messaggio"
+                                placeholder="Scrivi messaggio"
+                                style="resize: none"
+                                maxlength="4096"
+                            ></textarea>
+                        
+                            <div class="position-relative d-flex flex-column">
+                                    <div
+                                        data-region="emoji-picker-container"
+                                        class="emoji-picker-container hidden"
+                                        aria-hidden="true"
+                                    >
+                                        
+                                        <div
+                                            data-region="emoji-picker"
+                                            class="card shadow emoji-picker"
+                                        >
+                                            <div class="card-header px-1 pt-1 pb-0 d-flex justify-content-between flex-shrink-0">
+                                                <button
+                                                    class="btn btn-outline-secondary icon-no-margin category-button selected"
+                                                    data-action="show-category"
+                                                    data-category="Recent"
+                                                    title="Recenti"
+                                                >
+                                                    <i class="icon fa fa-clock-o fa-fw " aria-hidden="true"  ></i>
+                                                </button>
+                                                <button
+                                                    class="btn btn-outline-secondary icon-no-margin category-button"
+                                                    data-action="show-category"
+                                                    data-category="Smileys & People"
+                                                    title="Smiley & persone"
+                                                >
+                                                    <i class="icon fa fa-smile-o fa-fw " aria-hidden="true"  ></i>
+                                                </button>
+                                                <button
+                                                    class="btn btn-outline-secondary icon-no-margin category-button"
+                                                    data-action="show-category"
+                                                    data-category="Animals & Nature"
+                                                    title="Animali & natura"
+                                                >
+                                                    <i class="icon fa fa-leaf fa-fw " aria-hidden="true"  ></i>
+                                                </button>
+                                                <button
+                                                    class="btn btn-outline-secondary icon-no-margin category-button"
+                                                    data-action="show-category"
+                                                    data-category="Food & Drink"
+                                                    title="Cibo & bevande"
+                                                >
+                                                    <i class="icon fa fa-cutlery fa-fw " aria-hidden="true"  ></i>
+                                                </button>
+                                                <button
+                                                    class="btn btn-outline-secondary icon-no-margin category-button"
+                                                    data-action="show-category"
+                                                    data-category="Travel & Places"
+                                                    title="Viaggi & luoghi"
+                                                >
+                                                    <i class="icon fa fa-plane fa-fw " aria-hidden="true"  ></i>
+                                                </button>
+                                                <button
+                                                    class="btn btn-outline-secondary icon-no-margin category-button"
+                                                    data-action="show-category"
+                                                    data-category="Activities"
+                                                    title="Attività"
+                                                >
+                                                    <i class="icon fa fa-futbol-o fa-fw " aria-hidden="true"  ></i>
+                                                </button>
+                                                <button
+                                                    class="btn btn-outline-secondary icon-no-margin category-button"
+                                                    data-action="show-category"
+                                                    data-category="Objects"
+                                                    title="Oggetti"
+                                                >
+                                                    <i class="icon fa fa-lightbulb-o fa-fw " aria-hidden="true"  ></i>
+                                                </button>
+                                                <button
+                                                    class="btn btn-outline-secondary icon-no-margin category-button"
+                                                    data-action="show-category"
+                                                    data-category="Symbols"
+                                                    title="Simboli"
+                                                >
+                                                    <i class="icon fa fa-heart fa-fw " aria-hidden="true"  ></i>
+                                                </button>
+                                                <button
+                                                    class="btn btn-outline-secondary icon-no-margin category-button"
+                                                    data-action="show-category"
+                                                    data-category="Flags"
+                                                    title="Bandiere"
+                                                >
+                                                    <i class="icon fa fa-flag fa-fw " aria-hidden="true"  ></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body p-2 d-flex flex-column overflow-hidden">
+                                                <div class="input-group mb-1 flex-shrink-0">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text pr-0 bg-white text-muted">
+                                                            <i class="icon fa fa-search fa-fw " aria-hidden="true"  ></i>
+                                                        </span>
+                                                    </div>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control border-left-0"
+                                                        placeholder="Cerca"
+                                                        aria-label="Cerca"
+                                                        data-region="search-input"
+                                                    >
+                                                </div>
+                                                <div class="flex-grow-1 overflow-auto emojis-container h-100" data-region="emojis-container">
+                                                    <div class="position-relative" data-region="row-container"></div>
+                                                </div>
+                                                <div class="flex-grow-1 overflow-auto search-results-container h-100 hidden" data-region="search-results-container">
+                                                    <div class="position-relative" data-region="row-container"></div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="card-footer d-flex flex-shrink-0"
+                                                data-region="footer"
+                                            >
+                                                <div class="emoji-preview" data-region="emoji-preview"></div>
+                                                <div data-region="emoji-short-name" class="emoji-short-name text-muted text-wrap ml-2"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button
+                                        class="btn btn-link btn-icon icon-size-3 ml-1"
+                                        aria-label="Attiva/DIsattiva il selettore degli emoji"
+                                        data-action="toggle-emoji-picker"
+                                    >
+                                        <i class="icon fa fa-smile-o fa-fw " aria-hidden="true"  ></i>
+                                    </button>
+                                <button
+                                    class="btn btn-link btn-icon icon-size-3 ml-1 mt-auto"
+                                    aria-label="Invia messaggio"
+                                    data-action="send-message"
+                                >
+                                    <span data-region="send-icon-container"><i class="icon fa fa-paper-plane fa-fw " aria-hidden="true"  ></i></span>
+                                    <span class="hidden" data-region="loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden p-sm-2" data-region="content-messages-footer-edit-mode-container">
+                        
+                        <div class="d-flex p-3 justify-content-end">
+                            <button
+                                class="btn btn-link btn-icon my-1 icon-size-4"
+                                data-action="delete-selected-messages"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Elimina messaggi selezionati"
+                            >
+                                <span data-region="icon-container"><i class="icon fa fa-trash fa-fw " aria-hidden="true"  ></i></span>
+                                <span class="hidden" data-region="loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</span>
+                                <span class="sr-only">Elimina messaggi selezionati</span>
+                            </button>
+                        </div>                    </div>
+                    <div class="hidden bg-secondary p-sm-3" data-region="content-messages-footer-require-contact-container">
+                        
+                        <div class="p-3 bg-white">
+                            <p data-region="title"></p>
+                            <p class="text-muted" data-region="text"></p>
+                            <button type="button" class="btn btn-primary btn-block" data-action="request-add-contact">
+                                <span data-region="dialogue-button-text">Invia richiesta di contatto</span>
+                                <span class="hidden" data-region="loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hidden bg-secondary p-sm-3" data-region="content-messages-footer-require-unblock-container">
+                        
+                        <div class="p-3 bg-white">
+                            <p class="text-muted" data-region="text">Hai bloccato l'utente.</p>
+                            <button type="button" class="btn btn-primary btn-block" data-action="request-unblock">
+                                <span data-region="dialogue-button-text">Sblocca utente</span>
+                                <span class="hidden" data-region="loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Caricamento in corso" aria-label="Caricamento in corso"></i></span>
+</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hidden bg-secondary p-sm-3" data-region="content-messages-footer-unable-to-message">
+                        
+                        <div class="p-3 bg-white">
+                            <p class="text-muted" data-region="text">Non puoi inviare messaggi a questo utente</p>
+                        </div>
+                    </div>
+                    <div class="p-sm-2" data-region="placeholder-container">
+                        <div class="d-flex">
+                            <div class="bg-pulse-grey w-100" style="height: 80px"></div>
+                            <div class="mx-2 mb-2 align-self-end bg-pulse-grey" style="height: 20px; width: 20px"></div>
+                        </div>                    </div>
+                    <div
+                        class="hidden position-absolute z-index-1"
+                        data-region="confirm-dialogue-container"
+                        style="top: -1px; bottom: 0; right: 0; left: 0; background: rgba(0,0,0,0.3);"
+                    ></div>
+                </div>                    <div data-region="view-overview" class="text-center">
+                        <a href="https://fad.its-ictpiemonte.it/message/index.php">
+                            Visualizza tutto
+                        </a>
+                    </div>
+            </div>
+        </div>
+
+</div><!-- close moodle js hooks -->
+
+<footer id="moodle-footer" role="contentinfo" class="clearfix">
+<div id="snap-site-footer"><div id="snap-footer-content"><p style="text-align: center;"><span style="font-size: 1rem;">I corsi in oggetto sono stati approvati dalla Regione Piemonte e finanziati dal PR-FSE 2021-2027<br>e dal Ministero dell'Istruzione e del Merito a valere sul Piano Nazionale di Ripresa e Resilienza (P.N.R.R.)</span></p><p style="text-align: center;"><img src="http://www.its-ictpiemonte.it/wp-content/uploads/2024/06/Loghi-Sito_W-2024.png" alt="" width="1139" height="474" role="presentation" class="img-fluid atto_image_button_text-bottom"><br></p></div><div id="snap-socialmedia-links"><a href="https://www.facebook.com/its.ictpiemonte/" target="_blank"><img class="svg-icon" title="facebook" alt="facebook" src="https://fad.its-ictpiemonte.it/theme/image.php/snap/theme/1703178611/facebook"></a><a href="https://www.linkedin.com/school/fondazione-its-per-le-tecnologie-dell'informazione-e-della-comuncazione/?originalSubdomain=it" target="_blank"><img class="svg-icon" title="linkedin" alt="linkedin" src="https://fad.its-ictpiemonte.it/theme/image.php/snap/theme/1703178611/linkedin"></a><a href="https://www.youtube.com/@ITSICTPiemonte" target="_blank"><img class="svg-icon" title="youtube" alt="youtube" src="https://fad.its-ictpiemonte.it/theme/image.php/snap/theme/1703178611/youtube"></a><a href="https://www.instagram.com/its_ict_pie/" target="_blank"><img class="svg-icon" title="instagram" alt="instagram" src="https://fad.its-ictpiemonte.it/theme/image.php/snap/theme/1703178611/instagram"></a></div></div>
+
+<div class="row">
+    <div id="mrooms-footer" class="helplink col-sm-6">
+        <small>
+            Realizzato con <a href="https://www.learningsolution.it/" target="_blank" rel="noopener"><img alt="Learning Solution" src="https://www.learningsolution.it/wp-content/uploads/2020/07/LEARNING-FOOTER.png" style="width: 135px; padding: 5px;"></a>.<br> Copyright © 2026 tutti i diritti riservati.        </small>
+    </div>
+    <div class="langmenu col-sm-6 text-right">
+            </div>
+</div>
+<div id="goto-top-link">
+        <a class="btn btn-light" role="button" href="javascript:void(0)">
+            <i class="icon fa fa-arrow-up fa-fw" title="Vai all'inizio" aria-label="Vai all'inizio"></i>
+        </a>
+    </div><div id="page-footer">
+<br/>
+</div>
+</footer>
+<script>
+//<![CDATA[
+var require = {
+    baseUrl : 'https://fad.its-ictpiemonte.it/lib/requirejs.php/1702224476/',
+    // We only support AMD modules with an explicit define() statement.
+    enforceDefine: true,
+    skipDataMain: true,
+    waitSeconds : 0,
+
+    paths: {
+        jquery: 'https://fad.its-ictpiemonte.it/lib/javascript.php/1702224476/lib/jquery/jquery-3.5.1.min',
+        jqueryui: 'https://fad.its-ictpiemonte.it/lib/javascript.php/1702224476/lib/jquery/ui-1.12.1/jquery-ui.min',
+        jqueryprivate: 'https://fad.its-ictpiemonte.it/lib/javascript.php/1702224476/lib/requirejs/jquery-private'
+    },
+
+    // Custom jquery config map.
+    map: {
+      // '*' means all modules will get 'jqueryprivate'
+      // for their 'jquery' dependency.
+      '*': { jquery: 'jqueryprivate' },
+      // Stub module for 'process'. This is a workaround for a bug in MathJax (see MDL-60458).
+      '*': { process: 'core/first' },
+
+      // 'jquery-private' wants the real jQuery module
+      // though. If this line was not here, there would
+      // be an unresolvable cyclic dependency.
+      jqueryprivate: { jquery: 'jquery' }
+    }
+};
+
+//]]>
+</script>
+<script src="https://fad.its-ictpiemonte.it/lib/javascript.php/1702224476/lib/requirejs/require.min.js"></script>
+<script>
+//<![CDATA[
+M.util.js_pending("core/first");
+require(['core/first'], function() {
+require(['core/prefetch'])
+;
+require(["media_videojs/loader"], function(loader) {
+    loader.setUp('it');
+});;
+require(['theme_boost/loader']);;
+M.util.js_pending('theme_snap/snap'); require(['theme_snap/snap'], function(amd) {amd.snapInit({"id":"2213","shortname":"(CSP_25-27-06) Fondamenti di basi di dati","contextid":72943,"categoryid":"98","ajaxurl":"\/course\/rest.php","unavailablesections":[],"unavailablemods":["54826"],"enablecompletion":true,"format":"topics","partialrender":true,"toctype":"list","loadPageInCourse":false}, false, 10737418240, false, true, "3925", false, false, {"primary":"#ff7f41 !default;","success":"#3d5c1f;","warning":"#b55600;","danger":"#990f3d;","info":"#02567e;"}, {"gradepercentage":2,"gradepercentagereal":21,"gradepercentageletter":23,"gradereal":1,"graderealpercentage":12,"graderealletter":13}); M.util.js_complete('theme_snap/snap');});;
+M.util.js_pending('theme_snap/accessibility'); require(['theme_snap/accessibility'], function(amd) {amd.snapAxInit(false, false, false); M.util.js_complete('theme_snap/accessibility');});;
+M.util.js_pending('theme_snap/login_render-lazy'); require(['theme_snap/login_render-lazy'], function(amd) {amd.loginRender("1", null); M.util.js_complete('theme_snap/login_render-lazy');});;
+M.util.js_pending('block_settings/settingsblock'); require(['block_settings/settingsblock'], function(amd) {amd.init("20", null); M.util.js_complete('block_settings/settingsblock');});;
+
+require(['jquery', 'message_popup/notification_popover_controller'], function($, controller) {
+    var container = $('#nav-notification-popover-container');
+    var controller = new controller(container);
+    controller.registerEventListeners();
+    controller.registerListNavigationEventListeners();
+});
+;
+
+        require(['jquery', 'core/custom_interaction_events'], function($, CustomEvents) {
+            CustomEvents.define('#jump-to-activity', [CustomEvents.events.accessibleChange]);
+            $('#jump-to-activity').on(CustomEvents.events.accessibleChange, function() {
+                if (!$(this).val()) {
+                    return false;
+                }
+                $('#url_select_f6a673f37c38f23').submit();
+            });
+        });
+    ;
+
+require(['jquery', 'core_message/message_drawer'], function($, MessageDrawer) {
+    var root = $('#message-drawer-6a673f37cfcc76a673f37c38f24');
+    MessageDrawer.init(root, '6a673f37cfcc76a673f37c38f24', false);
+});
+;
+M.util.js_pending('core/notification'); require(['core/notification'], function(amd) {amd.init(72943, []); M.util.js_complete('core/notification');});;
+M.util.js_pending('core/log'); require(['core/log'], function(amd) {amd.setConfig({"level":"warn"}); M.util.js_complete('core/log');});;
+M.util.js_pending('core/page_global'); require(['core/page_global'], function(amd) {amd.init(); M.util.js_complete('core/page_global');});
+    M.util.js_complete("core/first");
+});
+//]]>
+</script>
+<script>
+//<![CDATA[
+M.yui.add_module({"mod_assign":{"name":"mod_assign","fullpath":"https:\/\/fad.its-ictpiemonte.it\/lib\/javascript.php\/1702224476\/mod\/assign\/module.js","requires":[]}});
+
+//]]>
+</script>
+<script>
+//<![CDATA[
+M.str = {"moodle":{"lastmodified":"Ultime modifiche","name":"Nome","error":"Errore","info":"Informazioni","yes":"S\u00ec","no":"No","ok":"OK","cancel":"Annulla","unknownerror":"Errore sconosciuto","closebuttontitle":"Chiudi","modhide":"Nascondi","modshow":"Visualizza","hiddenoncoursepage":"Disponibile ma non visibile sulla pagina del corso","showoncoursepage":"Visualizza nella pagina home del corso","switchrolereturn":"Ritorna al mio ruolo normale","confirm":"Conferma","areyousure":"Sei sicuro?","file":"File","url":"URL"},"repository":{"type":"Tipo","size":"Dimensione","invalidjson":"Stringa JSON non valida","nofilesattached":"Non sono presenti file allegati","filepicker":"File picker","logout":"Logout","nofilesavailable":"Non sono presenti file","norepositoriesavailable":"Spiacente, nessuno dei repostory disponibili pu\u00f2 restituire file nel formato richiesto.","fileexistsdialogheader":"Il file esiste gi\u00e0","fileexistsdialog_editor":"Un file con lo stesso nome \u00e8 gi\u00e0 stato allegato al testo che stai modificando.","fileexistsdialog_filemanager":"Un file con lo stesso nome \u00e8 gi\u00e0 stato allegato","renameto":"Rinomina in \"{$a}\"","referencesexist":"Sono presenti {$a} link a questo file","select":"Scegli"},"admin":{"confirmdeletecomments":"Stai per eliminare commenti, sei sicuro ?","confirmation":"Conferma"},"theme_snap":{"coursecontacts":"Contatti corso","debugerrors":"Errori di debug","problemsfound":"Problemi rilevati","error:coverimageexceedsmaxbytes":"L'immagine di copertina supera le dimensioni file massime consentite a livello di sito ({$a})","error:coverimageresolutionlow":"Per la massima qualit\u00e0, si consiglia una larghezza dell'immagine di almeno 1024 px.","forumtopic":"Argomento","forumauthor":"Autore","forumpicturegroup":"Gruppo","forumreplies":"Repliche","forumlastpost":"Ultimo messaggio","hiddencoursestoggle":"Corsi nascosti","loading":"Caricamento in corso...","more":"Altro","moving":"Spostamento di \"{$a}\"","movingcount":"Spostamento di {$a} oggetti","movehere":"Sposta qui","movefailed":"Spostamento di \"{$a}\" non riuscito","movingdropsectionhelp":"Posiziona la sezione \"{$a->moving}\" prima della sezione \"{$a->before}\"","movingstartedhelp":"Accedi alla posizione in cui desideri mettere la sezione \"{$a}\"","notpublished":"Non pubblicato per gli studenti","visibility":"Visibilit\u00e0"},"booktool_print":{"printbook":"Stampa libro"},"completion":{"progresstotal":"Stato di avanzamento: {$a->complete} \/ {$a->total}"},"debug":{"debuginfo":"Informazioni di debug","line":"Linea","stacktrace":"Stack trace"},"langconfig":{"labelsep":":\u00a0"}};
+//]]>
+</script>
+<script>
+//<![CDATA[
+(function() {Y.use("moodle-filter_mathjaxloader-loader",function() {M.filter_mathjaxloader.configure({"mathjaxconfig":"\nMathJax.Hub.Config({\n    config: [\"Accessible.js\", \"Safe.js\"],\n    errorSettings: { message: [\"!\"] },\n    skipStartupTypeset: true,\n    messageStyle: \"none\"\n});\n","lang":"it"});
+});
+M.util.help_popups.setup(Y);
+ M.util.js_pending('random6a673f37c38f26'); Y.use('mod_assign', function(Y) { M.mod_assign.init_tree(Y, true, "assign_files_tree6a673f37c38f25");  M.util.js_complete('random6a673f37c38f26'); });
+ M.util.js_pending('random6a673f37c38f27'); Y.on('domready', function() { M.util.js_complete("init");  M.util.js_complete('random6a673f37c38f27'); });
+})();
+//]]>
+</script>
+<!-- bye! -->
+</body>
+</html>

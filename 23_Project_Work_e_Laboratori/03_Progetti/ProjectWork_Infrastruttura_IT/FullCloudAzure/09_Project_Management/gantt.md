@@ -3,44 +3,43 @@
 ## Diagramma
 
 ```
-Attività                    | Set 1 | Set 2 | Set 3 | Set 4 | Ott 1 | Ott 2 | Ott 3 | Ott 4 | Nov 1 | Nov 2 | Nov 3 | Nov 4
-                            |───────|───────|───────|───────|───────|───────|───────|───────|───────|───────|───────|───────|
-1  Assessment               |███████|       |       |       |       |       |       |       |       |       |       |       |
-2  Rete/VPN                 |       |███████|███████|       |       |       |       |       |       |       |       |       |
-3  Sicurezza                |       |███████|███████|       |       |       |       |       |       |       |       |       |
-4  HPC                      |       |       |███████|       |       |       |       |       |       |       |       |       |
-5  Pondus                   |       |       |███████|███████|       |       |       |       |       |       |       |       |
-6  Cloud Migration          |       |       |       |       |       |       |       |       |       |       |       |       |
-  6.0 Foundation            |       |       |███████|███████|       |       |       |       |       |       |       |       |
-  6.1 Posta                 |       |       |       |       |███████|███████|       |       |       |       |       |       |
-  6.2 File                  |       |       |       |       |███████|███████|       |       |       |       |       |       |
-  6.3 Dynamics 365          |       |       |       |       |       |███████|███████|███████|       |       |       |       |
-  6.4 DevOps                |       |       |       |       |       |       |███████|███████|       |       |       |       |
-  6.5 MediaWiki             |       |       |       |       |       |       |███████|       |       |       |       |       |
-  6.6 Test                  |       |       |       |       |       |       |       |       |███████|███████|       |       |
-  6.7 Dismissione           |       |       |       |       |       |       |       |       |       |       |███████|       |
-7  Backup/DR                |       |       |       |       |       |       |███████|       |       |       |       |       |
-8  Offerta                  |       |       |       |       |       |       |       |       |       |       |███████|       |
-9  Formazione/Chiusura      |       |       |       |       |       |       |       |       |       |       |       |███████|
-9  Affiancamento post       |       |       |       |       |       |       |       |       |       |       |       |███████|
+Attività                      | Set 1 | Set 2 | Set 3 | Set 4 | Ott 1 | Ott 2 | Ott 3 | Ott 4 | Nov 1 | Nov 2
+                              |───────|───────|───────|───────|───────|───────|───────|───────|───────|───────|
+1  Assessment                 |███████|       |       |       |       |       |       |       |       |       |
+2  Rete/VPN                   |███████|███████|       |       |       |       |       |       |       |       |
+3  Sicurezza                  |███████|███████|       |       |       |       |       |       |       |       |
+4  HPC (burst setup) F5b      |       |       |       |       |███████|███████|       |       |       |       |
+5  Pondus (percorso separato) |       |       |███████|███████|       |       |       |       |       |       |
+6  Cloud Migration            |       |       |       |       |       |       |       |       |       |       |
+  6.0 Foundation (F0)         |███████|███████|       |       |       |       |       |       |       |       |
+  6.1 Posta (F1)              |       |       |███████|███████|███████|       |       |       |       |       |
+  6.2 File (F2)               |       |       |███████|███████|       |       |       |       |       |       |
+  6.3 Dynamics 365 (F3)       |       |       |       |███████|███████|███████|███████|███████|       |       |
+  6.4 DevOps (F4)             |       |       |       |       |███████|███████|       |       |       |       |
+  6.5 MediaWiki (F5)          |       |       |       |       |███████|       |       |       |       |       |
+  6.6 Test (F6)               |       |       |       |       |       |       |       |███████|███████|       |
+  6.7 Dismissione (F7)        |       |       |       |       |       |       |       |       |       |███████|
+7  Backup/DR                  |       |       |       |       |       |       |███████|███████|       |       |
+8  Offerta                    |       |       |       |       |       |       |       |       |       |███████|
+9  Formazione/Chiusura        |       |       |       |       |       |       |       |       |       |███████|
+   Affiancamento post         |       |       |       |       |       |       |       |       |       |███████|
 ```
 
-## Milestone
+*Nota: Settimane 11-12 = Affiancamento post-migrazione (2 settimane)*
+
+## Milestone (allineati a 08_Cronoprogramma.md)
 
 | Milestone | Data | Criterio |
 |---|---|---|
-| M0 — Assessment completato | 12/09/2026 | Documenti consegnati |
-| M1 — Rete attiva | 26/09/2026 | Switch, FortiGate, VLAN funzionanti |
-| M2 — VPN Sede→Azure attiva | 03/10/2026 | Tunnel IPsec stabile |
-| M3 — Foundation M365 | 10/10/2026 | Tenant, utenti, Entra ID pronti |
-| M4 — Posta migrata | 24/10/2026 | 50 caselle su Exchange Online |
-| M5 — File migrati | 24/10/2026 | SharePoint/OneDrive popolati |
-| M6 — Dynamics attivo | 14/11/2026 | Sales + BC funzionanti |
-| M7 — Pondus su Azure | 17/10/2026 | App Service + SQL attivi |
-| M8 — DevOps attivo | 24/10/2026 | Repos migrati, pipelines CI/CD |
-| M9 — Test superati | 14/11/2026 | Tutti i test OK |
-| M10 — Dismissione legacy | 22/11/2026 | Piattaforme vecchie spente |
-| M11 — Go-live + formazione | 05/12/2026 | Formazione completata |
+| M0 — Foundation completata | 14/09/2026 | Tenant, utenti, Entra ID, Conditional Access pronti |
+| M1 — Posta migrata | 05/10/2026 | 50 caselle su Exchange Online funzionanti |
+| M2 — File migrati | 28/09/2026 | SharePoint/OneDrive popolati e validati |
+| M3 — Dynamics 365 attivo | 26/10/2026 | Sales + BC funzionanti, dati migrati |
+| M4 — Azure DevOps attivo | 12/10/2026 | Repos migrati, pipeline CI/CD operative |
+| M5 — MediaWiki attiva | 05/10/2026 | VM B2s in produzione, contenuto migrato |
+| M5b — HPC burst pronto | 12/10/2026 | CycleCloud + Lustre + nodi SPOT operativi |
+| M6 — Test superati | 02/11/2026 | Tutti i test di accettazione OK |
+| M7 — Dismissione legacy | 09/11/2026 | Piattaforme vecchie (Zimbra, NextCloud, ecc.) spente |
 
 ## Risorse
 
@@ -48,5 +47,5 @@ Attività                    | Set 1 | Set 2 | Set 3 | Set 4 | Ott 1 | Ott 2 | O
 |---|---|---|
 | Sistemista senior | Full-time (55 giorni) | Settimane 1-12 |
 | PM | Part-time (17 giorni) | Settimane 1-12 |
-| Consulente Dynamics | Part-time (10 giorni) | Settimane 5-9 |
+| Consulente Dynamics | Part-time (10 giorni) | Settimane 4-8 |
 | Sviluppatore .NET | Part-time (5-15 giorni) | Settimane 3-6 (Pondus) |

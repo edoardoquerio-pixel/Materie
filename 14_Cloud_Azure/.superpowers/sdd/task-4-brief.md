@@ -1,0 +1,257 @@
+# Task 4: Frontend — HTML + Dockerfile
+
+## Context
+This is the fourth task in an Azure E2E lab project. Tasks 1-3 set up infrastructure and backend. This task rewrites the frontend with complete UI and Docker configuration.
+
+**Working directory:** `C:\Users\edoardo.querio\Desktop\Materie\14_Cloud_Azure\labs`
+
+## What to do
+
+### Step 1: Write `frontend/index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure E2E Lab - Richieste</title>
+    <style>
+        body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #f5f5f5;}
+        .container {max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);}
+        h1 {color: #0078d4; text-align: center; margin-bottom: 30px;}
+        .section {margin-bottom: 30px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 6px; background-color: #fafafa;}
+        .section h2 {margin-top: 0; color: #333;}
+        label {display: block; margin-bottom: 5px; font-weight: bold;}
+        input[type="text"], textarea {width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px; font-family: inherit;}
+        textarea {resize: vertical; min-height: 80px;}
+        button {background-color: #0078d4; color: white; border: none; padding: 12px 24px; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background-color 0.2s;}
+        button:hover {background-color: #005a9e;}
+        button:disabled {background-color: #cccccc; cursor: not-allowed;}
+        .result {margin-top: 15px; padding: 10px; border-radius: 4px;}
+        .success {background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;}
+        .error {background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;}
+        .message-card {background: #f8f9fa; border-left: 4px solid #0078d4; padding: 15px; margin-bottom: 15px; border-radius: 0 4px 4px 0;}
+        .message-header {display: flex; justify-content: space-between; margin-bottom: 8px;}
+        .message-author {font-weight: bold; color: #0078d4;}
+        .message-time {font-size: 0.85em; color: #666;}
+        .message-content {margin-bottom: 10px; line-height: 1.5;}
+        .message-category {font-size: 0.8em; color: #888; font-style: italic;}
+        .empty-state {text-align: center; color: #666; font-style: italic; padding: 40px 20px;}
+        .spinner {display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: white; animation: spin 0.8s ease-in-out infinite; vertical-align: middle; margin-left: 8px;}
+        @keyframes spin {to {transform: rotate(360deg);}}
+        .subtitle {color: #666; font-size: 0.9em; margin-bottom: 15px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Azure E2E Lab - Registrazione Richieste</h1>
+
+        <!-- Form Sincrono (Lab 23) -->
+        <div class="section">
+            <h2>Invia Richiesta (Sincrono - 201)</h2>
+            <p class="subtitle">Scrive direttamente su Cosmos DB. L'utente aspetta la scrittura.</p>
+            <form id="syncForm">
+                <label for="syncUser">Nome:</label>
+                <input type="text" id="syncUser" placeholder="Il tuo nome" required>
+                <label for="syncMsg">Messaggio:</label>
+                <textarea id="syncMsg" placeholder="Il tuo messaggio" rows="3" required></textarea>
+                <button type="submit" id="syncBtn">Invia Messaggio <span class="spinner" style="display:none;"></span></button>
+            </form>
+            <div id="syncResult" class="result" style="display:none;"></div>
+        </div>
+
+        <!-- Form Asincrono (Lab 25) -->
+        <div class="section">
+            <h2>Invia Richiesta (Asincrono - 202)</h2>
+            <p class="subtitle">Mette in coda e risponde subito 202. ElaboraRichiesta la processera' in background.</p>
+            <form id="asyncForm">
+                <label for="asyncUser">Nome:</label>
+                <input type="text" id="asyncUser" placeholder="Il tuo nome" required>
+                <label for="asyncMsg">Messaggio:</label>
+                <textarea id="asyncMsg" placeholder="Il tuo messaggio" rows="3" required></textarea>
+                <label for="asyncCat">Categoria:</label>
+                <input type="text" id="asyncCat" placeholder="es. supporto, bug, feature" value="generica">
+                <button type="submit" id="asyncBtn">Pubblica in Coda <span class="spinner" style="display:none;"></span></button>
+            </form>
+            <div id="asyncResult" class="result" style="display:none;"></div>
+        </div>
+
+        <!-- Elenco (Lab 23) -->
+        <div class="section">
+            <h2>Richieste Ricevute</h2>
+            <button id="refreshBtn">Aggiorna Elenco <span class="spinner" style="display:none;"></span></button>
+            <div id="results" style="margin-top: 20px;"></div>
+        </div>
+    </div>
+
+    <script>
+        const isLocal = window.location.hostname === 'localhost';
+        const config = {
+            functionAppUrl: isLocal
+                ? 'http://localhost:7071'
+                : 'https://funcapp-e2e07171436.azurewebsites.net'
+        };
+
+        function setBtnLoading(btn, loading) {
+            btn.disabled = loading;
+            const sp = btn.querySelector('.spinner');
+            if (sp) sp.style.display = loading ? 'inline-block' : 'none';
+        }
+
+        function showResult(el, msg, type) {
+            el.style.display = 'block';
+            el.className = 'result ' + type;
+            el.textContent = msg;
+        }
+
+        // ─── Form Sincrono ──────────────────────────────────────────────
+        document.getElementById('syncForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('syncBtn');
+            const result = document.getElementById('syncResult');
+            setBtnLoading(btn, true);
+            result.style.display = 'none';
+
+            try {
+                const res = await fetch(config.functionAppUrl + '/api/crea_richiesta', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        utente: document.getElementById('syncUser').value.trim(),
+                        messaggio: document.getElementById('syncMsg').value.trim()
+                    })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.errore || 'Errore ' + res.status);
+                showResult(result, 'Messaggio inviato! ID: ' + data.id, 'success');
+                e.target.reset();
+                loadMessages();
+            } catch (err) {
+                showResult(result, 'Errore: ' + err.message, 'error');
+            } finally {
+                setBtnLoading(btn, false);
+            }
+        });
+
+        // ─── Form Asincrono ─────────────────────────────────────────────
+        document.getElementById('asyncForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('asyncBtn');
+            const result = document.getElementById('asyncResult');
+            setBtnLoading(btn, true);
+            result.style.display = 'none';
+
+            try {
+                const res = await fetch(config.functionAppUrl + '/api/pubblica_richiesta', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        utente: document.getElementById('asyncUser').value.trim(),
+                        messaggio: document.getElementById('asyncMsg').value.trim(),
+                        categoria: document.getElementById('asyncCat').value.trim() || 'generica'
+                    })
+                });
+                const data = await res.json();
+                if (res.status === 202) {
+                    showResult(result, '202 Accepted - ' + data.messaggio + ' (ID: ' + data.id + ')', 'success');
+                    e.target.reset();
+                    setTimeout(loadMessages, 3000);
+                } else if (!res.ok) {
+                    throw new Error(data.errore || 'Errore ' + res.status);
+                } else {
+                    showResult(result, 'Risposta ' + res.status + ': ' + JSON.stringify(data), 'success');
+                }
+            } catch (err) {
+                showResult(result, 'Errore: ' + err.message, 'error');
+            } finally {
+                setBtnLoading(btn, false);
+            }
+        });
+
+        // ─── Elenco ─────────────────────────────────────────────────────
+        async function loadMessages() {
+            const el = document.getElementById('results');
+            el.innerHTML = '<div style="text-align:center;padding:20px;color:#666;">Caricamento...</div>';
+
+            try {
+                const res = await fetch(config.functionAppUrl + '/api/lista_richieste');
+                if (!res.ok) throw new Error('Errore ' + res.status);
+                const msgs = await res.json();
+                renderMessages(msgs, el);
+            } catch (err) {
+                el.innerHTML = '<div style="text-align:center;padding:20px;color:#d32f2f;">Errore: ' + err.message + '</div>';
+            }
+        }
+
+        function renderMessages(msgs, el) {
+            if (!msgs.length) {
+                el.innerHTML = '<div class="empty-state">Nessun messaggio. Invia il primo!</div>';
+                return;
+            }
+            const sorted = [...msgs].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            const esc = (s) => { const d = document.createElement('div'); d.appendChild(document.createTextNode(s)); return d.innerHTML; };
+
+            el.innerHTML = sorted.slice(0, 50).map(m => {
+                const t = new Date(m.timestamp).toLocaleString('it-IT', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' });
+                return '<div class="message-card">' +
+                    '<div class="message-header"><span class="message-author">' + esc(m.utente) + '</span><span class="message-time">' + t + '</span></div>' +
+                    '<div class="message-content">' + esc(m.messaggio) + '</div>' +
+                    '<div class="message-category">Categoria: ' + esc(m.categoria || 'generica') + '</div>' +
+                    '</div>';
+            }).join('');
+        }
+
+        document.getElementById('refreshBtn').addEventListener('click', loadMessages);
+        window.addEventListener('load', loadMessages);
+    </script>
+</body>
+</html>
+```
+
+### Step 2: Write `frontend/Dockerfile`
+
+```dockerfile
+FROM nginx:alpine
+
+# Remove default nginx html
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy static files (esclusi Dockerfile, .dockerignore, .git tramite .dockerignore)
+COPY . /usr/share/nginx/html/
+
+# Expose port 80
+EXPOSE 80
+
+# Start nginx in foreground
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+### Step 3: Write `frontend/.dockerignore`
+
+```
+node_modules
+npm-debug.log
+Dockerfile
+.dockerignore
+.git
+.gitignore
+```
+
+### Step 4: Verify Docker build (optional — skip if Docker not available)
+```bash
+cd /c/Users/edoardo.querio/Desktop/Materie/14_Cloud_Azure/labs/frontend
+docker build -t frontend-test .
+```
+
+### Step 5: Commit
+```bash
+cd /c/Users/edoardo.querio/Desktop/Materie/14_Cloud_Azure/labs
+git add frontend/
+git commit -m "feat(frontend): add complete UI with sync/async forms and Dockerfile"
+```
+
+## Report
+Write your report to: `C:\Users\edoardo.querio\Desktop\Materie\14_Cloud_Azure\.superpowers\sdd\task-4-report.md`
+
+Include: status (DONE/BLOCKED/NEEDS_CONTEXT), files created/modified, any concerns.

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azure E2E Lab - Frontend</title>
+    <title>Azure E2E Lab - Richieste</title>
     <style>
         body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #f5f5f5;}
         .container {max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);}
@@ -16,212 +16,93 @@
         button {background-color: #0078d4; color: white; border: none; padding: 12px 24px; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background-color 0.2s;}
         button:hover {background-color: #005a9e;}
         button:disabled {background-color: #cccccc; cursor: not-allowed;}
-        #formResult {margin-top: 15px; padding: 10px; border-radius: 4px;}
+        .result {margin-top: 15px; padding: 10px; border-radius: 4px;}
         .success {background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;}
         .error {background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;}
-        #results {margin-top: 20px;}
         .message-card {background: #f8f9fa; border-left: 4px solid #0078d4; padding: 15px; margin-bottom: 15px; border-radius: 0 4px 4px 0;}
         .message-header {display: flex; justify-content: space-between; margin-bottom: 8px;}
         .message-author {font-weight: bold; color: #0078d4;}
         .message-time {font-size: 0.85em; color: #666;}
         .message-content {margin-bottom: 10px; line-height: 1.5;}
+        .message-category {font-size: 0.8em; color: #888; font-style: italic;}
         .empty-state {text-align: center; color: #666; font-style: italic; padding: 40px 20px;}
-        .spinner {display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(0,0,0,0.3); border-radius: 50%; border-top-color: #0078d4; animation: spin 0.8s ease-in-out infinite; vertical-align: middle; margin-left: 8px;}
+        .spinner {display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: white; animation: spin 0.8s ease-in-out infinite; vertical-align: middle; margin-left: 8px;}
         @keyframes spin {to {transform: rotate(360deg);}}
+        .subtitle {color: #666; font-size: 0.9em; margin-bottom: 15px;}
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Demo Azure Functions + Cosmos DB</h1>
-
+        <h1>Azure E2E Lab - Registrazione Richieste</h1>
         <div class="section">
-            <h2>Invia una nuova richiesta</h2>
-            <form id="requestForm">
-                <div>
-                    <label for="userInput">Nome:</label>
-                    <input type="text" id="userInput" placeholder="Inserisci il tuo nome" required>
-                </div>
-                <div>
-                    <label for="messageInput">Messaggio:</label>
-                    <textarea id="messageInput" placeholder="Scrivi il tuo messaggio" rows="3" required></textarea>
-                </div>
-                <button type="submit" id="submitBtn">
-                    <span id="spinner" class="spinner" style="display: none;"></span>
-                    Invia Messaggio
-                </button>
+            <h2>Invia Richiesta (Sincrono - 201)</h2>
+            <p class="subtitle">Scrive direttamente su Cosmos DB. L'utente aspetta la scrittura.</p>
+            <form id="syncForm">
+                <label for="syncUser">Nome:</label>
+                <input type="text" id="syncUser" placeholder="Il tuo nome" required>
+                <label for="syncMsg">Messaggio:</label>
+                <textarea id="syncMsg" placeholder="Il tuo messaggio" rows="3" required></textarea>
+                <button type="submit" id="syncBtn">Invia Messaggio <span class="spinner" style="display:none;"></span></button>
             </form>
-            <div id="formResult"></div>
+            <div id="syncResult" class="result" style="display:none;"></div>
         </div>
-
+        <div class="section">
+            <h2>Invia Richiesta (Asincrono - 202)</h2>
+            <p class="subtitle">Mette in coda e risponde subito 202. ElaboraRichiesta la processera' in background.</p>
+            <form id="asyncForm">
+                <label for="asyncUser">Nome:</label>
+                <input type="text" id="asyncUser" placeholder="Il tuo nome" required>
+                <label for="asyncMsg">Messaggio:</label>
+                <textarea id="asyncMsg" placeholder="Il tuo messaggio" rows="3" required></textarea>
+                <label for="asyncCat">Categoria:</label>
+                <input type="text" id="asyncCat" placeholder="es. supporto, bug, feature" value="generica">
+                <button type="submit" id="asyncBtn">Pubblica in Coda <span class="spinner" style="display:none;"></span></button>
+            </form>
+            <div id="asyncResult" class="result" style="display:none;"></div>
+        </div>
         <div class="section">
             <h2>Richieste Ricevute</h2>
-            <div>
-                <button id="refreshBtn">
-                    <span class="spinner" style="display: none;"></span>
-                    Aggiorna Elenco
-                </button>
-            </div>
-            <div id="results"></div>
+            <button id="refreshBtn">Aggiorna Elenco <span class="spinner" style="display:none;"></span></button>
+            <div id="results" style="margin-top: 20px;"></div>
         </div>
     </div>
-
     <script>
-        // Configuration - auto-detect local vs Azure deployment
         const isLocal = window.location.hostname === 'localhost';
-        const config = {
-            functionAppUrl: isLocal
-                ? window.location.origin  // Use same origin (mock server)
-                : 'https://funcapp-e2e07171436.azurewebsites.net'
-        };
-
-        // DOM elements
-        const form = document.getElementById('requestForm');
-        const userInput = document.getElementById('userInput');
-        const messageInput = document.getElementById('messageInput');
-        const submitBtn = document.getElementById('submitBtn');
-        const spinner = document.getElementById('spinner');
-        const formResult = document.getElementById('formResult');
-        const refreshBtn = document.getElementById('refreshBtn');
-        const resultsDiv = document.getElementById('results');
-
-        // Helper to show/hide loading states
-        function setButtonLoading(button, loading) {
-            if (loading) {
-                button.disabled = true;
-                const sp = button.querySelector('.spinner');
-                if (sp) sp.style.display = 'inline-block';
-            } else {
-                button.disabled = false;
-                const sp = button.querySelector('.spinner');
-                if (sp) sp.style.display = 'none';
-            }
-        }
-
-        // Form submission
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const user = userInput.value.trim();
-            const message = messageInput.value.trim();
-
-            if (!user || !message) {
-                showResult('Per favore inserisci sia nome che messaggio', 'error');
-                return;
-            }
-
-            setButtonLoading(submitBtn, true);
-            formResult.textContent = '';
-            formResult.className = '';
-
-            try {
-                const response = await fetch(`${config.functionAppUrl}/api/crea_richiesta`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ utente: user, messaggio: message })
-                });
-
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    throw new Error(`Errore ${response.status}: ${errorText}`);
-                }
-
-                const result = await response.json();
-                showResult(`Messaggio inviato con successo! ID: ${result.id}`, 'success');
-                form.reset();
-                // Optionally refresh the list
-                loadMessages();
-            } catch (err) {
-                showResult(`Errore: ${err.message}`, 'error');
-            } finally {
-                setButtonLoading(submitBtn, false);
-            }
+        const config = { functionAppUrl: isLocal ? 'http://localhost:7071' : 'https://funcapp-e2edb9c5440.azurewebsites.net' };
+        function setBtnLoading(btn, loading) { btn.disabled = loading; const sp = btn.querySelector('.spinner'); if (sp) sp.style.display = loading ? 'inline-block' : 'none'; }
+        function showResult(el, msg, type) { el.style.display = 'block'; el.className = 'result ' + type; el.textContent = msg; }
+        document.getElementById('syncForm').addEventListener('submit', async (e) => {
+            e.preventDefault(); const btn = document.getElementById('syncBtn'); const result = document.getElementById('syncResult');
+            setBtnLoading(btn, true); result.style.display = 'none';
+            try { const res = await fetch(config.functionAppUrl + '/api/crea_richiesta', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ utente: document.getElementById('syncUser').value.trim(), messaggio: document.getElementById('syncMsg').value.trim() }) });
+            const data = await res.json(); if (!res.ok) throw new Error(data.errore || 'Errore ' + res.status); showResult(result, 'Messaggio inviato! ID: ' + data.id, 'success'); e.target.reset(); loadMessages();
+            } catch (err) { showResult(result, 'Errore: ' + err.message, 'error'); } finally { setBtnLoading(btn, false); }
         });
-
-        function showResult(message, type) {
-            if (!message) {
-                formResult.textContent = '';
-                formResult.className = '';
-                return;
-            }
-            formResult.textContent = message;
-            formResult.className = `${type}`;
-        }
-
-        // Load and display messages
+        document.getElementById('asyncForm').addEventListener('submit', async (e) => {
+            e.preventDefault(); const btn = document.getElementById('asyncBtn'); const result = document.getElementById('asyncResult');
+            setBtnLoading(btn, true); result.style.display = 'none';
+            try { const res = await fetch(config.functionAppUrl + '/api/pubblica_richiesta', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ utente: document.getElementById('asyncUser').value.trim(), messaggio: document.getElementById('asyncMsg').value.trim(), categoria: document.getElementById('asyncCat').value.trim() || 'generica' }) });
+            const data = await res.json();
+            if (res.status === 202) { showResult(result, '202 Accepted - ' + data.messaggio + ' (ID: ' + data.id + ')', 'success'); e.target.reset(); setTimeout(loadMessages, 3000); }
+            else if (!res.ok) { throw new Error(data.errore || 'Errore ' + res.status); }
+            else { showResult(result, 'Risposta ' + res.status + ': ' + JSON.stringify(data), 'success'); }
+            } catch (err) { showResult(result, 'Errore: ' + err.message, 'error'); } finally { setBtnLoading(btn, false); }
+        });
         async function loadMessages() {
-            // Show loading indicator
-            resultsDiv.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">Caricamento...</div>';
-
-            try {
-                const response = await fetch(`${config.functionAppUrl}/api/lista_richieste`);
-                if (!response.ok) {
-                    throw new Error(`Errore ${response.status}: ${await response.text()}`);
-                }
-                const messages = await response.json();
-                renderMessages(messages);
-            } catch (err) {
-                resultsDiv.innerHTML = `<div style="text-align: center; padding: 40px; color: #d32f2f;">Errore nel caricamento: ${err.message}</div>`;
-            }
+            const el = document.getElementById('results'); el.innerHTML = '<div style="text-align:center;padding:20px;color:#666;">Caricamento...</div>';
+            try { const res = await fetch(config.functionAppUrl + '/api/lista_richieste'); if (!res.ok) throw new Error('Errore ' + res.status); const msgs = await res.json(); renderMessages(msgs, el);
+            } catch (err) { el.innerHTML = '<div style="text-align:center;padding:20px;color:#d32f2f;">Errore: ' + err.message + '</div>'; }
         }
-
-        function renderMessages(messages) {
-            if (messages.length === 0) {
-                resultsDiv.innerHTML = '<div class="empty-state">Nessun messaggio trovato. Invia il primo messaggio!</div>';
-                return;
-            }
-
-            // Sort by timestamp descending (most recent first)
-            const sorted = [...messages].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-
-            const container = document.createElement('div');
-            // Limit to last 50 messages for performance
-            const displayMessages = sorted.slice(0, 50);
-
-            displayMessages.forEach(msg => {
-                const card = document.createElement('div');
-                card.className = 'message-card';
-
-                const date = new Date(msg.timestamp);
-                const timeString = date.toLocaleString('it-IT', {
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
-
-                // Simple escape for HTML
-                const escapeHtml = (str) => {
-                    const div = document.createElement('div');
-                    div.appendChild(document.createTextNode(str));
-                    return div.innerHTML;
-                };
-                const safeUtente = escapeHtml(String(msg.utente));
-                const safeMessaggio = escapeHtml(String(msg.messaggio));
-
-                card.innerHTML = `
-                    <div class="message-header">
-                        <span class="message-author">${safeUtente}</span>
-                        <span class="message-time">${timeString}</span>
-                    </div>
-                    <div class="message-content">${safeMessaggio}</div>
-                `;
-                container.appendChild(card);
-            });
-
-            // Clear and append
-            resultsDiv.innerHTML = '';
-            resultsDiv.appendChild(container);
+        function renderMessages(msgs, el) {
+            if (!msgs.length) { el.innerHTML = '<div class="empty-state">Nessun messaggio. Invia il primo!</div>'; return; }
+            const sorted = [...msgs].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            const esc = (s) => { const d = document.createElement('div'); d.appendChild(document.createTextNode(s)); return d.innerHTML; };
+            el.innerHTML = sorted.slice(0, 50).map(m => {
+                const t = new Date(m.timestamp).toLocaleString('it-IT', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' });
+                return '<div class="message-card"><div class="message-header"><span class="message-author">' + esc(m.utente) + '</span><span class="message-time">' + t + '</span></div><div class="message-content">' + esc(m.messaggio) + '</div><div class="message-category">Categoria: ' + esc(m.categoria || 'generica') + '</div></div>';
+            }).join('');
         }
-
-        // Refresh button handler
-        refreshBtn.addEventListener('click', () => {
-            setButtonLoading(refreshBtn, true);
-            loadMessages().finally(() => setButtonLoading(refreshBtn, false));
-        });
-
-        // Initial load
+        document.getElementById('refreshBtn').addEventListener('click', loadMessages);
         window.addEventListener('load', loadMessages);
     </script>
 </body>

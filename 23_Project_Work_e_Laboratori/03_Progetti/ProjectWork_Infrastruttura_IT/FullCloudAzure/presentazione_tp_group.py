@@ -1,0 +1,1091 @@
+"""
+Genera una presentazione HTML professionale da "Documento Offerta - TP Group - FortyGroup_BOZZA (1).docx"
+Esegui: python presentazione_tp_group.py
+Output: presentazione_tp_group.html (stessa cartella dello script)
+"""
+import docx, os, sys, io
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
+# ── 1. Estrai testo dal DOCX ──────────────────────────────────────────────
+docx_path = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    'Documento Offerta - TP Group - FortyGroup_BOZZA (1).docx'
+)
+doc = docx.Document(docx_path)
+paragraphs = [(p.style.name, p.text.strip()) for p in doc.paragraphs if p.text.strip()]
+
+# Mappa le sezioni principali
+content = {}
+current_section = None
+section_map = {
+    'Presentazione FortyGroup': 'team',
+    'Introduzione Offerta': 'intro',
+    'Assunzioni': 'assumptions',
+    'Fornitura Hardware': 'hardware',
+    'Datacenter': 'datacenter',
+    'Connettività e VPN': 'vpn',
+    'Sicurezza e ISO 27001': 'security',
+    'Migrazione Servizi e Integrazione Cloud': 'migration',
+    'Pondus e Containerizzazione': 'pondus',
+    'Disaster Recovery e Backup': 'dr',
+    'Costi e Budget': 'costs',
+    'Roadmap e Cronoprogramma': 'roadmap',
+}
+
+for style, text in paragraphs:
+    clean = text.strip()
+    if style == 'Heading 1' or style == 'Title':
+        for key, val in section_map.items():
+            if key.lower() in clean.lower():
+                current_section = val
+                content.setdefault(current_section, {'title': clean, 'items': []})
+                break
+        else:
+            current_section = clean.lower().replace(' ', '_')
+            content.setdefault(current_section, {'title': clean, 'items': []})
+    elif current_section:
+        content[current_section]['items'].append(clean)
+
+# ── 2. Genera HTML ─────────────────────────────────────────────────────────
+html = r"""<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FortyGroup x TP Group — Offerta Convergenza IT</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --bg: #0b0b11;
+    --bg2: #101018;
+    --card: #151520;
+    --card-hover: #1a1a28;
+    --border: #1e1e30;
+    --accent: #6366f1;
+    --accent2: #818cf8;
+    --accent3: #a5b4fc;
+    --green: #34d399;
+    --red: #f87171;
+    --orange: #fbbf24;
+    --cyan: #22d3ee;
+    --text: #e8eaf0;
+    --muted: #8891a5;
+    --grad1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+    --grad2: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+    --grad3: linear-gradient(135deg, #34d399 0%, #06b6d4 100%);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── Slide ────────────────────────────────────────────── */
+  .slide {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 7rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .slide::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -20%;
+    width: 70vw;
+    height: 70vw;
+    background: radial-gradient(circle, rgba(99,102,241,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .slide::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -15%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, rgba(139,92,246,0.03) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ── Nav dots ─────────────────────────────────────────── */
+  .nav-dots {
+    position: fixed;
+    right: 1.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    z-index: 100;
+  }
+  .nav-dots a {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    display: block;
+    transition: all 0.3s;
+  }
+  .nav-dots a:hover,
+  .nav-dots a.active {
+    background: var(--accent);
+    transform: scale(1.5);
+    box-shadow: 0 0 8px rgba(99,102,241,0.4);
+  }
+
+  .slide-num {
+    position: absolute;
+    bottom: 2rem;
+    right: 3rem;
+    font-size: 0.7rem;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    opacity: 0.5;
+  }
+
+  /* ── Cover ────────────────────────────────────────────── */
+  .cover { text-align: center; align-items: center; }
+  .cover .badge {
+    display: inline-block;
+    padding: 0.4rem 1.4rem;
+    border: 1px solid rgba(99,102,241,0.3);
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--accent2);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    background: rgba(99,102,241,0.05);
+  }
+  .cover h1 {
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1.0;
+    background: var(--grad1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  .cover .subtitle {
+    font-size: 1.35rem;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 550px;
+    line-height: 1.7;
+  }
+  .cover .team-line {
+    margin-top: 3rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    opacity: 0.7;
+  }
+  .cover .gradient-line {
+    width: 80px;
+    height: 2px;
+    background: var(--grad1);
+    border-radius: 2px;
+    margin: 2rem auto 0;
+  }
+
+  /* ── Section headers ──────────────────────────────────── */
+  .section-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+  }
+  h2 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.02em;
+  }
+  .slide-desc {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── Card grid ────────────────────────────────────────── */
+  .card-grid { display: grid; gap: 0.8rem; max-width: 1100px; }
+  .card-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .card-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.4rem;
+    transition: all 0.25s;
+  }
+  .card:hover {
+    border-color: rgba(99,102,241,0.3);
+    background: var(--card-hover);
+    transform: translateY(-2px);
+  }
+  .card .icon { font-size: 1.6rem; margin-bottom: 0.6rem; }
+  .card h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.35rem; }
+  .card p { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+  /* ── Team ─────────────────────────────────────────────── */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    max-width: 1050px;
+  }
+  .team-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem 0.8rem;
+    text-align: center;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .team-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--grad1);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .team-card:hover::before { opacity: 1; }
+  .team-card:hover { border-color: rgba(99,102,241,0.3); transform: translateY(-3px); }
+  .team-card .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: var(--grad1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: white;
+    margin: 0 auto 0.8rem;
+  }
+  .team-card h3 { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .team-card .role {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--accent2);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.4rem;
+  }
+  .team-card p { font-size: 0.7rem; color: var(--muted); line-height: 1.4; }
+
+  /* ── Stats ────────────────────────────────────────────── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+    max-width: 900px;
+  }
+  .stat-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+  }
+  .stat-box .value {
+    font-size: 1.8rem;
+    font-weight: 900;
+    background: var(--grad1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-box .label {
+    font-size: 0.6rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-top: 0.2rem;
+  }
+
+  /* ── Security shield layout ───────────────────────────── */
+  .security-hero {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2.5rem;
+    align-items: start;
+    max-width: 1100px;
+  }
+  .security-left { position: relative; }
+  .shield {
+    width: 120px;
+    height: 120px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.08));
+    border: 1px solid rgba(99,102,241,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .security-left .big-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .security-left .big-stat .num {
+    font-size: 3rem;
+    font-weight: 900;
+    background: var(--grad1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .security-left .big-stat .unit {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent2);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .security-left p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 320px;
+  }
+
+  .sec-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
+  }
+  .sec-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.1rem 1.2rem;
+    transition: all 0.25s;
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+  }
+  .sec-card:hover { border-color: rgba(99,102,241,0.3); }
+  .sec-card .sec-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(99,102,241,0.08);
+  }
+  .sec-card h4 { font-size: 0.8rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .sec-card p { font-size: 0.72rem; color: var(--muted); line-height: 1.45; }
+
+  /* ── Spec grid ────────────────────────────────────────── */
+  .dc-layout {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 2rem;
+    max-width: 1100px;
+    align-items: start;
+  }
+  .spec-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .spec-item {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.65rem 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.82rem;
+    transition: all 0.2s;
+  }
+  .spec-item:hover { border-color: rgba(99,102,241,0.2); }
+  .spec-item .spec-icon { font-size: 1.1rem; width: 28px; text-align: center; }
+  .spec-item strong { color: var(--text); white-space: nowrap; }
+  .spec-item span { color: var(--muted); }
+
+  .hpc-panel {
+    background: var(--card);
+    border: 1px solid var(--accent);
+    border-radius: 16px;
+    padding: 1.8rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hpc-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--grad1);
+  }
+  .hpc-panel h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent3);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .hpc-panel ul { list-style: none; }
+  .hpc-panel li {
+    padding: 0.4rem 0;
+    font-size: 0.78rem;
+    color: var(--muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.45;
+  }
+  .hpc-panel .bullet {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 0.4rem;
+    flex-shrink: 0;
+  }
+
+  /* ── Pondus layout ────────────────────────────────────── */
+  .pondus-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1000px;
+  }
+  .pondus-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    transition: all 0.25s;
+  }
+  .pondus-card:hover { border-color: rgba(99,102,241,0.3); }
+  .pondus-card.recommended {
+    border: 2px solid var(--accent);
+  }
+  .pondus-card .tag {
+    position: absolute;
+    top: -10px;
+    left: 1.5rem;
+    background: var(--grad1);
+    padding: 0.2rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .pondus-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    margin-top: 0.3rem;
+  }
+  .pondus-card .desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+  }
+  .pondus-card ul { list-style: none; }
+  .pondus-card li {
+    padding: 0.4rem 0;
+    font-size: 0.8rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid rgba(30,30,46,0.4);
+  }
+  .pondus-card li:last-child { border: none; }
+  .pondus-card li .check {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    flex-shrink: 0;
+  }
+  .pondus-card.recommended .check { background: rgba(99,102,241,0.15); color: var(--accent2); }
+  .pondus-card:not(.recommended) .check { background: rgba(132,145,165,0.1); color: var(--muted); }
+
+  /* ── Servizi (hw + migration) ─────────────────────────── */
+  .servizi-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1100px;
+  }
+  .servizi-col h3 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .hw-section { margin-bottom: 0; }
+  .hw-section h4 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hw-section.keep h4 { color: var(--green); border-color: rgba(52,211,153,0.3); }
+  .hw-section.buy h4 { color: var(--cyan); border-color: rgba(34,211,238,0.3); }
+  .hw-section.drop h4 { color: var(--red); border-color: rgba(248,113,113,0.3); }
+  .hw-section + .hw-section { margin-top: 1rem; }
+
+  .hw-list { list-style: none; }
+  .hw-list li {
+    padding: 0.45rem 0;
+    font-size: 0.78rem;
+    color: var(--muted);
+    border-bottom: 1px solid rgba(30,30,46,0.4);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.45;
+  }
+  .hw-list li:last-child { border: none; }
+  .hw-list .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    margin-top: 0.4rem;
+    flex-shrink: 0;
+  }
+  .hw-section.keep .dot { background: var(--green); }
+  .hw-section.buy .dot { background: var(--cyan); }
+  .hw-section.drop .dot { background: var(--red); }
+
+  /* ── Costi ────────────────────────────────────────────── */
+  .costi-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 2.5rem;
+    max-width: 1100px;
+    align-items: start;
+  }
+  .costi-left .big-number {
+    font-size: 4rem;
+    font-weight: 900;
+    background: var(--grad1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .costi-left .big-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent2);
+    margin-bottom: 1rem;
+  }
+  .costi-left p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 320px;
+  }
+  .costi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+  }
+  .cost-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    transition: all 0.2s;
+  }
+  .cost-card:hover { border-color: rgba(99,102,241,0.3); }
+  .cost-card h4 { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.4rem; }
+  .cost-card p { font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
+  .cost-card .highlight {
+    font-size: 1.6rem;
+    font-weight: 900;
+    background: var(--grad1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0.5rem 0 0.3rem;
+  }
+
+  /* ── Footer ───────────────────────────────────────────── */
+  .slide-footer {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .slide-footer .logo-mark {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    background: var(--grad1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 0.6rem;
+    color: white;
+  }
+  .slide-footer span { font-size: 0.7rem; color: var(--muted); opacity: 0.6; }
+
+  /* ── End ──────────────────────────────────────────────── */
+  .end-slide { text-align: center; align-items: center; }
+  .end-slide h2 {
+    font-size: 3.5rem;
+    background: var(--grad1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+  }
+  .end-slide .cta {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.7rem 2.2rem;
+    background: var(--grad1);
+    color: white;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .end-slide .cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(99,102,241,0.3);
+  }
+
+  /* ── Print ────────────────────────────────────────────── */
+  @media print {
+    .slide { min-height: 100vh; page-break-after: always; }
+    .nav-dots { display: none; }
+    html { scroll-snap-type: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav-dots">
+  <a href="#s1" title="Cover"></a>
+  <a href="#s2" title="Team"></a>
+  <a href="#s3" title="Sicurezza"></a>
+  <a href="#s4" title="Datacenter"></a>
+  <a href="#s5" title="Pondus"></a>
+  <a href="#s6" title="Servizi"></a>
+  <a href="#s7" title="Budget"></a>
+  <a href="#s8" title="Contatti"></a>
+</nav>
+
+<!-- ═══ SLIDE 1: Cover ════════════════════════════════════ -->
+<section class="slide cover" id="s1">
+  <div class="badge">Proposta Tecnico-Economica</div>
+  <h1>FortyGroup x TP Group</h1>
+  <p class="subtitle">Convergenza, Integrazione e Potenziamento Servizi IT</p>
+  <div class="gradient-line"></div>
+  <p class="team-line">Mario Mogavero &middot; Rita Cignarelli &middot; Lorenzo Sasso &middot; Edoardo Querio &middot; Luca Tarallo &nbsp;&mdash;&nbsp; Luglio 2026</p>
+  <span class="slide-num">01 / 08</span>
+</section>
+
+<!-- ═══ SLIDE 2: Team ═════════════════════════════════════ -->
+<section class="slide" id="s2">
+  <div class="section-label">Chi Siamo</div>
+  <h2>Il Team FortyGroup</h2>
+  <p class="slide-desc">Startup torinese, nata a Maggio 2026. Cinque specialisti cloud, un'unica visione.</p>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="avatar">MM</div>
+      <h3>Mario Mogavero</h3>
+      <div class="role">Project Manager</div>
+      <p>Responsabile del team e potenziamento app Pondus</p>
+    </div>
+    <div class="team-card">
+      <div class="avatar">RC</div>
+      <h3>Rita Cignarelli</h3>
+      <div class="role">Budget Manager</div>
+      <p>Redazione del budget e analisi costi</p>
+    </div>
+    <div class="team-card">
+      <div class="avatar">LS</div>
+      <h3>Lorenzo Sasso</h3>
+      <div class="role">Infrastructure Lead</div>
+      <p>Infrastruttura e integrazione sistemi</p>
+    </div>
+    <div class="team-card">
+      <div class="avatar">EQ</div>
+      <h3>Edoardo Querio</h3>
+      <div class="role">Datacenter Lead</div>
+      <p>Potenziamento e migrazione datacenter</p>
+    </div>
+    <div class="team-card">
+      <div class="avatar">LT</div>
+      <h3>Luca Tarallo</h3>
+      <div class="role">Security Lead</div>
+      <p>Sicurezza e conformita ISO 27001</p>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-box"><div class="value">5</div><div class="label">Specialisti</div></div>
+    <div class="stat-box"><div class="value">1</div><div class="label">Visione</div></div>
+    <div class="stat-box"><div class="value">&infin;</div><div class="label">Entusiasmo</div></div>
+    <div class="stat-box"><div class="value">Cloud</div><div class="label">Focus</div></div>
+  </div>
+  <div class="slide-footer">
+    <div class="logo-mark">FG</div>
+    <span>FortyGroup &mdash; Offerta TP Group</span>
+  </div>
+  <span class="slide-num">02 / 08</span>
+</section>
+
+<!-- ═══ SLIDE 3: Sicurezza ════════════════════════════════ -->
+<section class="slide" id="s3">
+  <div class="section-label">Priorita Massima</div>
+  <h2>Sicurezza & ISO 27001</h2>
+  <p class="slide-desc">Tutte le macroaree ISO/IEC 27001 implementate come fondamento dell'intera infrastruttura.</p>
+  <div class="security-hero">
+    <div class="security-left">
+      <div class="shield">&#x1F6E1;</div>
+      <div class="big-stat">
+        <span class="num">6</span>
+        <span class="unit">macroaree</span>
+      </div>
+      <p>Tutte le macroaree ISO/IEC 27001 coperte: dall'organizzazione alla continuita operativa. La sicurezza non e un'aggiunta, e il fondamento.</p>
+    </div>
+    <div class="sec-grid">
+      <div class="sec-card">
+        <div class="sec-icon">&#x1F512;</div>
+        <div>
+          <h4>Cifratura Dati</h4>
+          <p>TLS 1.3 in transito, AES-256 a riposo su tutti i servizi Azure</p>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-icon">&#x1F6E1;</div>
+        <div>
+          <h4>Controllo Accessi</h4>
+          <p>RBAC, MFA obbligatoria, audit trail completo</p>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-icon">&#x1F4CB;</div>
+        <div>
+          <h4>Policy & Governance</h4>
+          <p>Documentazione, policy operative e procedure certificate</p>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-icon">&#x1F504;</div>
+        <div>
+          <h4>Ridondanza</h4>
+          <p>Infrastruttura redundante su Azure con zone multiple</p>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-icon">&#x1F6A8;</div>
+        <div>
+          <h4>Disaster Recovery</h4>
+          <p>DR plan con RTO e RPO definiti, test periodici</p>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-icon">&#x1F4CA;</div>
+        <div>
+          <h4>Monitoraggio</h4>
+          <p>Log analytics, alerting real-time, conformita continua</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="logo-mark">FG</div>
+    <span>FortyGroup &mdash; Offerta TP Group</span>
+  </div>
+  <span class="slide-num">03 / 08</span>
+</section>
+
+<!-- ═══ SLIDE 4: Datacenter ═══════════════════════════════ -->
+<section class="slide" id="s4">
+  <div class="section-label">Infrastruttura</div>
+  <h2>Datacenter On-Premise</h2>
+  <p class="slide-desc">Potenziamento per supportare l'architettura ibrida e garantire resilienza completa.</p>
+  <div class="dc-layout">
+    <div class="spec-grid">
+      <div class="spec-item"><span class="spec-icon">&#x1F6E1;&#xFE0F;</span><strong>Firewall</strong>&nbsp;<span>&mdash; Accesso Azure + failover doppia rete</span></div>
+      <div class="spec-item"><span class="spec-icon">&#x1F500;</span><strong>Switch L3 Core</strong>&nbsp;<span>&mdash; 2x 48P PoE+ stackable, uplink 10G</span></div>
+      <div class="spec-item"><span class="spec-icon">&#x1F50C;</span><strong>Switch Accesso</strong>&nbsp;<span>&mdash; 3x 24P distribuzione uffici</span></div>
+      <div class="spec-item"><span class="spec-icon">&#x1F4F6;</span><strong>WiFi 6</strong>&nbsp;<span>&mdash; 4 AP copertura completa sede</span></div>
+      <div class="spec-item"><span class="spec-icon">&#x1F517;</span><strong>Cablaggio</strong>&nbsp;<span>&mdash; Cat.6A, patch panel rack 42U</span></div>
+      <div class="spec-item"><span class="spec-icon">&#x1F310;</span><strong>Linea Backup</strong>&nbsp;<span>&mdash; FTTH 1 Gbps secondo ISP</span></div>
+      <div class="spec-item"><span class="spec-icon">&#x1F510;</span><strong>VPN Azure</strong>&nbsp;<span>&mdash; VpnGw1AZ, IPsec IKEv2, 250 Mbps</span></div>
+      <div class="spec-item"><span class="spec-icon">&#x1F4BB;</span><strong>VPN Client</strong>&nbsp;<span>&mdash; WireGuard + Azure VPN Client</span></div>
+    </div>
+    <div class="hpc-panel">
+      <h3>&#x26A1; Cluster HPC &mdash; Architettura Ibrida</h3>
+      <ul>
+        <li><span class="bullet"></span>8 nodi on-prem esistenti attivi con InfiniBand</li>
+        <li><span class="bullet"></span>Burst su Azure: CycleCloud + 8 nodi SPOT HB176-96rs v4</li>
+        <li><span class="bullet"></span>Upgrade InfiniBand HDR per latenza minima</li>
+        <li><span class="bullet"></span>Azure Managed Lustre: 4 TB / 500 MB/s</li>
+        <li><span class="bullet"></span>Filesystem parallelo unificato on-prem + cloud</li>
+        <li><span class="bullet"></span>Nodi SPOT: 8h/giorno x 200 gg/anno</li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="logo-mark">FG</div>
+    <span>FortyGroup &mdash; Offerta TP Group</span>
+  </div>
+  <span class="slide-num">04 / 08</span>
+</section>
+
+<!-- ═══ SLIDE 5: Pondus ═══════════════════════════════════ -->
+<section class="slide" id="s5">
+  <div class="section-label">Applicazione</div>
+  <h2>Migrazione Pondus</h2>
+  <p class="slide-desc">Da server fisico a cloud-native. Due percorsi, una sola garanzia di risultato.</p>
+  <div class="pondus-layout">
+    <div class="pondus-card recommended">
+      <div class="tag">Consigliato</div>
+      <h3>&#x26A1; Azure App Service</h3>
+      <p class="desc">Soluzione PaaS ottimizzata per web app. Gestione completa di infrastruttura, scaling e sicurezza.</p>
+      <ul>
+        <li><span class="check">&#x2713;</span>Auto-scaling automatico</li>
+        <li><span class="check">&#x2713;</span>Deployment slot per zero-downtime</li>
+        <li><span class="check">&#x2713;</span>Integrazione nativa Azure SQL</li>
+        <li><span class="check">&#x2713;</span>SSL e monitoraggio integrati</li>
+        <li><span class="check">&#x2713;</span>Backup automatico quotidiano</li>
+      </ul>
+    </div>
+    <div class="pondus-card">
+      <h3>&#x1F433; Containerizzazione Docker</h3>
+      <p class="desc">Approccio agnostico verso il cloud provider. Massima portabilita e controllo.</p>
+      <ul>
+        <li><span class="check">&#x25CB;</span>Docker + Azure Container Apps</li>
+        <li><span class="check">&#x25CB;</span>Portabilita multi-cloud</li>
+        <li><span class="check">&#x25CB;</span>CI/CD pipeline personalizzata</li>
+        <li><span class="check">&#x25CB;</span>Piu controllo sull'infrastruttura</li>
+        <li><span class="check">&#x25CB;</span>Requisita esperienza DevOps</li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="logo-mark">FG</div>
+    <span>FortyGroup &mdash; Offerta TP Group</span>
+  </div>
+  <span class="slide-num">05 / 08</span>
+</section>
+
+<!-- ═══ SLIDE 6: Servizi ══════════════════════════════════ -->
+<section class="slide" id="s6">
+  <div class="section-label">Integrazione</div>
+  <h2>Servizi & Hardware</h2>
+  <p class="slide-desc">Inventario completo: cosa manteniamo, cosa acquistiamo, cosa dismettiamo e come migriamo.</p>
+  <div class="servizi-layout">
+    <div class="servizi-col">
+      <h3>&#x1F4E6; Inventario Hardware</h3>
+      <div class="hw-section keep">
+        <h4>&#10003; Mantenuto</h4>
+        <ul class="hw-list">
+          <li><span class="dot"></span>Cluster HPC: 8 nodi + Front-end Linux/Slurm</li>
+          <li><span class="dot"></span>Firewall FortiGate FG-60F (riconfigurato)</li>
+          <li><span class="dot"></span>UPS: 10 minuti autonomia</li>
+        </ul>
+      </div>
+      <div class="hw-section buy">
+        <h4>+ Da Acquistare</h4>
+        <ul class="hw-list">
+          <li><span class="dot"></span>Cavi e accessori rete</li>
+          <li><span class="dot"></span>Seconda linea Internet FTTH 1 Gbps</li>
+          <li><span class="dot"></span>Switch per nuovi dipendenti</li>
+        </ul>
+      </div>
+      <div class="hw-section drop">
+        <h4>&#10007; Dismesso</h4>
+        <ul class="hw-list">
+          <li><span class="dot"></span>2 host VMware + SAN NetApp 24 TB</li>
+          <li><span class="dot"></span>Web Server Pondus + DB Server SQL</li>
+          <li><span class="dot"></span>NAS QNAP per backup</li>
+        </ul>
+      </div>
+    </div>
+    <div class="servizi-col">
+      <h3>&#x2601;&#xFE0F; Migrazione Cloud</h3>
+      <div class="sec-grid" style="grid-template-columns: 1fr;">
+        <div class="sec-card">
+          <div class="sec-icon">&#x1F4C8;</div>
+          <div>
+            <h4>Migrazione VM &rarr; Azure</h4>
+            <p>Spostamento workload da VMware on-premise a macchine virtuali Azure con minimi tempi di inattivita</p>
+          </div>
+        </div>
+        <div class="sec-card">
+          <div class="sec-icon">&#x1F4E7;</div>
+          <div>
+            <h4>Database &rarr; Azure SQL</h4>
+            <p>Migrazione database SQL Server a Azure SQL Managed Instance con geo-replicazione</p>
+          </div>
+        </div>
+        <div class="sec-card">
+          <div class="sec-icon">&#x1F4BE;</div>
+          <div>
+            <h4>Backup &rarr; Azure Storage</h4>
+            <p>Sostituzione NAS QNAP con Azure Storage Account: geo-redundanza e conformita</p>
+          </div>
+        </div>
+        <div class="sec-card">
+          <div class="sec-icon">&#x1F4E8;</div>
+          <div>
+            <h4>Ecosistema Microsoft 365</h4>
+            <p>Email, SharePoint, Teams, OneDrive inclusi nella licenza Azure per unificare i servizi</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="logo-mark">FG</div>
+    <span>FortyGroup &mdash; Offerta TP Group</span>
+  </div>
+  <span class="slide-num">06 / 08</span>
+</section>
+
+<!-- ═══ SLIDE 7: Budget ═══════════════════════════════════ -->
+<section class="slide" id="s7">
+  <div class="section-label">Economico</div>
+  <h2>Costi & Budget</h2>
+  <p class="slide-desc">Approccio consumption-based con ottimizzazione aggressiva dei costi operativi.</p>
+  <div class="costi-layout">
+    <div class="costi-left">
+      <div class="big-number">~60-70%</div>
+      <div class="big-label">Risparmio su HPC con nodi SPOT</div>
+      <p>Modello pay-as-you-go: paghi solo quello che usi. Nessun investimento iniziale per hardware cloud, scaling automatico che evita sprechi.</p>
+    </div>
+    <div class="costi-grid">
+      <div class="cost-card">
+        <h4>&#x1F4C8; Azure Pay-as-you-go</h4>
+        <div class="highlight">Variabile</div>
+        <p>Consumo effettivo, nessun fixed cost. Scaling automatico riduce gli sprechi.</p>
+      </div>
+      <div class="cost-card">
+        <h4>&#x1F4B0; HPC SPOT</h4>
+        <div class="highlight">-60/70%</div>
+        <p>Burst computing a costo ridotto. 8h/giorno x 200 gg/anno.</p>
+      </div>
+      <div class="cost-card">
+        <h4>&#x1F6E1;&#xFE0F; HW Mantenuto</h4>
+        <div class="highlight">&euro; 0</div>
+        <p>HPC, Firewall e UPS: zero costo aggiuntivo.</p>
+      </div>
+      <div class="cost-card">
+        <h4>&#x1F4CB; M365 Incluso</h4>
+        <div class="highlight">Inclusa</div>
+        <p>Email, SharePoint, Teams, OneDrive senza costi extra.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="logo-mark">FG</div>
+    <span>FortyGroup &mdash; Offerta TP Group</span>
+  </div>
+  <span class="slide-num">07 / 08</span>
+</section>
+
+<!-- ═══ SLIDE 8: Contatti ═════════════════════════════════ -->
+<section class="slide end-slide" id="s8">
+  <div class="badge">Prossimi Passi</div>
+  <h2>Pronti a Iniziare</h2>
+  <p class="slide-desc" style="text-align:center;">Contattateci per discutere i dettagli della proposta e definire insieme il cronoprogramma di migrazione.</p>
+  <div class="gradient-line" style="width:60px; height:2px; background:var(--grad1); border-radius:1px; margin:1.5rem auto;"></div>
+  <div style="margin-top:1.5rem;">
+    <p style="font-size:1.05rem; color:var(--text); font-weight:700;">FortyGroup</p>
+    <p style="font-size:0.85rem; color:var(--muted); margin-top:0.4rem;">Startup Torinese &mdash; Soluzioni Cloud Innovative</p>
+    <p style="font-size:0.8rem; color:var(--muted); margin-top:1rem; opacity:0.6;">Mario Mogavero &middot; Rita Cignarelli &middot; Lorenzo Sasso &middot; Edoardo Querio &middot; Luca Tarallo</p>
+  </div>
+  <a href="#s1" class="cta">Torna all'Inizio &uarr;</a>
+  <span class="slide-num">08 / 08</span>
+</section>
+
+<script>
+  const dots = document.querySelectorAll('.nav-dots a');
+  const slides = document.querySelectorAll('.slide');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = Array.from(slides).indexOf(e.target);
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }
+    });
+  }, { threshold: 0.5 });
+  slides.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>"""
+
+# ── 3. Scrivi output ───────────────────────────────────────────────────────
+output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'presentazione_tp_group.html')
+with open(output_path, 'w', encoding='utf-8') as f:
+    f.write(html)
+print(f"✅ Presentazione generata: {output_path}")
+print(f"   8 slide, design scuro professionale, navigazione con scroll-snap")

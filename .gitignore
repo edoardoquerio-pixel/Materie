@@ -1,93 +1,44 @@
-# === ITS Materie patterns ===
-**/.vagrant
-**/*.log
-**/*.tar.gz
-**/.DS_Store
-**/*.bkp
-**/[Bb]in/
-**/[Oo]bj/
-**/node_modules/
-**/__pycache__/
-**/.env
-**/local.settings.json
+# Terraform
 **/.terraform/
-privato/
-19_Virtualizzazione/01_Materiale/ITS-Docker
-19_Virtualizzazione/01_Materiale/WSA-lab
-19_Virtualizzazione/01_Materiale/microservices
-AutoCandidatura
+**/.terraform.lock.hcl
+**/terraform.tfstate
+**/terraform.tfstate.backup
+**/tfplan
 
-# === Zara Agent patterns ===
-# OS
+# Build artifacts
+**/*.zip
+**/nul
+
+# Python cache
+**/__pycache__/
+**/*.pyc
+
+# IDE/OS
+**/.DS_Store
 Thumbs.db
 
-# Environment
-.env.local
-.env.*.local
+# Local config
+**/.env
+**/*.local
 
-# Runtime data
-zara_home/
-sessions/
-memory/journal.jsonl
-memory/skills-index.json
+# .NET build artifacts
+**/bin/
+**/obj/
+**/*.dll
+**/*.exe
+**/*.pdb
 
-# Dependencies
-.pnp
-.pnp.js
+# Node.js
+**/node_modules/
+**/package-lock.json
 
-# IDE
-.idea/
-*.swp
-*.swo
-*~
-.vscode/
+# Terraform (extra)
+**/.terraform.lock.hcl
+**/*.tfplan
 
-# Logs
-npm-debug.log*
+# Extracted folders
+**/*_extracted/
 
-# Testing
-coverage/
-.nyc_output/
-
-# Build
-dist/
-build/
-*.tsbuildinfo
-
-# Secrets
-**/secrets/
-**/credentials/
-*.pem
-*.key
-
-# Claude Code personal data
-.claude/history*
-.claude/sessions/
-.claude/cache/
-.claude/projects/
-
-# OpenCode local overrides
-opencode.local.md
-
-# Workspace memory (project-scoped, per-session)
-.opencode/workspace/
-
-# Task tracking (session-scoped)
-.tasks/
-
-# MCP local config (duplicate of opencode.json)
-.opencode/mcp/
-
-# Generated files
-knowledge/search-index.json
-.context/
-
-*.mp3
-*.dll
-*.ps1
-*.vsidx
-.vs/
-*_extracted/
-zara_knowledge_temp/
-# Large files (exceed GitHub 100MB limit)
-11_Programmazione_DotNet_CSharp/05_Backup/AdventureWorks2022.bak
+tool/.env
+.fad_state.json
+.fad_mapping.json

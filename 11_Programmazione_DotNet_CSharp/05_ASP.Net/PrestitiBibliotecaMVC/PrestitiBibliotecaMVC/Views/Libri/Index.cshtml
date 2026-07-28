@@ -1,0 +1,61 @@
+﻿@model IEnumerable<PrestitiBibliotecaMVC.Models.Libro>
+
+@{
+    ViewData["Title"] = "Elenco Libri";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form>
+    <p>
+        Cerca per <input style="width: 50%" id="search" name="search" type="text" value="@ViewBag.Search" placeholder="Titolo, Autore, Editore o Classificazione" />
+        <input id="Submit1" type="submit" value="Cerca" />
+    </p>
+</form>
+
+<p>
+    Elementi trovati: @Model.Count()
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Autore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titolo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Editore)
+            </th>            
+            <th>
+                @Html.DisplayNameFor(model => model.Classificazione)
+            </th>            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titolo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Editore)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Classificazione)
+            </td>
+            
+            <td>                
+                <a asp-action="Details" asp-route-id="@item.Id">Dettagli</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

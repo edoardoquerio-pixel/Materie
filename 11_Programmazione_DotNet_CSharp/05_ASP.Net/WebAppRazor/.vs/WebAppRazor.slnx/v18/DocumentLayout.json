@@ -1,0 +1,133 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\WebAppRazor\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8487B099-8C18-C3B9-9FBA-7E8E6E7D8AE6}|WebAppRazor\\WebAppRazor.csproj|c:\\users\\edoardo.querio\\onedrive - its ict piemonte\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\webapprazor\\webapprazor\\pages\\sintassirazor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8487B099-8C18-C3B9-9FBA-7E8E6E7D8AE6}|WebAppRazor\\WebAppRazor.csproj|solutionrelative:webapprazor\\pages\\sintassirazor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8487B099-8C18-C3B9-9FBA-7E8E6E7D8AE6}|WebAppRazor\\WebAppRazor.csproj|c:\\users\\edoardo.querio\\onedrive - its ict piemonte\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\webapprazor\\webapprazor\\pages\\sintassirazor.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8487B099-8C18-C3B9-9FBA-7E8E6E7D8AE6}|WebAppRazor\\WebAppRazor.csproj|solutionrelative:webapprazor\\pages\\sintassirazor.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8487B099-8C18-C3B9-9FBA-7E8E6E7D8AE6}|WebAppRazor\\WebAppRazor.csproj|c:\\users\\edoardo.querio\\onedrive - its ict piemonte\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\webapprazor\\webapprazor\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{8487B099-8C18-C3B9-9FBA-7E8E6E7D8AE6}|WebAppRazor\\WebAppRazor.csproj|solutionrelative:webapprazor\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8487B099-8C18-C3B9-9FBA-7E8E6E7D8AE6}|WebAppRazor\\WebAppRazor.csproj|c:\\users\\edoardo.querio\\onedrive - its ict piemonte\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\webapprazor\\webapprazor\\pages\\galleria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8487B099-8C18-C3B9-9FBA-7E8E6E7D8AE6}|WebAppRazor\\WebAppRazor.csproj|solutionrelative:webapprazor\\pages\\galleria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8487B099-8C18-C3B9-9FBA-7E8E6E7D8AE6}|WebAppRazor\\WebAppRazor.csproj|c:\\users\\edoardo.querio\\onedrive - its ict piemonte\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\webapprazor\\webapprazor\\pages\\chisiamo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8487B099-8C18-C3B9-9FBA-7E8E6E7D8AE6}|WebAppRazor\\WebAppRazor.csproj|solutionrelative:webapprazor\\pages\\chisiamo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8487B099-8C18-C3B9-9FBA-7E8E6E7D8AE6}|WebAppRazor\\WebAppRazor.csproj|c:\\users\\edoardo.querio\\onedrive - its ict piemonte\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\webapprazor\\webapprazor\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8487B099-8C18-C3B9-9FBA-7E8E6E7D8AE6}|WebAppRazor\\WebAppRazor.csproj|solutionrelative:webapprazor\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8487B099-8C18-C3B9-9FBA-7E8E6E7D8AE6}|WebAppRazor\\WebAppRazor.csproj|c:\\users\\edoardo.querio\\onedrive - its ict piemonte\\desktop\\materie\\11_programmazione_dotnet_csharp\\05_asp.net\\webapprazor\\webapprazor\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8487B099-8C18-C3B9-9FBA-7E8E6E7D8AE6}|WebAppRazor\\WebAppRazor.csproj|solutionrelative:webapprazor\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SintassiRazor.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\WebAppRazor\\WebAppRazor\\Pages\\SintassiRazor.cshtml.cs",
+              "RelativeDocumentMoniker": "WebAppRazor\\Pages\\SintassiRazor.cshtml.cs",
+              "ToolTip": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\WebAppRazor\\WebAppRazor\\Pages\\SintassiRazor.cshtml.cs",
+              "RelativeToolTip": "WebAppRazor\\Pages\\SintassiRazor.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T13:40:32.653Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SintassiRazor.cshtml",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\WebAppRazor\\WebAppRazor\\Pages\\SintassiRazor.cshtml",
+              "RelativeDocumentMoniker": "WebAppRazor\\Pages\\SintassiRazor.cshtml",
+              "ToolTip": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\WebAppRazor\\WebAppRazor\\Pages\\SintassiRazor.cshtml",
+              "RelativeToolTip": "WebAppRazor\\Pages\\SintassiRazor.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-10T13:32:58.572Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\WebAppRazor\\WebAppRazor\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "WebAppRazor\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\WebAppRazor\\WebAppRazor\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "WebAppRazor\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-07-10T13:22:06.977Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Galleria.cshtml",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\WebAppRazor\\WebAppRazor\\Pages\\Galleria.cshtml",
+              "RelativeDocumentMoniker": "WebAppRazor\\Pages\\Galleria.cshtml",
+              "ToolTip": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\WebAppRazor\\WebAppRazor\\Pages\\Galleria.cshtml",
+              "RelativeToolTip": "WebAppRazor\\Pages\\Galleria.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-10T13:11:01.792Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ChiSiamo.cshtml",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\WebAppRazor\\WebAppRazor\\Pages\\ChiSiamo.cshtml",
+              "RelativeDocumentMoniker": "WebAppRazor\\Pages\\ChiSiamo.cshtml",
+              "ToolTip": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\WebAppRazor\\WebAppRazor\\Pages\\ChiSiamo.cshtml",
+              "RelativeToolTip": "WebAppRazor\\Pages\\ChiSiamo.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-10T13:03:25.102Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\WebAppRazor\\WebAppRazor\\Pages\\Index.cshtml",
+              "RelativeDocumentMoniker": "WebAppRazor\\Pages\\Index.cshtml",
+              "ToolTip": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\WebAppRazor\\WebAppRazor\\Pages\\Index.cshtml",
+              "RelativeToolTip": "WebAppRazor\\Pages\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-10T13:01:29.76Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\WebAppRazor\\WebAppRazor\\Pages\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "WebAppRazor\\Pages\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\edoardo.querio\\OneDrive - ITS ICT Piemonte\\Desktop\\Materie\\11_Programmazione_DotNet_CSharp\\05_ASP.Net\\WebAppRazor\\WebAppRazor\\Pages\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "WebAppRazor\\Pages\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAABtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-10T12:59:05.589Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

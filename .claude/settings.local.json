@@ -1,8 +1,7 @@
 {
-  "prefersReducedMotion": true,
   "permissions": {
     "allow": [
-      "Bash"
+      "Bash(sort -t/ -k2)"
     ]
   }
 }

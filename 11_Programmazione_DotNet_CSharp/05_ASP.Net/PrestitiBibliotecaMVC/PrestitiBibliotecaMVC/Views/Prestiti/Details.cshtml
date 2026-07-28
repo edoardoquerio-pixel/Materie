@@ -1,0 +1,49 @@
+﻿@model PrestitiBibliotecaMVC.Models.Prestito
+
+@{
+    ViewData["Title"] = "Dettagli Prestito";
+}
+
+<h1>@ViewBag</h1>
+
+<div>
+    <h4>Prestito</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MatricolaNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MatricolaNavigation.Nominativo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdLibroNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdLibroNavigation.Titolo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DataPrestito)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataPrestito)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DataRestituzione)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataRestituzione)
+        </dd>
+
+
+
+
+    </dl>
+</div>
+<div>
+    @if(Model.DataRestituzione == null)
+    {
+        <a asp-action="RestituisciPrestito" asp-route-id="@Model?.Id">Restituisci Prestito</a>
+    } |
+    <a asp-action="Index">Torna Indietro</a>
+</div>

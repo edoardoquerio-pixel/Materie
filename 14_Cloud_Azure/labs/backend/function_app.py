@@ -62,7 +62,7 @@ def crea_richiesta(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# lista_richieste — HTTP GET ← Cosmos DB (input binding, 200 OK)
+# lista_richieste — HTTP GET <- Cosmos DB (input binding, 200 OK)
 # ══════════════════════════════════════════════════════════════════════════════
 @app.route(route="lista_richieste", methods=["GET"], auth_level=func.AuthLevel.ANONYMOUS)
 @app.cosmos_db_input(
@@ -137,7 +137,7 @@ def pubblica_richiesta(
 
     return func.HttpResponse(
         json.dumps({
-            "messaggio": "Richiesta presa in carico, verra' elaborata a breve",
+            "messaggio": "Richiesta presa in carico, verra elaborata a breve",
             "id": item["id"],
         }, ensure_ascii=False),
         status_code=202,
@@ -164,16 +164,20 @@ def elabora_richiesta(
     queueItem: func.QueueMessage,
     outputDocument: func.Out[func.Document],
 ):
-    body = queueItem.get_body().decode("utf-8")
-    logging.info("ElaboraRichiesta: messaggio ricevuto dalla coda: %s", body)
+    try:
+        body = queueItem.get_body().decode("utf-8")
+        logging.info("ElaboraRichiesta: messaggio ricevuto dalla coda: %s", body)
 
-    item = json.loads(body)
-    item["elaborato_il"] = datetime.now(timezone.utc).isoformat()
-    item["partitionKey"] = item.get("categoria", "generica")
+        item = json.loads(body)
+        item["elaborato_il"] = datetime.now(timezone.utc).isoformat()
+        item["partitionKey"] = item.get("categoria", "generica")
 
-    outputDocument.set(func.Document.from_json(json.dumps(item)))
+        outputDocument.set(func.Document.from_json(json.dumps(item)))
 
-    logging.info("ElaboraRichiesta: documento scritto su Cosmos, id='%s'.", item["id"])
+        logging.info("ElaboraRichiesta: documento scritto su Cosmos, id='%s'.", item["id"])
+    except Exception as e:
+        logging.error("ElaboraRichiesta: errore durante elaborazione: %s", str(e))
+        raise
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -204,27 +208,36 @@ def riepilogo(
 ):
     logging.info("Riepilogo: funzione timer attivata.")
 
-    all_docs = list(documents) if documents else []
+    try:
+        all_docs = list(documents) if documents else []
 
-    conteggio = {}
-    for doc in all_docs:
-        raw = doc.to_json() if hasattr(doc, "to_json") else json.dumps(doc)
-        d = json.loads(raw) if isinstance(raw, str) else raw
-        cat = d.get("categoria", "generica")
-        conteggio[cat] = conteggio.get(cat, 0) + 1
+        conteggio = {}
+        for doc in all_docs:
+            try:
+                raw = doc.to_json() if hasattr(doc, "to_json") else json.dumps(doc)
+                d = json.loads(raw) if isinstance(raw, str) else raw
+                cat = d.get("categoria", "generica")
+                conteggio[cat] = conteggio.get(cat, 0) + 1
+            except Exception as doc_err:
+                logging.warning("Riepilogo: errore processando documento: %s", str(doc_err))
+                continue
 
-    riepilogo_doc = {
-        "id": "riepilogo-" + datetime.now(timezone.utc).strftime("%Y-%m-%dT%H-%M-%SZ"),
-        "tipo": "riepilogo",
-        "totale": len(all_docs),
-        "perCategoria": conteggio,
-        "generatoIl": datetime.now(timezone.utc).isoformat(),
-    }
+        riepilogo_doc = {
+            "id": "riepilogo-" + datetime.now(timezone.utc).strftime("%Y-%m-%dT%H-%M-%SZ"),
+            "tipo": "riepilogo",
+            "totale": len(all_docs),
+            "perCategoria": conteggio,
+            "generatoIl": datetime.now(timezone.utc).isoformat(),
+        }
 
-    outputDocument.set(func.Document.from_json(json.dumps(riepilogo_doc)))
+        outputDocument.set(func.Document.from_json(json.dumps(riepilogo_doc)))
 
-    logging.info(
-        "Riepilogo: %d richieste totali, %d categorie. Riepilogo salvato.",
-        len(all_docs),
-        len(conteggio),
-    )
+        logging.info(
+            "Riepilogo: %d richieste totali, %d categorie. Riepilogo salvato.",
+            len(all_docs),
+            len(conteggio),
+        )
+
+    except Exception as e:
+        logging.error("Riepilogo: errore durante generazione riepilogo: %s", str(e))
+        raise

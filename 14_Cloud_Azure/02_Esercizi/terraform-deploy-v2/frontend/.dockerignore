@@ -1,0 +1,15 @@
+Dockerfile
+.dockerignore
+.git
+.gitignore
+*.md
+*.txt
+*.ps1
+*.sh
+*.py
+*.pyc
+__pycache__
+.venv
+.terraform
+terraform.tfstate*
+
