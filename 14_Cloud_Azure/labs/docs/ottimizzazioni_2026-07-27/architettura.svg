@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1000" font-family="Segoe UI, sans-serif" font-size="13">
+  <defs>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#0078d4"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#ff9800"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#9c27b0"/>
+    </marker>
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0078d4"/>
+      <stop offset="100%" stop-color="#005a9e"/>
+    </linearGradient>
+    <linearGradient id="funcGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5f9ff"/>
+      <stop offset="100%" stop-color="#e8f0fe"/>
+    </linearGradient>
+    <linearGradient id="cosmosGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8f5e9"/>
+      <stop offset="100%" stop-color="#c8e6c9"/>
+    </linearGradient>
+    <linearGradient id="queueGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff8e1"/>
+      <stop offset="100%" stop-color="#ffecb3"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="1000" fill="#fafafa" rx="8"/>
+
+  <!-- Title -->
+  <rect x="0" y="0" width="900" height="50" fill="url(#headerGrad)" rx="8"/>
+  <rect x="0" y="42" width="900" height="8" fill="url(#headerGrad)"/>
+  <text x="450" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">Azure E2E Lab — Schema dellArchitettura</text>
+
+  <!-- Browser -->
+  <rect x="300" y="70" width="300" height="45" rx="22" fill="#fff" stroke="#ccc" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="450" y="97" text-anchor="middle" font-weight="bold" font-size="14" fill="#555">Internet / Browser</text>
+
+  <line x1="450" y1="115" x2="450" y2="145" stroke="#0078d4" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <text x="465" y="135" font-size="11" fill="#888">HTTPS</text>
+
+  <!-- Web App -->
+  <rect x="180" y="150" width="540" height="60" rx="8" fill="#fff" stroke="#0078d4" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="180" y="150" width="540" height="24" rx="8" fill="#0078d4"/>
+  <rect x="180" y="166" width="540" height="8" fill="#0078d4"/>
+  <text x="450" y="167" text-anchor="middle" font-weight="bold" font-size="13" fill="#fff">Web App for Containers</text>
+  <text x="450" y="195" text-anchor="middle" font-size="11" fill="#555">nginx:alpine · App Service Plan B1 · Managed Identity + ACR Pull</text>
+
+  <line x1="450" y1="210" x2="450" y2="240" stroke="#0078d4" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <text x="465" y="230" font-size="11" fill="#888">fetch API (/api/*)</text>
+
+  <!-- Function App container -->
+  <rect x="80" y="245" width="740" height="355" rx="10" fill="#f0f7ff" stroke="#0078d4" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <rect x="80" y="245" width="740" height="28" rx="10" fill="#e3f2fd"/>
+  <rect x="80" y="265" width="740" height="8" fill="#e3f2fd"/>
+  <text x="450" y="264" text-anchor="middle" font-weight="bold" font-size="13" fill="#005a9e">Azure Functions (Python 3.11)</text>
+
+  <!-- crea_richiesta -->
+  <rect x="105" y="285" width="200" height="100" rx="6" fill="#fff" stroke="#4caf50" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="105" y="285" width="200" height="22" rx="6" fill="#4caf50"/>
+  <rect x="105" y="299" width="200" height="8" fill="#4caf50"/>
+  <text x="205" y="301" text-anchor="middle" font-weight="bold" font-size="12" fill="#fff">crea_richiesta</text>
+  <text x="115" y="325" font-size="11" fill="#555">Trigger: HTTP POST</text>
+  <text x="115" y="342" font-size="11" fill="#555">Output: Cosmos DB</text>
+  <text x="115" y="359" font-size="11" fill="#555">Status: 201 Created</text>
+  <text x="115" y="376" font-size="10" fill="#4caf50" font-style="italic">Sincrono</text>
+
+  <!-- pubblica_richiesta -->
+  <rect x="350" y="285" width="200" height="100" rx="6" fill="#fff" stroke="#ff9800" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="350" y="285" width="200" height="22" rx="6" fill="#ff9800"/>
+  <rect x="350" y="299" width="200" height="8" fill="#ff9800"/>
+  <text x="450" y="301" text-anchor="middle" font-weight="bold" font-size="12" fill="#fff">pubblica_richiesta</text>
+  <text x="360" y="325" font-size="11" fill="#555">Trigger: HTTP POST</text>
+  <text x="360" y="342" font-size="11" fill="#555">Output: Storage Queue</text>
+  <text x="360" y="359" font-size="11" fill="#555">Status: 202 Accepted</text>
+  <text x="360" y="376" font-size="10" fill="#ff9800" font-style="italic">Asincrono</text>
+
+  <!-- lista_richieste -->
+  <rect x="595" y="285" width="200" height="100" rx="6" fill="#fff" stroke="#2196f3" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="595" y="285" width="200" height="22" rx="6" fill="#2196f3"/>
+  <rect x="595" y="299" width="200" height="8" fill="#2196f3"/>
+  <text x="695" y="301" text-anchor="middle" font-weight="bold" font-size="12" fill="#fff">lista_richieste</text>
+  <text x="605" y="325" font-size="11" fill="#555">Trigger: HTTP GET</text>
+  <text x="605" y="342" font-size="11" fill="#555">Input: Cosmos DB</text>
+  <text x="605" y="359" font-size="11" fill="#555">Status: 200 OK</text>
+  <text x="605" y="376" font-size="10" fill="#2196f3" font-style="italic">Lettura</text>
+
+  <!-- Arrows functions -> queue -->
+  <line x1="205" y1="385" x2="205" y2="415" stroke="#4caf50" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+  <line x1="450" y1="385" x2="450" y2="405" stroke="#ff9800" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+  <line x1="695" y1="385" x2="695" y2="415" stroke="#2196f3" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- Queue -->
+  <rect x="340" y="407" width="220" height="50" rx="6" fill="url(#queueGrad)" stroke="#ff9800" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="450" y="429" text-anchor="middle" font-weight="bold" font-size="12" fill="#e65100">Storage Queue</text>
+  <text x="450" y="447" text-anchor="middle" font-size="11" fill="#e65100">richieste-da-elaborare</text>
+
+  <line x1="450" y1="457" x2="450" y2="472" stroke="#ff9800" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+
+  <!-- elabora_richiesta -->
+  <rect x="340" y="474" width="220" height="90" rx="6" fill="#fff" stroke="#ff9800" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="340" y="474" width="220" height="22" rx="6" fill="#ff9800"/>
+  <rect x="340" y="488" width="220" height="8" fill="#ff9800"/>
+  <text x="450" y="490" text-anchor="middle" font-weight="bold" font-size="12" fill="#fff">elabora_richiesta</text>
+  <text x="350" y="512" font-size="11" fill="#555">Trigger: Queue</text>
+  <text x="350" y="529" font-size="11" fill="#555">Output: Cosmos DB</text>
+  <text x="350" y="546" font-size="11" fill="#555">Elaborazione differita</text>
+
+  <!-- Timer section -->
+  <rect x="595" y="420" width="200" height="80" rx="6" fill="#fff" stroke="#9c27b0" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="595" y="420" width="200" height="22" rx="6" fill="#9c27b0"/>
+  <rect x="595" y="434" width="200" height="8" fill="#9c27b0"/>
+  <text x="695" y="436" text-anchor="middle" font-weight="bold" font-size="12" fill="#fff">Riepilogo</text>
+  <text x="605" y="458" font-size="11" fill="#555">Trigger: Timer */2 min</text>
+  <text x="605" y="475" font-size="11" fill="#555">Input: Cosmos DB</text>
+  <text x="605" y="492" font-size="11" fill="#555">Output: Cosmos DB</text>
+
+  <!-- Cosmos DB -->
+  <rect x="120" y="555" width="660" height="75" rx="8" fill="url(#cosmosGrad)" stroke="#4caf50" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="450" y="578" text-anchor="middle" font-weight="bold" font-size="13" fill="#1b5e20">Azure Cosmos DB (Serverless)</text>
+  <rect x="150" y="588" width="260" height="32" rx="4" fill="#fff" stroke="#4caf50" stroke-width="1"/>
+  <text x="280" y="608" text-anchor="middle" font-size="11" fill="#2e7d32">Container: richieste (PK: /categoria)</text>
+  <rect x="490" y="588" width="260" height="32" rx="4" fill="#fff" stroke="#4caf50" stroke-width="1"/>
+  <text x="620" y="608" text-anchor="middle" font-size="11" fill="#2e7d32">Container: riepiloghi (PK: /tipo)</text>
+
+  <!-- Arrows to Cosmos -->
+  <line x1="205" y1="460" x2="205" y2="555" stroke="#4caf50" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowBlue)"/>
+  <line x1="450" y1="564" x2="450" y2="555" stroke="#ff9800" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+  <line x1="695" y1="460" x2="695" y2="555" stroke="#2196f3" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowBlue)"/>
+  <line x1="695" y1="500" x2="620" y2="555" stroke="#9c27b0" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowPurple)"/>
+
+  <!-- App Insights + Key Vault -->
+  <rect x="120" y="660" width="300" height="65" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="270" y="683" text-anchor="middle" font-weight="bold" font-size="13" fill="#1565c0">Application Insights</text>
+  <text x="270" y="702" text-anchor="middle" font-size="11" fill="#555">Telemetria automatica + Log applicativi</text>
+  <text x="270" y="717" text-anchor="middle" font-size="11" fill="#555">Richieste, errori, dipendenze, KQL</text>
+
+  <rect x="480" y="660" width="300" height="65" rx="8" fill="#e8eaf6" stroke="#283593" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="630" y="683" text-anchor="middle" font-weight="bold" font-size="13" fill="#283593">Key Vault</text>
+  <text x="630" y="702" text-anchor="middle" font-size="11" fill="#555">Secret: cosmos-conn</text>
+  <text x="630" y="717" text-anchor="middle" font-size="11" fill="#555">Secret: storage-conn</text>
+
+  <line x1="450" y1="630" x2="270" y2="660" stroke="#888" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="450" y1="630" x2="630" y2="660" stroke="#888" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- Legend -->
+  <rect x="120" y="750" width="660" height="55" rx="6" fill="#fff" stroke="#ddd" stroke-width="1"/>
+  <text x="140" y="770" font-size="11" font-weight="bold" fill="#555">LEGENDA:</text>
+  <rect x="210" y="760" width="12" height="8" rx="2" fill="#4caf50"/>
+  <text x="226" y="768" font-size="10" fill="#555">HTTP</text>
+  <rect x="270" y="760" width="12" height="8" rx="2" fill="#ff9800"/>
+  <text x="286" y="768" font-size="10" fill="#555">Queue</text>
+  <rect x="330" y="760" width="12" height="8" rx="2" fill="#9c27b0"/>
+  <text x="346" y="768" font-size="10" fill="#555">Timer</text>
+  <rect x="400" y="760" width="12" height="8" rx="2" fill="#2196f3"/>
+  <text x="416" y="768" font-size="10" fill="#555">Cosmos</text>
+  <text x="140" y="795" font-size="10" fill="#888">Resource Group: collaboration1 | Regione: France Central | Subscription: Azure Students</text>
+</svg>

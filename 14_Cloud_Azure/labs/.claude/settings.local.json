@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(az functionapp *)"
+      "Bash(az functionapp *)",
+      "Bash(pip install *)",
+      "Bash(python -c \"from cairosvg import svg2png; print\\('cairosvg OK'\\)\")"
     ]
   }
 }
