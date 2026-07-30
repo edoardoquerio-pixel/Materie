@@ -1,0 +1,404 @@
+:root {
+  --carbon: #1B1F22;
+  --corsa: #D42027;
+  --corsa-dark: #B01A20;
+  --corsa-light: #E84A50;
+  --officina: #F5F2ED;
+  --steel: #8B949E;
+  --kom: #2EBA7C;
+  --kom-dark: #249863;
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 80px;
+  background-color: var(--officina);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--carbon);
+}
+
+a {
+  color: var(--carbon);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.15s, color 0.15s;
+}
+
+a:hover {
+  color: var(--corsa);
+  text-decoration-color: var(--corsa);
+}
+
+/* ===== NAVBAR ===== */
+
+.navbar-bikestores {
+  background: var(--carbon) !important;
+  border-bottom: 3px solid var(--corsa);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+
+.navbar-bikestores .navbar-brand {
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: #fff !important;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.navbar-bikestores .navbar-brand::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: var(--corsa);
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.navbar-bikestores .nav-link {
+  color: rgba(255,255,255,0.75) !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.navbar-bikestores .nav-link:hover {
+  color: #fff !important;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ===== FOOTER ===== */
+
+.footer {
+  background: var(--carbon);
+  border-top: 3px solid var(--corsa);
+  color: rgba(255,255,255,0.55);
+  padding: 1.2rem 0;
+  font-size: 0.85rem;
+}
+
+/* ===== PAGE HEADER (signature element) ===== */
+
+.page-header {
+  color: var(--carbon);
+  font-weight: 700;
+  font-size: 1.75rem;
+  padding-left: 16px;
+  border-left: 4px solid var(--corsa);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+/* ===== SECTION TITLE ===== */
+
+.section-title {
+  color: var(--carbon);
+  font-weight: 600;
+  font-size: 1.25rem;
+  padding-left: 12px;
+  border-left: 3px solid var(--corsa);
+  margin: 2rem 0 1rem;
+}
+
+/* ===== HERO SECTION ===== */
+
+.hero-section {
+  background: linear-gradient(135deg, var(--carbon) 0%, #2a3035 100%);
+  border-bottom: 4px solid var(--corsa);
+  color: #fff;
+  padding: 3.5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-top: -1rem;
+}
+
+.hero-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--corsa), var(--corsa-light), transparent 80%);
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.hero-section .lead {
+  font-size: 1.1rem;
+  opacity: 0.6;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+/* ===== DASHBOARD CARDS ===== */
+
+.dashboard-card {
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-top: 3px solid transparent;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  border-top-color: var(--corsa);
+}
+
+.dashboard-card .card-body {
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.dashboard-card .card-icon {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.dashboard-card .card-title {
+  font-weight: 700;
+  color: var(--carbon);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dashboard-card .card-text {
+  color: var(--steel);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== BUTTONS ===== */
+
+.btn-primary {
+  background: var(--corsa) !important;
+  border: none;
+  color: #fff !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0;
+  text-decoration: none !important;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover {
+  background: var(--corsa-dark) !important;
+}
+
+.btn-outline-primary {
+  border: 2px solid var(--carbon);
+  color: var(--carbon) !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0;
+  background: transparent;
+  text-decoration: none !important;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-outline-primary:hover {
+  background: var(--carbon);
+  color: #fff;
+}
+
+.btn-outline-secondary {
+  border: 1px solid var(--steel);
+  color: var(--steel) !important;
+  font-weight: 500;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0;
+  background: transparent;
+  text-decoration: none !important;
+}
+
+.btn-outline-secondary:hover {
+  background: var(--steel);
+  color: #fff;
+}
+
+/* ===== TABLES ===== */
+
+.table {
+  background: #fff;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table thead th {
+  background: var(--carbon);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  border: none;
+  padding: 0.9rem 1rem;
+}
+
+.table thead th:first-child {
+  border-left: 3px solid var(--corsa);
+}
+
+.table tbody td {
+  padding: 0.8rem 1rem;
+  vertical-align: middle;
+  border-bottom: 1px solid #f0eeea;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: rgba(212, 32, 39, 0.04);
+}
+
+.table tbody td:first-child {
+  border-left: 3px solid transparent;
+}
+
+.table tbody tr:hover td:first-child {
+  border-left-color: var(--corsa-light);
+}
+
+/* ===== DL CARDS (Details) ===== */
+
+.dl-card {
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  border-left: 3px solid var(--corsa);
+}
+
+.dl-card h4 {
+  color: var(--carbon);
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dl-card hr {
+  border-color: #e5e0d8;
+  margin: 0.8rem 0;
+}
+
+.dl-card dt {
+  color: var(--steel);
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dl-card dd {
+  color: var(--carbon);
+  font-weight: 500;
+}
+
+/* ===== SEARCH FORM ===== */
+
+.search-form {
+  background: #fff;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  margin-bottom: 1.5rem;
+  border-left: 3px solid var(--corsa);
+}
+
+.search-form .form-control {
+  border-radius: 0;
+  border: 1px solid #e0dbd3;
+  font-size: 0.9rem;
+  padding: 0.6rem 0.8rem;
+}
+
+.search-form .form-control:focus {
+  border-color: var(--corsa);
+  box-shadow: none;
+}
+
+/* ===== ITEMS COUNT ===== */
+
+.items-count {
+  color: var(--steel);
+  font-size: 0.85rem;
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+
+/* ===== BACK LINK BTN SMALL ===== */
+
+.btn-sm-details {
+  background: var(--carbon);
+  color: #fff;
+  border: none;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.3rem 0.8rem;
+  border-radius: 0;
+  font-weight: 600;
+  transition: background 0.15s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-sm-details:hover {
+  background: var(--corsa);
+  color: #fff !important;
+  text-decoration: none;
+}
+
+/* Active badge */
+.active-badge-yes {
+  color: var(--kom);
+  font-weight: 600;
+}
+
+.active-badge-no {
+  color: var(--steel);
+}

@@ -1,0 +1,68 @@
+@model IEnumerable<PrestitiVideoteca.Models.Prestito>
+
+@{
+    ViewData["Title"] = "Prestiti";
+}
+
+<h1>Prestiti</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nuovo Prestito</a>
+    <a asp-action="ArchivioPrestiti" class="btn btn-secondary">Archivio Prestiti</a>
+</p>
+
+<form>
+    <p>
+        Cerca per <input style="width: 50%" name="search" type="text" value="@ViewBag.Search" placeholder="Titolo film o studente..." />
+        <input type="submit" value="Cerca" />
+    </p>
+</form>
+
+<p>
+    Elementi trovati: @ViewBag.TotalRecords
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.IdFilmNavigation)</th>
+            <th>@Html.DisplayNameFor(model => model.MatricolaNavigation)</th>
+            <th>@Html.DisplayNameFor(model => model.DataPrestito)</th>
+            <th>@Html.DisplayNameFor(model => model.DataRestituzione)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.IdFilmNavigation.Titolo)</td>
+            <td>@Html.DisplayFor(modelItem => item.MatricolaNavigation.Cognome)</td>
+            <td>@Html.DisplayFor(modelItem => item.DataPrestito)</td>
+            <td>@Html.DisplayFor(modelItem => item.DataRestituzione)</td>
+            <td class="text-nowrap">
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Modifica</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Dettagli</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Elimina</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-between align-items-center">
+    <span>Pagina @ViewBag.PageNumber di @ViewBag.TotalPages</span>
+    <div>
+        <a asp-action="Index"
+           asp-route-search="@ViewBag.Search"
+           asp-route-pageNumber="@(ViewBag.PageNumber - 1)"
+           class="btn btn-outline-secondary @(ViewBag.PageNumber <= 1 ? "disabled" : "")">
+           Precedente
+        </a>
+        <a asp-action="Index"
+           asp-route-search="@ViewBag.Search"
+           asp-route-pageNumber="@(ViewBag.PageNumber + 1)"
+           class="btn btn-outline-secondary @(ViewBag.PageNumber >= ViewBag.TotalPages ? "disabled" : "")">
+           Successiva
+        </a>
+    </div>
+</div>

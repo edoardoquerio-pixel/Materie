@@ -1,0 +1,46 @@
+@model IEnumerable<BikeStores.Data.Models.Stock>
+
+@{
+    ViewData["Title"] = "Stock";
+}
+
+<h1 class = "mb-4">Stock</h1>
+
+<p>
+    <a asp-action="Create" class = "btn btn-dark">Create New Stock</a>
+</p>
+
+<div class = "mb-3">
+    <a asp-action="Index" class = "btn @(ViewBag.Filter == null ? "btn-dark" : "btn-outline-dark")">All</a>
+    <a asp-action="Index" asp-route-filter="out" class = "btn @(ViewBag.Filter == "out" ? "btn-dark" : "btn-outline-dark")">Out of Stock</a>
+    <a asp-action="Index" asp-route-filter="low" class = "btn @(ViewBag.Filter == "low" ? "btn-dark" : "btn-outline-dark")">Low Stock (1-9)</a>
+</div>
+
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Store)</th>
+            <th>@Html.DisplayNameFor(model => model.Product)</th>
+            <th>@Html.DisplayNameFor(model => model.Quantity)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Store!.StoreName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Product!.ProductName)</td>
+                <td>
+                    <span class = "@(item.Quantity == 0 ? "text-danger fw-bold" : item.Quantity <= 9 ? "text-warning fw-bold" : "")">
+                        @item.Quantity
+                    </span>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-storeId="@item.StoreId" asp-route-productId="@item.ProductId" class = "btn btn-dark btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-storeId="@item.StoreId" asp-route-productId="@item.ProductId" class = "btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

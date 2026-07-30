@@ -1,0 +1,79 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h1 class = "mb-4">Dashboard</h1>
+
+<div class = "row g-4">
+    <div class = "col-md-3">
+        <div class = "card text-bg-dark">
+            <div class = "card-body text-center py-4">
+                <h5 class = "card-title display-6">@ViewBag.TotalOrders</h5>
+                <p class = "card-text">Orders</p>
+                <a asp-controller="Orders" asp-action="Index" class = "btn btn-outline-light btn-sm">Manage</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class = "card text-bg-dark">
+            <div class = "card-body text-center py-4">
+                <h5 class = "card-title display-6">@ViewBag.TotalCustomers</h5>
+                <p class = "card-text">Customers</p>
+                <a asp-controller="Customers" asp-action="Index" class = "btn btn-outline-light btn-sm">Manage</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class = "card text-bg-dark">
+            <div class = "card-body text-center py-4">
+                <h5 class = "card-title display-6">@ViewBag.TotalProducts</h5>
+                <p class = "card-text">Products</p>
+                <a asp-controller="Products" asp-action="Index" class = "btn btn-outline-light btn-sm">Manage</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-3">
+        <div class = "card text-bg-dark">
+            <div class = "card-body text-center py-4">
+                <h5 class = "card-title display-6">@ViewBag.TotalStores</h5>
+                <p class = "card-text">Stores</p>
+                <a asp-controller="Stores" asp-action="Index" class = "btn btn-outline-light btn-sm">Manage</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class = "row g-4 mt-2">
+    <div class = "col-md-4">
+        <div class = "card">
+            <div class = "card-body text-center py-4">
+                <h5 class = "card-title">Catalog</h5>
+                <p class = "card-text">Brands, Categories, Products, Stock</p>
+                <a asp-controller="Brands" asp-action="Index" class = "btn btn-dark btn-sm">Brands</a>
+                <a asp-controller="Categories" asp-action="Index" class = "btn btn-dark btn-sm">Categories</a>
+                <a asp-controller="Products" asp-action="Index" class = "btn btn-dark btn-sm">Products</a>
+                <a asp-controller="Stocks" asp-action="Index" class = "btn btn-dark btn-sm">Stock</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-4">
+        <div class = "card">
+            <div class = "card-body text-center py-4">
+                <h5 class = "card-title">Sales</h5>
+                <p class = "card-text">Stores and Staff management</p>
+                <a asp-controller="Stores" asp-action="Index" class = "btn btn-dark btn-sm">Stores</a>
+                <a asp-controller="Staff" asp-action="Index" class = "btn btn-dark btn-sm">Staff</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-4">
+        <div class = "card">
+            <div class = "card-body text-center py-4">
+                <h5 class = "card-title">Orders</h5>
+                <p class = "card-text">Customer orders management</p>
+                <a asp-controller="Orders" asp-action="Index" class = "btn btn-dark btn-sm">Orders</a>
+                <a asp-controller="Customers" asp-action="Index" class = "btn btn-dark btn-sm">Customers</a>
+            </div>
+        </div>
+    </div>
+</div>

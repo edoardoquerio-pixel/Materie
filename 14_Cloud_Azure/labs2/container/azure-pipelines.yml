@@ -1,0 +1,56 @@
+# Pipeline A: Build & Push Container Image to ACR
+# Trigger filtrato: parte solo se ci sono modifiche in container/**
+
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - container/*
+
+# Pool agent Ubuntu (non serve Docker installato: build delegata ad ACR)
+pool:
+  vmImage: ubuntu-latest
+
+# Variabili: personalizzare con i propri valori
+variables:
+  # Nome del registry ACR (senza .azurecr.io)
+  acrName: 'iltuoacr'
+  # Nome immagine nel registry
+  imageName: 'hello-app'
+  # Nome della service connection (workload identity federation)
+  azureSubscription: 'la-tua-service-connection'
+
+steps:
+  - task: AzureCLI@2
+    displayName: 'Build e Push immagine su ACR (az acr build)'
+    inputs:
+      azureSubscription: '$(azureSubscription)'
+      scriptType: bash
+      scriptLocation: inlineScript
+      inlineScript: |
+        echo "Building image: $(imageName):$(Build.BuildId) and $(imageName):latest"
+        echo "Registry: $(acrName)"
+        
+        az acr build --registry $(acrName) \
+          --image $(imageName):$(Build.BuildId) \
+          --image $(imageName):latest \
+          --file container/Dockerfile \
+          container/
+        
+        echo "Build completata. Tag creati: $(Build.BuildId), latest"
+
+  - task: AzureCLI@2
+    displayName: 'Verifica tag nel registry'
+    inputs:
+      azureSubscription: '$(azureSubscription)'
+      scriptType: bash
+      scriptLocation: inlineScript
+      inlineScript: |
+        echo "Tag disponibili per $(imageName):"
+        az acr repository show-tags \
+          --name $(acrName) \
+          --repository $(imageName) \
+          --output table \
+          --orderby time_desc

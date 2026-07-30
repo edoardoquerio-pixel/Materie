@@ -1,0 +1,63 @@
+@model BikeStores.Data.Models.Staff
+
+@{
+    ViewData["Title"] = $"{Model.FirstName} {Model.LastName}";
+}
+
+<h1 class="page-header">@ViewData["Title"]</h1>
+
+<div class="dl-card">
+    <h4>Staff Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+        <dd class = "col-sm-10">
+            <span class="@(Model.Active == 1 ? "active-badge-yes" : "active-badge-no")">@(Model.Active == 1 ? "Yes" : "No")</span>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Store)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Store.StoreName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Manager)
+        </dt>
+        <dd class = "col-sm-10">
+            @if (Model.Manager != null)
+            {
+                <a asp-controller="Staff" asp-action="Details" asp-route-id="@Model.Manager.StaffId">
+                    @Model.Manager.FirstName @Model.Manager.LastName
+                </a>
+            }
+        </dd>
+    </dl>
+</div>
+
+<a asp-controller="Stores" asp-action="Details" asp-route-id="@Model.StoreId" class="btn btn-outline-primary">Back to Store</a>

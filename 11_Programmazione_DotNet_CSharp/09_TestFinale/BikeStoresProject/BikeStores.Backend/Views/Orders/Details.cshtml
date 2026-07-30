@@ -1,0 +1,92 @@
+@model BikeStores.Data.Models.Order
+
+@{
+    ViewData["Title"] = $"Order #{Model.OrderId}";
+}
+
+<h1 class = "mb-4">Order #@Model.OrderId</h1>
+
+<div class = "card mb-4">
+    <div class = "card-header fw-bold">Order Details</div>
+    <div class = "card-body">
+        <dl class = "row mb-0">
+            <dt class = "col-sm-2">Customer</dt>
+            <dd class = "col-sm-10">@Model.Customer?.FirstName @Model.Customer?.LastName</dd>
+
+            <dt class = "col-sm-2">Status</dt>
+            <dd class = "col-sm-10">@ViewBag.StatusName</dd>
+
+            <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.OrderDate)</dt>
+            <dd class = "col-sm-10">@Model.OrderDate.ToShortDateString()</dd>
+
+            <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.RequiredDate)</dt>
+            <dd class = "col-sm-10">@Model.RequiredDate.ToShortDateString()</dd>
+
+            <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.ShippedDate)</dt>
+            <dd class = "col-sm-10">@Model.ShippedDate?.ToShortDateString()</dd>
+
+            <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.Store)</dt>
+            <dd class = "col-sm-10">@Html.DisplayFor(model => model.Store!.StoreName)</dd>
+
+            <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.Staff)</dt>
+            <dd class = "col-sm-10">@Model.Staff?.FirstName @Model.Staff?.LastName</dd>
+        </dl>
+    </div>
+</div>
+
+<h4 class = "mb-3">Order Items</h4>
+
+@{
+    var orderItems = ViewBag.Items as IEnumerable<BikeStores.Data.Models.OrderItem>;
+    decimal orderTotal = 0;
+}
+
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th class = "text-end">Quantity</th>
+            <th class = "text-end">List Price</th>
+            <th class = "text-end">Discount</th>
+            <th class = "text-end">Total Price</th>
+            <th class = "text-end">Discount Total</th>
+            <th class = "text-end">Sub Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (orderItems != null)
+        {
+            @foreach (var item in orderItems)
+            {
+                decimal totalPrice = item.Quantity * item.ListPrice;
+                decimal discountTotal = totalPrice * item.Discount;
+                decimal subTotal = totalPrice - discountTotal;
+                orderTotal += subTotal;
+
+                <tr>
+                    <td>@(item.Product?.ProductName ?? "N/A")</td>
+                    <td class = "text-end">@item.Quantity</td>
+                    <td class = "text-end">@item.ListPrice.ToString("C")</td>
+                    <td class = "text-end">@(item.Discount.ToString("P0"))</td>
+                    <td class = "text-end">@totalPrice.ToString("C")</td>
+                    <td class = "text-end">@discountTotal.ToString("C")</td>
+                    <td class = "text-end">@subTotal.ToString("C")</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7" class = "text-center text-muted">No items found.</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr class = "fw-bold">
+            <td colspan="6" class = "text-end">Order Total:</td>
+            <td class = "text-end">@orderTotal.ToString("C")</td>
+        </tr>
+    </tfoot>
+</table>
+
+<a asp-action="Index" class = "btn btn-outline-secondary">Back to List</a>

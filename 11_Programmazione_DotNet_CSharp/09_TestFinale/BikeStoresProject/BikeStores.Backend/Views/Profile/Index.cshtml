@@ -1,0 +1,32 @@
+@model BikeStores.Data.Models.Customer
+
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<h1 class = "mb-4">My Profile</h1>
+
+<div class = "card">
+    <div class = "card-body">
+        <dl class = "row mb-0">
+            <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.FirstName)</dt>
+            <dd class = "col-sm-10">@Html.DisplayFor(model => model.FirstName)</dd>
+
+            <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.LastName)</dt>
+            <dd class = "col-sm-10">@Html.DisplayFor(model => model.LastName)</dd>
+
+            <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.Email)</dt>
+            <dd class = "col-sm-10">@Html.DisplayFor(model => model.Email)</dd>
+
+            <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.Phone)</dt>
+            <dd class = "col-sm-10">@Html.DisplayFor(model => model.Phone)</dd>
+
+            <dt class = "col-sm-2">Address</dt>
+            <dd class = "col-sm-10">@Model.Street, @Model.City, @Model.State @Model.ZipCode</dd>
+        </dl>
+    </div>
+    <div class = "card-footer">
+        <a asp-action="Edit" class = "btn btn-dark">Edit Profile</a>
+        <a asp-controller="Home" asp-action="Index" class = "btn btn-outline-secondary">Back</a>
+    </div>
+</div>

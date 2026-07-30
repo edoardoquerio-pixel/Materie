@@ -1,0 +1,23 @@
+@model BikeStores.Data.Models.Brand
+
+@{
+    ViewData["Title"] = "Create Brand";
+}
+
+<h1 class = "mb-4">Create Brand</h1>
+
+<form asp-action="Create">
+    <div class = "card">
+        <div class = "card-body">
+            <div class = "mb-3">
+                <label asp-for="BrandName" class = "form-label"></label>
+                <input asp-for="BrandName" class = "form-control" />
+                <span asp-validation-for="BrandName" class = "text-danger"></span>
+            </div>
+        </div>
+        <div class = "card-footer">
+            <button type="submit" class = "btn btn-dark">Create</button>
+            <a asp-action="Index" class = "btn btn-outline-secondary">Back</a>
+        </div>
+    </div>
+</form>

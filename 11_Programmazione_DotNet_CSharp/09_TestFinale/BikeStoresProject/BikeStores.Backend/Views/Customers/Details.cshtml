@@ -1,0 +1,64 @@
+@model BikeStores.Data.Models.Customer
+
+@{
+    ViewData["Title"] = $"{Model.FirstName} {Model.LastName}";
+}
+
+<h1 class = "mb-4">@Model.FirstName @Model.LastName</h1>
+
+<div class = "card mb-4">
+    <div class = "card-header fw-bold">Customer Details</div>
+    <div class = "card-body">
+        <dl class = "row mb-0">
+            <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.Email)</dt>
+            <dd class = "col-sm-10">@Html.DisplayFor(model => model.Email)</dd>
+
+            <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.Phone)</dt>
+            <dd class = "col-sm-10">@Html.DisplayFor(model => model.Phone)</dd>
+
+            <dt class = "col-sm-2">Address</dt>
+            <dd class = "col-sm-10">@Model.Street, @Model.City, @Model.State @Model.ZipCode</dd>
+        </dl>
+    </div>
+</div>
+
+@{
+    var orders = ViewBag.Orders as IEnumerable<BikeStores.Data.Models.Order>;
+}
+
+<h4 class = "mb-3">Orders</h4>
+
+@if (orders != null && orders.Any())
+{
+    <table class = "table table-striped">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Store</th>
+                <th>Order Date</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in orders)
+            {
+                <tr>
+                    <td>@order.OrderId</td>
+                    <td>@order.Store?.StoreName</td>
+                    <td>@order.OrderDate.ToShortDateString()</td>
+                    <td>@order.OrderStatus</td>
+                    <td>
+                        <a asp-controller="Orders" asp-action="Details" asp-route-id="@order.OrderId" class = "btn btn-dark btn-sm">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class = "text-muted">No orders found.</p>
+}
+
+<a asp-action="Index" class = "btn btn-outline-secondary">Back to List</a>

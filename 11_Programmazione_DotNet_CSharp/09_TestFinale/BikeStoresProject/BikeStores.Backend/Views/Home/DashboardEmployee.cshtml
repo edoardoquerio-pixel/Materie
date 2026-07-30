@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Employee Dashboard";
+}
+
+<h1 class = "mb-4">Dashboard</h1>
+
+<div class = "row g-4">
+    <div class = "col-md-6">
+        <div class = "card text-bg-dark">
+            <div class = "card-body text-center py-5">
+                <h5 class = "card-title display-6">@ViewBag.MyOrders</h5>
+                <p class = "card-text">My Orders</p>
+                <a asp-controller="Orders" asp-action="Index" class = "btn btn-outline-light">View Orders</a>
+            </div>
+        </div>
+    </div>
+    <div class = "col-md-6">
+        <div class = "card text-bg-dark">
+            <div class = "card-body text-center py-5">
+                <h5 class = "card-title display-6">@ViewBag.TotalCustomers</h5>
+                <p class = "card-text">Customers</p>
+                <a asp-controller="Customers" asp-action="Index" class = "btn btn-outline-light">View Customers</a>
+            </div>
+        </div>
+    </div>
+</div>

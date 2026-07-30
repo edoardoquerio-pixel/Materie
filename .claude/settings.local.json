@@ -1,7 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "Bash(sort -t/ -k2)"
+      "PowerShell(dotnet build *)",
+      "PowerShell(dotnet aspnet-codegenerator controller *)",
+      "Bash(Stop-Process -Id 13568 -Force -ErrorAction SilentlyContinue)",
+      "Bash(Start-Sleep -Seconds 2)",
+      "Bash(dotnet build *)",
+      "Bash(Select-String \"error|Compilazione|Build|Errori\")"
     ]
+  },
+  "worktree": {
+    "bgIsolation": "none"
   }
 }

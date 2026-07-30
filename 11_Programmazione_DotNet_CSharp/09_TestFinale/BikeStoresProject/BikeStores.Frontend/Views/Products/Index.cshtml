@@ -1,0 +1,65 @@
+@model IEnumerable<BikeStores.Data.Models.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1 class="page-header">@ViewData["Title"]</h1>
+
+<form class="search-form">
+    <div class="row g-2 align-items-center">
+        <div class="col-md-6">
+            <input class="form-control" id="search" name="search" type="text" value="@ViewBag.Search" placeholder="Search by product name, brand or category..." />
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Clear</a>
+        </div>
+    </div>
+</form>
+
+<p class="items-count">
+    Items found: @Model.Count()
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th class="text-end">
+                @Html.DisplayNameFor(model => model.ListPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand.BrandName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+                <td class="text-end">
+                    @Html.DisplayFor(modelItem => item.ListPrice)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ProductId">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

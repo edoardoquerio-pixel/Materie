@@ -1,0 +1,47 @@
+@model BikeStores.Data.Models.Store
+
+@{
+    ViewData["Title"] = "Create Store";
+}
+
+<h1 class = "mb-4">Create Store</h1>
+
+<form asp-action="Create">
+    <div class = "card">
+        <div class = "card-body">
+            <div class = "mb-3">
+                <label asp-for="StoreName" class = "form-label"></label>
+                <input asp-for="StoreName" class = "form-control" />
+                <span asp-validation-for="StoreName" class = "text-danger"></span>
+            </div>
+            <div class = "mb-3">
+                <label asp-for="Phone" class = "form-label"></label>
+                <input asp-for="Phone" class = "form-control" />
+            </div>
+            <div class = "mb-3">
+                <label asp-for="Email" class = "form-label"></label>
+                <input asp-for="Email" class = "form-control" />
+            </div>
+            <div class = "mb-3">
+                <label asp-for="Street" class = "form-label"></label>
+                <input asp-for="Street" class = "form-control" />
+            </div>
+            <div class = "mb-3">
+                <label asp-for="City" class = "form-label"></label>
+                <input asp-for="City" class = "form-control" />
+            </div>
+            <div class = "mb-3">
+                <label asp-for="State" class = "form-label"></label>
+                <input asp-for="State" class = "form-control" />
+            </div>
+            <div class = "mb-3">
+                <label asp-for="ZipCode" class = "form-label"></label>
+                <input asp-for="ZipCode" class = "form-control" />
+            </div>
+        </div>
+        <div class = "card-footer">
+            <button type="submit" class = "btn btn-dark">Create</button>
+            <a asp-action="Index" class = "btn btn-outline-secondary">Back</a>
+        </div>
+    </div>
+</form>

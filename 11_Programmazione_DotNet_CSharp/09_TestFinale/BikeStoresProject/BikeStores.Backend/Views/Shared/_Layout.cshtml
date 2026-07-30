@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BikeStores Backend</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">BikeStores Backend</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (User.IsInRole("Administrators"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Orders</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" asp-controller="Orders" asp-action="Index">All Orders</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Catalog</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" asp-controller="Brands" asp-action="Index">Brands</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Categories" asp-action="Index">Categories</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Products" asp-action="Index">Products</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Stocks" asp-action="Index">Stock</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Sales</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" asp-controller="Customers" asp-action="Index">Customers</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Stores" asp-action="Index">Stores</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Staff" asp-action="Index">Staff</a></li>
+                                </ul>
+                            </li>
+                        }
+                        @if (User.IsInRole("Employees"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Orders" asp-action="Index">Orders</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Customers" asp-action="Index">Customers</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Customers"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Orders" asp-action="Index">My Orders</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Profile" asp-action="Index">My Profile</a>
+                            </li>
+                        }
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2026 - BikeStores Backend
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

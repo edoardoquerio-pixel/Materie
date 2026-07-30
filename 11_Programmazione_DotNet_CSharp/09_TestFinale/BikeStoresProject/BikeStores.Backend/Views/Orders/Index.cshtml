@@ -1,0 +1,59 @@
+@model IEnumerable<BikeStores.Data.Models.Order>
+
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<h1 class = "mb-4">Orders</h1>
+
+<p>
+    <a asp-action="Create" class = "btn btn-dark">Create New Order</a>
+</p>
+
+<form method="get" class = "row g-3 mb-4">
+    <div class = "col-auto">
+        <select name="statusId" class = "form-select" asp-items="ViewBag.Statuses">
+            <option value="">All Statuses</option>
+        </select>
+    </div>
+    <div class = "col-auto">
+        <button type="submit" class = "btn btn-dark">Filter</button>
+        <a asp-action="Index" class = "btn btn-outline-secondary">Clear</a>
+    </div>
+</form>
+
+<p class = "text-muted">Total: @Model.Count() orders</p>
+
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.OrderId)</th>
+            <th>Customer</th>
+            <th>@Html.DisplayNameFor(model => model.Store)</th>
+            <th>@Html.DisplayNameFor(model => model.OrderStatus)</th>
+            <th>@Html.DisplayNameFor(model => model.OrderDate)</th>
+            <th>@Html.DisplayNameFor(model => model.RequiredDate)</th>
+            <th>@Html.DisplayNameFor(model => model.ShippedDate)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.OrderId)</td>
+                <td>@item.Customer?.FirstName @item.Customer?.LastName</td>
+                <td>@Html.DisplayFor(modelItem => item.Store!.StoreName)</td>
+                <td>@item.OrderStatus</td>
+                <td>@item.OrderDate.ToShortDateString()</td>
+                <td>@item.RequiredDate.ToShortDateString()</td>
+                <td>@item.ShippedDate?.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.OrderId" class = "btn btn-dark btn-sm">Details</a>
+                    <a asp-action="Edit" asp-route-id="@item.OrderId" class = "btn btn-dark btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.OrderId" class = "btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

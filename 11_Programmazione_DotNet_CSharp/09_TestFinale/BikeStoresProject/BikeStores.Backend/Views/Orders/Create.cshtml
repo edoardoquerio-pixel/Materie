@@ -1,0 +1,60 @@
+@model BikeStores.Data.Models.Order
+
+@{
+    ViewData["Title"] = "Create Order";
+}
+
+<h1 class="mb-4">Create Order</h1>
+
+<form asp-action="Create">
+    <div class="card">
+        <div class="card-body">
+            <div class="mb-3">
+                <label asp-for="CustomerId" class="form-label">Customer</label>
+                <select asp-for="CustomerId" class="form-select" asp-items="ViewBag.CustomerId">
+                    <option value="">-- Select Customer --</option>
+                </select>
+                <span asp-validation-for="CustomerId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="StoreId" class="form-label">Store</label>
+                <select asp-for="StoreId" class="form-select" asp-items="ViewBag.StoreId">
+                    <option value="">-- Select Store --</option>
+                </select>
+                <span asp-validation-for="StoreId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="StaffId" class="form-label">Staff</label>
+                <select asp-for="StaffId" class="form-select" asp-items="ViewBag.StaffId">
+                    <option value="">-- Select Staff --</option>
+                </select>
+                <span asp-validation-for="StaffId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="OrderStatus" class="form-label">Status</label>
+                <select asp-for="OrderStatus" class="form-select" asp-items="ViewBag.OrderStatus">
+                    <option value="">-- Select Status --</option>
+                </select>
+                <span asp-validation-for="OrderStatus" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="OrderDate" class="form-label"></label>
+                <input asp-for="OrderDate" class="form-control" type="date" />
+                <span asp-validation-for="OrderDate" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="RequiredDate" class="form-label"></label>
+                <input asp-for="RequiredDate" class="form-control" type="date" />
+                <span asp-validation-for="RequiredDate" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="ShippedDate" class="form-label"></label>
+                <input asp-for="ShippedDate" class="form-control" type="date" />
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-dark">Create</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Back</a>
+        </div>
+    </div>
+</form>
