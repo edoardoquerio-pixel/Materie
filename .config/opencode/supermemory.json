@@ -1,0 +1,14 @@
+{
+  "autoRecallEveryPrompt": false,
+  "captureEveryNTurns": 0,
+  "projectId": "oh-my-openocode-default",
+  "sessionManagement": {
+    "preserveContextAcrossSessions": true,
+    "maxContextTokens": 8000
+  },
+  "memoryPreferences": {
+    "captureAgentDecisions": true,
+    "captureCodePatterns": true,
+    "storeTaskResults": true
+  }
+}
