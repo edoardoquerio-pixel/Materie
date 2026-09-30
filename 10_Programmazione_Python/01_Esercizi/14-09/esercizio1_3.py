@@ -1,6 +1,6 @@
 import math
 
-raggio = int(input("inserisci il raggio del cerchio: "))
+raggio = float(input("inserisci il raggio del cerchio: "))
 if raggio >0:
     area = math.pi*raggio**2
     circonferenza = 2*math.pi*raggio
