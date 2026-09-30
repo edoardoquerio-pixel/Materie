@@ -1,3 +1,6 @@
 [submodule "17_Container_Docker_Kubernetes"]
 	path = 17_Container_Docker_Kubernetes
 	url = https://github.com/edoardoquerio-pixel/ITS-ICT_Containers.git
+[submodule "10_Cloud_GCP"]
+	path = 10_Cloud_GCP
+	url = https://github.com/edoardoquerio-pixel/gcp-demo-sage.git
