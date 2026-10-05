@@ -14,6 +14,15 @@ Scrivere un programma per trovare il secondo numero più piccolo in una lista.
 #     Parametri formali: lista, una lista di numeri.
 #     Valore di ritorno: il numero trovato, oppure None se i valori distinti sono meno di due.
 def secondo_minimo(lista):
+    """
+    Trova il secondo minimo distinto senza modificare la lista.
+
+    Parametri formali:
+        lista (list): numeri da esaminare.
+    Valore di ritorno:
+        int o float: secondo minimo distinto.
+        None: se sono presenti meno di due valori distinti.
+    """
     if not lista:
         return None
 

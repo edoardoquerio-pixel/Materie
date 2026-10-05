@@ -1,3 +1,5 @@
+"""Legge i voti di ciascun alunno e ne stampa la media aritmetica."""
+
 # Chiediamo il numero di alunni (N)
 num_alunni = int(input("Inserisci il numero di alunni nella classe: "))
 

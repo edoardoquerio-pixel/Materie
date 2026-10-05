@@ -15,6 +15,15 @@ un membro comune, altrimenti stampi "KO".
 #     Parametri formali: lista1 e lista2, le due liste da confrontare.
 #     Valore di ritorno: bool, True se esiste un elemento comune, False altrimenti.
 def hanno_elemento_comune(lista1, lista2):
+    """
+    Verifica se due liste hanno almeno un elemento in comune.
+
+    Parametri formali:
+        lista1 (list): prima lista.
+        lista2 (list): seconda lista.
+    Valore di ritorno:
+        bool: True se esiste un elemento comune, False altrimenti.
+    """
     for elemento in lista1:
         if elemento in lista2:
             return True

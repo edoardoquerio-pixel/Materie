@@ -1,3 +1,5 @@
+"""Mostra la somma dei pari e il prodotto dei dispari in una sequenza di esempio."""
+
 # =============================================================================
 # ANALISI DEL PROBLEMA
 # =============================================================================
@@ -52,6 +54,11 @@ def elabora_numeri(*numeri):
 # =============================================================================
 
 def main():
+    """
+    Stampa somma dei pari e prodotto dei dispari per i numeri 2, 3, 4, 5, 6.
+
+    Non riceve parametri e restituisce None.
+    """
     # --- Sezione Inizializzazione Variabili ---
     # s_p: accumulatore per la somma dei numeri pari restituita dalla funzione
     # p_d: accumulatore per il prodotto dei numeri dispari restituito dalla funzione

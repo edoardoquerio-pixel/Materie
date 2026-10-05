@@ -1,3 +1,5 @@
+"""Trova il minimo tra N numeri inseriti, richiedendo N maggiore di zero."""
+
 # Chiediamo all'utente quanti numeri vuole inserire
 N = int(input("Inserisci il numero di elementi (N): "))
 

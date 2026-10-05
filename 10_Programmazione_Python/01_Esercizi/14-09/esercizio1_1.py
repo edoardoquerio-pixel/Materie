@@ -1,3 +1,5 @@
+"""Risolve a * x = b con coefficienti letti da tastiera, segnalando a = 0."""
+
 # Richiede all'utente di inserire il primo numero (coefficiente a)
 print("insercisi primo numero")
 a = float(input())

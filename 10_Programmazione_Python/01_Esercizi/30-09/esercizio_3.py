@@ -34,6 +34,18 @@ print ("Tupla originale:", TUPLE)
 
 # Elaborazione
 def sostituisci_ultimo_valore(tupla, valore):
+    """
+    Sostituisce l'ultimo elemento di ogni lista contenuta nella tupla.
+
+    Parametri formali:
+        tupla (tuple): tupla con liste non vuote ed eventuali altri valori.
+        valore: nuovo valore da assegnare all'ultimo elemento delle liste.
+    Valore di ritorno:
+        tuple: tupla con le liste aggiornate e gli altri elementi invariati.
+        Le liste vengono modificate anche nella tupla originale.
+    Errori:
+        IndexError: se una delle liste risulta vuota.
+    """
     tupla_modificata = []
     for elemento in tupla:
         if isinstance(elemento, list):

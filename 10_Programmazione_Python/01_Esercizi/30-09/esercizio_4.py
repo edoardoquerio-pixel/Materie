@@ -26,6 +26,17 @@ list = [1, 2, 3, (4, 5), 6, 7]
 
 # Inizializzazioni variabili
 def controlloLista(list):
+    """
+    Conta gli elementi che precedono la prima tupla in una lista non vuota.
+
+    Parametri formali:
+        list (list): lista non vuota da esaminare.
+    Valore di ritorno:
+        int: numero di elementi prima della prima tupla, oppure lunghezza
+        della lista se non contiene tuple.
+    Errori:
+        UnboundLocalError: se la lista risulta vuota.
+    """
 
     if list:
         count = 0

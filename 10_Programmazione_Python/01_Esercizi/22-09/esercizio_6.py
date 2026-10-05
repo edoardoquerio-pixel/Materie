@@ -13,8 +13,18 @@ Dividere una lista in due parti, data la lunghezza della prima parte.
 #     Descrizione: divide la lista senza modificare quella originale.
 #     Parametri formali: lista, la lista originale; lunghezza, un numero intero.
 #     Valore di ritorno: una lista contenente le due parti.
-#     Errori: ValueError se la lunghezza non è un intero valido.
+#     Restituisce None se la lunghezza non ha tipo int o non rientra nei limiti.
 def dividi_lista(lista, lunghezza):
+    """
+    Divide una lista in due parti senza modificare quella originale.
+
+    Parametri formali:
+        lista (list): lista da dividere.
+        lunghezza (int): dimensione della prima parte, da 0 a len(lista).
+    Valore di ritorno:
+        list: lista contenente le due parti.
+        None: se lunghezza non ha tipo int o non rientra nei limiti.
+    """
     if type(lunghezza) is not int or lunghezza < 0 or lunghezza > len(lista):
         return None
 

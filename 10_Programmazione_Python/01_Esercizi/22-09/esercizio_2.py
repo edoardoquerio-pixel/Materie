@@ -12,6 +12,14 @@ str="PIPPO" NON PALINDROMA
 ##
 ## Funzioni:
 def palindromo(stringa):
+    """
+    Verifica se una stringa si legge allo stesso modo nei due versi.
+
+    Parametri formali:
+        stringa (str): testo da verificare, distinguendo maiuscole e minuscole.
+    Valore di ritorno:
+        str: messaggio che indica se la stringa risulta palindroma.
+    """
     if stringa == stringa[::-1]:
         return ("la stringa è palindroma")
     else:

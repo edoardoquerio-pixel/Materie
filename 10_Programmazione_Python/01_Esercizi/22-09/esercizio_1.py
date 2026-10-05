@@ -1,4 +1,4 @@
-﻿"""
+"""
 Autore: Edoardo Querio Gianetto
 Data: 22/09/2026
 
@@ -30,6 +30,16 @@ Descrizione sintetica delle funzionalità: da completare.
 
 # Elaborazione
 def rimuovi_carattere(parola, n):
+    """
+    Rimuove il carattere all'indice n della stringa parola.
+
+    Parametri formali:
+        parola (str): stringa non vuota.
+        n (int): indice a partire da zero.
+    Valore di ritorno:
+        str: stringa modificata o messaggio di errore per dati non validi.
+        Se n coincide con la lunghezza, restituisce la stringa invariata.
+    """
     if len(parola) >= n and n >= 0 and parola:
         return parola[:n] + parola[n+1:]
     else:

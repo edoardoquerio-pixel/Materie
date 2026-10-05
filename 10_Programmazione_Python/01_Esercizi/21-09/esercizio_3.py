@@ -1,3 +1,5 @@
+"""Legge una temperatura Fahrenheit e stampa la conversione in Celsius."""
+
 # =============================================================================
 # DEFINIZIONE DELLE FUNZIONI
 # =============================================================================
@@ -19,6 +21,11 @@ def convertiCF(fahrenheit):
 # =============================================================================
 
 def main():
+    """
+    Legge una temperatura e stampa i gradi Celsius, segnalando input non numerici.
+
+    Non riceve parametri e restituisce None.
+    """
     # --- Sezione Inizializzazione Variabili ---
     # gradi_f: variabile per memorizzare l'input dell'utente (float)
     # gradi_c: variabile per memorizzare il valore restituito dalla funzione (float)

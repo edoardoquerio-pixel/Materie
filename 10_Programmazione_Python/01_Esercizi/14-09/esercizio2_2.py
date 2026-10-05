@@ -1,3 +1,5 @@
+"""Legge N saldi e stampa la media di quelli negativi, se presenti."""
+
 # Chiede il numero totale dei conti correnti da elaborare
 N = int(input("Inserisci il numero di conti correnti (N): "))
 # Inizializza la variabile per accumulare la somma dei saldi negativi

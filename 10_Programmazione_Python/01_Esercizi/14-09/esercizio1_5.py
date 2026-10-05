@@ -1,3 +1,5 @@
+"""Calcola la spesa con sconto del 5% da 100 a meno di 300 e del 10% da 300."""
+
 # Riceve in input l'importo totale della spesa sostenuta dall'utente
 spesa = int(input())
 

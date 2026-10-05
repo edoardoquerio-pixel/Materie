@@ -1,3 +1,5 @@
+"""Approssima il numero di Nepero sommando i termini da 1/0! a 1/(N-1)!."""
+
 # =============================================================================
 # DEFINIZIONE DELLE FUNZIONI
 # =============================================================================
@@ -36,6 +38,11 @@ def calcola_e(N):
 # =============================================================================
 
 def main():
+    """
+    Legge un numero positivo di termini e stampa la stima di e, segnalando input non validi.
+
+    Non riceve parametri e restituisce None.
+    """
     # --- Sezione Inizializzazione Variabili ---
     # n_termini: numero di elementi della serie da calcolare (input utente)
     # e_stimato: variabile che conterrà il risultato dell'approssimazione restituito dalla funzione

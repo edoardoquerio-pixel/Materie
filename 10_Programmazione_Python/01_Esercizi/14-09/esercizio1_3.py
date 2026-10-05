@@ -1,3 +1,5 @@
+"""Calcola area e circonferenza di un cerchio dato un raggio positivo."""
+
 import math
 
 raggio = float(input("inserisci il raggio del cerchio: "))

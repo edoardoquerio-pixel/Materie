@@ -17,6 +17,14 @@ listaOUT = [2, -4, 5, 6]
 #     Parametri formali: lista, la lista da elaborare.
 #     Valore di ritorno: una nuova lista senza duplicati.
 def rimuovi_duplicati(lista):
+    """
+    Rimuove i duplicati mantenendo l'ordine delle prime occorrenze.
+
+    Parametri formali:
+        lista (list): elementi da elaborare.
+    Valore di ritorno:
+        list: nuova lista senza duplicati; la lista originale resta invariata.
+    """
     listaOUT = [] # Lista degli elementi senza duplicati.
     for elemento in lista:
         if elemento not in listaOUT:

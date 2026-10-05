@@ -1,3 +1,5 @@
+"""Confronta due durate inserite in ore, minuti e secondi convertendole in secondi."""
+
 # =============================================================================
 # DEFINIZIONE DELLE FUNZIONI
 # =============================================================================
@@ -22,6 +24,11 @@ def calcola_secondi(ore=0, minuti=0, secondi=0):
 # =============================================================================
 
 def main():
+    """
+    Legge due durate e stampa il confronto dei totali in secondi.
+
+    Non riceve parametri e restituisce None.
+    """
     # --- Sezione Inizializzazione Variabili ---
     # h, m, s: variabili per memorizzare ore, minuti e secondi inseriti
     # tempo1_sec: totale secondi della prima quantità

@@ -28,6 +28,16 @@ n = 2
 
 # Elaborazione
 def rimuovi_elemento(tuple, n):
+    """
+    Rimuove da una tupla l'elemento all'indice indicato.
+
+    Parametri formali:
+        tuple (tuple): tupla da elaborare.
+        n (int): indice a partire da zero.
+    Valore di ritorno:
+        tuple: tupla senza l'elemento scelto. Per un indice non valido,
+        stampa un errore e restituisce la tupla originale.
+    """
     if 0 <= n < len(tuple):
         return tuple[:n] + tuple[n+1:]
     else:
