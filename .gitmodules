@@ -4,3 +4,6 @@
 [submodule "10_Cloud_GCP"]
 	path = 10_Cloud_GCP
 	url = https://github.com/edoardoquerio-pixel/gcp-demo-sage.git
+[submodule "13_Cloud_AWS"]
+	path = 13_Cloud_AWS
+	url = https://github.com/edoardoquerio-pixel/CSP-Intro-AWS.git
