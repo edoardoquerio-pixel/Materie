@@ -94,7 +94,7 @@ cp devops/cloud/terraform.tfvars.example devops/cloud/terraform.tfvars
 cp devops/cloud/backend.hcl.example devops/cloud/backend.hcl
 ```
 
-In tutti e tre i file sostituisci `its-ict-template-sage` con il tuo project id reale
+In tutti e tre i file sostituisci `its-ict-sage-csp26` con il tuo project id reale
 (`its-ict-<nome>-<cognome>`); in un progetto condiviso usa il progetto condiviso come
 `project_id` e valorizza anche il prefisso (`SAGE_RESOURCE_PREFIX` in `.env`,
 `resource_prefix` in `terraform.tfvars`, nome del bucket in `backend.hcl`). Questi tre file
@@ -209,6 +209,13 @@ concetti distinti, anche se in un progetto dedicato coincidono:
 Dove si imposta: `SAGE_RESOURCE_PREFIX` (`sources/backend/.env`), `resource_prefix`
 (`devops/cloud/terraform.tfvars`), variabile di repository GitHub `RESOURCE_PREFIX`, terzo
 argomento di `setup-gcp-once.sh`. Se non è valorizzato, tutto si comporta come prima.
+
+**Il prefisso è uno solo e deve essere identico in tutti e quattro i posti** (`.env`,
+`terraform.tfvars`, `RESOURCE_PREFIX` su GitHub, argomento del bootstrap). Scegli il valore
+all'inizio e **non cambiarlo dopo il primo `terraform apply`**: da esso derivano anche il bucket
+dello state (`<prefisso>-tfstate`) e i nomi di tutte le risorse, quindi un prefisso diverso
+significa uno state vuoto, risorse duplicate e quelle vecchie lasciate in giro (e a pagamento). Se
+devi davvero cambiarlo, prima fai `terraform destroy` con il prefisso vecchio.
 
 ## Pulizia risorse
 
